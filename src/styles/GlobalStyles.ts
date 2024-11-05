@@ -9,10 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-
-  html{
-    width: 100% ;
+    --font-smoothing: antialiased;
   }
 
 body {
@@ -20,11 +17,13 @@ body {
   flex-direction: column;
   overflow-x: hidden;
   align-items: center;
+  justify-content: center;
+
 
   margin: 0 auto ;
 
   width: 23.4375rem;
-  height: 100vh;
+
 
   background-color: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
@@ -34,11 +33,11 @@ body {
   }
 
   @media (width >=80rem){
-    width: 80rem;
+    width: 100%;
 
   }
-  @media (width >=120rem){
-    width: 120rem;
+  @media (width >=87.5rem){
+    width:100%;
   }
 }
 `

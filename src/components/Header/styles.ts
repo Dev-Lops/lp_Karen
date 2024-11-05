@@ -5,10 +5,9 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  width: 23.4375rem;
+  width: 100vw;
+  height: 5rem;
   margin: 0 auto;
-  height: 6.25rem;
 
   position: relative;
   z-index: 1;
@@ -30,14 +29,12 @@ export const HeaderContainer = styled.header`
   }
 
   img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
   }
 
   @media (width >=80rem) {
-    width: 80rem;
   }
-  @media (width >=120rem) {
-    width: 120rem;
+  @media (width >=90rem) {
   }
 `
