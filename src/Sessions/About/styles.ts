@@ -7,40 +7,48 @@ export const AboutContainer = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin-top: 50px;
-
-  text-align: start;
 
   color: #fff;
 
+  & h1 {
+    font-size: 3.5rem;
+    color: #01ab9e;
+    font-weight: 400;
+    font-family: "Syncopate", sans-serif;
+    letter-spacing: 0.125rem;
+    margin-top: 40px;
+    text-align: center;
+  }
+
   @media (width >=80rem) {
     width: 1000px;
-    height: 100%;
+
+    & h1 {
+      position: absolute;
+      text-align: start;
+      top: 50px;
+      left: 100px;
+      font-size: 4rem;
+      color: #01ab9e;
+    }
   }
   @media (width >=87.5rem) {
     width: 1400px;
+
+    h1 {
+      font-size: 6rem;
+      left: 300px;
+    }
   }
 `
 export const AboutContent = styled.main`
   display: flex;
   flex-direction: column;
+  text-align: center;
   justify-content: center;
-  text-align: justify;
-  margin-top: 50px;
 
-  & h1 {
-    font-size: 2.5rem;
-    color: #01ab9e;
-    font-weight: 400;
-    font-family: "Syncopate", sans-serif;
-    letter-spacing: 0.125rem;
-    margin-bottom: 10px;
-  }
   & h3 {
     font-size: 1.8rem;
-    text-align: start;
-
     width: 100%;
   }
   p {
@@ -52,15 +60,12 @@ export const AboutContent = styled.main`
   }
 
   img {
-    width: 300px;
-    height: 320px;
+    width: 400px;
+    height: 420px;
     margin-top: 1.875rem;
-    margin-left: 30px;
   }
 
   @media (width >=80rem) {
-    align-items: start;
-
     text-align: justify;
     display: flex;
     flex-direction: column;
@@ -69,9 +74,9 @@ export const AboutContent = styled.main`
     .text {
       display: flex;
       width: 68.75rem;
+      margin: 5px 0;
 
       align-items: center;
-      justify-content: space-between;
 
       > div {
         width: 46.25rem;
@@ -80,19 +85,10 @@ export const AboutContent = styled.main`
       }
     }
 
-    & h1 {
-      position: absolute;
-      text-align: start;
-      top: 120px;
-      right: 210px;
-      font-size: 100px;
-      color: #01ab9e;
-    }
-
     h3 {
       font-size: 3rem;
-      font-weight: bold;
       margin-bottom: 40px;
+      text-align: start;
     }
 
     p {
@@ -112,7 +108,7 @@ export const AboutContent = styled.main`
     .text {
       display: flex;
       width: 100%;
-      margin: 100px 0;
+      margin: 0;
 
       align-items: center;
       justify-content: space-between;
@@ -123,13 +119,9 @@ export const AboutContent = styled.main`
         margin-right: 40px;
       }
     }
-    h1 {
-      font-size: 10rem;
-      right: 190px;
-    }
 
     h3 {
-      font-size: 5rem;
+      font-size: 4rem;
       font-weight: bold;
       margin-bottom: 50px;
     }
@@ -141,9 +133,8 @@ export const AboutContent = styled.main`
     }
 
     img {
-      width: 600px;
-      height: 600px;
-      margin-bottom: 20px;
+      width: 550px;
+      height: 750px;
     }
   }
 `

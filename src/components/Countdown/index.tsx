@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 
 import "aos/dist/aos.css"
 
-
 const EventCountdown: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -13,7 +12,6 @@ const EventCountdown: React.FC = () => {
   const [eventStarted, setEventStarted] = useState(false)
 
   useEffect(() => {
-
     const eventDate = new Date("Nov 28, 2024 19:00:00").getTime()
 
     const updateCountdown = () => {

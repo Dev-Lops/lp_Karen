@@ -17,7 +17,7 @@ export const Carousel = styled.div`
     font-size: 24px;
     color: #fff;
     font-weight: bold;
-    height: 50px;
+    height: 70px;
     gap: 0.75rem;
 
     & p {
@@ -40,13 +40,18 @@ export const Carousel = styled.div`
       padding: 0 3rem;
       font-size: 1.875rem;
       width: 100%;
+      height: 110px;
 
       .number-slide1 {
         display: flex;
         justify-content: space-between;
         background: #000;
-        padding: 0 1%.25rem;
+        padding: 0 1.25rem;
       }
+    }
+
+    @media (width >=87.5rem) {
+      height: 116px;
     }
   }
 `

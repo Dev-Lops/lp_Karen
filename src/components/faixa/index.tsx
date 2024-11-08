@@ -24,7 +24,7 @@ export function Faixa() {
       data-aos-anchor-placement='bottom-bottom'
     >
       <Carousel ref={sliderRef} className='keen-slider'>
-        <div className='keen-slider__slide number-slide1 desktop-only'>
+        <div className='keen-slider__slide number-slide1 '>
           <p>Black</p>
           <img src='src\assets\star.svg' alt='star' />
           <p>Friday</p>
@@ -34,7 +34,7 @@ export function Faixa() {
           <p>Friday</p>
           <img src='src\assets\star.svg' alt='star' />
         </div>
-        <div className='keen-slider__slide number-slide1 desktop-only'>
+        <div className='keen-slider__slide number-slide1 '>
           <p>Black</p>
           <img src='src\assets\star.svg' alt='star' />
           <p>Friday</p>
