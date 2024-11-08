@@ -71,3 +71,4 @@ export const Spinner = styled.div`
   animation: ${spin} 1s linear infinite;
   margin-bottom: 1.25rem;
 `
+/* HTML: <div class="loader"></div> */

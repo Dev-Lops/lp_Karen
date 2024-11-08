@@ -35,12 +35,9 @@ export function About() {
               Compre agora
             </StyledButton>
           </div>
-          <img
-            src='src\assets\Design sem nome (1).png'
-            alt='teste'
-            data-aos='fade-up'
-            data-aos-anchor-placement='center-bottom'
-          />
+          <div className='photo' data-aos='fade-up'>
+            <img src='src\assets\products.jpg' alt='teste' />
+          </div>
         </div>
       </AboutContent>
       <Faixa />

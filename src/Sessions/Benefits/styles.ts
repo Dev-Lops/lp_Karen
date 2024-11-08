@@ -14,7 +14,7 @@ export const BenefitsContainer = styled.section`
   & h1 {
     padding: 24px;
     text-align: center;
-    color: #01ab9e;
+    color: #000;
   }
 
   @media (width >=80rem) {
@@ -64,14 +64,13 @@ export const CardBeneficit = styled.div`
     }
 
     img {
-      width: 90px;
+      width: 50px;
       height: auto;
     }
   }
   @media (width >=87.5rem) {
     width: 450px;
     img {
-      width: 100px;
       height: auto;
     }
   }

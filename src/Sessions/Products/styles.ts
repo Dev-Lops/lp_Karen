@@ -13,7 +13,7 @@ export const ContainerProduct = styled.section`
     margin: 0 auto;
   }
   @media (width: 120rem) {
-    width: 1600px;
+    width: 1500px;
     height: 100vh;
 
     margin: 0 auto;

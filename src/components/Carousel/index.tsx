@@ -20,7 +20,7 @@ export function Carousel() {
           if (mouseOver) return
           timeout = setTimeout(() => {
             slider.next()
-          }, 3000)
+          }, 4000)
         }
         slider.on("created", () => {
           slider.container.addEventListener("mouseover", () => {
@@ -60,7 +60,7 @@ export function Carousel() {
         </div>
         <div className='keen-slider__slide number-slide1'>
           <div className='photo'>
-            <img src='src\assets\IMG_8098.jpg' alt='' />
+            <img src='src\assets\serun.jpg' alt='' />
           </div>
           <div className='text'>
             <h1>Clean Detox</h1>
@@ -76,7 +76,7 @@ export function Carousel() {
         </div>
         <div className='keen-slider__slide number-slide1'>
           <div className='photo'>
-            <img src='src\assets\IMG_8098.jpg' alt='' />
+            <img src='src\assets\restrut.jpg' alt='' />
           </div>
           <div className='text'>
             <h1>Clean Detox</h1>

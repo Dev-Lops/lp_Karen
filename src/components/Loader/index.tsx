@@ -1,5 +1,5 @@
 import { SpinnerDotted } from "spinners-react"
-import { LoaderContainer } from './styles'
+import { LoaderContainer } from "./styles"
 
 export function Loader() {
   return (

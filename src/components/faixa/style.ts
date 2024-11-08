@@ -40,7 +40,7 @@ export const Carousel = styled.div`
       padding: 0 3rem;
       font-size: 1.875rem;
       width: 100%;
-      height: 110px;
+      height: 30px;
 
       .number-slide1 {
         display: flex;
@@ -51,7 +51,7 @@ export const Carousel = styled.div`
     }
 
     @media (width >=87.5rem) {
-      height: 116px;
+      height: 70px;
     }
   }
 `

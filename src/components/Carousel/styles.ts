@@ -10,21 +10,24 @@ export const CarrouselContainer = styled.div`
     text-align: center;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: #000;
     font-weight: 500;
 
     padding: 32px 0;
 
     .photo {
       border-radius: 800px;
-      /* border: 1px solid ${({ theme }) => theme.colors.gold}; */
       background-color: ${({ theme }) => theme.colors.gold};
-      padding: 8px;
+      padding: 5px;
+      img {
+        width: 250px;
+        height: 400px;
+      }
     }
 
     img {
       width: 180px;
-      border-radius: 800px;
+      border-radius: 900px;
     }
 
     .text {
@@ -33,10 +36,11 @@ export const CarrouselContainer = styled.div`
       text-align: center;
 
       img {
-        padding: 0 0 10px;
-      }
-      svg {
-        background-color: ${({ theme }) => theme.colors.gold};
+        padding: 10px;
+        margin-bottom: 20px;
+        svg {
+          color: ${({ theme }) => theme.colors.gold};
+        }
       }
 
       h1 {
@@ -47,14 +51,26 @@ export const CarrouselContainer = styled.div`
     @media (width >= 80rem) {
       flex-direction: row;
       padding: 0 50px;
-      justify-content: space-around;
+      justify-content: space-evenly;
+      gap: 40px;
+
+      .photo {
+        border-radius: 800px;
+        background-color: ${({ theme }) => theme.colors.gold};
+        padding: 5px;
+        img {
+          width: 350px;
+          height: 550px;
+        }
+      }
 
       .text {
         text-align: start;
-        width: 700px;
+        width: 900px;
 
         img {
-          width: 200px;
+          width: 150px;
+
           margin-right: 30px;
         }
 
@@ -76,6 +92,14 @@ export const CarrouselContainer = styled.div`
       flex-direction: row;
       padding: 0 70px;
       justify-content: space-evenly;
+      gap: 40px;
+
+      .photo {
+        img {
+          width: 400px;
+          height: 600px;
+        }
+      }
 
       .text {
         width: 800px;
@@ -90,10 +114,6 @@ export const CarrouselContainer = styled.div`
         }
       }
 
-      img {
-        width: 320px;
-      }
-
       p {
         font-size: 1.75rem;
         margin-top: 10px;
@@ -102,9 +122,21 @@ export const CarrouselContainer = styled.div`
   }
 
   .number-slide1 {
-    background: #000;
+    background: #ffff;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
+    border: 0;
+
+    @media (width >= 80rem) {
+      padding: 30px;
+      border-radius: 30px;
+    }
+
+    @media (width >= 87.5rem) {
+      padding: 40px;
+      border-radius: 20px;
+    }
   }
 `
