@@ -1,15 +1,28 @@
-import { Header } from "./components/Header"
+import { FooterComponent } from "./components/FooterComponent"
 import { About } from "./Sessions/About"
 import { Benefits } from "./Sessions/Benefits"
+import { BlackFriday } from "./Sessions/BlackFriday"
+import { CountdownBlack } from "./Sessions/CountdownBlack"
+import { CTA } from "./Sessions/CTA"
+import { FAQ } from "./Sessions/FAQ'S"
+import { Presentation } from "./Sessions/Presentation"
 import { Product } from "./Sessions/Products"
+import { TestimonialSectionComponent } from "./Sessions/Testemonials"
+import { Container } from "./styles/GlobalStyles"
 
 export const LandingPage = () => {
   return (
-    <>
-      <Header />
+    <Container>
       <About />
+      <BlackFriday />
       <Benefits />
       <Product />
-    </>
+      <Presentation />
+      <TestimonialSectionComponent />
+      <CountdownBlack />
+      <FAQ />
+      <CTA />
+      <FooterComponent />
+    </Container>
   )
 }

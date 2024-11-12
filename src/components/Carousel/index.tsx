@@ -3,6 +3,29 @@ import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import StyledButton from "../Button"
 
+interface Product {
+  image: string
+  title: string
+  description: string
+  inStock: boolean
+}
+
+const products: Product[] = [
+  {
+    image: "src/assets/IMG_8098.jpg",
+    title: "Clean Detox",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+    inStock: true,
+  },
+  {
+    image: "src/assets/serun.jpg",
+    title: "Serum Revitalizante",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+    inStock: false,
+  },
+  // Adicione outros produtos conforme necessário
+]
+
 export function Carousel() {
   const [sliderRef] = useKeenSlider<HTMLDivElement>(
     {
@@ -39,121 +62,27 @@ export function Carousel() {
       },
     ]
   )
+
   return (
     <CarrouselContainer>
       <div ref={sliderRef} className='keen-slider'>
-        <div className='keen-slider__slide number-slide1'>
-          <div className='photo'>
-            <img src='src\assets\IMG_8098.jpg' alt='' />
+        {products.map((product, index) => (
+          <div key={index} className='keen-slider__slide number-slide1'>
+            <div className='photo'>
+              <img src={product.image} alt={product.title} />
+            </div>
+            <div className='text'>
+              <h1>{product.title}</h1>
+              <img src='src/assets/5stars.svg' alt='Avaliação' />
+              <p>{product.description}</p>
+              {product.inStock ? (
+                <StyledButton href='https://wa.me/5592993787566?text=Ol%C3%A1%2C%20gostaria%20de%20aproveitar%20as%20ofertas%20da%20Black%20Friday!%0A'>Comprar agora</StyledButton>
+              ) : (
+                <p className='out-of-stock'>Produto Esgotado</p>
+              )}
+            </div>
           </div>
-          <div className='text'>
-            <h1>Clean Detox</h1>
-            <img src='src\assets\5stars.svg' alt='' />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi qui
-              modi iste porro nesciunt magnam eius, quibusdam libero ea labore
-              mollitia, perferendis consequatur voluptatum ipsam, aliquid iure
-              in voluptas hic?
-            </p>
-            <StyledButton href='#'>Saiba mais</StyledButton>
-          </div>
-        </div>
-        <div className='keen-slider__slide number-slide1'>
-          <div className='photo'>
-            <img src='src\assets\serun.jpg' alt='' />
-          </div>
-          <div className='text'>
-            <h1>Clean Detox</h1>
-            <img src='src\assets\5stars.svg' alt='' />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi qui
-              modi iste porro nesciunt magnam eius, quibusdam libero ea labore
-              mollitia, perferendis consequatur voluptatum ipsam, aliquid iure
-              in voluptas hic?
-            </p>
-            <StyledButton href='#'>Saiba mais</StyledButton>
-          </div>
-        </div>
-        <div className='keen-slider__slide number-slide1'>
-          <div className='photo'>
-            <img src='src\assets\restrut.jpg' alt='' />
-          </div>
-          <div className='text'>
-            <h1>Clean Detox</h1>
-            <img src='src\assets\5stars.svg' alt='' />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi qui
-              modi iste porro nesciunt magnam eius, quibusdam libero ea labore
-              mollitia, perferendis consequatur voluptatum ipsam, aliquid iure
-              in voluptas hic?
-            </p>
-            <StyledButton href='#'>Saiba mais</StyledButton>
-          </div>
-        </div>
-        <div className='keen-slider__slide number-slide1'>
-          <div className='photo'>
-            <img src='src\assets\IMG_8098.jpg' alt='' />
-          </div>
-          <div className='text'>
-            <h1>Clean Detox</h1>
-            <img src='src\assets\5stars.svg' alt='' />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi qui
-              modi iste porro nesciunt magnam eius, quibusdam libero ea labore
-              mollitia, perferendis consequatur voluptatum ipsam, aliquid iure
-              in voluptas hic?
-            </p>
-            <StyledButton href='#'>Saiba mais</StyledButton>
-          </div>
-        </div>
-        <div className='keen-slider__slide number-slide1'>
-          <div className='photo'>
-            <img src='src\assets\IMG_8098.jpg' alt='' />
-          </div>
-          <div className='text'>
-            <h1>Clean Detox</h1>
-            <img src='src\assets\5stars.svg' alt='' />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi qui
-              modi iste porro nesciunt magnam eius, quibusdam libero ea labore
-              mollitia, perferendis consequatur voluptatum ipsam, aliquid iure
-              in voluptas hic?
-            </p>
-            <StyledButton href='#'>Saiba mais</StyledButton>
-          </div>
-        </div>
-        <div className='keen-slider__slide number-slide1'>
-          <div className='photo'>
-            <img src='src\assets\IMG_8098.jpg' alt='' />
-          </div>
-          <div className='text'>
-            <h1>Clean Detox</h1>
-            <img src='src\assets\5stars.svg' alt='' />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi qui
-              modi iste porro nesciunt magnam eius, quibusdam libero ea labore
-              mollitia, perferendis consequatur voluptatum ipsam, aliquid iure
-              in voluptas hic?
-            </p>
-            <StyledButton href='#'>Saiba mais</StyledButton>
-          </div>
-        </div>
-        <div className='keen-slider__slide number-slide1'>
-          <div className='photo'>
-            <img src='src\assets\IMG_8098.jpg' alt='' />
-          </div>
-          <div className='text'>
-            <h1>Clean Detox</h1>
-            <img src='src\assets\5stars.svg' alt='' />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi qui
-              modi iste porro nesciunt magnam eius, quibusdam libero ea labore
-              mollitia, perferendis consequatur voluptatum ipsam, aliquid iure
-              in voluptas hic?
-            </p>
-            <StyledButton href='#'>Saiba mais</StyledButton>
-          </div>
-        </div>
+        ))}
       </div>
     </CarrouselContainer>
   )

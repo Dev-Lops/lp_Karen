@@ -27,8 +27,8 @@ const StyledButton = styled.a<StyledButtonProps>`
     switch (size) {
       case "small":
         return `
-          padding: 15px 20px;
-          font-size: 0.875rem;
+          padding: 20px 25px;
+          font-size: 1rem;
         `
       case "large":
         return `

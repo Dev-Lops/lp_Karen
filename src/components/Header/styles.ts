@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const HeaderContainer = styled.header`
-  background-color: ${({ theme }) => theme.colors.green};
+  background-color: ${({ theme }) => theme.colors.gold};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,16 +21,17 @@ export const HeaderContainer = styled.header`
     height: 0.0625rem;
     background: linear-gradient(
       45deg,
-      ${({ theme }) => theme.colors.green},
       ${({ theme }) => theme.colors.gold},
-      ${({ theme }) => theme.colors.green}
+      ${({ theme }) => theme.colors.white},
+      ${({ theme }) => theme.colors.gold}
     );
     z-index: -1;
   }
 
   img {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
+    opacity: 0.4;
   }
 
   @media (width >=80rem) {

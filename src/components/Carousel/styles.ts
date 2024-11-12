@@ -12,8 +12,7 @@ export const CarrouselContainer = styled.div`
     justify-content: center;
     color: #000;
     font-weight: 500;
-
-    padding: 32px 0;
+    padding: 32px;
 
     .photo {
       border-radius: 800px;
@@ -21,30 +20,45 @@ export const CarrouselContainer = styled.div`
       padding: 5px;
       img {
         width: 250px;
-        height: 400px;
+        height: 370px;
+        border-radius: 500px;
       }
-    }
-
-    img {
-      width: 180px;
-      border-radius: 900px;
     }
 
     .text {
       gap: 30px;
       padding: 30px;
+      justify-content: center;
+      align-items: center;
       text-align: center;
 
       img {
         padding: 10px;
-        margin-bottom: 20px;
-        svg {
-          color: ${({ theme }) => theme.colors.gold};
-        }
+        margin-bottom: 10px;
       }
 
       h1 {
         font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.25rem;
+      }
+
+      .out-of-stock {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+
+        background-color: #e63946;
+        border-radius: 0.5rem;
+        padding: 0.625rem;
+        color: #fff;
+        font-weight: bold;
+        margin-top: 20px;
+        font-size: 1.25rem;
       }
     }
 
@@ -55,9 +69,6 @@ export const CarrouselContainer = styled.div`
       gap: 40px;
 
       .photo {
-        border-radius: 800px;
-        background-color: ${({ theme }) => theme.colors.gold};
-        padding: 5px;
         img {
           width: 350px;
           height: 550px;
@@ -70,55 +81,24 @@ export const CarrouselContainer = styled.div`
 
         img {
           width: 150px;
-
           margin-right: 30px;
         }
 
         h1 {
           font-size: 4rem;
         }
-      }
+        p {
+          font-size: 1.5rem;
+        }
 
-      img {
-        width: 250px;
-      }
-
-      p {
-        font-size: 24px;
-        margin-top: 10px;
+        .out-of-stock {
+          width: 300px;
+          font-size: 2rem;
+        }
       }
     }
-    @media (width >= 87.5rem) {
-      flex-direction: row;
-      padding: 0 70px;
-      justify-content: space-evenly;
-      gap: 40px;
 
-      .photo {
-        img {
-          width: 400px;
-          height: 600px;
-        }
-      }
-
-      .text {
-        width: 800px;
-
-        img {
-          width: 200px;
-          margin-right: 30px;
-        }
-
-        h1 {
-          font-size: 5rem;
-        }
-      }
-
-      p {
-        font-size: 1.75rem;
-        margin-top: 10px;
-      }
-    }
+    /* Outras configurações de mídia */
   }
 
   .number-slide1 {

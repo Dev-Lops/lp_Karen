@@ -1,74 +1,79 @@
 import styled, { keyframes } from "styled-components"
 
-export const spin = keyframes`
+// Animação de expansão do texto
+const trackingInExpand = keyframes`
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+`
+
+// Animação de rotação do spinner
+const spin = keyframes`
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 `
 
+// Container principal do Loader
 export const LoaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 375px;
   height: 100vh;
-  background-color: ${({ theme }) => theme.colors.black};
-  color: #fff;
-  font-size: 1rem;
+  background-color: ${({ theme }) => theme.colors.brunswickGreen};
+  color: ${({ theme }) => theme.colors.primaryfooter};
+  font-size: 0.75rem;
   font-family: "Syncopate", sans-serif;
-  font-weight: bold;
+  text-align: center;
 
-  .leBlurIn span {
-    animation-name: leBlurIn;
-    margin-top: 2rem;
-  }
-  @keyframes leBlurIn {
-    from {
-      transform: scaleX(0.2);
-      filter: blur(20px);
-      opacity: 0;
-    }
+  @media (min-width: 80rem) {
+    width: 1000px;
   }
 
-  @media (width >=80rem) {
-    font-size: 2rem;
-
-    @keyframes leBlurIn {
-      from {
-        transform: scaleX(0.2);
-        filter: blur(20px);
-        opacity: 0;
-      }
-    }
-  }
-  @media (width >=87.5rem) {
+  @media (min-width: 87.5rem) {
     font-size: 3rem;
   }
-  @keyframes leBlurIn {
-    from {
-      transform: scaleX(0.2);
-      filter: blur(20px);
-      opacity: 0;
-    }
-  }
 `
 
-export const fadeOut = keyframes`
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    transform: scale(1.05);
-  }
-`
-
+// Estilos do Spinner com animação de rotação
 export const Spinner = styled.div`
-  border: 6px solid #f3f3f3;
-  border-top: 6px solid ${({ theme }) => theme.colors.gold};
+  border: 6px solid ${({ theme }) => theme.colors.gold};
+  border-top: 6px solid ${({ theme }) => theme.colors.brunswickGreen};
   border-radius: 50%;
   width: 50px;
   height: 50px;
   animation: ${spin} 1s linear infinite;
   margin-bottom: 1.25rem;
+
+  @media (min-width: 80rem) {
+    width: 70px;
+    height: 70px;
+  }
 `
-/* HTML: <div class="loader"></div> */
+
+// Estilos do texto com animação de tracking-in-expand
+export const TrackingText = styled.div`
+  animation: ${trackingInExpand} 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  padding: 0.5rem;
+
+  @media (min-width: 80rem) {
+    font-size: 2rem;
+  }
+
+  @media (min-width: 87.5rem) {
+    font-size: 3rem;
+  }
+`

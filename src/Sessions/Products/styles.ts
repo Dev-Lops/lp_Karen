@@ -4,7 +4,9 @@ export const ContainerProduct = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
   width: 375px;
+  height: 100vh;
 
   @media (width: 80rem) {
     width: 1200px;

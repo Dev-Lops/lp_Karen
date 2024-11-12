@@ -1,50 +1,113 @@
-import { useKeenSlider } from "keen-slider/react"
-import "keen-slider/keen-slider.min.css"
-import { Carousel, StacksContainer } from "./style"
+// ParallaxSection.tsx
+import React, { useRef } from "react"
+import {
+  useScroll,
+  useSpring,
+  useTransform,
+  useMotionValue,
+  useVelocity,
+  useAnimationFrame,
+} from "framer-motion"
+import { wrap } from "@motionone/utils"
+import { ParallaxContainer, Scroller, SectionWrapper } from "./style"
 
-const animation = { duration: 30000, easing: (t: number) => t }
+interface ParallaxTextProps {
+  children: React.ReactNode
+  baseVelocity?: number
+}
 
-export function Faixa() {
-  const [sliderRef] = useKeenSlider<HTMLDivElement>({
-    loop: true,
-    renderMode: "precision",
-    created(s) {
-      s.moveToIdx(5, true, animation)
-    },
-    updated(s) {
-      s.moveToIdx(s.track.details.abs + 5, true, animation)
-    },
-    animationEnded(s) {
-      s.moveToIdx(s.track.details.abs + 5, true, animation)
-    },
+const ParallaxText: React.FC<ParallaxTextProps> = ({
+  children,
+  baseVelocity = 100,
+}) => {
+  const baseX = useMotionValue(0)
+  const { scrollY } = useScroll()
+  const scrollVelocity = useVelocity(scrollY)
+  const smoothVelocity = useSpring(scrollVelocity, {
+    damping: 50,
+    stiffness: 600,
   })
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+    clamp: false,
+  })
+
+  const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`)
+
+  const directionFactor = useRef(1)
+  useAnimationFrame((_t, delta) => {
+    let moveBy = directionFactor.current * baseVelocity * (delta / 2000)
+
+    if (velocityFactor.get() < 0) {
+      directionFactor.current = -1
+    } else if (velocityFactor.get() > 0) {
+      directionFactor.current = 1
+    }
+
+    moveBy += directionFactor.current * moveBy * velocityFactor.get()
+
+    baseX.set(baseX.get() + moveBy)
+  })
+
   return (
-    <StacksContainer
-      data-aos='fade-up'
-      data-aos-anchor-placement='bottom-bottom'
-    >
-      <Carousel ref={sliderRef} className='keen-slider'>
-        <div className='keen-slider__slide number-slide1 '>
-          <p>Black</p>
-          <img src='src\assets\star.svg' alt='star' />
-          <p>Friday</p>
-          <img src='src\assets\star.svg' alt='star' />
-          <p>Black</p>
-          <img src='src\assets\star.svg' alt='star' />
-          <p>Friday</p>
-          <img src='src\assets\star.svg' alt='star' />
-        </div>
-        <div className='keen-slider__slide number-slide1 '>
-          <p>Black</p>
-          <img src='src\assets\star.svg' alt='star' />
-          <p>Friday</p>
-          <img src='src\assets\star.svg' alt='star' />
-          <p>Black</p>
-          <img src='src\assets\star.svg' alt='star' />
-          <p>Friday</p>
-          <img src='src\assets\star.svg' alt='star' />
-        </div>
-      </Carousel>
-    </StacksContainer>
+    <ParallaxContainer>
+      <Scroller style={{ x }}>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+        <span>{children} </span>
+      </Scroller>
+    </ParallaxContainer>
+  )
+}
+
+interface ParallaxSectionProps {
+  children: React.ReactNode
+  baseVelocity?: number
+}
+
+export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
+  children,
+  baseVelocity = 100,
+}) => {
+  return (
+    <SectionWrapper>
+      <ParallaxText baseVelocity={baseVelocity}>{children}</ParallaxText>
+    </SectionWrapper>
   )
 }

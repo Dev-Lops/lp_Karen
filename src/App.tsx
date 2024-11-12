@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { LandingPage } from "./Page"
 import { Loader } from "./components/Loader"
+import "@fortawesome/fontawesome-free/css/all.min.css"
 
 export function App() {
   const [isLoading, setIsLoading] = useState(true)

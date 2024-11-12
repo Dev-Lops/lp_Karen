@@ -3,7 +3,7 @@ import { ContainerProduct } from "./styles.ts"
 
 export function Product() {
   return (
-    <ContainerProduct>
+    <ContainerProduct id='products'>
       <Carousel />
     </ContainerProduct>
   )
