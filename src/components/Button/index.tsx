@@ -1,16 +1,21 @@
+// StyledButton.tsx
+import React from "react"
 import styled from "styled-components"
 
 interface StyledButtonProps {
   color?: string
   backgroundColor?: string
   size?: "small" | "medium" | "large"
+  href?: string
+  onClick?: () => void
+  children?: React.ReactNode
 }
 
 const StyledButton = styled.a<StyledButtonProps>`
-  display: inline-block; /* Para garantir que funcione como um botão */
+  display: inline-block;
   background-color: ${({ backgroundColor }) => backgroundColor || "#01ab9e"};
   color: ${({ color }) => color || "#fff"};
-  text-decoration: none; /* Remove o sublinhado do link */
+  text-decoration: none;
   border: none;
   border-radius: 0.5rem;
   font-family: "Montserrat", sans-serif;
@@ -19,7 +24,6 @@ const StyledButton = styled.a<StyledButtonProps>`
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 30px;
-
   padding: 20px 30px;
   font-size: 1rem;
 
@@ -46,6 +50,7 @@ const StyledButton = styled.a<StyledButtonProps>`
   &:hover {
     opacity: 0.9;
     transform: translateY(-2px);
+    text-decoration: underline ease-in-out;
   }
 
   &:active {
@@ -55,13 +60,30 @@ const StyledButton = styled.a<StyledButtonProps>`
 
   @media (min-width: 80rem) {
     padding: 20px 30px;
-    font-size: 1.5rem; // Tamanho médio para telas médias
+    font-size: 1.5rem;
   }
 
   @media (min-width: 1400px) {
     padding: 16px 32px;
-    font-size: 2rem; // Tamanho grande para telas grandes
+    font-size: 2rem;
   }
 `
 
-export default StyledButton
+export const Button: React.FC<StyledButtonProps> = ({
+  color,
+  backgroundColor,
+  size = "medium",
+  href,
+  onClick,
+  children,
+}) => (
+  <StyledButton
+    color={color}
+    backgroundColor={backgroundColor}
+    size={size}
+    href={href}
+    onClick={onClick}
+  >
+    {children}
+  </StyledButton>
+)

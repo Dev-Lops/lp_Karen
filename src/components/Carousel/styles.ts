@@ -1,122 +1,134 @@
+// BenefitsCarousel/styles.ts
 import styled from "styled-components"
 
 export const CarrouselContainer = styled.div`
   width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.green};
 
-  [class^="number-slide"],
-  [class*=" number-slide"] {
+  .keen-slider {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .number-slide {
     display: flex;
     flex-direction: column;
-    text-align: center;
     align-items: center;
     justify-content: center;
-    color: #000;
+    text-align: center;
+    color: #fff;
     font-weight: 500;
-    padding: 32px;
 
     .photo {
-      border-radius: 800px;
-      background-color: ${({ theme }) => theme.colors.gold};
-      padding: 5px;
       img {
-        width: 250px;
-        height: 370px;
+        object-fit: cover;
+        width: 100%;
+        height: 500px;
         border-radius: 500px;
       }
     }
 
     .text {
-      gap: 30px;
-      padding: 30px;
-      justify-content: center;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       text-align: center;
-
-      img {
-        padding: 10px;
-        margin-bottom: 10px;
-      }
+      padding: 20px;
+      color: #fff;
+      width: 100%;
 
       h1 {
-        font-size: 2rem;
+        font-size: 1.875rem;
+      }
+
+      img {
+        width: 110px;
+        height: 20px;
       }
 
       p {
-        font-size: 1.25rem;
+        margin-top: 1rem;
+        font-size: 1.125rem;
+        line-height: 1.6;
       }
 
       .out-of-stock {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        width: 100%;
-
         background-color: #e63946;
-        border-radius: 0.5rem;
-        padding: 0.625rem;
         color: #fff;
+        padding: 8px 16px;
+        border-radius: 8px;
         font-weight: bold;
-        margin-top: 20px;
-        font-size: 1.25rem;
+        font-size: 1rem;
       }
     }
 
     @media (width >= 80rem) {
-      flex-direction: row;
-      padding: 0 50px;
       justify-content: space-evenly;
-      gap: 40px;
+      flex-direction: row;
+      padding: 30px;
+      height: 100vh;
 
-      .photo {
+      & .photo {
+        width: 100vw;
+        object-fit: cover;
+        height: 100%;
+
         img {
-          width: 350px;
-          height: 550px;
+          width: 100%;
+          height: 100vh;
+          object-position: center;
+          border-radius: 0;
         }
       }
-
       .text {
-        text-align: start;
+        display: flex;
+        flex-direction: column;
         width: 900px;
 
-        img {
-          width: 150px;
-          margin-right: 30px;
-        }
+        letter-spacing: 0px;
 
         h1 {
-          font-size: 4rem;
+          font-size: 2.5rem;
+          text-align: center;
+        }
+        p {
+          text-align: left;
+          width: 500px;
+          font-size: 1.8rem;
+        }
+        img {
+          width: 100px;
+        }
+
+        .out-of-stock {
+          font-size: 2rem;
+          padding: 10px 20px;
+        }
+      }
+    }
+
+    @media (width >= 87.5rem) {
+      .photo {
+      }
+      .text {
+        width: 700px;
+        text-align: start;
+
+        h1 {
+          font-size: 3rem;
         }
         p {
           font-size: 1.5rem;
         }
-
         .out-of-stock {
-          width: 300px;
           font-size: 2rem;
+          padding: 10px 20px;
         }
       }
-    }
-
-    /* Outras configurações de mídia */
-  }
-
-  .number-slide1 {
-    background: #ffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border: 0;
-
-    @media (width >= 80rem) {
-      padding: 30px;
-      border-radius: 30px;
-    }
-
-    @media (width >= 87.5rem) {
-      padding: 40px;
-      border-radius: 20px;
     }
   }
 `

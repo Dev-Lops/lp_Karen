@@ -57,26 +57,25 @@ const ParallaxText: React.FC<ParallaxTextProps> = ({
         <span>{children} </span>
         <span>{children} </span>
         <span>{children} </span>
+
         <span>{children} </span>
         <span>{children} </span>
         <span>{children} </span>
         <span>{children} </span>
         <span>{children} </span>
+
         <span>{children} </span>
         <span>{children} </span>
         <span>{children} </span>
         <span>{children} </span>
         <span>{children} </span>
+
         <span>{children} </span>
         <span>{children} </span>
         <span>{children} </span>
         <span>{children} </span>
         <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
+
         <span>{children} </span>
         <span>{children} </span>
         <span>{children} </span>

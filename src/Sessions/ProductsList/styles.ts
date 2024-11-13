@@ -7,11 +7,11 @@ export const ContainerProduct = styled(Container)`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
-  background-color: ${({ theme }) => theme.colors.green};
+  height: 100%;
+  background-color: ${({ theme }) => theme.colors.white};
 
-  @media (width: 80rem) {
+  @media (width >= 80rem) {
   }
-  @media (width: 120rem) {
+  @media (width>= 87.5rem) {
   }
 `

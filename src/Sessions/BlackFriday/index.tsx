@@ -3,7 +3,9 @@ import { BlackfridaySection } from "./styles"
 export function BlackFriday() {
   return (
     <BlackfridaySection>
-      <ParallaxSection baseVelocity={-10}>Black friday</ParallaxSection>
+      <ParallaxSection baseVelocity={-5}>
+        Black friday
+      </ParallaxSection>
     </BlackfridaySection>
   )
 }

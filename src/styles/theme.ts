@@ -3,9 +3,10 @@ export const theme = {
     gold: "#FFD9B7",
     black: "#000000",
     darkGray: "#1E1E1E",
-    white: "#FAFAFA",
+    white: "#fff",
     brunswickGreen: "#012321",
     darkGreen: "#133525",
+    green: "#557655",
 
     primary: "#f1c40f", // Cor de fundo da CTA
     secondary: "#27ae60", // Cor do botão primário

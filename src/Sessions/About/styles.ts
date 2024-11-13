@@ -21,7 +21,7 @@ export const AboutContainer = styled(Container)`
   }
 
   & h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: ${({ theme }) => theme.colors.white};
     font-weight: 400;
 
@@ -50,7 +50,7 @@ export const AboutContainer = styled(Container)`
     }
 
     & h2 {
-      font-size: 4.5rem;
+      font-size: 6rem;
       letter-spacing: 5px;
     }
   }
@@ -87,6 +87,7 @@ export const AboutContent = styled.main`
     .text {
       width: 56.25rem;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 3.5rem;
@@ -94,8 +95,8 @@ export const AboutContent = styled.main`
 
     & h3 {
       font-size: 3rem;
-      text-align: start;
       margin-bottom: 20px;
+      text-align: center;
       width: 900px;
     }
 

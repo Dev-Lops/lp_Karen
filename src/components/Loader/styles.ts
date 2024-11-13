@@ -68,6 +68,7 @@ export const TrackingText = styled.div`
   text-transform: uppercase;
   margin-top: 1rem;
   padding: 0.5rem;
+  color: ${({ theme }) => theme.colors.gold};
 
   @media (min-width: 80rem) {
     font-size: 2rem;

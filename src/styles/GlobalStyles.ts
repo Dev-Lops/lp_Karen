@@ -55,11 +55,11 @@ export const Container = styled.div`
 
   @media (min-width: 766px) and (max-width: 1280px) {
     /* Notebook */
-    max-width: 1280px;
+    max-width: 100%;
   }
 
   @media (min-width: 1281px) {
     /* Desktop */
-    max-width: 1400px;
+    max-width: 100%;
   }
 `

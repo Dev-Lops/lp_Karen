@@ -3,16 +3,14 @@ import styled from "styled-components"
 export const PresentationContainer = styled.section`
   display: flex;
   justify-content: center;
-  margin: 0 auto;
+  width: 100%;
 
-  padding: 40px;
   height: 100vh;
-  background-color: ${({ theme }) => theme.colors.gold};
+  background-color: ${({ theme }) => theme.colors.white};
 `
 
 export const Content = styled.div`
   display: flex;
-  width: 375px;
   flex-direction: column;
   justify-content: center;
   text-align: center;
