@@ -5,35 +5,26 @@ import { FaStar } from "react-icons/fa"
 export const TestimonialCard = styled.div`
   background: white;
 
-  padding: 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
   width: 100%;
-  height: 400px;
+  height: 100%;
 
   @media (width >= 80rem) {
-    height: 500px;
   }
 `
 
 export const ClientImage = styled.img`
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  width: 400px;
+  height: 100%;
   object-fit: cover;
-  margin-bottom: 20px;
 
   @media (width >= 80rem) {
-    width: 100px;
-    height: 100px;
   }
   @media (width >= 87.5rem) {
-    width: 130px;
-    height: 130px;
   }
 `
 

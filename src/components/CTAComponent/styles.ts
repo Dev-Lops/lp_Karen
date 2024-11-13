@@ -8,11 +8,12 @@ export const CTAContainer = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 80px 20px;
+
   background-color: ${({ theme }) =>
     theme.colors.gold}; /* Cor de fundo personalizada */
   color: white;
   text-align: center;
+  width: 100vw;
 `
 
 // Título da seção CTA

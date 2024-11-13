@@ -4,11 +4,12 @@ import styled from "styled-components"
 
 // Contêiner principal do footer
 export const FooterContainer = styled.footer`
-  background-color: ${({ theme }) => theme.colors.primary};
-  padding: 40px 20px;
+  background-color: ${({ theme }) => theme.colors.green};
+  width: 100vw;
   color: white;
   text-align: center;
   box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
 `
 
 // Links do footer

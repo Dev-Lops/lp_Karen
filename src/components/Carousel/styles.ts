@@ -11,7 +11,7 @@ export const CarrouselContainer = styled.div`
 
   .keen-slider {
     width: 100%;
-    height: 100vh;
+    height: 100%;
   }
 
   .number-slide {
@@ -27,7 +27,7 @@ export const CarrouselContainer = styled.div`
       img {
         object-fit: cover;
         width: 100%;
-        height: 500px;
+        height: 400px;
         border-radius: 500px;
       }
     }
@@ -63,6 +63,9 @@ export const CarrouselContainer = styled.div`
         border-radius: 8px;
         font-weight: bold;
         font-size: 1rem;
+        width: 100%;
+        align-items: center;
+        text-align: center;
       }
     }
 
@@ -112,8 +115,6 @@ export const CarrouselContainer = styled.div`
     }
 
     @media (width >= 87.5rem) {
-      .photo {
-      }
       .text {
         width: 700px;
         text-align: start;

@@ -1,4 +1,3 @@
-// StyledButton.tsx
 import React from "react"
 import styled from "styled-components"
 
@@ -9,6 +8,7 @@ interface StyledButtonProps {
   href?: string
   onClick?: () => void
   children?: React.ReactNode
+  className?: string
 }
 
 const StyledButton = styled.a<StyledButtonProps>`
@@ -16,7 +16,7 @@ const StyledButton = styled.a<StyledButtonProps>`
   background-color: ${({ backgroundColor }) => backgroundColor || "#01ab9e"};
   color: ${({ color }) => color || "#fff"};
   text-decoration: none;
-  border: none;
+  border: 1px solid ${({ theme }) => theme.colors.gold};
   border-radius: 0.5rem;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
@@ -26,6 +26,43 @@ const StyledButton = styled.a<StyledButtonProps>`
   margin-top: 30px;
   padding: 20px 30px;
   font-size: 1rem;
+
+  -webkit-animation: slide-in-elliptic-top-fwd 2s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: slide-in-elliptic-top-fwd 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  @-webkit-keyframes slide-in-elliptic-top-fwd {
+    0% {
+      -webkit-transform: translateY(-600px) rotateX(-30deg) scale(0);
+      transform: translateY(-600px) rotateX(-30deg) scale(0);
+      -webkit-transform-origin: 50% 100%;
+      transform-origin: 50% 100%;
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0) rotateX(0) scale(1);
+      transform: translateY(0) rotateX(0) scale(1);
+      -webkit-transform-origin: 50% 1400px;
+      transform-origin: 50% 1400px;
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-elliptic-top-fwd {
+    0% {
+      -webkit-transform: translateY(-600px) rotateX(-30deg) scale(0);
+      transform: translateY(-600px) rotateX(-30deg) scale(0);
+      -webkit-transform-origin: 50% 100%;
+      transform-origin: 50% 100%;
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0) rotateX(0) scale(1);
+      transform: translateY(0) rotateX(0) scale(1);
+      -webkit-transform-origin: 50% 1400px;
+      transform-origin: 50% 1400px;
+      opacity: 1;
+    }
+  }
 
   ${({ size }) => {
     switch (size) {
@@ -76,6 +113,7 @@ export const Button: React.FC<StyledButtonProps> = ({
   href,
   onClick,
   children,
+  className, // Adiciona className aqui
 }) => (
   <StyledButton
     color={color}
@@ -83,6 +121,7 @@ export const Button: React.FC<StyledButtonProps> = ({
     size={size}
     href={href}
     onClick={onClick}
+    className={className} // Passa className para StyledButton
   >
     {children}
   </StyledButton>

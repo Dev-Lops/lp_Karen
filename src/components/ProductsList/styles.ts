@@ -12,11 +12,13 @@ export const ProductsSection = styled.section`
   max-width: 1280px;
   background: #ffffff;
 
-  h2 {
+  h1 {
     text-align: center;
     font-size: 32px;
     font-weight: 700;
-    margin: 32px 0; /* Espaçamento no topo e embaixo */
+    font-family: "Baskervville", serif;
+    font-weight: 400;
+    color: ${({ theme }) => theme.colors.green};
   }
 `
 
@@ -74,11 +76,6 @@ export const ProductCard = styled.div`
 
     margin-bottom: 1rem;
     cursor: pointer;
-
-    :hover {
-      transform: rotate(2deg) ;
-      object-fit: cover;
-    }
 
     img {
       width: 100%;

@@ -27,7 +27,6 @@ body {
   justify-content: center;
 
 
-  background-color: ${({ theme }) => theme.colors.brunswickGreen};
   color: ${({ theme }) => theme.colors.brunswickGreen};
 
   h1,h2,h3{

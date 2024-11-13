@@ -9,7 +9,7 @@ import {
 
 export function Benefits() {
   return (
-    <BenefitsContainer data-aos='fade-up' data-aos-duration='3000'>
+    <BenefitsContainer>
       <BenefitCard>
         <CounterContainer>
           <Counter from={0} to={1000} duration={4} />

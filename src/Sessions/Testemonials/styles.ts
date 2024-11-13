@@ -4,29 +4,31 @@ import styled from "styled-components"
 export const TestimonialSection = styled.section`
   display: flex;
   flex-direction: column;
-  width: 375px;
-  padding: 10px;
+  width: 100vw;
+  padding: 30px;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  height: 100vh;
+  height: 100%;
 
-  /* background-color: ${({ theme }) => theme.colors.gold}; */
+  background-color: #fff;
+
   text-align: center;
 
   @media (width >= 80rem) {
-    width: 1000px;
+    padding: 40px;
   }
   @media (width >= 87.5rem) {
-    width: 1300px;
   }
 `
 
 // Título da seção de Testemunhos
 export const SectionTitle = styled.h2`
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 40px;
-  color: #333;
+
+  font-family: "Baskervville", serif;
+  font-weight: 400;
+  color: ${({ theme }) => theme.colors.green};
 
   @media (width >= 80rem) {
     font-size: 3rem;
@@ -36,12 +38,11 @@ export const SectionTitle = styled.h2`
 // Contêiner do carrossel
 export const CarouselContainer = styled.div`
   width: 100%;
-  height: 500px; /* Definindo altura fixa */
+
 
   justify-content: center;
   align-items: center;
 
   @media (width >= 80rem) {
-    height: 700px;
   }
 `

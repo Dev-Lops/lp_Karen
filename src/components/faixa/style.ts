@@ -10,7 +10,6 @@ export const ParallaxContainer = styled.div`
 
   background-color: transparent;
 
-  color: #fff;
   font-family: "Syncopate", serif;
 
   font-weight: 500;

@@ -6,27 +6,16 @@ import Logo from "../../assets/image.png"
 export function About() {
   return (
     <AboutContainer>
-      <img src={Logo} alt='' />
-      <h1
-        data-aos='fade-right'
-        data-aos-offset='300'
-        data-aos-easing='ease-in-sine'
-      >
-        Studio
-      </h1>
-      <h2>Karen Frazão</h2>
-
+      <img src={Logo} alt='' className='puff-in-center' />
+      <h2 className='text-focus-in'>studio</h2>{" "}
+      <h1 className='tracking-in-expand-fwd '>Karen Frazão</h1>
       <AboutContent>
         <div className='text'>
-          <h3
-            data-aos='fade-right'
-            data-aos-offset='100'
-            data-aos-easing='ease-in-sine'
-          >
-            Conheça a mulher fabulosa que existe em você
+          <h3 className='tracking-in-expand-fwd'>
+            Conheça a mulher fabulosa que existe em você!
           </h3>
-          <Button href='#products' size='small' backgroundColor='transparent'>
-            Saiba mais
+          <Button href='#kit' size='small' backgroundColor='transparent'>
+            Descubra
           </Button>
         </div>
       </AboutContent>

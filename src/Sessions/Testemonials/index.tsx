@@ -3,27 +3,32 @@ import Slider from "react-slick" // Importando o Slider do react-slick
 import "slick-carousel/slick/slick.css" // Estilos do slick
 import "slick-carousel/slick/slick-theme.css" // Estilos do tema do slick
 import { TestimonialSection, SectionTitle, CarouselContainer } from "./styles"
-import { Testimonial } from '../../components/TestimonialCarousel'
+import { Testimonial } from "../../components/TestimonialCarousel"
 
 // Dados dos Testemunhos
 const testimonialsData = [
   {
-    image: "https://via.placeholder.com/80",
-    name: "João Silva",
-    text: "Produto incrível! Ajudou muito na minha produtividade e é de fácil manuseio.",
+    image: "src/assets/testemonials/1.png",
+    name: "Myrland",
     rating: 5,
   },
   {
-    image: "https://via.placeholder.com/80",
+    image: "src/assets/testemonials/2.png",
     name: "Maria Oliveira",
     text: "Muito bom, recomendo para todos! A qualidade é excelente.",
-    rating: 4,
+    rating: 5,
   },
   {
-    image: "https://via.placeholder.com/80",
+    image: "src/assets/testemonials/3.png",
     name: "Carlos Pereira",
     text: "Atendeu minhas expectativas, mas poderia melhorar a entrega.",
-    rating: 3,
+    rating: 5,
+  },
+  {
+    image: "src/assets/testemonials/4.png",
+    name: "Carlos Pereira",
+    text: "Atendeu minhas expectativas, mas poderia melhorar a entrega.",
+    rating: 5,
   },
 ]
 
@@ -32,7 +37,7 @@ export const TestimonialSectionComponent = () => {
 
   // Configurações do slider
   const settings = {
-    dots: true, // Exibe os pontos de navegação
+    dots: false, // Exibe os pontos de navegação
     infinite: true,
     speed: 500,
     slidesToShow: 1, // Exibe 1 slide por vez
@@ -52,10 +57,9 @@ export const TestimonialSectionComponent = () => {
   }
 
   useEffect(() => {
-    // Simulando carregamento dos dados
     setTimeout(() => {
       setLoading(false)
-    }, 1000) // Simula o tempo de carregamento
+    }, 1000)
   }, [])
 
   return (

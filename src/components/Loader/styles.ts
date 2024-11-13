@@ -3,15 +3,30 @@ import styled, { keyframes } from "styled-components"
 // Animação de expansão do texto
 const trackingInExpand = keyframes`
   0% {
-    letter-spacing: -0.5em;
+    letter-spacing: 1em;
     opacity: 0;
   }
   40% {
     opacity: 0.6;
   }
   100% {
+    letter-spacing: normal;
     opacity: 1;
   }
+
+
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+
 `
 
 // Animação de rotação do spinner
@@ -26,7 +41,7 @@ export const LoaderContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 375px;
+  width: 100vw;
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.brunswickGreen};
   color: ${({ theme }) => theme.colors.primaryfooter};
@@ -35,7 +50,6 @@ export const LoaderContainer = styled.div`
   text-align: center;
 
   @media (min-width: 80rem) {
-    width: 1000px;
   }
 
   @media (min-width: 87.5rem) {
@@ -61,14 +75,14 @@ export const Spinner = styled.div`
 
 // Estilos do texto com animação de tracking-in-expand
 export const TrackingText = styled.div`
-  animation: ${trackingInExpand} 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  animation: ${trackingInExpand} 2s cubic-bezier(0.215, 0.61, 0.355, 1) both;
   font-size: 1.5rem;
   font-weight: bold;
-  letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-top: 1rem;
   padding: 0.5rem;
   color: ${({ theme }) => theme.colors.gold};
+  width: 100%;
 
   @media (min-width: 80rem) {
     font-size: 2rem;

@@ -10,7 +10,7 @@ import {
   TestimonialText,
 } from "./styles"
 
-// Componente de Testemunho
+
 export const Testimonial = ({ image, name, text, rating }: any) => (
   <TestimonialCard>
     <ClientImage src={image} alt={name} />

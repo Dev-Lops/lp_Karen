@@ -1,4 +1,5 @@
-import { useRef, useState } from "react"
+import React, { useState } from "react"
+import ReactPlayer from "react-player/vimeo"
 import { FaPlay } from "react-icons/fa"
 import {
   Content,
@@ -6,22 +7,13 @@ import {
   PlayButton,
   PresentationContainer,
   Title,
-  Video,
   VideoContainer,
-  VideoThumbnail,
   ModalOverlay,
   ModalContent,
-  MediaQueries,
 } from "./styles"
 
 export function Presentation() {
-  const [isPlaying, setIsPlaying] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const videoRef = useRef<HTMLVideoElement>(null)
-
-  const handlePause = () => {
-    setIsPlaying(false)
-  }
 
   const openModal = () => {
     setIsModalOpen(true)
@@ -29,54 +21,38 @@ export function Presentation() {
 
   const closeModal = () => {
     setIsModalOpen(false)
-    if (videoRef.current) {
-      videoRef.current.pause() // Pausa o vídeo quando o modal é fechado
-    }
   }
 
   return (
     <PresentationContainer>
       <Content>
         <Title>Conheça Nosso Trabalho</Title>
-        <Description>
-          Assista ao nosso vídeo de apresentação para saber mais sobre nós e
-          como podemos ajudá-lo.
-        </Description>
+
         <VideoContainer onClick={openModal}>
-          <VideoThumbnail>
-            <Video
-              ref={videoRef}
-              onPause={handlePause}
-              onEnded={handlePause}
-              poster='thumbnail.jpg'
-            >
-              <source src='src/assets/media/IMG_2218.MOV' type='video/mp4' />
-              Seu navegador não suporta o vídeo.
-            </Video>
-            {!isPlaying && (
-              <PlayButton>
-                <FaPlay size={50} />
-              </PlayButton>
-            )}
-          </VideoThumbnail>
+          <PlayButton>
+            <FaPlay size={50} />
+          </PlayButton>
         </VideoContainer>
+
+        <Description>
+          Assista ao nosso vídeo de apresentação para saber mais sobre os nossos
+          produtos.
+        </Description>
+
         {isModalOpen && (
           <ModalOverlay onClick={closeModal}>
-            <div onClick={(e) => e.stopPropagation()}>
-              <ModalContent>
-                <Video ref={videoRef} controls poster='thumbnail.jpg' autoPlay>
-                  <source
-                    src='src/assets/media/IMG_2218.MOV'
-                    type='video/mp4'
-                  />
-                  Seu navegador não suporta o vídeo.
-                </Video>
-              </ModalContent>
-            </div>
+            <ModalContent onClick={(e) => e.stopPropagation()}>
+              <ReactPlayer
+                url='https://vimeo.com/1029386098?share=copy' // Substitua pelo link do seu vídeo do Vimeo
+                width='100%' // Define para ocupar 100% da largura do container
+                height='100%' // Ajuste para altura responsiva
+                controls
+                playing
+              />
+            </ModalContent>
           </ModalOverlay>
         )}
       </Content>
-      <MediaQueries />
     </PresentationContainer>
   )
 }

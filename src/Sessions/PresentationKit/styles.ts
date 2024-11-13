@@ -57,11 +57,12 @@ export const ContentKit = styled.main`
   & p {
     width: 300px;
     font-size: 1rem;
-    font-family: "Baskervville", serif;
     font-weight: 400;
 
     margin-bottom: 15px;
     text-transform: uppercase;
+    font-family: "Montserrat", serif;
+    text-align: center;
   }
 
   @media (min-width: 1280px) {
@@ -71,8 +72,8 @@ export const ContentKit = styled.main`
     }
 
     & p {
-      font-size: 1.3rem;
-      font-family: "Baskervville", serif;
+      font-size: 1.25rem;
+
       font-weight: 400;
       width: 100%;
 
