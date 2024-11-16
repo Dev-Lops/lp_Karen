@@ -4,7 +4,6 @@ import { FaStar } from "react-icons/fa"
 // Card de Testemunho
 export const TestimonialCard = styled.div`
   background: white;
-
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -12,34 +11,44 @@ export const TestimonialCard = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  padding: 20px;
+  border-radius: 10px;
 
-  @media (width >= 80rem) {
+  /* Responsividade */
+  @media (max-width: 1200px) {
+    padding: 15px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px;
   }
 `
 
 export const ClientImage = styled.img`
-  width: 400px;
-  height: 100%;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
   object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
 
-  @media (width >= 80rem) {
-  }
-  @media (width >= 87.5rem) {
+  /* Responsividade */
+  @media (max-width: 768px) {
+    max-width: 250px; /* Ajusta para telas menores */
   }
 `
 
-// Nome do cliente
 export const ClientName = styled.h3`
   font-size: 1.5rem;
   color: #333;
   margin-bottom: 10px;
 
-  @media (width >= 80rem) {
-    font-size: 2rem;
+  /* Responsividade */
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
   }
 `
 
-// Relato do cliente (testemunho)
 export const TestimonialText = styled.p`
   font-size: 1.2rem;
   color: #555;
@@ -47,24 +56,26 @@ export const TestimonialText = styled.p`
   font-style: italic;
   max-width: 90%;
   margin: 0 auto;
-  @media (width >= 80rem) {
-    font-size: 1.5rem;
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    font-size: 1rem;
   }
 `
 
-// Avaliação (em estrelas)
 export const Rating = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
 `
 
-// Estrela de avaliação
 export const Star = styled(FaStar)`
   color: #ffcc00;
   margin: 0 2px;
   font-size: 1.5rem;
-  @media (width >= 80rem) {
-    font-size: 2rem;
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
   }
 `

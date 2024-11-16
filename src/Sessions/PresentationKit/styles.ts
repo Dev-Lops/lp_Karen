@@ -6,11 +6,8 @@ export const ContainerKit = styled(Container)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   background-color: #fff;
-
   color: ${({ theme }) => theme.colors.green};
-
   width: 100vw;
   height: 100vh;
 
@@ -31,6 +28,7 @@ export const ContainerKit = styled(Container)`
     }
   }
 `
+
 export const ContentKit = styled.main`
   display: flex;
   flex-direction: column;
@@ -47,10 +45,8 @@ export const ContentKit = styled.main`
   & h1 {
     font-size: 2rem;
     font-weight: 400;
-
     font-family: "Jura", sans-serif;
     line-height: 0.8;
-
     text-transform: uppercase;
   }
 
@@ -58,7 +54,6 @@ export const ContentKit = styled.main`
     width: 300px;
     font-size: 1rem;
     font-weight: 400;
-
     margin-bottom: 15px;
     text-transform: uppercase;
     font-family: "Montserrat", serif;
@@ -73,10 +68,8 @@ export const ContentKit = styled.main`
 
     & p {
       font-size: 1.25rem;
-
       font-weight: 400;
       width: 100%;
-
       text-transform: uppercase;
     }
   }

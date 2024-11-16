@@ -1,5 +1,6 @@
 import styled from "styled-components"
 
+// Container principal da seção de apresentação
 export const PresentationContainer = styled.section`
   display: flex;
   flex-direction: column;
@@ -18,11 +19,11 @@ export const Content = styled.div`
   justify-content: center;
   text-align: center;
 
-  @media (width >= 80rem) {
+  @media (min-width: 80rem) {
     width: 750px;
   }
 
-  @media (width >= 87.5rem) {
+  @media (min-width: 87.5rem) {
     width: 850px;
   }
 `
@@ -36,11 +37,13 @@ export const Title = styled.h2`
 export const VideoContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 100%;
-
+  height: 0;
   padding-top: 56.25%; /* Proporção de 16:9 */
   cursor: pointer;
   background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export const PlayButton = styled.button`
@@ -55,6 +58,12 @@ export const PlayButton = styled.button`
   cursor: pointer;
   color: white;
   z-index: 1;
+  font-size: 2rem;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.green};
+  }
 `
 
 export const ModalOverlay = styled.div`
@@ -68,29 +77,37 @@ export const ModalOverlay = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  transition: opacity 0.3s ease;
 `
 
 export const ModalContent = styled.div`
-  width: 85%; // Ajusta a largura do modal para ocupar grande parte da tela
-  height: 450px;
-  aspect-ratio: 16/9; // Mantém a proporção
+  width: 90%;
+  max-width: 900px;
+  height: 70%;
+  aspect-ratio: 16/9;
   background: #000;
   position: relative;
   border-radius: 10px;
+  overflow: hidden;
 
-  @media (width >= 80rem) {
+  @media (min-width: 768px) {
+    width: 80%;
     height: 75%;
-    width: 35%; // Ajusta a largura do modal para ocupar grande parte da tela
   }
 
-  @media (width >= 80rem) {
+  @media (min-width: 1024px) {
+    width: 70%;
     height: 75%;
-    width: 35%; // Ajusta a largura do modal para ocupar grande parte da tela
   }
 `
+
 export const Description = styled.p`
   font-size: 1rem;
   color: #333;
   text-align: center;
   margin-top: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
 `

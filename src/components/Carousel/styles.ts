@@ -1,4 +1,3 @@
-// BenefitsCarousel/styles.ts
 import styled from "styled-components"
 
 export const CarrouselContainer = styled.div`
@@ -23,13 +22,11 @@ export const CarrouselContainer = styled.div`
     color: #fff;
     font-weight: 500;
 
-    .photo {
-      img {
-        object-fit: cover;
-        width: 100%;
-        height: 400px;
-        border-radius: 500px;
-      }
+    .photo img {
+      object-fit: cover;
+      width: 100%;
+      height: 300px;
+      border-radius: 16px;
     }
 
     .text {
@@ -38,21 +35,14 @@ export const CarrouselContainer = styled.div`
       align-items: center;
       text-align: center;
       padding: 20px;
-      color: #fff;
-      width: 100%;
 
       h1 {
-        font-size: 1.875rem;
-      }
-
-      img {
-        width: 110px;
-        height: 20px;
+        font-size: 1.875rem; /* 30px */
       }
 
       p {
         margin-top: 1rem;
-        font-size: 1.125rem;
+        font-size: 1.125rem; /* 18px */
         line-height: 1.6;
       }
 
@@ -63,73 +53,125 @@ export const CarrouselContainer = styled.div`
         border-radius: 8px;
         font-weight: bold;
         font-size: 1rem;
-        width: 100%;
-        align-items: center;
+        margin-top: 10px;
         text-align: center;
       }
     }
 
-    @media (width >= 80rem) {
-      justify-content: space-evenly;
-      flex-direction: row;
-      padding: 30px;
-      height: 100vh;
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
 
-      & .photo {
-        width: 100vw;
-        object-fit: cover;
-        height: 100%;
+      button {
+        color: ${({ theme }) => theme.colors.green};
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
 
-        img {
-          width: 100%;
-          height: 100vh;
-          object-position: center;
-          border-radius: 0;
-        }
-      }
-      .text {
-        display: flex;
-        flex-direction: column;
-        width: 900px;
-
-        letter-spacing: 0px;
-
-        h1 {
-          font-size: 2.5rem;
-          text-align: center;
-        }
-        p {
-          text-align: left;
-          width: 500px;
-          font-size: 1.8rem;
-        }
-        img {
-          width: 100px;
-        }
-
-        .out-of-stock {
-          font-size: 2rem;
-          padding: 10px 20px;
+        &:hover {
+          background-color: ${({ theme }) => theme.colors.green};
+          color: #fff;
         }
       }
     }
 
-    @media (width >= 87.5rem) {
+    &.out-of-stock {
+    }
+  }
+
+  /* Media Queries */
+  @media (min-width: 1024px) {
+    .number-slide {
+      flex-direction: row; /* Layout em linha para telas grandes */
+      justify-content: space-between;
+      text-align: start;
+      padding: 30px;
+
+      .photo {
+        flex: 1;
+        max-width: 50%;
+      }
+
+      .photo img {
+        height: 90vh;
+        width: 100%;
+        border-radius: 0;
+      }
+
       .text {
-        width: 700px;
-        text-align: start;
+        flex: 1;
+        align-items: flex-start;
+        padding: 20px;
 
         h1 {
-          font-size: 3rem;
+          font-size: 2.5rem; /* 40px */
         }
+
         p {
-          font-size: 1.5rem;
-        }
-        .out-of-stock {
-          font-size: 2rem;
-          padding: 10px 20px;
+          font-size: 1.5rem; /* 24px */
+          line-height: 1.8;
         }
       }
+
+      .button-container {
+        justify-content: flex-end; /* Botão à esquerda em telas grandes */
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .number-slide .photo img {
+      height: 300px; /* Ajuste de altura para tablets */
+    }
+
+    .number-slide .text h1 {
+      font-size: 1.5rem; /* 24px */
+    }
+
+    .number-slide .text p {
+      font-size: 1rem; /* 16px */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .number-slide {
+      flex-direction: column; /* Retorna para coluna em telas médias */
+    }
+
+    .number-slide .photo img {
+      height: 250px;
+    }
+
+    .number-slide .text h1 {
+      font-size: 1.25rem; /* 20px */
+    }
+
+    .number-slide .text p {
+      font-size: 0.875rem; /* 14px */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .number-slide .photo img {
+      height: 400px; /* Ajuste para telas pequenas */
+    }
+
+    .number-slide .text h1 {
+      font-size: 1.2rem; /* 16px */
+    }
+
+    .number-slide .text p {
+      font-size: 1rem; /* 12px */
+    }
+
+    .number-slide .text .out-of-stock {
+      font-size: 0.875rem; /* 14px */
     }
   }
 `

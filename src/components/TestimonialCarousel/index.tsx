@@ -10,8 +10,19 @@ import {
   TestimonialText,
 } from "./styles"
 
+interface TestimonialProps {
+  image: string
+  name: string
+  text: string
+  rating: number
+}
 
-export const Testimonial = ({ image, name, text, rating }: any) => (
+export const Testimonial = ({
+  image,
+  name,
+  text,
+  rating,
+}: TestimonialProps) => (
   <TestimonialCard>
     <ClientImage src={image} alt={name} />
     <ClientName>{name}</ClientName>

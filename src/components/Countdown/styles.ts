@@ -4,34 +4,41 @@ import styled from "styled-components"
 export const CountdownSection = styled.section`
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  background-color: ${({ theme }) => theme.colors.gold};
-  color: #000;
-  padding: 50px 30px;
+  background-color: ${({ theme }) => theme.colors.green};
+  color: #fff;
+  padding: 3rem 1.875rem; /* Usando unidades relativas */
+  width: 100%;
   text-align: center;
-
-  @media (width >= 80rem) {
-    width: 1000px;
-  }
+  box-sizing: border-box;
 `
 
 export const CountdownTitle = styled.h2`
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #000;
+  font-size: 1.25rem;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  font-family: "Syncopate", serif;
+  font-weight: bold;
 
-  @media (width >= 80rem) {
+  @media (min-width: 48rem) {
     font-size: 2rem;
+  }
+
+  @media (min-width: 64rem) {
+    font-size: 3rem;
   }
 `
 
 export const Description = styled.p`
   font-size: 1.2rem;
+  font-family: "Syncopate", serif;
+  margin-bottom: 1rem;
 
-  margin-bottom: 15px;
-
-  @media (width >= 80rem) {
+  @media (min-width: 48rem) {
     font-size: 1.5rem;
+  }
+
+  @media (min-width: 64rem) {
+    font-size: 1.75rem;
   }
 `
 
@@ -39,13 +46,14 @@ export const Timer = styled.div`
   font-size: 1rem;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 1.25rem;
 
-  @media (width >= 80rem) {
-    font-size: 2rem;
+  @media (min-width: 48rem) {
+    font-size: 1.5rem;
   }
 
-  @media (width >= 87.5rem) {
+  @media (min-width: 64rem) {
+    font-size: 2rem;
   }
 `
 
@@ -56,19 +64,23 @@ export const TimeUnit = styled.div`
   font-size: 2.5rem;
   font-weight: bold;
 
-  @media (width >= 80rem) {
+  @media (min-width: 48rem) {
     font-size: 3rem;
+  }
+
+  @media (min-width: 64rem) {
+    font-size: 4rem;
   }
 `
 
 export const TimeLabel = styled.span`
   font-size: 1rem;
-  color: #000;
 
-  @media (width >= 80rem) {
+  @media (min-width: 48rem) {
     font-size: 1.5rem;
   }
 
-  @media (width >= 87.5rem) {
+  @media (min-width: 64rem) {
+    font-size: 2rem;
   }
 `

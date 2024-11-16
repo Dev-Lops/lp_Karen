@@ -13,20 +13,6 @@ const trackingInExpand = keyframes`
     letter-spacing: normal;
     opacity: 1;
   }
-
-
-  0% {
-    letter-spacing: 1em;
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    letter-spacing: normal;
-    opacity: 1;
-  }
-
 `
 
 // Animação de rotação do spinner
@@ -48,8 +34,14 @@ export const LoaderContainer = styled.div`
   font-size: 0.75rem;
   font-family: "Syncopate", sans-serif;
   text-align: center;
+  padding: 1rem;
+
+  @media (min-width: 40rem) {
+    font-size: 1rem; // Ajuste para telas médias (tablets)
+  }
 
   @media (min-width: 80rem) {
+    font-size: 2rem; // Ajuste para telas grandes (desktops)
   }
 
   @media (min-width: 87.5rem) {
@@ -67,9 +59,14 @@ export const Spinner = styled.div`
   animation: ${spin} 1s linear infinite;
   margin-bottom: 1.25rem;
 
+  @media (min-width: 40rem) {
+    width: 60px;
+    height: 60px;
+  }
+
   @media (min-width: 80rem) {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
   }
 `
 
@@ -83,9 +80,14 @@ export const TrackingText = styled.div`
   padding: 0.5rem;
   color: ${({ theme }) => theme.colors.gold};
   width: 100%;
+  letter-spacing: 0.1em;
+
+  @media (min-width: 40rem) {
+    font-size: 2rem;
+  }
 
   @media (min-width: 80rem) {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   @media (min-width: 87.5rem) {

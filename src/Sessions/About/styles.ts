@@ -1,24 +1,24 @@
 import styled from "styled-components"
 import { Container } from "../../styles/GlobalStyles"
 
+// Estilos do AboutContainer
 export const AboutContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-
   width: 100%;
   height: 100vh;
-
   background-color: ${({ theme }) => theme.colors.brunswickGreen};
+  padding: 0 15px; /* Adicionado padding para não deixar o conteúdo encostado nas bordas */
 
   & img {
     width: 60px;
     margin-bottom: 20px;
-
     -webkit-animation: puff-in-center 2s cubic-bezier(0.47, 0, 0.745, 0.715);
     animation: puff-in-center 2s cubic-bezier(0.47, 0, 0.745, 0.715);
+    object-fit: contain; /* Melhor controle da imagem */
   }
 
   & h2 {
@@ -29,7 +29,6 @@ export const AboutContainer = styled(Container)`
     line-height: 0.8;
     margin-bottom: 5px;
     text-transform: uppercase;
-
     -webkit-animation: tracking-in-expand-fwd 2s
       cubic-bezier(0.215, 0.61, 0.355, 1) both;
     animation: tracking-in-expand-fwd 2s cubic-bezier(0.215, 0.61, 0.355, 1)
@@ -44,11 +43,11 @@ export const AboutContainer = styled(Container)`
     text-align: center;
     margin-bottom: 15px;
     text-transform: uppercase;
-
     -webkit-animation: text-focus-in 2s cubic-bezier(0.55, 0.085, 0.68, 0.53)
       both;
     animation: text-focus-in 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
   }
+
   /* Animação - puff-in-center */
   @-webkit-keyframes puff-in-center {
     0% {
@@ -180,7 +179,6 @@ export const AboutContent = styled.main`
     font-size: 1.75rem;
     font-weight: 100;
     color: ${({ theme }) => theme.colors.gold};
-
     -webkit-animation: tracking-in-expand 0.7s
       cubic-bezier(0.215, 0.61, 0.355, 1) both;
     animation: tracking-in-expand 2s cubic-bezier(0.215, 0.61, 0.355, 1) both;

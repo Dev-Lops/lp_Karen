@@ -2,7 +2,7 @@ import { LoaderContainer, TrackingText, Spinner } from "./styles"
 
 export function Loader() {
   return (
-    <LoaderContainer>
+    <LoaderContainer aria-live="polite" role="alert">
       <Spinner />
       <TrackingText>STUDIO KAREN FRAZÃO</TrackingText>
     </LoaderContainer>

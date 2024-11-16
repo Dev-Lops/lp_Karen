@@ -6,11 +6,11 @@ export interface FAQItem {
 export const faqData: FAQItem[] = [
   {
     question: 'Como posso comprar o produto?',
-    answer: 'Você pode comprar o produto diretamente em nosso site clicando no botão "Comprar".',
+    answer: 'Você pode comprar o produto diretamente em nosso whatsapp.',
   },
   {
     question: 'Qual é o prazo de entrega?',
-    answer: 'O prazo de entrega varia de acordo com a sua localização, mas normalmente leva de 5 a 7 dias úteis.',
+    answer: 'O prazo de entrega varia de acordo com a sua localização, mas normalmente leva de  1 a 2 dias úteis após a aprovação bancária.',
   },
   {
     question: 'O produto possui garantia?',

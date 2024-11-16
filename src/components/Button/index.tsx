@@ -9,12 +9,29 @@ interface StyledButtonProps {
   onClick?: () => void
   children?: React.ReactNode
   className?: string
+  target?: string // Adicionado para controlar o target
+}
+
+const sizes = {
+  small: {
+    padding: "12px 24px",
+    fontSize: "1rem",
+  },
+  medium: {
+    padding: "20px 25px",
+    fontSize: "1.125rem",
+  },
+  large: {
+    padding: "16px 32px",
+    fontSize: "1.25rem",
+  },
 }
 
 const StyledButton = styled.a<StyledButtonProps>`
   display: inline-block;
-  background-color: ${({ backgroundColor }) => backgroundColor || "#01ab9e"};
-  color: ${({ color }) => color || "#fff"};
+  background-color: ${({ backgroundColor, theme }) =>
+    backgroundColor || theme.colors.primary};
+  color: ${({ color, theme }) => color || theme.colors.textLight};
   text-decoration: none;
   border: 1px solid ${({ theme }) => theme.colors.gold};
   border-radius: 0.5rem;
@@ -24,70 +41,26 @@ const StyledButton = styled.a<StyledButtonProps>`
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 30px;
-  padding: 20px 30px;
-  font-size: 1rem;
+  padding: ${({ size }) => sizes[size || "medium"].padding};
+  font-size: ${({ size }) => sizes[size || "medium"].fontSize};
 
-  -webkit-animation: slide-in-elliptic-top-fwd 2s
-    cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  animation: slide-in-elliptic-top-fwd 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: slideIn 1s ease-out;
 
-  @-webkit-keyframes slide-in-elliptic-top-fwd {
-    0% {
-      -webkit-transform: translateY(-600px) rotateX(-30deg) scale(0);
-      transform: translateY(-600px) rotateX(-30deg) scale(0);
-      -webkit-transform-origin: 50% 100%;
-      transform-origin: 50% 100%;
+  @keyframes slideIn {
+    from {
+      transform: translateY(-100%);
       opacity: 0;
     }
-    100% {
-      -webkit-transform: translateY(0) rotateX(0) scale(1);
-      transform: translateY(0) rotateX(0) scale(1);
-      -webkit-transform-origin: 50% 1400px;
-      transform-origin: 50% 1400px;
+    to {
+      transform: translateY(0);
       opacity: 1;
     }
   }
-  @keyframes slide-in-elliptic-top-fwd {
-    0% {
-      -webkit-transform: translateY(-600px) rotateX(-30deg) scale(0);
-      transform: translateY(-600px) rotateX(-30deg) scale(0);
-      -webkit-transform-origin: 50% 100%;
-      transform-origin: 50% 100%;
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateY(0) rotateX(0) scale(1);
-      transform: translateY(0) rotateX(0) scale(1);
-      -webkit-transform-origin: 50% 1400px;
-      transform-origin: 50% 1400px;
-      opacity: 1;
-    }
-  }
-
-  ${({ size }) => {
-    switch (size) {
-      case "small":
-        return `
-          padding: 20px 25px;
-          font-size: 1rem;
-        `
-      case "large":
-        return `
-          padding: 16px 32px;
-          font-size: 1.125rem;
-        `
-      default:
-        return `
-          padding: 12px 24px;
-          font-size: 1rem;
-        `
-    }
-  }}
 
   &:hover {
     opacity: 0.9;
     transform: translateY(-2px);
-    text-decoration: underline ease-in-out;
+    text-decoration: underline;
   }
 
   &:active {
@@ -113,7 +86,8 @@ export const Button: React.FC<StyledButtonProps> = ({
   href,
   onClick,
   children,
-  className, // Adiciona className aqui
+  className,
+  target, // Recebe a prop target
 }) => (
   <StyledButton
     color={color}
@@ -121,8 +95,16 @@ export const Button: React.FC<StyledButtonProps> = ({
     size={size}
     href={href}
     onClick={onClick}
-    className={className} // Passa className para StyledButton
+    className={className}
+    target={target} // Usa a prop target que foi passada
+    rel={href && target === "_blank" ? "noopener noreferrer" : undefined}
   >
     {children}
   </StyledButton>
 )
+
+Button.defaultProps = {
+  color: "#fff",
+  backgroundColor: "#01ab9e",
+  size: "medium",
+}

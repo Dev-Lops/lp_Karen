@@ -5,16 +5,16 @@ import type { AccordionContentProps } from "."
 export const FAQSection = styled.section`
   background-color: #f9f9f9;
   padding: 50px 10px;
-  text-align: center;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-
   width: 100%;
 `
 
 export const FAQTitle = styled.h2`
+  text-align: center;
   font-size: 2.5rem;
   margin-bottom: 40px;
-  color: #333;
+  color: ${({ theme }) => theme.colors.green};
+  font-family: "Baskervville", serif;
+  font-weight: 100;
 `
 
 // Estilos para o acordeão
@@ -28,16 +28,16 @@ export const AccordionItem = styled.div`
 `
 
 export const AccordionHeader = styled.div`
-  background-color: ${({ theme }) => theme.colors.darkGreen};
-  color: #fff;
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.green};
   padding: 15px;
   font-size: 1.2rem;
   cursor: pointer;
-  border-radius: 5px;
   transition: background-color 0.3s ease;
+  border-top: 1px solid ${({ theme }) => theme.colors.green};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.gradients.radial};
+    background-color: ${({ theme }) => theme.colors.greenLight};
   }
 `
 
@@ -47,5 +47,8 @@ export const AccordionContent = styled.div<AccordionContentProps>`
   padding: 15px;
   font-size: 1.2rem;
   border-radius: 5px;
-  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
+  max-height: ${({ isOpen }) => (isOpen ? "1000px" : "0")}; // Usando max-height para animar a expansão
+  overflow: hidden; // Garante que o conteúdo não fique visível quando a altura for 0
+  transition: max-height 0.3s ease-out; // Transição suave para expandir ou recolher
+  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")}; // Opacidade para um efeito suave
 `

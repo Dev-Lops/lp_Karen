@@ -46,7 +46,15 @@ export function Counter({ from, to, duration = 3 }: CounterProps) {
 
   return (
     <div ref={sectionRef}>
-      <motion.h1>{rounded}</motion.h1>
+      <motion.h1
+        style={{
+          fontSize: "clamp(2rem, 5vw, 4rem)", // Responsivo em relação ao tamanho da tela
+          fontWeight: "200", // Deixar o texto mais destacado
+          textAlign: "center",
+        }}
+      >
+        {rounded}
+      </motion.h1>
     </div>
   )
 }

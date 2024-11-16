@@ -9,13 +9,13 @@ import {
 export function CTASection() {
   return (
     <CTAContainer>
-      <CTATitle>Pronto para transformar sua experiência?</CTATitle>
+      <CTATitle>Conheça nosso espaço</CTATitle>
       <CTADescription>
-        Não perca mais tempo! Compre agora e aproveite todos os benefícios
-        exclusivos.
+        <img src='image-url.jpg' alt='Imagem ilustrativa do espaço' />
       </CTADescription>
       <CTAButtons>
-        <CTAButton primary>Comprar Agora</CTAButton>
+        <CTAButton primary>Saiba mais</CTAButton>
+        <CTAButton>Visite-nos</CTAButton>
       </CTAButtons>
     </CTAContainer>
   )

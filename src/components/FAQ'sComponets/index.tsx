@@ -26,11 +26,17 @@ const FAQSectionComponent = () => {
       <Accordion>
         {faqData.map((item, index) => (
           <AccordionItem key={index}>
-            <AccordionHeader onClick={() => toggleAccordion(index)}>
+            <AccordionHeader
+              onClick={() => toggleAccordion(index)}
+              aria-expanded={openIndex === index}
+              aria-controls={`accordion-content-${index}`}
+            >
               {item.question}
             </AccordionHeader>
-            {/* Garantindo que isOpen seja passado corretamente */}
-            <AccordionContent isOpen={openIndex === index}>
+            <AccordionContent
+              id={`accordion-content-${index}`}
+              isOpen={openIndex === index}
+            >
               {item.answer}
             </AccordionContent>
           </AccordionItem>

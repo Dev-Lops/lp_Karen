@@ -1,5 +1,5 @@
 import { CountdownTimer } from "../../components/Countdown"
-import { SectionCountDown } from './styles'
+import { SectionCountDown } from "./styles"
 
 export function CountdownBlack() {
   return (

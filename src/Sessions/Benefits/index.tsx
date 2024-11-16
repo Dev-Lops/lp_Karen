@@ -1,4 +1,4 @@
-// Benefits/index.tsx
+import { memo } from "react"
 import { Counter } from "../../components/Counter"
 import {
   BenefitsContainer,
@@ -7,32 +7,48 @@ import {
   CardTitle,
 } from "./styles"
 
+// Definindo as props do componente BenefitCardComponent
+interface BenefitCardProps {
+  countFrom: number
+  countTo: number
+  label: string
+  suffix: string
+}
+
+// Componente memoizado para evitar renderizações desnecessárias
+const BenefitCardComponent = memo(
+  ({ countFrom, countTo, label, suffix }: BenefitCardProps) => (
+    <BenefitCard>
+      <CounterContainer>
+        <Counter from={countFrom} to={countTo} duration={4} />
+        <span>{suffix}</span>
+      </CounterContainer>
+      <CardTitle>{label}</CardTitle>
+    </BenefitCard>
+  )
+)
+
 export function Benefits() {
   return (
     <BenefitsContainer>
-      <BenefitCard>
-        <CounterContainer>
-          <Counter from={0} to={1000} duration={4} />
-          <span>+</span>
-        </CounterContainer>
-        <CardTitle>Clientes Satisfeitos</CardTitle>
-      </BenefitCard>
-
-      <BenefitCard>
-        <CounterContainer>
-          <Counter from={0} to={500} duration={4} />
-          <span>+</span>
-        </CounterContainer>
-        <CardTitle>Feedbacks positivos</CardTitle>
-      </BenefitCard>
-
-      <BenefitCard>
-        <CounterContainer>
-          <Counter from={0} to={100} duration={4} />
-          <span>%</span>
-        </CounterContainer>
-        <CardTitle>Taxa de satisfação</CardTitle>
-      </BenefitCard>
+      <BenefitCardComponent
+        countFrom={0}
+        countTo={1000}
+        label='Clientes Satisfeitos'
+        suffix='+'
+      />
+      <BenefitCardComponent
+        countFrom={0}
+        countTo={500}
+        label='Feedbacks positivos'
+        suffix='+'
+      />
+      <BenefitCardComponent
+        countFrom={0}
+        countTo={100}
+        label='Taxa de satisfação'
+        suffix='%'
+      />
     </BenefitsContainer>
   )
 }
