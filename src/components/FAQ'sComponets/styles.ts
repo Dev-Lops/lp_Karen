@@ -3,7 +3,7 @@ import type { AccordionContentProps } from "."
 
 // Estilos principais da seção de FAQ
 export const FAQSection = styled.section`
-  background-color: #f9f9f9;
+  background-color: #fff;
   padding: 50px 10px;
   width: 100%;
 `
@@ -42,13 +42,14 @@ export const AccordionHeader = styled.div`
 `
 
 export const AccordionContent = styled.div<AccordionContentProps>`
-  background-color: #e9ecef;
   color: #000;
   padding: 15px;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   border-radius: 5px;
-  max-height: ${({ isOpen }) => (isOpen ? "1000px" : "0")}; // Usando max-height para animar a expansão
+  max-height: ${({ isOpen }) =>
+    isOpen ? "1000px" : "0"}; // Usando max-height para animar a expansão
   overflow: hidden; // Garante que o conteúdo não fique visível quando a altura for 0
   transition: max-height 0.3s ease-out; // Transição suave para expandir ou recolher
-  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")}; // Opacidade para um efeito suave
+  opacity: ${({ isOpen }) =>
+    isOpen ? "1" : "0"}; // Opacidade para um efeito suave
 `

@@ -24,9 +24,9 @@ export const CTATitle = styled.h2`
 
 // Descrição da seção CTA
 export const CTADescription = styled.p`
-  font-size: clamp(1.1rem, 4vw, 1.4rem); // Tamanho da fonte responsivo
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
   margin-bottom: 40px;
-  max-width: 600px;
+  max-width: 900px;
   text-align: center; // Garante que o texto fique centralizado
   line-height: 1.6;
 
@@ -58,7 +58,7 @@ export const CTAButton = styled.button<{ primary?: boolean }>`
   transition: background-color 0.3s ease;
 
   background-color: ${({ primary, theme }) =>
-    primary ? theme.colors.secondary : theme.colors.secondaryLight};
+    primary ? theme.colors.green : theme.colors.secondaryLight};
   color: ${({ primary }) => (primary ? "white" : "black")};
 
   &:hover {

@@ -44,6 +44,8 @@ const StyledButton = styled.a<StyledButtonProps>`
   padding: ${({ size }) => sizes[size || "medium"].padding};
   font-size: ${({ size }) => sizes[size || "medium"].fontSize};
 
+  text-decoration: none;
+
   animation: slideIn 1s ease-out;
 
   @keyframes slideIn {
@@ -60,7 +62,6 @@ const StyledButton = styled.a<StyledButtonProps>`
   &:hover {
     opacity: 0.9;
     transform: translateY(-2px);
-    text-decoration: underline;
   }
 
   &:active {

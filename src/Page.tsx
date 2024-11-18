@@ -24,8 +24,8 @@ export const LandingPage = () => {
       <Presentation />
       <TestimonialSectionComponent />
       <CountdownBlack />
-      <FAQ />
       <CTA />
+      <FAQ />
       <FooterComponent />
     </Container>
   )

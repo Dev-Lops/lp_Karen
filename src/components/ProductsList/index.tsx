@@ -1,6 +1,7 @@
 // src/components/ProductsGrid/ProductsGrid.tsx
-import { FaPlus } from "react-icons/fa"
+
 import { Section, Container, CardWrapper, CardContent } from "./styles"
+import { CircleArrowOutUpRight, CircleSlash2 } from "lucide-react"
 
 interface Product {
   id: number
@@ -110,10 +111,12 @@ export function ProductsGrid() {
                   }`}
                 >
                   {product.isOutOfStock ? (
-                    <span className='material-symbols-outlined'></span> //
+                    <span className='material-symbols-outlined'>
+                      <CircleSlash2 strokeWidth={3} />
+                    </span> //
                   ) : (
                     <span className='material-symbols-outlined'>
-                      <ArrowUpRight color="#fcfcfc" />
+                      <CircleArrowOutUpRight strokeWidth={3} />
                     </span> //
                   )}
                 </a>

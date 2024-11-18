@@ -67,6 +67,7 @@ export const CardWrapper = styled.div`
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
+          background-color: red;
           color: white;
           font-weight: bold;
           font-size: 1.5rem;
