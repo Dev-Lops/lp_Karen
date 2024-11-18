@@ -49,7 +49,7 @@ export const CounterContainer = styled.div`
   font-size: 2rem;
 
   span {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: bold;
   }
 
