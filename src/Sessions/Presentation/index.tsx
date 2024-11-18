@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import ReactPlayer from "react-player/vimeo";
-import { FaPlay } from "react-icons/fa";
+import { useState } from "react"
+import ReactPlayer from "react-player/vimeo"
+import { FaPlay } from "react-icons/fa"
 import {
   Content,
   Description,
@@ -10,18 +10,18 @@ import {
   VideoContainer,
   ModalOverlay,
   ModalContent,
-} from "./styles";
+} from "./styles"
 
 export function Presentation() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const openModal = () => {
-    setIsModalOpen(true);
-  };
+    setIsModalOpen(true)
+  }
 
   const closeModal = () => {
-    setIsModalOpen(false);
-  };
+    setIsModalOpen(false)
+  }
 
   return (
     <PresentationContainer>
@@ -29,7 +29,7 @@ export function Presentation() {
         <Title>Conheça Nosso Trabalho</Title>
 
         <VideoContainer onClick={openModal}>
-          <PlayButton aria-label="Assistir vídeo">
+          <PlayButton aria-label='Assistir vídeo'>
             <FaPlay size={50} />
           </PlayButton>
         </VideoContainer>
@@ -44,8 +44,8 @@ export function Presentation() {
             <ModalContent onClick={(e) => e.stopPropagation()}>
               <ReactPlayer
                 url='https://vimeo.com/1029386098?share=copy' // Substitua pelo link do seu vídeo do Vimeo
-                width="100%" // Define para ocupar 100% da largura do container
-                height="100%" // Ajuste para altura responsiva
+                width='100%' // Define para ocupar 100% da largura do container
+                height='100%' // Ajuste para altura responsiva
                 controls
                 playing
               />
@@ -54,5 +54,5 @@ export function Presentation() {
         )}
       </Content>
     </PresentationContainer>
-  );
+  )
 }

@@ -37,20 +37,18 @@ export const TestimonialSectionComponent = () => {
 
   // Configurações do slider
   const settings = {
-    dots: false, // Exibe os pontos de navegação
+    dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 1, // Exibe 1 slide por vez
-    slidesToScroll: 1, // Rola 1 slide por vez
-    autoplay: false, // Desabilitado temporariamente
-    arrows: true, // Exibe as setas por padrão
-
-    // Responsividade para esconder as setas em telas pequenas
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: false,
+    arrows: true,
     responsive: [
       {
-        breakpoint: 768, // Em telas menores que 768px
+        breakpoint: 768,
         settings: {
-          arrows: false, // Remover as setas
+          arrows: false,
         },
       },
     ],
@@ -67,7 +65,7 @@ export const TestimonialSectionComponent = () => {
       <SectionTitle>O que nossos clientes dizem</SectionTitle>
       <CarouselContainer>
         {loading ? (
-          <p>Carregando...</p> // Exibe uma mensagem de carregamento
+          <p>Carregando...</p>
         ) : (
           <Slider {...settings}>
             {testimonialsData.map((testimonial, index) => (
@@ -75,7 +73,7 @@ export const TestimonialSectionComponent = () => {
                 key={index}
                 image={testimonial.image}
                 name={testimonial.name}
-                text={testimonial.text}
+                text={testimonial.text ?? "Texto padrão"}
                 rating={testimonial.rating}
               />
             ))}
