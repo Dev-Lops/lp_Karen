@@ -3,7 +3,7 @@ import { SectionCountDown } from "./styles"
 
 export function CountdownBlack() {
   return (
-    <SectionCountDown>
+    <SectionCountDown data-aos='fade-right'>
       <CountdownTimer />
     </SectionCountDown>
   )

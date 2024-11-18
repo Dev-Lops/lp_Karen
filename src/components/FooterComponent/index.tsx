@@ -1,3 +1,4 @@
+import { Instagram, Mail } from "lucide-react"
 import {
   FooterContainer,
   FooterLinks,
@@ -14,10 +15,18 @@ export const FooterComponent = () => {
         <FooterLink href='#about' aria-label='Sobre'>
           Sobre
         </FooterLink>
-        <FooterLink href='#' aria-label='Política de Privacidade'>
+        <FooterLink
+          href='public/pdfs/politica de privacidade.pdf'
+          target='_blank'
+          aria-label='Política de Privacidade'
+        >
           Política de Privacidade
         </FooterLink>
-        <FooterLink href='#' aria-label='Termos de Serviço'>
+        <FooterLink
+          href='public/pdfs/termos de servicos.pdf'
+          target='_blank'
+          aria-label='Termos de Serviço'
+        >
           Termos de Serviço
         </FooterLink>
         <FooterLink href='sac@studiokarenfrazao.com' aria-label='Contato'>
@@ -31,14 +40,14 @@ export const FooterComponent = () => {
           target='_blank'
           aria-label='Email'
         >
-          <i className='fab fa-mail'></i>
+          <Mail />
         </SocialIcon>
         <SocialIcon
           href='https://www.instagram.com/studiokarenfrazao/'
           target='_blank'
           aria-label='Instagram'
         >
-          <i className='fab fa-instagram'></i>
+          <Instagram />
         </SocialIcon>
       </FooterSocials>
 

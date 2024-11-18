@@ -93,7 +93,7 @@ export function ProductsGrid() {
       <h2>Nossos Produtos</h2>
       <Container>
         {products.map((product) => (
-          <CardWrapper key={product.id}>
+          <CardWrapper key={product.id}  data-aos="zoom-in">
             <div className={`box ${product.isOutOfStock ? "disabled" : ""}`}>
               <div
                 className={`imgBox ${product.isOutOfStock ? "outOfStock" : ""}`}

@@ -5,6 +5,7 @@ export const CarrouselContainer = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: center;
 
   background-color: ${({ theme }) => theme.colors.green || "#2e8b57"};
 
@@ -24,6 +25,7 @@ export const CarrouselContainer = styled.div`
       object-fit: cover;
       width: 300px;
       height: 400px;
+      padding: 30px;
     }
 
     .text {

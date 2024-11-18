@@ -24,7 +24,7 @@ export function Presentation() {
   }
 
   return (
-    <PresentationContainer>
+    <PresentationContainer data-aos='zoom-in-up'>
       <Content>
         <Title>Conheça Nosso Trabalho</Title>
 

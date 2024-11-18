@@ -42,7 +42,7 @@ export const CountdownTimer = () => {
   }, []);
 
   return (
-    <CountdownSection>
+    <CountdownSection >
       <CountdownTitle>Aproveite nossas ofertas antes que acabem</CountdownTitle>
       <Description>
         Todos os nossos produtos com descontos incríveis nessa Black Friday.
