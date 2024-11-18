@@ -3,6 +3,7 @@ import { LandingPage } from "./Page"
 import { Loader } from "./components/Loader"
 import "@fortawesome/fontawesome-free/css/all.min.css"
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 export function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -16,7 +17,7 @@ export function App() {
   }, [])
   return (
     <>
-      <Analytics /> {isLoading ? <Loader /> : <LandingPage />}
+      <Analytics /> <SpeedInsights /> {isLoading ? <Loader /> : <LandingPage />}
     </>
   )
 }
