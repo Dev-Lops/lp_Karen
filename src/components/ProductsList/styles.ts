@@ -4,7 +4,6 @@ export const Section = styled.section`
   padding-block: min(20vh, 2rem);
   width: calc(min(76.5rem, 90%));
   margin-inline: auto;
-  color: ${({ theme }) => theme.colors.green};
 
   h2 {
     text-transform: capitalize;
@@ -30,7 +29,7 @@ export const CardWrapper = styled.div`
     position: relative;
     width: 100%;
     height: 18.75rem;
-    background: ${({ theme }) => theme.colors.black};
+
     border-radius: 1.25rem;
     border-bottom-right-radius: 0;
     overflow: hidden;
