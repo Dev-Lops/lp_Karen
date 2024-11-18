@@ -19,10 +19,10 @@ export const GlobalStyles = createGlobalStyle`
     scroll-behavior: smooth;
   }
 
-body {
+  body {
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
   align-items: center;
   justify-content: center;
 

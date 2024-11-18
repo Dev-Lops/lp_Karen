@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 // Container da seção de Parallax
 export const ParallaxContainer = styled.div`
-  overflow: hidden;
+  overflow-x: hidden;
   line-height: 0.8;
   display: flex;
   justify-content: center;
