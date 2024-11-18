@@ -177,7 +177,7 @@ export const AboutContent = styled.main`
   & h3 {
     font-family: "Italianno", cursive;
     font-size: 1.75rem;
-    font-weight: 100;
+    font-weight: 0;
     color: ${({ theme }) => theme.colors.gold};
     -webkit-animation: tracking-in-expand 0.7s
       cubic-bezier(0.215, 0.61, 0.355, 1) both;
@@ -225,7 +225,7 @@ export const AboutContent = styled.main`
       font-size: 3rem;
       margin-bottom: 20px;
       text-align: center;
-      width: 900px;
+      letter-spacing: 3px;
     }
 
     & p {
