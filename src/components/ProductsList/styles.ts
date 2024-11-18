@@ -11,6 +11,23 @@ export const Section = styled.section`
     font-size: clamp(2rem, 1.8125rem + 0.75vw, 2.6rem);
     text-align: center;
   }
+
+  .lazy-image {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .lazy-image[loading="lazy"] {
+    opacity: 1;
+  }
+
+  .loading-placeholder {
+    background: #f0f0f0;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `
 
 export const Container = styled.div`

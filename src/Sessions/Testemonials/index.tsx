@@ -5,27 +5,32 @@ import "slick-carousel/slick/slick-theme.css" // Estilos do tema do slick
 import { TestimonialSection, SectionTitle, CarouselContainer } from "./styles"
 import { Testimonial } from "../../components/TestimonialCarousel"
 
+import img1 from "../../assets/testemonials/1.png"
+import img2 from "../../assets/testemonials/2.png"
+import img3 from "../../assets/testemonials/3.png"
+import img4 from "../../assets/testemonials/4.png"
+
 // Dados dos Testemunhos
 const testimonialsData = [
   {
-    image: "src/assets/testemonials/1.png",
+    image: img1,
     name: "Myrland",
     rating: 5,
   },
   {
-    image: "src/assets/testemonials/2.png",
+    image: img2,
     name: "Maria Oliveira",
     text: "Muito bom, recomendo para todos! A qualidade é excelente.",
     rating: 5,
   },
   {
-    image: "src/assets/testemonials/3.png",
+    image: img3,
     name: "Carlos Pereira",
     text: "Atendeu minhas expectativas, mas poderia melhorar a entrega.",
     rating: 5,
   },
   {
-    image: "src/assets/testemonials/4.png",
+    image: img4,
     name: "Carlos Pereira",
     text: "Atendeu minhas expectativas, mas poderia melhorar a entrega.",
     rating: 5,

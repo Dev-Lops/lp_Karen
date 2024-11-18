@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
     "baseUrl": "./src/*",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "paths": {
       "*": ["node_modules/*"]
     }

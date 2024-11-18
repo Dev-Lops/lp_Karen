@@ -132,7 +132,8 @@ export function Carousel() {
             }`}
           >
             <div className='photo'>
-              <img src={product.image} alt={product.title} />
+              {/* Adicionando o atributo loading="lazy" para carregar a imagem somente quando necessário */}
+              <img src={product.image} alt={product.title} loading='lazy' />
             </div>
             <div className='text'>
               <h1>{product.title}</h1>

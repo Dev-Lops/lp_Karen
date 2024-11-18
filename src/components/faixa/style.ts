@@ -7,7 +7,7 @@ export const ParallaxContainer = styled.div`
   line-height: 0.8;
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 100vw;
   background-color: transparent;
   font-family: "Syncopate", serif;
   font-weight: 500;
@@ -21,7 +21,7 @@ export const Scroller = styled(motion.div)`
   font-size: clamp(1.5rem, 5vw, 3rem); // Font-size responsivo
   display: flex;
   justify-content: flex-start;
-  width: 100%;
+  width: 100vw;
   flex-wrap: nowrap;
 
   span {

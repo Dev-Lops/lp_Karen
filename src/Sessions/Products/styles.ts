@@ -3,15 +3,9 @@ import { Container } from "../../styles/GlobalStyles"
 
 export const ContainerProduct = styled(Container)`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.green};
-
-  @media (width: 80rem) {
-  }
-  @media (width: 120rem) {
-  }
 `

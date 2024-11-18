@@ -102,8 +102,10 @@ export function ProductsGrid() {
                   src={product.image}
                   alt={`Imagem do ${product.name}`}
                   loading='lazy'
+                  className='lazy-image'
                 />
-                {/* Mostrar o texto "Produto Esgotado" sobre a imagem */}
+                <div className='loading-placeholder'>Carregando...</div>{" "}
+                {/* Placeholder */}
                 {product.isOutOfStock && (
                   <div className='outOfStockText'>Produto Esgotado</div>
                 )}

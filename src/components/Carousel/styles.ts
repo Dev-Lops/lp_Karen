@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const CarrouselContainer = styled.div`
   width: 100%;
@@ -168,4 +168,4 @@ export const CarrouselContainer = styled.div`
       font-size: 0.875rem; /* 14px */
     }
   }
-`;
+`
