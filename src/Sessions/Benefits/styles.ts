@@ -64,14 +64,13 @@ export const CounterContainer = styled.div`
 
 // Estilos do título de cada card
 export const CardTitle = styled.h2`
-  font-size: 1.25rem;
-  color: ${({ theme }) => theme.colors.gold};
+  color: ${({ theme }) => theme.colors.white};
 
   @media (min-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 2rem;
   }
 
   @media (min-width: 1200px) {
-    font-size: 1.75rem;
+    font-size: 2.5rem;
   }
 `
