@@ -31,7 +31,7 @@ export const FooterComponent = () => {
           target='_blank'
           aria-label='Email'
         >
-          <i className='fab fa-email'></i>
+          <i className='fab fa-mail'></i>
         </SocialIcon>
         <SocialIcon
           href='https://www.instagram.com/studiokarenfrazao/'
