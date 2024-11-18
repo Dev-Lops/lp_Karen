@@ -1,22 +1,20 @@
 import styled from "styled-components"
 
 export const CarrouselContainer = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+
   background-color: ${({ theme }) => theme.colors.green || "#2e8b57"};
 
   .keen-slider {
-    width: 100vw;
-    height: 100vh;
   }
 
   .number-slide {
     display: flex;
     flex-direction: column;
-    align-items: center;
+
     justify-content: center;
     text-align: center;
     color: #fff;
@@ -24,15 +22,15 @@ export const CarrouselContainer = styled.div`
 
     .photo img {
       object-fit: cover;
-      width: 100%;
-      height: 100vh;
-      border-radius: 16px;
+      width: 300px;
+      height: 400px;
     }
 
     .text {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      justify-content: center;
+
       text-align: center;
       padding: 20px;
 
@@ -49,10 +47,10 @@ export const CarrouselContainer = styled.div`
       .out-of-stock {
         background-color: #e63946;
         color: #fff;
-        padding: 8px 16px;
+        padding: 20px 25px;
         border-radius: 8px;
         font-weight: bold;
-        font-size: 1rem;
+        font-size: 2rem;
         margin-top: 10px;
         text-align: center;
       }
@@ -153,7 +151,7 @@ export const CarrouselContainer = styled.div`
 
   @media (max-width: 480px) {
     .number-slide .photo img {
-      height: 500px; /* Ajuste para telas pequenas */
+      height: 400px; /* Ajuste para telas pequenas */
     }
 
     .number-slide .text h1 {
@@ -165,7 +163,7 @@ export const CarrouselContainer = styled.div`
     }
 
     .number-slide .text .out-of-stock {
-      font-size: 0.875rem; /* 14px */
+      font-size: 1.5rem; /* 14px */
     }
   }
 `

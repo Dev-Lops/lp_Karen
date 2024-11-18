@@ -31,7 +31,9 @@ export const BenefitCard = styled.article`
   gap: 16px;
   border-radius: 8px;
   text-align: center;
-  margin-bottom: 16px;
+  h1 {
+    font-size: 2rem;
+  }
 
   @media (min-width: 768px) {
     width: 48%; // Ajuste para 2 cards por linha em telas médias
@@ -46,19 +48,19 @@ export const BenefitCard = styled.article`
 export const CounterContainer = styled.div`
   display: flex;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1rem;
+  font-weight: bold;
 
   span {
-    font-size: 2.5rem;
-    font-weight: bold;
-  }
-
-  @media (min-width: 768px) {
     font-size: 2rem;
   }
 
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
+
   @media (min-width: 1200px) {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 `
 
@@ -67,10 +69,10 @@ export const CardTitle = styled.h2`
   color: ${({ theme }) => theme.colors.white};
 
   @media (min-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   @media (min-width: 1200px) {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 `

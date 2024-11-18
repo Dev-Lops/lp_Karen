@@ -49,7 +49,7 @@ const products: Product[] = [
   {
     image: img5,
     title: "Serum Revitalizante",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing ",
     inStock: true,
   },
   {

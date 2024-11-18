@@ -48,8 +48,8 @@ export function Counter({ from, to, duration = 3 }: CounterProps) {
     <div ref={sectionRef}>
       <motion.h1
         style={{
-          fontSize: "clamp(2rem, 5vw, 4rem)", // Responsivo em relação ao tamanho da tela
-          fontWeight: "200", // Deixar o texto mais destacado
+          fontSize: "clamp(2.5rem, 4vw, 4.5rem)", // Responsivo em relação ao tamanho da tela
+          fontWeight: "400", // Deixar o texto mais destacado
           textAlign: "center",
         }}
       >
