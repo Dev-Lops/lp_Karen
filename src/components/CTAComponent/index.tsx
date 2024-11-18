@@ -1,12 +1,14 @@
 import { Button } from "../Button/index.tsx"
 import { CTAContainer, CTATitle, CTADescription, CTAButtons } from "./styles.ts"
 
+import img1 from "../../assets/espaco.png"
+
 export function CTASection() {
   return (
     <CTAContainer>
       <CTATitle>Conheça nosso espaço</CTATitle>
       <CTADescription>
-        <img src='src/assets/espaco.png' alt='Imagem ilustrativa do espaço' />
+        <img src={img1} alt='Imagem ilustrativa do espaço' />
       </CTADescription>
       <CTAButtons>
         <Button
