@@ -9,8 +9,8 @@ export const CarrouselContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.green || "#2e8b57"};
 
   .keen-slider {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
   }
 
   .number-slide {
@@ -25,7 +25,7 @@ export const CarrouselContainer = styled.div`
     .photo img {
       object-fit: cover;
       width: 100%;
-      height: 300px;
+      height: 100vh;
       border-radius: 16px;
     }
 
@@ -96,7 +96,7 @@ export const CarrouselContainer = styled.div`
       }
 
       .photo img {
-        height: auto;
+        height: 100%;
         max-height: 75vh; /* Ajuste proporcional */
         width: 100%;
         border-radius: 0;
@@ -139,7 +139,7 @@ export const CarrouselContainer = styled.div`
     }
 
     .number-slide .photo img {
-      height: 250px;
+      height: 100%;
     }
 
     .number-slide .text h1 {
@@ -153,7 +153,7 @@ export const CarrouselContainer = styled.div`
 
   @media (max-width: 480px) {
     .number-slide .photo img {
-      height: 200px; /* Ajuste para telas pequenas */
+      height: 500px; /* Ajuste para telas pequenas */
     }
 
     .number-slide .text h1 {
