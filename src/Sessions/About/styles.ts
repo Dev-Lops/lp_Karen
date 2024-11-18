@@ -22,7 +22,7 @@ export const AboutContainer = styled(Container)`
   }
 
   & h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: ${({ theme }) => theme.colors.white};
     font-weight: 400;
     font-family: "Jura", sans-serif;
