@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const CarrouselContainer = styled.div`
   width: 100%;
@@ -6,7 +6,7 @@ export const CarrouselContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.green};
+  background-color: ${({ theme }) => theme.colors.green || "#2e8b57"};
 
   .keen-slider {
     width: 100%;
@@ -65,7 +65,7 @@ export const CarrouselContainer = styled.div`
       margin-top: 20px;
 
       button {
-        color: ${({ theme }) => theme.colors.green};
+        color: ${({ theme }) => theme.colors.green || "#2e8b57"};
         border: none;
         padding: 12px 24px;
         border-radius: 8px;
@@ -75,20 +75,17 @@ export const CarrouselContainer = styled.div`
         transition: all 0.3s ease;
 
         &:hover {
-          background-color: ${({ theme }) => theme.colors.green};
+          background-color: ${({ theme }) => theme.colors.green || "#2e8b57"};
           color: #fff;
         }
       }
-    }
-
-    &.out-of-stock {
     }
   }
 
   /* Media Queries */
   @media (min-width: 1024px) {
     .number-slide {
-      flex-direction: row; /* Layout em linha para telas grandes */
+      flex-direction: row;
       justify-content: space-between;
       text-align: start;
       padding: 30px;
@@ -99,7 +96,8 @@ export const CarrouselContainer = styled.div`
       }
 
       .photo img {
-        height: 90vh;
+        height: auto;
+        max-height: 75vh; /* Ajuste proporcional */
         width: 100%;
         border-radius: 0;
       }
@@ -117,10 +115,6 @@ export const CarrouselContainer = styled.div`
           font-size: 1.5rem; /* 24px */
           line-height: 1.8;
         }
-      }
-
-      .button-container {
-        justify-content: flex-end; /* Botão à esquerda em telas grandes */
       }
     }
   }
@@ -159,7 +153,7 @@ export const CarrouselContainer = styled.div`
 
   @media (max-width: 480px) {
     .number-slide .photo img {
-      height: 400px; /* Ajuste para telas pequenas */
+      height: 200px; /* Ajuste para telas pequenas */
     }
 
     .number-slide .text h1 {
@@ -174,4 +168,4 @@ export const CarrouselContainer = styled.div`
       font-size: 0.875rem; /* 14px */
     }
   }
-`
+`;

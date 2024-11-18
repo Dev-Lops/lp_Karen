@@ -25,6 +25,7 @@ export const GlobalStyles = createGlobalStyle`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-display: swap;
 
 
   color: ${({ theme }) => theme.colors.brunswickGreen};
