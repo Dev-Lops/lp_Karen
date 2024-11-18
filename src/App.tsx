@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { LandingPage } from "./Page"
 import { Loader } from "./components/Loader"
 import "@fortawesome/fontawesome-free/css/all.min.css"
+import { Analytics } from "@vercel/analytics/react"
 
 export function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -13,5 +14,9 @@ export function App() {
 
     return () => clearTimeout(timer)
   }, [])
-  return <>{isLoading ? <Loader /> : <LandingPage />}</>
+  return (
+    <>
+      <Analytics /> {isLoading ? <Loader /> : <LandingPage />}
+    </>
+  )
 }
