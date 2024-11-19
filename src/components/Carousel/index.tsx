@@ -25,8 +25,7 @@ const products: Product[] = [
     inStock: true,
   },
   {
-    image:
-      "https://dtsel6fm8qr8n.cloudfront.net/gloss_natual_e_clean_detox.jpg",
+    image:"https://dtsel6fm8qr8n.cloudfront.net/gloss_natual_e_clean_detox.jpg",
     title: "Kit Alisamento Natural",
     description: "Conheça o Poder do Alisamento natural!",
     inStock: true,

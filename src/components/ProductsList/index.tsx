@@ -3,16 +3,6 @@
 import { Section, Container, CardWrapper, CardContent } from "./styles"
 import { CircleArrowOutUpRight, CircleSlash2 } from "lucide-react"
 
-import img1 from "../../assets/IMG_8098.jpg"
-import img2 from "../../assets/serun.jpg"
-import img3 from "../../assets/gloss_natual_e_clean_detox.jpg"
-import img4 from "../../assets/mascara.jpg"
-import img5 from "../../assets/escova.jpg"
-import img6 from "../../assets/perfume capilar.jpg"
-import img7 from "../../assets/reestruturador_bifasico.jpg"
-import img8 from "../../assets/restaurador cmc.jpg"
-import img9 from "../../assets/shampoo.jpg"
-
 interface Product {
   id: number
   image: string
@@ -24,63 +14,64 @@ interface Product {
 const products: Product[] = [
   {
     id: 1,
-    image: img1,
+    image: "https://dtsel6fm8qr8n.cloudfront.net/IMG_8098.jpg",
     name: "Ampola de Reestruturação do Cortex",
     link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20saber%20mais%20informações%20sobre%20o%20produto%20Ampola%20de%20Reestruturação%20do%20Cortex",
     isOutOfStock: false,
   },
   {
     id: 2,
-    image: img2,
+    image: "https://dtsel6fm8qr8n.cloudfront.net/serun.jpg",
     name: "Serum Revitalizante",
     link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20saber%20mais%20informações%20sobre%20o%20produto%20Serum%20Revitalizante",
     isOutOfStock: false,
   },
   {
     id: 3,
-    image: img3,
+    image:
+      "https://dtsel6fm8qr8n.cloudfront.net/gloss_natual_e_clean_detox.jpg",
     name: "Kit Alisamento Natural",
     link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20saber%20mais%20informações%20sobre%20o%20produto%20Kit%20Alisamento%20Natural",
     isOutOfStock: false,
   },
   {
     id: 4,
-    image: img4,
+    image: "https://dtsel6fm8qr8n.cloudfront.net/mascara.jpg",
     name: "Mascara Equilíbrio THERAPY",
     link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20saber%20mais%20informações%20sobre%20o%20produto%20Mascara%20Equilíbrio%20THERAPY",
     isOutOfStock: false,
   },
   {
     id: 5,
-    image: img5,
+    image: "https://dtsel6fm8qr8n.cloudfront.net/escova.jpg",
     name: "Escova de Cabelo",
     link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20saber%20mais%20informações%20sobre%20o%20produto%20Escova%20de%20Cabelo",
     isOutOfStock: false,
   },
   {
     id: 6,
-    image: img6,
+    image: "https://dtsel6fm8qr8n.cloudfront.net/perfume capilar.jpg",
     name: "Perfume Capilar",
     link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20saber%20mais%20informações%20sobre%20o%20produto%20Perfume%20Capilar",
     isOutOfStock: false,
   },
   {
     id: 7,
-    image: img7,
+    image: "https://dtsel6fm8qr8n.cloudfront.net/reestruturador_bifasico.jpg",
     name: "Reestruturador bifásico Equilíbrio THERAPY",
     link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20saber%20mais%20informações%20sobre%20o%20produto%20Reestruturador%20bifásico%20Equilíbrio%20THERAPY",
     isOutOfStock: true,
   },
   {
     id: 8,
-    image: img8,
+    image: "https://dtsel6fm8qr8n.cloudfront.net/restaurador cmc.jpg",
     name: "Restaurador do CMC Capilar",
     link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20saber%20mais%20informações%20sobre%20o%20produto%20Restaurador%20do%20CMC%20Capilar",
     isOutOfStock: false,
   },
   {
     id: 9,
-    image: img9,
+    image: "https://dtsel6fm8qr8n.cloudfront.net/shampoo.jpg",
     name: "Shampoo Equilíbrio THERAPY",
     link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20saber%20mais%20informações%20sobre%20o%20produto%20Shampoo%20Equilíbrio%20THERAPY",
     isOutOfStock: false,
@@ -93,7 +84,7 @@ export function ProductsGrid() {
       <h2>Nossos Produtos</h2>
       <Container>
         {products.map((product) => (
-          <CardWrapper key={product.id}  data-aos="zoom-in">
+          <CardWrapper key={product.id} data-aos='zoom-in'>
             <div className={`box ${product.isOutOfStock ? "disabled" : ""}`}>
               <div
                 className={`imgBox ${product.isOutOfStock ? "outOfStock" : ""}`}
