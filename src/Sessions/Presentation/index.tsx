@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import ReactPlayer from "react-player/vimeo"
 import { FaPlay } from "react-icons/fa"
 import {
@@ -15,20 +15,19 @@ import {
 export function Presentation() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const openModal = () => {
-    setIsModalOpen(true)
-  }
+  // Alterna o estado do modal (abre/fecha)
+  const toggleModal = useCallback(() => {
+    setIsModalOpen((prev) => !prev)
+  }, [])
 
-  const closeModal = () => {
-    setIsModalOpen(false)
-  }
+  const videoUrl = "https://vimeo.com/1029386098?share=copy" // Substitua pelo link correto
 
   return (
     <PresentationContainer data-aos='zoom-in-up'>
       <Content>
         <Title>Conheça Nosso Trabalho</Title>
 
-        <VideoContainer onClick={openModal}>
+        <VideoContainer onClick={toggleModal}>
           <PlayButton aria-label='Assistir vídeo'>
             <FaPlay size={50} />
           </PlayButton>
@@ -40,12 +39,15 @@ export function Presentation() {
         </Description>
 
         {isModalOpen && (
-          <ModalOverlay onClick={closeModal}>
+          <ModalOverlay
+            onClick={toggleModal}
+            aria-hidden={!isModalOpen} // Ajuda ferramentas de acessibilidade
+          >
             <ModalContent onClick={(e) => e.stopPropagation()}>
               <ReactPlayer
-                url='https://vimeo.com/1029386098?share=copy' // Substitua pelo link do seu vídeo do Vimeo
-                width='100%' // Define para ocupar 100% da largura do container
-                height='100%' // Ajuste para altura responsiva
+                url={videoUrl}
+                width='100%'
+                height='100%'
                 controls
                 playing
               />
