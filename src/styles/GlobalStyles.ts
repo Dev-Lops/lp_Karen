@@ -5,8 +5,12 @@ import "@fontsource/roboto/500.css"
 import "@fontsource/roboto/700.css"
 import "animate.css"
 
-
 export const GlobalStyles = createGlobalStyle`
+@font-face {
+  font-family: 'CustomFont';
+  src: url('customfont.woff2') format('woff2');
+  font-display: swap;
+}
 
   *,
   *::before,
