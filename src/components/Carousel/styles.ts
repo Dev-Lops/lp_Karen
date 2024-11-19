@@ -10,6 +10,7 @@ export const CarrouselContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.green || "#2e8b57"};
 
   .keen-slider {
+    width: 100%;
   }
 
   .number-slide {
@@ -32,6 +33,7 @@ export const CarrouselContainer = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
 
       text-align: center;
       padding: 20px;
@@ -87,7 +89,7 @@ export const CarrouselContainer = styled.div`
     .number-slide {
       flex-direction: row;
       justify-content: space-between;
-      text-align: start;
+
       padding: 30px;
 
       .photo {
@@ -104,7 +106,7 @@ export const CarrouselContainer = styled.div`
 
       .text {
         flex: 1;
-        align-items: flex-start;
+
         padding: 20px;
 
         h1 {

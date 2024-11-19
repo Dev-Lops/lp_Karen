@@ -12,7 +12,7 @@ interface Product {
 
 const products: Product[] = [
   {
-    image: "https://dtsel6fm8qr8n.cloudfront.net/restaurador cmc.jpg",
+    image: "https://dtsel6fm8qr8n.cloudfront.net/IMG_8098.jpg",
     title: "Ampola de Reestruturação do Cortex",
     description:
       "Ampola de alta performance, age reestruturando fibras instáveis, elásticas, quebradiças e opacas. Em apenas 5 minutos no conforto da sua casa.",
