@@ -11,7 +11,7 @@ export function PresentationKit() {
       id='kit'
     >
       <img
-        src='https://dtsel6fm8qr8n.cloudfront.net/kit.jpg'
+        src='https://dtsel6fm8qr8n.cloudfront.net/kit.avif'
         alt='Kit alisamneto natural'
       />
       <ContentKit>
