@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react"
-import ReactPlayer from "react-player/vimeo"
+import ReactPlayer from "react-player"
 import { FaPlay } from "react-icons/fa"
 import {
   Content,
@@ -20,12 +20,10 @@ export function Presentation() {
     setIsModalOpen((prev) => !prev)
   }, [])
 
-  const videoUrl = "https://vimeo.com/1029386098?share=copy" // Substitua pelo link correto
-
   return (
     <PresentationContainer data-aos='zoom-in-up'>
       <Content>
-        <Title>Conheça Nosso Trabalho</Title>
+        <Title>Conheça Nossos Serviços</Title>
 
         <VideoContainer onClick={toggleModal}>
           <PlayButton aria-label='Assistir vídeo'>
@@ -39,17 +37,22 @@ export function Presentation() {
         </Description>
 
         {isModalOpen && (
-          <ModalOverlay
-            onClick={toggleModal}
-            aria-hidden={!isModalOpen} // Ajuda ferramentas de acessibilidade
-          >
+          <ModalOverlay onClick={toggleModal}>
             <ModalContent onClick={(e) => e.stopPropagation()}>
               <ReactPlayer
-                url={videoUrl}
+                url='https://dtsel6fm8qr8n.cloudfront.net/karen_frazão (1080p).mp4'
                 width='100%'
                 height='100%'
                 controls
                 playing
+                onReady={() => console.log("Player pronto")}
+                onStart={() => console.log("Vídeo começou")}
+                onError={(e) => {
+                  console.error("Erro no player:", e)
+                  alert(
+                    "O vídeo não pôde ser carregado. Por favor, tente novamente mais tarde."
+                  )
+                }}
               />
             </ModalContent>
           </ModalOverlay>

@@ -10,7 +10,7 @@ import {
 import { faqData } from "./data"
 
 export interface AccordionContentProps {
-  isOpen: boolean
+  $isOpen?: boolean
 }
 
 const FAQSectionComponent = () => {
@@ -30,12 +30,13 @@ const FAQSectionComponent = () => {
               onClick={() => toggleAccordion(index)}
               aria-expanded={openIndex === index}
               aria-controls={`accordion-content-${index}`}
+              role='button'
             >
               {item.question}
             </AccordionHeader>
             <AccordionContent
               id={`accordion-content-${index}`}
-              isOpen={openIndex === index}
+              $isOpen={openIndex === index} // Transient prop
             >
               {item.answer}
             </AccordionContent>

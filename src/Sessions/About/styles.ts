@@ -11,41 +11,17 @@ export const AboutContainer = styled(Container)`
   width: 100%;
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.brunswickGreen};
-  padding: 0 15px; /* Adicionado padding para não deixar o conteúdo encostado nas bordas */
 
   & img {
-    width: 60px;
-    margin-bottom: 20px;
+    width: 4.375rem;
+
     -webkit-animation: puff-in-center 2s cubic-bezier(0.47, 0, 0.745, 0.715);
     animation: puff-in-center 2s cubic-bezier(0.47, 0, 0.745, 0.715);
-    object-fit: contain; /* Melhor controle da imagem */
-  }
+    /* Melhor controle da imagem */
 
-  & h2 {
-    font-size: 2rem;
-    color: ${({ theme }) => theme.colors.white};
-    font-weight: 400;
-    font-family: "Jura", sans-serif;
-    line-height: 0.8;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    -webkit-animation: tracking-in-expand-fwd 2s
-      cubic-bezier(0.215, 0.61, 0.355, 1) both;
-    animation: tracking-in-expand-fwd 2s cubic-bezier(0.215, 0.61, 0.355, 1)
-      both;
-  }
-
-  & h1 {
-    font-size: 2.875rem;
-    color: ${({ theme }) => theme.colors.white};
-    font-family: "Baskervville", serif;
-    font-weight: 400;
-    text-align: center;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    -webkit-animation: text-focus-in 2s cubic-bezier(0.55, 0.085, 0.68, 0.53)
-      both;
-    animation: text-focus-in 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+    @media (min-width: 80rem) {
+      width: 6.25rem;
+    }
   }
 
   /* Animação - puff-in-center */
@@ -141,28 +117,6 @@ export const AboutContainer = styled(Container)`
       opacity: 1;
     }
   }
-
-  @media (min-width: 1280px) {
-    & h2 {
-      font-size: 2.5rem;
-      text-align: center;
-    }
-
-    & h1 {
-      font-size: 6rem;
-      letter-spacing: 5px;
-    }
-  }
-
-  @media (min-width: 1400px) {
-    & h2 {
-      font-size: 3rem;
-    }
-
-    & h1 {
-      font-size: 6.5rem;
-    }
-  }
 `
 
 // Estilos do conteúdo do About com ajustes para diferentes tamanhos de tela
@@ -174,14 +128,42 @@ export const AboutContent = styled.main`
   text-align: center;
   width: 100%;
 
-  & h3 {
-    font-family: "Italianno", cursive;
-    font-size: 1.75rem;
-    font-weight: 0;
-    color: ${({ theme }) => theme.colors.gold};
-    -webkit-animation: tracking-in-expand 0.7s
-      cubic-bezier(0.215, 0.61, 0.355, 1) both;
-    animation: tracking-in-expand 2s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  .text {
+    & h1 {
+      font-size: 5rem;
+      color: ${({ theme }) => theme.colors.white};
+
+      font-family: "AlexanderLettering", sans-serif;
+      display: flex;
+      align-items: center;
+      font-weight: 400;
+      text-align: center;
+      height: 70px;
+      letter-spacing: 5px;
+
+      -webkit-animation: text-focus-in 2s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+        both;
+      animation: text-focus-in 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+    }
+
+    & h3 {
+      font-family: "Baskervville", serif;
+      font-size: 1rem;
+      letter-spacing: 5px;
+
+      color: ${({ theme }) => theme.colors.gold};
+      -webkit-animation: tracking-in-expand 0.7s
+        cubic-bezier(0.215, 0.61, 0.355, 1) both;
+      animation: tracking-in-expand 2s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+    }
+    p {
+      margin-top: 60px;
+      font-size: 1.125rem;
+      color: #fff;
+      -webkit-animation: tracking-in-expand 0.7s
+        cubic-bezier(0.215, 0.61, 0.355, 1) both;
+      animation: tracking-in-expand 2s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+    }
   }
 
   @-webkit-keyframes tracking-in-expand {
@@ -210,45 +192,54 @@ export const AboutContent = styled.main`
   }
 
   @media (min-width: 1280px) {
-    text-align: justify;
-
     .text {
-      width: 56.25rem;
+      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 3.5rem;
-    }
 
-    & h3 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      text-align: center;
-      letter-spacing: 3px;
-    }
+      & h1 {
+        font-size: 8rem;
+        color: ${({ theme }) => theme.colors.white};
 
-    & p {
-      font-size: 1.25rem;
-      font-weight: 100;
+        display: flex;
+        align-items: center;
+        font-weight: 400;
+        text-align: center;
+        height: 70px;
+        letter-spacing: 15px;
+
+        -webkit-animation: text-focus-in 2s
+          cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+        animation: text-focus-in 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+      }
+
+      & h3 {
+        font-size: 1.5rem;
+        text-align: center;
+        letter-spacing: 10px;
+      }
+
+      & p {
+        font-size: 1.5rem;
+      }
     }
   }
 
   @media (min-width: 1400px) {
     .text {
       width: 1400px;
-      justify-content: space-between;
     }
 
     & h3 {
       font-size: 4rem;
       font-weight: bold;
-      margin-bottom: 50px;
     }
 
     & p {
       font-size: 1.5rem;
-      font-weight: 100;
+
       margin: 0;
     }
   }

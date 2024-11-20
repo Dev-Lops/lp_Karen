@@ -27,10 +27,13 @@ const sizes = {
   },
 }
 
-const StyledButton = styled.a<StyledButtonProps>`
+const StyledButton = styled.a<{
+  $backgroundColor?: string
+  $size?: "small" | "medium" | "large"
+}>`
   display: inline-block;
-  background-color: ${({ backgroundColor, theme }) =>
-    backgroundColor || theme.colors.primary};
+  background-color: ${({ $backgroundColor, theme }) =>
+    $backgroundColor || theme.colors.primary};
   color: ${({ color, theme }) => color || theme.colors.textLight};
   text-decoration: none;
   border: 1px solid ${({ theme }) => theme.colors.gold};
@@ -41,12 +44,18 @@ const StyledButton = styled.a<StyledButtonProps>`
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 30px;
-  padding: ${({ size }) => sizes[size || "medium"].padding};
-  font-size: ${({ size }) => sizes[size || "medium"].fontSize};
+  padding: ${({ $size }) => sizes[$size || "medium"].padding};
+  font-size: ${({ $size }) => sizes[$size || "medium"].fontSize};
 
-  text-decoration: none;
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
 
-  animation: slideIn 1s ease-out;
+  &:active {
+    transform: translateY(0);
+    opacity: 1;
+  }
 
   @keyframes slideIn {
     from {
@@ -81,9 +90,9 @@ const StyledButton = styled.a<StyledButtonProps>`
 `
 
 export const Button: React.FC<StyledButtonProps> = ({
-  color,
-  backgroundColor,
-  size = "medium",
+  color = "#fff", // Valor padrão
+  backgroundColor = "#01ab9e", // Valor padrão
+  size = "medium", // Valor padrão
   href,
   onClick,
   children,
@@ -91,21 +100,15 @@ export const Button: React.FC<StyledButtonProps> = ({
   target, // Recebe a prop target
 }) => (
   <StyledButton
+    $backgroundColor={backgroundColor} // Transient prop
+    $size={size} // Transient prop
     color={color}
-    backgroundColor={backgroundColor}
-    size={size}
     href={href}
     onClick={onClick}
     className={className}
-    target={target} // Usa a prop target que foi passada
+    target={target}
     rel={href && target === "_blank" ? "noopener noreferrer" : undefined}
   >
     {children}
   </StyledButton>
 )
-
-Button.defaultProps = {
-  color: "#fff",
-  backgroundColor: "#01ab9e",
-  size: "medium",
-}

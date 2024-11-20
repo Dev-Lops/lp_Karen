@@ -21,10 +21,14 @@ export const Scroller = styled(motion.div)`
   font-size: clamp(1.5rem, 5vw, 3rem); // Font-size responsivo
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   width: 100vw;
   flex-wrap: nowrap;
 
   span {
+    display: flex;
+
+    align-items: center;
     gap: 30px;
     padding: 0 30px;
     text-align: center;

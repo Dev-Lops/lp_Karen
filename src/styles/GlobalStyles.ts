@@ -5,11 +5,23 @@ import "@fontsource/roboto/500.css"
 import "@fontsource/roboto/700.css"
 import "animate.css"
 
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+
 export const GlobalStyles = createGlobalStyle`
 @font-face {
   font-family: 'CustomFont';
   src: url('customfont.woff2') format('woff2');
   font-display: swap;
+}
+
+@font-face {
+  font-family: 'AlexanderLettering';
+  src: url('/fonts/AlexanderLettering.woff2') format('woff2'),
+       url('/fonts/AlexanderLettering.woff') format('woff'),
+       url('/fonts/AlexanderLettering.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
   *,

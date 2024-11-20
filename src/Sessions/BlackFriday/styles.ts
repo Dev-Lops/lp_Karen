@@ -6,4 +6,11 @@ export const BlackfridaySection = styled.section`
   display: flex;
   justify-content: center;
   align-items: center; // Alinha verticalmente no centro
+
+  color: red;
+
+  .icon {
+    display: flex;
+    width: 90px;
+  }
 `
