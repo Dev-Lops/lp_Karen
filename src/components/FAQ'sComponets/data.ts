@@ -22,6 +22,6 @@ export const faqData: FAQItem[] = [
   },
   {
     question: 'Como posso entrar em contato com o suporte?',
-    answer: 'Você pode entrar em contato com nosso suporte através do e-mail suporte@exemplo.com ou pelo chat em nosso site.',
+    answer: 'Você pode entrar em contato com nosso suporte através do e-mail sac@studiokarenfrazao.com',
   },
 ];
