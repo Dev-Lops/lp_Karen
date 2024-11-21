@@ -20,7 +20,7 @@ export function About() {
           <p className='tracking-in-expand-fwd'>Saúde e Beleza</p>
         </div>
         <Button href='#kit' size='small' backgroundColor='transparent'>
-          Descubra
+          Saiba mais
         </Button>
       </AboutContent>
     </AboutContainer>

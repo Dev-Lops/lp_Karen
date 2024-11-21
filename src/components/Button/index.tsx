@@ -43,7 +43,7 @@ const StyledButton = styled.a<{
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 30px;
+
   padding: ${({ $size }) => sizes[$size || "medium"].padding};
   font-size: ${({ $size }) => sizes[$size || "medium"].fontSize};
 

@@ -6,7 +6,12 @@ export const Section = styled.section`
   margin-inline: auto;
 
   h2 {
-    text-transform: capitalize;
+    text-transform: uppercase;
+    font-family: "Baskervville", serif;
+
+    font-weight: 100;
+    color: ${({ theme }) => theme.colors.green};
+
     letter-spacing: 0.025em;
     font-size: clamp(2rem, 1.8125rem + 0.75vw, 2.6rem);
     text-align: center;
@@ -83,8 +88,8 @@ export const CardWrapper = styled.div`
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          background-color: red;
-          color: white;
+          color: red;
+
           font-weight: bold;
           font-size: 1.5rem;
           z-index: 2; /* Garante que o texto fique sobre a imagem */
@@ -146,8 +151,7 @@ export const CardWrapper = styled.div`
       bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
-      background-color: red;
-      color: white;
+      color: red;
       font-weight: bold;
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
@@ -162,11 +166,12 @@ export const CardWrapper = styled.div`
 `
 
 export const CardContent = styled.div`
-  padding: 0.938rem 0.625rem;
+  padding: 0.875rem 0.625rem;
 
   h3 {
     text-transform: capitalize;
-    font-size: clamp(1.5rem, 1.3909rem + 0.4364vw, 1.8rem);
+    font-size: clamp(1rem, 1.25rem + 0.4364vw, 1.75rem);
+    color: ${({ theme }) => theme.colors.green};
   }
 
   p {
@@ -180,13 +185,13 @@ export const CardContent = styled.div`
     list-style-type: none;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 0.625rem;
 
     li {
       text-transform: uppercase;
       background: var(--clr-tag, #ccc);
-      color: #282828;
+      color: ${({ theme }) => theme.colors.green};
       font-weight: 700;
       font-size: 0.8rem;
       padding: 0.375rem 0.625rem;

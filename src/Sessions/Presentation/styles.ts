@@ -29,6 +29,10 @@ export const Content = styled.div`
 `
 
 export const Title = styled.h2`
+  font-family: "Baskervville", serif;
+  font-weight: 100;
+  text-transform: uppercase;
+
   font-size: 2rem;
   margin-bottom: 30px;
   color: ${({ theme }) => theme.colors.green};

@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
+    "typeRoots": ["node_modules/@types"],
     "baseUrl": "./src/*",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "*": ["node_modules/*"]
+      "*": ["node_modules/*"],
+      "swiper/*": ["node_modules/swiper/*"]
     }
   },
   "files": [],

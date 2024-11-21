@@ -23,7 +23,7 @@ export function Presentation() {
   return (
     <PresentationContainer data-aos='zoom-in-up'>
       <Content>
-        <Title>Conheça Nossos Serviços</Title>
+        <Title>Veja nossas aplicações reais</Title>
 
         <VideoContainer onClick={toggleModal}>
           <PlayButton aria-label='Assistir vídeo'>

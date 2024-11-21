@@ -1,6 +1,7 @@
 export interface Product {
   id: number
-  price: number
+  oldPrice: number
+  currentPrice: number
   image: string
   title: string
   description: string
@@ -9,7 +10,8 @@ export interface Product {
 export const products: Product[] = [
   {
     id: 1,
-    price: 1,
+    oldPrice: 1,
+    currentPrice: 1,
     image: "https://dtsel6fm8qr8n.cloudfront.net/IMG_8098.avif",
     title: "Ampola de Reestruturação do Cortex",
     description:
@@ -18,7 +20,8 @@ export const products: Product[] = [
   },
   {
     id: 2,
-    price: 1,
+    oldPrice: 1,
+    currentPrice: 1,
     image: "https://dtsel6fm8qr8n.cloudfront.net/serun.avif",
     title: "Serum Revitalizante",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
@@ -26,7 +29,8 @@ export const products: Product[] = [
   },
   {
     id: 3,
-    price: 1,
+    oldPrice: 1,
+    currentPrice: 1,
     image:
       "https://dtsel6fm8qr8n.cloudfront.net/gloss_natual_e_clean_detox.avif",
     title: "Kit Alisamento Natural",
@@ -35,7 +39,8 @@ export const products: Product[] = [
   },
   {
     id: 4,
-    price: 1,
+    oldPrice: 1,
+    currentPrice: 1,
     image: "https://dtsel6fm8qr8n.cloudfront.net/mascara.avif",
     title: "Mascara Equilíbrio THERAPY",
     description:
@@ -44,7 +49,8 @@ export const products: Product[] = [
   },
   {
     id: 5,
-    price: 1,
+    oldPrice: 1,
+    currentPrice: 1,
     image: "https://dtsel6fm8qr8n.cloudfront.net/escova.webp",
     title: "Serum Revitalizante",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing ",
@@ -52,7 +58,8 @@ export const products: Product[] = [
   },
   {
     id: 6,
-    price: 1,
+    oldPrice: 1,
+    currentPrice: 1,
     image: "https://dtsel6fm8qr8n.cloudfront.net/perfume capilar.avif",
     title: "Perfume Capilar",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
@@ -60,7 +67,8 @@ export const products: Product[] = [
   },
   {
     id: 7,
-    price: 1,
+    oldPrice: 1,
+    currentPrice: 1,
     image: "https://dtsel6fm8qr8n.cloudfront.net/reestruturador_bifasico.avif",
     title: "Reestruturador bifásico Equilíbrio THERAPY",
     description:
@@ -69,7 +77,8 @@ export const products: Product[] = [
   },
   {
     id: 8,
-    price: 1,
+    oldPrice: 1,
+    currentPrice: 1,
     image: "https://dtsel6fm8qr8n.cloudfront.net/restaurador cmc.avif",
     title: "Restaurador do CMC Capilar",
     description:
@@ -78,7 +87,8 @@ export const products: Product[] = [
   },
   {
     id: 9,
-    price: 1,
+    oldPrice: 1,
+    currentPrice: 1,
     image: "https://dtsel6fm8qr8n.cloudfront.net/shampoo.avif",
     title: "Shampoo Equilíbrio THERAPY",
     description:

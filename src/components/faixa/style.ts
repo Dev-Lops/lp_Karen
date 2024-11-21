@@ -12,7 +12,7 @@ export const ParallaxContainer = styled.div`
   font-family: "Syncopate", serif;
   font-weight: 500;
   text-transform: uppercase;
-  padding: 20px 0; // Garantir algum padding para a seção
+  padding: 10px 0; // Garantir algum padding para a seção
 `
 
 // Estilos do Scroller (texto rolante)

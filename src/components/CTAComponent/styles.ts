@@ -4,14 +4,16 @@ import styled from "styled-components"
 export const CTAContainer = styled.section`
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  color: white;
-  text-align: center;
+  align-items: center;
+
   width: 100vw;
-  padding: 2rem 1.25rem;
-  background-color: ${({ theme }) =>
-    theme.colors.background}; // Adicionando fundo opcional
+  height: 100vh;
+
+  color: #000;
+  text-align: center;
+
+  margin-bottom: 20px;
 `
 
 // Título da seção CTA
@@ -20,28 +22,30 @@ export const CTATitle = styled.h2`
   margin-bottom: 20px;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.green};
+  font-family: "Baskervville", serif;
+  text-transform: uppercase;
+  font-weight: 100;
 `
 
 // Descrição da seção CTA
 export const CTADescription = styled.p`
   font-size: clamp(1.1rem, 4vw, 1.5rem);
   margin-bottom: 40px;
-  max-width: 900px;
+  max-width: 800px;
   text-align: center; // Garante que o texto fique centralizado
   line-height: 1.6;
 
   img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     border-radius: 8px;
-    margin-top: 20px;
   }
 `
 
 // Contêiner de botões
 export const CTAButtons = styled.div`
   display: flex;
-  gap: 20px;
+
   justify-content: center;
   width: 100%;
   flex-wrap: wrap; // Permite que os botões se ajustem em telas menores
