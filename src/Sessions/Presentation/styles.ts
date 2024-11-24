@@ -8,9 +8,13 @@ export const PresentationContainer = styled.section`
   align-items: center;
   width: 100vw;
   padding: 10px;
-  height: 90vh;
+  height: 50vh;
   gap: 30px;
   background-color: ${({ theme }) => theme.colors.white};
+
+  @media (min-width: 80rem){
+    height: 100%;
+  }
 `
 
 export const Content = styled.div`

@@ -27,6 +27,15 @@ export const ContainerKit = styled(Container)`
       height: 600px;
     }
   }
+
+  @media (width >= 87.5rem) {
+    width: 100%;
+
+    & > img {
+      width: 550px;
+      height: 650px;
+    }
+  }
 `
 
 export const ContentKit = styled.main`
@@ -40,7 +49,7 @@ export const ContentKit = styled.main`
     margin: 10px 0 20px;
   }
 
-  width: 375px;
+  width: 100%;
 
   & h1 {
     font-size: 2rem;
@@ -60,7 +69,9 @@ export const ContentKit = styled.main`
     text-align: center;
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 80rem) {
+    width: 40%;
+
     & h1 {
       font-size: 3rem;
       text-align: center;
@@ -72,5 +83,8 @@ export const ContentKit = styled.main`
       width: 100%;
       text-transform: uppercase;
     }
+  }
+
+  @media (min-width: 87.5rem) {
   }
 `

@@ -1,11 +1,9 @@
 // src/components/ProductsGrid/ProductsGrid.tsx
 
-import LazyImage from '../LazyImg'
-import { products } from './data'
+import LazyImage from "../LazyImg"
+import { products } from "./data"
 import { Section, Container, CardWrapper, CardContent } from "./styles"
 import { CircleArrowOutUpRight, CircleSlash2 } from "lucide-react"
-
-
 
 export function ProductsGrid() {
   return (

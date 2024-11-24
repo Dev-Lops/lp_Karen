@@ -16,25 +16,21 @@ export const TestimonialCard = styled.div`
 
   /* Responsividade */
   @media (max-width: 1200px) {
-    padding: 15px;
   }
 
   @media (max-width: 768px) {
-    padding: 10px;
   }
 `
 
 export const ClientImage = styled.img`
   width: 100%;
-  max-width: 400px;
+
   height: auto;
-  object-fit: cover;
-  border-radius: 50%;
   margin-bottom: 20px;
 
   /* Responsividade */
-  @media (max-width: 768px) {
-    max-width: 250px; /* Ajusta para telas menores */
+  @media (min-width: 1280px) {
+    width: 60%;
   }
 `
 

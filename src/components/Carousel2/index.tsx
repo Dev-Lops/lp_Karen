@@ -3,23 +3,30 @@ import { EmblaOptionsType } from "embla-carousel"
 import useEmblaCarousel from "embla-carousel-react"
 import Fade from "embla-carousel-fade"
 import * as S from "./styles"
-import { Product } from "./data" // Certifique-se de importar o tipo ou a lista de produtos
+import { Product } from "./data"
 
 type PropType = {
-  slides: Product[] // Alterado para usar Product[] em vez de number[]
+  slides: Product[]
   options?: EmblaOptionsType
 }
 
 const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(options, [Fade()])
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { ...options, loop: true }, // Loop habilitado para melhor experiência
+    [Fade()] // Adiciona a transição de fade
+  )
+
+  // Função para formatar preços em BRL
+  const formatPrice = (price: number) =>
+    price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
 
   useEffect(() => {
     if (emblaApi) {
       const interval = setInterval(() => {
-        emblaApi.scrollNext() // Muda para o próximo slide
-      }, 5000) // Intervalo de 5 segundos para mudar o slide
+        emblaApi.scrollNext() // Avança para o próximo slide automaticamente
+      }, 5000) // Intervalo de 5 segundos
 
-      return () => clearInterval(interval) // Limpar intervalo quando o componente for desmontado
+      return () => clearInterval(interval) // Limpa o intervalo ao desmontar o componente
     }
   }, [emblaApi])
 
@@ -30,21 +37,25 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
           {slides.map((product) => (
             <S.EmblaSlide key={product.id}>
               <S.EmblaSlideImgWrapper>
+                <S.DiscountTag>{`-${product.discount}%`}</S.DiscountTag>
                 <S.EmblaSlideImg src={product.image} alt={product.title} />
-                <S.EmblaSlideInfo>
-                  <h3>{product.title}</h3>
-
-                  <p>
-                    <strong className='old-price'>{`De R$ ${product.oldPrice}`}</strong>
-                    <span className='current-price'>{` Por R$ ${product.currentPrice}`}</span>
-                  </p>
-                  {product.inStock ? (
-                    <span>Em estoque</span>
-                  ) : (
-                    <span>Produto Indisponível</span>
-                  )}
-                </S.EmblaSlideInfo>
               </S.EmblaSlideImgWrapper>
+              <S.EmblaSlideInfo>
+                <S.ProductTitle>{product.title}</S.ProductTitle>
+                <S.ProductDescription>
+                  <strong className='old-price'>{`De ${formatPrice(
+                    product.oldPrice
+                  )}`}</strong>
+                  <span className='current-price'>{` Por ${formatPrice(
+                    product.currentPrice
+                  )}`}</span>
+                </S.ProductDescription>
+                {product.inStock ? (
+                  <span>Em estoque</span>
+                ) : (
+                  <span>Produto Indisponível</span>
+                )}
+              </S.EmblaSlideInfo>
             </S.EmblaSlide>
           ))}
         </S.EmblaContainer>

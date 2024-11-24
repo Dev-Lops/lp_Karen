@@ -4,38 +4,7 @@ import "slick-carousel/slick/slick.css" // Estilos do slick
 import "slick-carousel/slick/slick-theme.css" // Estilos do tema do slick
 import { TestimonialSection, SectionTitle, CarouselContainer } from "./styles"
 import { Testimonial } from "../../components/TestimonialCarousel"
-
-import img1 from "../../assets/testemonials/1.png"
-import img2 from "../../assets/testemonials/2.png"
-import img3 from "../../assets/testemonials/3.png"
-import img4 from "../../assets/testemonials/4.png"
-
-// Dados dos Testemunhos
-const testimonialsData = [
-  {
-    image: img1,
-    name: "Myrland",
-    rating: 5,
-  },
-  {
-    image: img2,
-    name: "Maria Oliveira",
-    text: "Muito bom, recomendo para todos! A qualidade é excelente.",
-    rating: 5,
-  },
-  {
-    image: img3,
-    name: "Carlos Pereira",
-    text: "Atendeu minhas expectativas, mas poderia melhorar a entrega.",
-    rating: 5,
-  },
-  {
-    image: img4,
-    name: "Carlos Pereira",
-    text: "Atendeu minhas expectativas, mas poderia melhorar a entrega.",
-    rating: 5,
-  },
-]
+import { testimonialsData } from "./data"
 
 export const TestimonialSectionComponent = () => {
   const [loading, setLoading] = useState(true) // Estado para verificar se os dados estão carregados
@@ -74,13 +43,7 @@ export const TestimonialSectionComponent = () => {
         ) : (
           <Slider {...settings}>
             {testimonialsData.map((testimonial, index) => (
-              <Testimonial
-                key={index}
-                image={testimonial.image}
-                name={testimonial.name}
-                text={testimonial.text ?? "Texto padrão"}
-                rating={testimonial.rating}
-              />
+              <Testimonial key={index} image={testimonial.image} />
             ))}
           </Slider>
         )}

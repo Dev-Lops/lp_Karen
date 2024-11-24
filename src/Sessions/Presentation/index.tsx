@@ -40,7 +40,7 @@ export function Presentation() {
           <ModalOverlay onClick={toggleModal}>
             <ModalContent onClick={(e) => e.stopPropagation()}>
               <ReactPlayer
-                url='https://dtsel6fm8qr8n.cloudfront.net/karen_frazão (1080p).mp4'
+                url='https://dtsel6fm8qr8n.cloudfront.net/karen_frazão (1080p).mp4.MOV'
                 width='100%'
                 height='100%'
                 controls

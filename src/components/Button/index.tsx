@@ -18,7 +18,7 @@ const sizes = {
     fontSize: "1rem",
   },
   medium: {
-    padding: "20px 25px",
+    padding: "15px 30px",
     fontSize: "1.125rem",
   },
   large: {
@@ -33,12 +33,13 @@ const StyledButton = styled.a<{
 }>`
   display: inline-block;
   background-color: ${({ $backgroundColor, theme }) =>
-    $backgroundColor || theme.colors.primary};
+    $backgroundColor || theme.colors.green};
   color: ${({ color, theme }) => color || theme.colors.textLight};
   text-decoration: none;
   border: 1px solid ${({ theme }) => theme.colors.gold};
   border-radius: 0.5rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Jura", serif;
+  text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 1px;
   cursor: pointer;
@@ -67,6 +68,7 @@ const StyledButton = styled.a<{
       opacity: 1;
     }
   }
+  font-weight: 400;
 
   &:hover {
     opacity: 0.9;
@@ -79,13 +81,13 @@ const StyledButton = styled.a<{
   }
 
   @media (min-width: 80rem) {
-    padding: 20px 30px;
+    padding: 15px 30px;
     font-size: 1.5rem;
   }
 
-  @media (min-width: 1400px) {
-    padding: 16px 32px;
-    font-size: 2rem;
+  @media (min-width: 87.5rem) {
+    padding: 15px 30px;
+    font-size: 1.5rem;
   }
 `
 

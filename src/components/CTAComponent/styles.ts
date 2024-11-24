@@ -1,76 +1,80 @@
 import styled from "styled-components"
 
-// Container da seção de CTA
+// Container principal da seção de CTA
 export const CTAContainer = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-
-  width: 100vw;
-  height: 100vh;
-
-  color: #000;
-  text-align: center;
-
-  margin-bottom: 20px;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  color: ${({ theme }) => theme.colors.green};
 `
 
-// Título da seção CTA
+// Conteúdo principal
+export const CTAContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`
+
+// Título principal
 export const CTATitle = styled.h2`
-  font-size: clamp(1.5rem, 5vw, 2.5rem); // Tamanho da fonte adaptável
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   margin-bottom: 20px;
-  font-weight: 700;
   color: ${({ theme }) => theme.colors.green};
   font-family: "Baskervville", serif;
   text-transform: uppercase;
   font-weight: 100;
 `
 
-// Descrição da seção CTA
-export const CTADescription = styled.p`
-  font-size: clamp(1.1rem, 4vw, 1.5rem);
-  margin-bottom: 40px;
-  max-width: 800px;
-  text-align: center; // Garante que o texto fique centralizado
-  line-height: 1.6;
+// Contêiner da imagem
+export const ImageContainer = styled.div`
+  width: 100%;
+  max-width: 600px;
+  margin: 20px 0;
+  border-radius: 10px;
+  overflow: hidden;
 
   img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    /* object-fit: cover; */
+    border-radius: 10px;
   }
 `
 
-// Contêiner de botões
+// Descrição
+export const CTADescription = styled.div`
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  line-height: 1.6;
+  margin: 20px;
+  max-width: 900px;
+
+  ul {
+    margin: 15px 0;
+    padding-left: 20px;
+    list-style-type: square;
+    text-align: left;
+
+    li {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  }
+
+  p {
+    margin: 10px 0;
+  }
+`
+
+// Contêiner dos botões
 export const CTAButtons = styled.div`
   display: flex;
-
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
   width: 100%;
-  flex-wrap: wrap; // Permite que os botões se ajustem em telas menores
-`
-
-// Estilo do botão
-export const CTAButton = styled.button<{ primary?: boolean }>`
-  padding: 12px 30px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  background-color: ${({ primary, theme }) =>
-    primary ? theme.colors.green : theme.colors.secondaryLight};
-  color: ${({ primary }) => (primary ? "white" : "black")};
-
-  &:hover {
-    background-color: ${({ primary, theme }) =>
-      primary ? theme.colors.secondaryDark : theme.colors.secondaryLightDark};
-  }
-
-  @media (max-width: 600px) {
-    padding: 10px 20px; // Ajuste para telas menores
-  }
 `

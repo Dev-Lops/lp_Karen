@@ -8,7 +8,6 @@ import "animate.css"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
-
 export const GlobalStyles = createGlobalStyle`
 @font-face {
   font-family: 'CustomFont';
@@ -31,8 +30,7 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+
 
     scroll-behavior: smooth;
   }
@@ -44,6 +42,8 @@ export const GlobalStyles = createGlobalStyle`
   align-items: center;
   justify-content: center;
   font-display: swap;
+  -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
 
   color: ${({ theme }) => theme.colors.brunswickGreen};

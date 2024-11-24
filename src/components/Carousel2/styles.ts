@@ -2,20 +2,20 @@ import styled from "styled-components"
 
 export const Embla = styled.div`
   max-width: 100vw;
-  margin: auto;
-  --slide-height: 100vh;
-  --slide-spacing: 1rem;
-  --slide-size: 100%;
 
-  /* Media Queries para responsividade */
+  --slide-height: 80vh;
+  /* --slide-spacing: 1rem; */
+  --slide-size: 100%;
+  user-select: none;
+
   @media (max-width: 80rem) {
-    --slide-height: 100vh; /* Menor altura para tablets */
-    --slide-size: 100%; /* Ajusta o tamanho do slide em telas médias */
+    --slide-height: 80vh;
+    --slide-size: 100%;
   }
 
-  @media (max-width: 480px) {
-    --slide-height: 100vh; /* Menor altura para dispositivos móveis */
-    --slide-size: 100%; /* Ajuste total da largura do slide */
+  @media (max-width: 87.5rem) {
+    --slide-height: 80vh;
+    --slide-size: 100%;
   }
 `
 
@@ -28,6 +28,8 @@ export const EmblaContainer = styled.div`
   touch-action: pan-y pinch-zoom;
   margin-left: calc(var(--slide-spacing) * -1);
   transition: transform 0.5s ease-in-out; /* Adicionando transição suave */
+  gap: var(--slide-spacing); /* Espaçamento entre slides */
+  transition: opacity 0.8s ease, transform 0.8s ease; /* Transição suave para o fade */
 `
 
 export const EmblaSlide = styled.div`
@@ -35,43 +37,94 @@ export const EmblaSlide = styled.div`
   flex: 0 0 var(--slide-size);
   min-width: 0;
   padding-left: var(--slide-spacing);
+
+  display: flex;
+  flex-direction: column; /* Por padrão, coluna */
+
+  @media (min-width: 768px) {
+    flex-direction: row; /* Alinha lado a lado em telas maiores */
+  }
 `
 
 export const EmblaSlideImgWrapper = styled.div`
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 100%; /* Ajusta o tamanho da imagem em telas maiores */
+  max-width: 100%;
+  flex: 1;
+
+  @media (min-width: 80rem) {
+    width: 100%;
+  }
 `
 
 export const EmblaSlideImg = styled.img`
   display: block;
   height: var(--slide-height);
-  width: 100vw;
+  width: 100%;
   object-fit: cover;
   user-select: none;
+  border-radius: 8px;
 
   @media (min-width: 80rem) {
     object-fit: cover;
+    /* height: 100%; */
+    /* height: 70%; */
+  }
+
+  /* @media (min-width: 87.5rem) {
+    object-fit: cover;
+    height: 70%; /* Ajusta a altura em telas maiores */
+`
+
+export const DiscountTag = styled.div`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red; /* Cor de destaque para a tarja */
+  color: white;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  z-index: 1;
+  font-size: 0.9rem;
+  font-size: 1.5rem; /* Ajuste para telas maiores */
+
+  @media (min-width: 768px) {
+    font-size: 2rem; /* Ajuste para telas maiores */
   }
 `
 
 export const EmblaSlideInfo = styled.div`
-  position: absolute;
   font-family: "Jura", serif;
-
   font-weight: 400;
-  bottom: 10px;
-  left: 10px;
-  color: white;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgb(85, 118, 85, 0.8);
   padding: 1rem;
   border-radius: 8px;
-  width: calc(100% - 20px);
+  flex: 1; /* O conteúdo ocupa o restante do espaço */
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  @media (min-width: 80rem) {
+    width: 100%;
+    /* height: 70%; */
+
+    padding: 2rem; /* Maior espaçamento */
+  }
+  @media (min-width: 87.5rem) {
+    /* height: 70%; */
+
+    padding: 2rem; /* Maior espaçamento */
+  }
 
   .old-price {
     text-decoration: line-through;
     margin-right: 0.5rem;
-    color: #fff;
+    color: #e74143;
     font-weight: 100;
   }
 
@@ -80,56 +133,45 @@ export const EmblaSlideInfo = styled.div`
     color: #fff;
   }
 
-  /* Ajuste responsivo para o texto */
   @media (min-width: 80rem) {
-    font-size: 2rem; /* Reduzir o tamanho da fonte para telas médias */
-    padding: 0.8rem; /* Ajustar o padding para telas menores */
-  }
-  @media (min-width: 90rem) {
-    font-size: 2.5rem; /* Reduzir o tamanho da fonte para telas médias */
-    padding: 0.8rem; /* Ajustar o padding para telas menores */
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.5rem; /* Fonte ainda menor em dispositivos móveis */
-    padding: 0.6rem; /* Menor padding */
+    font-size: 1.25rem;
+    padding: 0.6rem;
   }
 `
 
 export const ProductTitle = styled.h3`
-  font-size: 1rem;
-  margin: 0;
+  font-size: 1.125rem;
 
   @media (min-width: 80rem) {
-    font-size: 1.5rem; /* Ajuste do tamanho da fonte para tablets */
+    font-size: 2rem;
   }
 
-  @media (max-width: 480px) {
-    font-size: 0.9rem; /* Ajuste do tamanho da fonte para celulares */
+  @media (min-width: 87.5rem) {
+    font-size: 2.5rem;
   }
 `
 
 export const ProductDescription = styled.p`
-  font-size: 0.9rem;
+  font-size: 1.275rem;
   margin: 0.5rem 0;
 
-  @media (max-width: 768px) {
-    font-size: 0.8rem; /* Ajuste do tamanho da fonte para tablets */
+  @media (min-width: 80rem) {
+    font-size: 1.75rem;
   }
 
-  @media (max-width: 480px) {
-    font-size: 0.7rem; /* Ajuste do tamanho da fonte para dispositivos móveis */
+  @media (min-width: 87.5rem) {
+    font-size: 2rem;
   }
 `
 
-export const ProductPrice = styled.div`
-  font-size: 1rem;
+export const inStock = styled.span`
+  font-size: 1.5rem;
 
-  @media (max-width: 768px) {
-    font-size: 0.9rem; /* Reduzir a fonte para dispositivos menores */
+  @media (min-width: 80rem) {
+    font-size: 2rem;
   }
 
-  @media (max-width: 480px) {
-    font-size: 0.8rem; /* Reduzir ainda mais a fonte em dispositivos móveis */
+  @media (min-width: 87.5rem) {
+    font-size: 2.5;
   }
 `
