@@ -21,26 +21,53 @@ export function PresentationKit() {
   const { title, description, imageUrl, starsImage, purchaseLink } = product
 
   return (
-    <ContainerKit
-      data-aos='fade-up'
-      data-aos-anchor-placement='top-bottom'
-      id='kit'
-    >
-      <img src={imageUrl} alt={title} />
-      <ContentKit>
-        <h1>{title}</h1>
-        <LazyImage src={starsImage} alt='5 estrelas' loading='lazy' />
-        <p>{description}</p>
-        <Button
-          backgroundColor='#557655'
-          href={purchaseLink}
-          target='_blank'
-          aria-label={`Saiba mais sobre ${title}`}
-          className='jello-horizontal'
-        >
-          Compre agora
-        </Button>
-      </ContentKit>
-    </ContainerKit>
+    <>
+      <ContainerKit>
+        <img
+          data-aos-anchor-placement='center-bottom'
+          data-aos='fade-right'
+          data-aos-offset='100'
+          data-aos-easing='ease-in-sine'
+          src={imageUrl}
+          alt={title}
+        />
+        <ContentKit>
+          <h1
+            data-aos-anchor-placement='center-bottom'
+            data-aos='fade-left'
+            data-aos-offset='100'
+            data-aos-easing='ease-in-sine'
+          >
+            {title}
+          </h1>
+          <LazyImage
+            data-aos-anchor-placement='center-bottom'
+            data-aos='fade-up'
+            data-aos-offset='100'
+            data-aos-easing='ease-in-sine'
+            src={starsImage}
+            alt='5 estrelas'
+            loading='lazy'
+          />
+          <p
+            data-aos-anchor-placement='center-bottom'
+            data-aos='fade-up'
+            data-aos-offset='100'
+            data-aos-easing='ease-in-sine'
+          >
+            {description}
+          </p>
+          <Button
+            backgroundColor='#557655'
+            href={purchaseLink}
+            target='_blank'
+            aria-label={`Saiba mais sobre ${title}`}
+            className='jello-horizontal'
+          >
+            Compre agora
+          </Button>
+        </ContentKit>
+      </ContainerKit>
+    </>
   )
 }

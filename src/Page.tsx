@@ -19,10 +19,10 @@ export const LandingPage = () => {
       <BlackFriday />
       <CTA />
       <Benefits />
+      <Presentation />
       <PresentationKit />
       <Product />
       <ProductList />
-      <Presentation />
       <TestimonialSectionComponent />
       <CountdownBlack />
       <FAQ />

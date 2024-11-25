@@ -36,8 +36,10 @@ export const TestimonialSectionComponent = () => {
 
   return (
     <TestimonialSection>
-      <SectionTitle>O que nossos clientes dizem</SectionTitle>
-      <CarouselContainer>
+      <SectionTitle data-aos='fade-up' data-aos-duration='3000'>
+        O que nossos clientes dizem
+      </SectionTitle>
+      <CarouselContainer >
         {loading ? (
           <p>Carregando...</p>
         ) : (

@@ -7,12 +7,12 @@ export const PresentationContainer = styled.section`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  padding: 10px;
   height: 50vh;
-  gap: 30px;
-  background-color: ${({ theme }) => theme.colors.white};
+  padding: 20px;
 
-  @media (min-width: 80rem){
+  background-color: ${({ theme }) => theme.colors.green};
+
+  @media (min-width: 80rem) {
     height: 100%;
   }
 `
@@ -37,9 +37,13 @@ export const Title = styled.h2`
   font-weight: 100;
   text-transform: uppercase;
 
-  font-size: 2rem;
+  font-size: 1rem;
   margin-bottom: 30px;
-  color: ${({ theme }) => theme.colors.green};
+  color: ${({ theme }) => theme.colors.white};
+
+  @media (min-width: 80rem) {
+    font-size: 1.5rem;
+  }
 `
 
 export const VideoContainer = styled.div`
@@ -111,7 +115,7 @@ export const ModalContent = styled.div`
 
 export const Description = styled.p`
   font-size: 1rem;
-  color: #333;
+  color: #fff;
   text-align: center;
   margin-top: 20px;
   max-width: 600px;

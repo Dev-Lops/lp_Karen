@@ -30,25 +30,27 @@ const BenefitCardComponent = memo(
 
 export function Benefits() {
   return (
-    <BenefitsContainer>
-      <BenefitCardComponent
-        countFrom={0}
-        countTo={1000}
-        label='Clientes Satisfeitos'
-        suffix='+'
-      />
-      <BenefitCardComponent
-        countFrom={0}
-        countTo={500}
-        label='Feedbacks positivos'
-        suffix='+'
-      />
-      <BenefitCardComponent
-        countFrom={0}
-        countTo={100}
-        label='Taxa de satisfação'
-        suffix='%'
-      />
-    </BenefitsContainer>
+    <>
+      <BenefitsContainer>
+        <BenefitCardComponent
+          countFrom={0}
+          countTo={1000}
+          label='Clientes Satisfeitos'
+          suffix='+'
+        />
+        <BenefitCardComponent
+          countFrom={0}
+          countTo={500}
+          label='Feedbacks positivos'
+          suffix='+'
+        />
+        <BenefitCardComponent
+          countFrom={0}
+          countTo={100}
+          label='Taxa de satisfação'
+          suffix='%'
+        />
+      </BenefitsContainer>
+    </>
   )
 }

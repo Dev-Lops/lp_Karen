@@ -8,10 +8,17 @@ import { CircleArrowOutUpRight, CircleSlash2 } from "lucide-react"
 export function ProductsGrid() {
   return (
     <Section>
-      <h2>Nossos Produtos</h2>
+      <h2 data-aos='fade-up' data-aos-duration='3000'>
+        Nossos Produtos
+      </h2>
       <Container>
         {products.map((product) => (
-          <CardWrapper key={product.id} data-aos='zoom-in'>
+          <CardWrapper
+            key={product.id}
+            data-aos='flip-left'
+            data-aos-easing='ease-out-cubic'
+            data-aos-duration='2000'
+          >
             <div className={`box ${product.isOutOfStock ? "disabled" : ""}`}>
               <div
                 className={`imgBox ${product.isOutOfStock ? "outOfStock" : ""}`}

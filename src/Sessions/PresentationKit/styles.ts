@@ -6,16 +6,17 @@ export const ContainerKit = styled(Container)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+
   color: ${({ theme }) => theme.colors.green};
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
 
   & > img {
     width: 250px;
     height: 350px;
     margin-bottom: 20px;
     border-radius: 10px;
+    background-color: transparent;
   }
 
   @media (width >= 80rem) {
@@ -64,7 +65,6 @@ export const ContentKit = styled.main`
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 15px;
-    text-transform: uppercase;
     font-family: "Montserrat", serif;
     text-align: center;
   }
@@ -80,8 +80,7 @@ export const ContentKit = styled.main`
     & p {
       font-size: 1.25rem;
       font-weight: 400;
-      width: 100%;
-      text-transform: uppercase;
+      width: 80%;
     }
   }
 

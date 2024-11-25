@@ -7,6 +7,9 @@ export const ContainerProduct = styled(Container)`
   height: 100vh;
   justify-content: center;
   align-items: center;
+  background-color: ${({ theme }) => theme.colors.green};
+  margin: 0;
+  border: 0;
 
   @media (max-width: 1280px) {
     height: 50%;

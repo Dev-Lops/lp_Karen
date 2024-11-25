@@ -55,12 +55,13 @@ export const products: Product[] = [
   },
   {
     id: 5,
-    oldPrice: 1,
-    discount: 20,
-    currentPrice: 1,
+    oldPrice: 30,
+    discount: 30,
+    currentPrice: 21,
     image: "https://dtsel6fm8qr8n.cloudfront.net/img5.avif",
-    title: "Escova Terapêutica",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing ",
+    title: "Escova Fabulos Hair",
+    description:
+      "A escova Fabulos Hair ativa a circulação sanguínea do couro cabeludo promovendo o crescimento saudável dos seus fios, desembaraça sem rompimentos, auxilia no crescimento saudável, previne triconodose, pontas duplas, ralas e afinadas.",
     inStock: true,
   },
   {
@@ -70,7 +71,8 @@ export const products: Product[] = [
     currentPrice: 32.8,
     image: "https://dtsel6fm8qr8n.cloudfront.net/img4.avif",
     title: "Perfume Antifrizz",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+    description:
+      "O Perfume Antifrizz foi desenvolvido para remover a evidência dos fios frizzados, arrepiados e eletrizados.",
     inStock: true,
   },
   {

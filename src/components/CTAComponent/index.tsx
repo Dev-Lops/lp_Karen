@@ -12,7 +12,9 @@ import LazyImage from "../LazyImg/index.tsx"
 export function CTASection() {
   return (
     <CTAContainer>
-      <CTATitle>Sobre nós</CTATitle>
+      <CTATitle data-aos='fade-up' data-aos-duration='3000'>
+        Sobre nós
+      </CTATitle>
       <CTAContent>
         <ImageContainer>
           <LazyImage
@@ -23,22 +25,59 @@ export function CTASection() {
         </ImageContainer>
 
         <CTADescription>
-          <p>
+          <p
+            data-aos='fade-right'
+            data-aos-offset='100'
+            data-aos-easing='ease-in-sine'
+          >
             Com mais de <strong>6 anos de experiência</strong>, nos
             especializamos em trazer soluções naturais e inovadoras para nossos
             clientes, sempre com responsabilidade e conhecimento.
           </p>
 
           <p>
-            <strong>Nossas Especialidades:</strong>
+            <strong
+              data-aos-anchor-placement='center-bottom'
+              data-aos='fade-right'
+              data-aos-offset='100'
+              data-aos-easing='ease-in-sine'
+            >
+              Nossas Especialidades:
+            </strong>
           </p>
           <ul>
-            <li>Alisamento Natural</li>
-            <li>Tricologia e Terapia Integrativa</li>
-            <li>Tratamento para Caspa, Calvície e outras Afecções Capilares</li>
+            <li
+              data-aos-anchor-placement='center-bottom'
+              data-aos='fade-right'
+              data-aos-offset='100'
+              data-aos-easing='ease-in-sine'
+            >
+              Alisamento Natural
+            </li>
+            <li
+              data-aos='fade-right'
+              data-aos-offset='100'
+              data-aos-anchor-placement='center-bottom'
+              data-aos-easing='ease-in-sine'
+            >
+              Tricologia e Terapia Integrativa
+            </li>
+            <li
+              data-aos='fade-right'
+              data-aos-offset='100'
+              data-aos-anchor-placement='center-bottom'
+              data-aos-easing='ease-in-sine'
+            >
+              Tratamento para Caspa, Calvície e outras Afecções Capilares
+            </li>
           </ul>
 
-          <p>
+          <p
+            data-aos-anchor-placement='center-bottom'
+            data-aos='fade-right'
+            data-aos-offset='100'
+            data-aos-easing='ease-in-sine'
+          >
             Trabalhamos com técnicas e produtos de alta qualidade que respeitam
             sua saúde capilar, proporcionando resultados incríveis e duradouros.
           </p>

@@ -18,7 +18,7 @@ export const ParallaxContainer = styled.div`
 // Estilos do Scroller (texto rolante)
 export const Scroller = styled(motion.div)`
   text-transform: uppercase;
-  font-size: clamp(1.5rem, 5vw, 3rem); // Font-size responsivo
+  font-size: clamp(1.5rem, 5vw, 2rem); // Font-size responsivo
   display: flex;
   justify-content: flex-start;
   align-items: center;

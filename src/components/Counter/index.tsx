@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useTransform, animate } from "framer-motion"
 import { useEffect, useState, useRef } from "react"
 
+
 interface CounterProps {
   from: number // Valor inicial do contador
   to: number // Valor final do contador

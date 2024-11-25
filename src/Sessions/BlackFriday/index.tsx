@@ -10,7 +10,7 @@ export function BlackFriday() {
         <div className='icon'>
           <BadgePercent size={36} />
         </div>
-        <div>Black Friday</div>
+        <div>Black Friday - 28 | 29 | 30 de novembro</div>
       </ParallaxSection>
     </BlackfridaySection>
   )

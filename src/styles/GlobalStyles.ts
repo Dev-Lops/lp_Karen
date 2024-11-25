@@ -63,21 +63,21 @@ export const Container = styled.div`
 
   @media (max-width: 375px) {
     /* Smartphone */
-    max-width: 100%;
+    max-width: 100vw;
   }
 
   @media (min-width: 376px) and (max-width: 765px) {
     /* Tablet */
-    max-width: 765px;
+    max-width: 100vw;
   }
 
   @media (min-width: 766px) and (max-width: 1280px) {
     /* Notebook */
-    max-width: 100%;
+    max-width: 100vw;
   }
 
   @media (min-width: 1281px) {
     /* Desktop */
-    max-width: 100%;
+    max-width: 100vw;
   }
 `

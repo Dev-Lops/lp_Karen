@@ -51,40 +51,48 @@ export const EmblaSlideImgWrapper = styled.div`
   width: 100%; /* Ajusta o tamanho da imagem em telas maiores */
   max-width: 100%;
   flex: 1;
+  justify-content: center;
+  align-items: center;
 
   @media (min-width: 80rem) {
-    width: 100%;
+    width: 90%;
+  }
+  @media (min-width: 87.5rem) {
+    height: 90%;
   }
 `
 
 export const EmblaSlideImg = styled.img`
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: var(--slide-height);
   width: 100%;
   object-fit: cover;
   user-select: none;
   border-radius: 8px;
+  /* height: 100%; */
+  padding: 10px;
+  border-radius: 50px;
 
   @media (min-width: 80rem) {
     object-fit: cover;
-    /* height: 100%; */
     /* height: 70%; */
   }
 
-  /* @media (min-width: 87.5rem) {
-    object-fit: cover;
-    height: 70%; /* Ajusta a altura em telas maiores */
+  @media (min-width: 87.5rem) {
+  }
 `
 
 export const DiscountTag = styled.div`
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 30px;
+  left: 30px;
   background: red; /* Cor de destaque para a tarja */
   color: white;
   font-weight: bold;
   padding: 1rem 2rem;
-  border-radius: 8px;
+  border-radius: 20px;
   z-index: 1;
   font-size: 0.9rem;
   font-size: 1.5rem; /* Ajuste para telas maiores */
@@ -95,9 +103,8 @@ export const DiscountTag = styled.div`
 `
 
 export const EmblaSlideInfo = styled.div`
-  font-family: "Jura", serif;
+  font-family: "Montserrat", serif;
   font-weight: 400;
-  background: rgb(85, 118, 85, 0.8);
   padding: 1rem;
   border-radius: 8px;
   flex: 1; /* O conteúdo ocupa o restante do espaço */
@@ -108,6 +115,7 @@ export const EmblaSlideInfo = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+  gap: 5px;
 
   @media (min-width: 80rem) {
     width: 100%;
@@ -124,8 +132,8 @@ export const EmblaSlideInfo = styled.div`
   .old-price {
     text-decoration: line-through;
     margin-right: 0.5rem;
-    color: #e74143;
-    font-weight: 100;
+    color: pink;
+    font-weight: 400;
   }
 
   .current-price {

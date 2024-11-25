@@ -22,11 +22,15 @@ const FAQSectionComponent = () => {
 
   return (
     <FAQSection>
-      <FAQTitle>Perguntas Frequentes</FAQTitle>
+      <FAQTitle data-aos='fade-up' >
+        Perguntas Frequentes
+      </FAQTitle>
       <Accordion>
         {faqData.map((item, index) => (
           <AccordionItem key={index}>
             <AccordionHeader
+              data-aos='fade-up'
+              data-aos-anchor-placement='center-bottom'
               onClick={() => toggleAccordion(index)}
               aria-expanded={openIndex === index}
               aria-controls={`accordion-content-${index}`}
