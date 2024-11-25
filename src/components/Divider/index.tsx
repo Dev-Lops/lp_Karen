@@ -80,7 +80,7 @@ const FallingLeavesDivider = styled.div<{ width?: number }>`
   }
 `
 
-const generateLeafStyles = (index: number) => {
+const generateLeafStyles = (_index: number) => {
   // Gera um valor aleatório entre 0 e 100 para a posição horizontal da folha
   const leftPosition = `${Math.random() * 100}%`
 
