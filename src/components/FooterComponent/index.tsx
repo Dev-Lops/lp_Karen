@@ -18,10 +18,12 @@ export const FooterComponent = () => {
         <FooterLink
           href='pdfs/politica de privacidade.pdf'
           target='_blank'
+          rel='noopener noreferrer'
           aria-label='Política de Privacidade'
         >
           Política de Privacidade
         </FooterLink>
+
         <FooterLink
           href='pdfs/termos de servicos.pdf'
           target='_blank'
@@ -29,14 +31,18 @@ export const FooterComponent = () => {
         >
           Termos de Serviço
         </FooterLink>
-        <FooterLink href='sac@studiokarenfrazao.com' aria-label='Contato'>
+        <FooterLink
+          href='mailto:sac@studiokarenfrazao.com'
+          aria-label='Contato'
+          target='_blank'
+        >
           Contato
         </FooterLink>
       </FooterLinks>
 
       <FooterSocials>
         <SocialIcon
-          href='sac@studiokarenfrazao.com'
+          href='mailto:sac@studiokarenfrazao.com'
           target='_blank'
           aria-label='Email'
         >

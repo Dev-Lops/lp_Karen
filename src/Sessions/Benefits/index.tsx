@@ -34,13 +34,13 @@ export function Benefits() {
       <BenefitsContainer>
         <BenefitCardComponent
           countFrom={0}
-          countTo={1000}
+          countTo={500}
           label='Clientes Satisfeitos'
           suffix='+'
         />
         <BenefitCardComponent
           countFrom={0}
-          countTo={500}
+          countTo={300}
           label='Feedbacks positivos'
           suffix='+'
         />

@@ -26,11 +26,12 @@ export const BenefitCard = styled.article`
   justify-content: center;
   width: 100%;
   max-width: 380px;
-  color: #fff;
+  color: ${({ theme }) => theme.colors.gold};
   padding: 16px;
   gap: 16px;
   border-radius: 8px;
   text-align: center;
+
   h1 {
     font-size: 2rem;
   }

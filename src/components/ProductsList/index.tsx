@@ -3,7 +3,7 @@
 import LazyImage from "../LazyImg"
 import { products } from "./data"
 import { Section, Container, CardWrapper, CardContent } from "./styles"
-import { CircleArrowOutUpRight, CircleSlash2 } from "lucide-react"
+import { Send, X } from "lucide-react"
 
 export function ProductsGrid() {
   return (
@@ -49,11 +49,11 @@ export function ProductsGrid() {
                 >
                   {product.isOutOfStock ? (
                     <span className='material-symbols-outlined'>
-                      <CircleSlash2 strokeWidth={3} />
+                      <X />
                     </span> //
                   ) : (
                     <span className='material-symbols-outlined'>
-                      <CircleArrowOutUpRight strokeWidth={3} />
+                      <Send />
                     </span> //
                   )}
                 </a>
