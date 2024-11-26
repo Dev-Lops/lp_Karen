@@ -26,7 +26,7 @@ export function Presentation() {
       <PresentationContainer>
         <Content data-aos='zoom-in-up'>
           <Title data-aos='fade-up' data-aos-duration='3000'>
-            Uma breve apresentação dos Nossos Produtos
+            Uma breve apresentação dos nossos produtos
           </Title>
 
           <VideoContainer onClick={toggleModal}>
@@ -63,7 +63,7 @@ export function Presentation() {
           )}
         </Content>
       </PresentationContainer>
-      <Divider  />
+      <Divider />
     </>
   )
 }

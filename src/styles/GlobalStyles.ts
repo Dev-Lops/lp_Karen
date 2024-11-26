@@ -24,6 +24,50 @@ export const GlobalStyles = createGlobalStyle`
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'LeagueGothic';
+  src: url('/fonts/LeagueGothic/LeagueGothic-Regular.woff2') format('woff2'),
+       url('/fonts/LeagueGothic/LeagueGothic-Regular.woff') format('woff'),
+       url('/fonts/LeagueGothic/LeagueGothic-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Finesse';
+  src: url('/fonts/Finesse/Finesse-Flair.woff2') format('woff2'), /* Formato WOFF2 */
+       url('/fonts/Finesse/Finesse-Flair.woff') format('woff'),   /* Formato WOFF */
+       url('/fonts/Finesse/Finesse-Flair.ttf') format('truetype'); /* Formato TTF */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NewTitle';
+  src: url('/fonts/NewTitle/NewTitle-Regular.woff2') format('woff2'), /* Formato WOFF2 */
+       url('/fonts/NewTitle/NewTitle-Regular.woff') format('woff'),   /* Formato WOFF */
+       url('/fonts/NewTitle/NewTitle-Regular.ttf') format('truetype'); /* Formato TTF */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Melodrama';
+  src: url('/fonts/Melodrama/Melodrama-Regular.woff2') format('woff2'), /* Formato WOFF2 */
+       url('/fonts/Melodrama/Melodrama-Regular.woff') format('woff'),   /* Formato WOFF */
+       url('/fonts/Melodrama/Melodrama-Regular.ttf') format('truetype'); /* Formato TTF */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Stardom';
+  src: url('/fonts/Stardom/Stardom-Regular.woff2') format('woff2'), /* Formato WOFF2 */
+       url('/fonts/Stardom/Stardom-Regular.woff') format('woff'),   /* Formato WOFF */
+       url('/fonts/Stardom/Stardom-Regular.ttf') format('truetype'); /* Formato TTF */
+  font-weight: normal;
+  font-style: normal;
+}
+
+
   *,
   *::before,
   *::after  {

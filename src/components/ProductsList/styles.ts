@@ -7,13 +7,12 @@ export const Section = styled.section`
 
   h2 {
     text-transform: uppercase;
-    font-family: "Baskervville", serif;
-
-    font-weight: 100;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    margin-bottom: 20px;
     color: ${({ theme }) => theme.colors.green};
-
-    letter-spacing: 0.025em;
-    font-size: clamp(2rem, 1.8125rem + 0.75vw, 2.6rem);
+    font-family: "Stardom", serif;
+    letter-spacing: 3px;
+    font-weight: bold;
     text-align: center;
   }
 
@@ -36,7 +35,6 @@ export const Section = styled.section`
 `
 
 export const Container = styled.div`
-  margin-top: 5em;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
   gap: 2rem;
@@ -108,8 +106,8 @@ export const CardWrapper = styled.div`
       position: absolute;
       bottom: -0.375rem;
       right: -0.375rem;
-      width: 6rem;
-      height: 6rem;
+      width: 5rem;
+      height: 5rem;
       background: ${({ theme }) => theme.colors.green};
       border-top-left-radius: 50%;
       display: flex;
@@ -169,9 +167,11 @@ export const CardContent = styled.div`
   padding: 0.875rem 0.625rem;
 
   h3 {
-    text-transform: capitalize;
-    font-size: clamp(1rem, 1.25rem + 0.4364vw, 1.75rem);
+    font-size: clamp(1rem, 5vw, 1.6rem);
     color: ${({ theme }) => theme.colors.green};
+    font-family: "Melodrama", serif;
+    letter-spacing: 3px;
+    font-weight: 600;
   }
 
   p {
@@ -189,7 +189,6 @@ export const CardContent = styled.div`
     gap: 0.625rem;
 
     li {
-      text-transform: uppercase;
       background: var(--clr-tag, #ccc);
       color: ${({ theme }) => theme.colors.green};
       font-weight: 700;

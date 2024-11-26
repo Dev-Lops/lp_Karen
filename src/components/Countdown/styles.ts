@@ -15,8 +15,12 @@ export const CountdownSection = styled.section`
 export const CountdownTitle = styled.h2`
   font-size: 1.25rem;
   margin-bottom: 1.25rem;
-  text-transform: uppercase;
-  font-family: "Syncopate", serif;
+
+  font-size: clamp(1rem, 5vw, 2rem);
+  margin-bottom: 20px;
+  color: ${({ theme }) => theme.colors.white};
+  font-family: "Stardom", serif;
+  letter-spacing: 3px;
   font-weight: bold;
 
   @media (min-width: 48rem) {
@@ -30,7 +34,7 @@ export const CountdownTitle = styled.h2`
 
 export const Description = styled.p`
   font-size: 1.2rem;
-  font-family: "Syncopate", serif;
+
   margin-bottom: 1rem;
 
   @media (min-width: 48rem) {

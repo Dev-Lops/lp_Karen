@@ -1,9 +1,8 @@
 import { CTASection } from "../../components/CTAComponent"
 
-
 export function CTA() {
   return (
-    <div>
+    <div id='cta'>
       <CTASection />
     </div>
   )

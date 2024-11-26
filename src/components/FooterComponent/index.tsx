@@ -16,14 +16,14 @@ export const FooterComponent = () => {
           Sobre
         </FooterLink>
         <FooterLink
-          href='public/pdfs/politica de privacidade.pdf'
+          href='pdfs/politica de privacidade.pdf'
           target='_blank'
           aria-label='Política de Privacidade'
         >
           Política de Privacidade
         </FooterLink>
         <FooterLink
-          href='public/pdfs/termos de servicos.pdf'
+          href='pdfs/termos de servicos.pdf'
           target='_blank'
           aria-label='Termos de Serviço'
         >

@@ -9,21 +9,22 @@ export const ParallaxContainer = styled.div`
   justify-content: center;
   width: 100vw;
   background-color: transparent;
-  font-family: "Syncopate", serif;
-  font-weight: 500;
-  text-transform: uppercase;
-  padding: 10px 0; // Garantir algum padding para a seção
+  font-family: "NewTitle", serif;
+  font-weight: 100;
+
+  padding: 10px 0 0; // Garantir algum padding para a seção
 `
 
 // Estilos do Scroller (texto rolante)
 export const Scroller = styled(motion.div)`
   text-transform: uppercase;
-  font-size: clamp(1.5rem, 5vw, 2rem); // Font-size responsivo
+  font-size: clamp(2rem, 5vw, 2.5rem); // Font-size responsivo
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 100vw;
   flex-wrap: nowrap;
+  font-weight: 100;
 
   span {
     display: flex;
@@ -32,8 +33,8 @@ export const Scroller = styled(motion.div)`
     gap: 30px;
     padding: 0 30px;
     text-align: center;
-    font-weight: bold;
-    letter-spacing: 10px;
+
+    letter-spacing: 6px;
     white-space: nowrap; // Evitar quebra de linha
   }
 `

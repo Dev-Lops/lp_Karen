@@ -50,15 +50,16 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
                       <strong className='old-price'>{`De ${formatPrice(
                         product.oldPrice
                       )}`}</strong>
+                      <br />
                       <span className='current-price'>{` Por ${formatPrice(
                         product.currentPrice
                       )}`}</span>
                     </S.ProductDescription>
                     <p>{product.description}</p>
-                    <span>Em estoque</span>
+                    <S.inStock>Em estoque</S.inStock>
                   </>
                 ) : (
-                  <span>Produto Indisponível</span>
+                  <S.inStock>Produto Indisponível</S.inStock>
                 )}
               </S.EmblaSlideInfo>
             </S.EmblaSlide>

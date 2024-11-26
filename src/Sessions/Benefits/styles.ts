@@ -49,7 +49,7 @@ export const CounterContainer = styled.div`
   display: flex;
   align-items: center;
   font-size: 1rem;
-  font-weight: bold;
+  font-family: "LeagueGothic", sans-serif;
 
   span {
     font-size: 2rem;
@@ -67,9 +67,11 @@ export const CounterContainer = styled.div`
 // Estilos do título de cada card
 export const CardTitle = styled.h2`
   color: ${({ theme }) => theme.colors.white};
+  font-weight: 300;
+  letter-spacing: 5px;
+  font-size: 1.5rem;
 
   @media (min-width: 768px) {
-    font-size: 1.5rem;
   }
 
   @media (min-width: 1200px) {

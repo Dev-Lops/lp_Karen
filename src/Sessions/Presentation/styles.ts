@@ -33,16 +33,15 @@ export const Content = styled.div`
 `
 
 export const Title = styled.h2`
-  font-family: "Baskervville", serif;
-  font-weight: 100;
-  text-transform: uppercase;
-
+  font-family: "Stardom", serif;
+  font-weight: bold;
+  letter-spacing: 5px;
   font-size: 1rem;
   margin-bottom: 30px;
   color: ${({ theme }) => theme.colors.white};
 
   @media (min-width: 80rem) {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 `
 

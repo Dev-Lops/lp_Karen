@@ -6,7 +6,6 @@ export const ContainerKit = styled(Container)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   color: ${({ theme }) => theme.colors.green};
   width: 100vw;
   height: 80vh;
@@ -19,7 +18,7 @@ export const ContainerKit = styled(Container)`
     background-color: transparent;
   }
 
-  @media (width >= 80rem) {
+  @media (min-width: 80rem) {
     flex-direction: row;
     gap: 30px;
 
@@ -29,7 +28,7 @@ export const ContainerKit = styled(Container)`
     }
   }
 
-  @media (width >= 87.5rem) {
+  @media (min-width: 87.5rem) {
     width: 100%;
 
     & > img {
@@ -39,7 +38,7 @@ export const ContainerKit = styled(Container)`
   }
 `
 
-export const ContentKit = styled.main`
+export const ContentKit = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,14 +53,16 @@ export const ContentKit = styled.main`
 
   & h1 {
     font-size: 2rem;
-    font-weight: 400;
-    font-family: "Jura", sans-serif;
-    line-height: 0.8;
-    text-transform: uppercase;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    margin-bottom: 20px;
+    color: ${({ theme }) => theme.colors.green};
+    font-family: "Melodrama", serif;
+    letter-spacing: 3px;
+    font-weight: bold;
   }
 
   & p {
-    width: 300px;
+    width: 90%;
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 15px;
@@ -70,7 +71,7 @@ export const ContentKit = styled.main`
   }
 
   @media (min-width: 80rem) {
-    width: 40%;
+    width: 50%;
 
     & h1 {
       font-size: 3rem;
@@ -82,8 +83,5 @@ export const ContentKit = styled.main`
       font-weight: 400;
       width: 80%;
     }
-  }
-
-  @media (min-width: 87.5rem) {
   }
 `

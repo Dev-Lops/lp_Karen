@@ -23,12 +23,14 @@ export const TestimonialSection = styled.section`
 
 // Título da seção de Testemunhos
 export const SectionTitle = styled.h2`
-  font-size: 1.5rem;
   margin-bottom: 40px;
 
-  font-family: "Baskervville", serif;
-  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  margin-bottom: 20px;
   color: ${({ theme }) => theme.colors.green};
+  font-family: "Stardom", serif;
+  letter-spacing: 3px;
+  font-weight: bold;
 
   @media (width >= 80rem) {
     font-size: 3rem;
@@ -38,7 +40,6 @@ export const SectionTitle = styled.h2`
 // Contêiner do carrossel
 export const CarouselContainer = styled.div`
   width: 100%;
-
 
   justify-content: center;
   align-items: center;

@@ -7,6 +7,7 @@ export const Embla = styled.div`
   /* --slide-spacing: 1rem; */
   --slide-size: 100%;
   user-select: none;
+  padding: 20px 0;
 
   @media (max-width: 80rem) {
     --slide-height: 80vh;
@@ -57,9 +58,6 @@ export const EmblaSlideImgWrapper = styled.div`
   @media (min-width: 80rem) {
     width: 90%;
   }
-  @media (min-width: 87.5rem) {
-    height: 90%;
-  }
 `
 
 export const EmblaSlideImg = styled.img`
@@ -71,13 +69,11 @@ export const EmblaSlideImg = styled.img`
   object-fit: cover;
   user-select: none;
   border-radius: 8px;
-  /* height: 100%; */
+
   padding: 10px;
   border-radius: 50px;
 
   @media (min-width: 80rem) {
-    object-fit: cover;
-    /* height: 70%; */
   }
 
   @media (min-width: 87.5rem) {
@@ -87,7 +83,7 @@ export const EmblaSlideImg = styled.img`
 export const DiscountTag = styled.div`
   position: absolute;
   top: 30px;
-  left: 30px;
+  right: 30px;
   background: red; /* Cor de destaque para a tarja */
   color: white;
   font-weight: bold;
@@ -117,8 +113,23 @@ export const EmblaSlideInfo = styled.div`
   text-align: center;
   gap: 5px;
 
+  p {
+    width: 90%;
+
+    @media (min-width: 80rem) {
+      font-size: 1.25rem;
+    }
+    @media (min-width: 87.5rem) {
+      font-size: 1.5rem;
+    }
+  }
+  span {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
   @media (min-width: 80rem) {
-    width: 100%;
+    width: 90%;
     /* height: 70%; */
 
     padding: 2rem; /* Maior espaçamento */
@@ -134,28 +145,39 @@ export const EmblaSlideInfo = styled.div`
     margin-right: 0.5rem;
     color: pink;
     font-weight: 400;
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
+
+    font-family: "Stardom", serif;
+    letter-spacing: 3px;
+    font-weight: bold;
   }
 
   .current-price {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    margin-bottom: 20px;
+    font-family: "Stardom", serif;
+    letter-spacing: 3px;
     font-weight: bold;
     color: #fff;
   }
 
   @media (min-width: 80rem) {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     padding: 0.6rem;
   }
 `
 
 export const ProductTitle = styled.h3`
-  font-size: 1.125rem;
+  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
 
-  @media (min-width: 80rem) {
-    font-size: 2rem;
-  }
+  letter-spacing: 3px;
+
+  font-weight: 500;
+  font-family: "Melodrama", serif;
 
   @media (min-width: 87.5rem) {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 `
 
@@ -173,13 +195,13 @@ export const ProductDescription = styled.p`
 `
 
 export const inStock = styled.span`
-  font-size: 1.5rem;
+  font-size: 1.125rem;
 
   @media (min-width: 80rem) {
-    font-size: 2rem;
+    font-size: 1.25rem;
   }
 
   @media (min-width: 87.5rem) {
-    font-size: 2.5;
+    font-size: 1.5rem;
   }
 `

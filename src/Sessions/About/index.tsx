@@ -19,7 +19,7 @@ export function About() {
           <h3 className='tracking-in-expand-fwd'>Fabulous Hair</h3>
           <p className='tracking-in-expand-fwd'>Saúde e Beleza</p>
         </div>
-        <Button href='#kit' size='small' backgroundColor='transparent'>
+        <Button href='#cta' size='small' backgroundColor='transparent'>
           Saiba mais
         </Button>
       </AboutContent>

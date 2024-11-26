@@ -9,11 +9,13 @@ export const FAQSection = styled.section`
 
 export const FAQTitle = styled.h2`
   text-align: center;
-  font-size: 2.5rem;
   margin-bottom: 40px;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  margin-bottom: 2rem;
   color: ${({ theme }) => theme.colors.green};
-  font-family: "Baskervville", serif;
-  font-weight: 100;
+  font-family: "Stardom", serif;
+  letter-spacing: 3px;
+  font-weight: bold;
 `
 
 // Estilos para o acordeão

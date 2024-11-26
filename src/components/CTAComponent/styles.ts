@@ -7,7 +7,7 @@ export const CTAContainer = styled.section`
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 10px;
+  padding: 50px;
 
   color: ${({ theme }) => theme.colors.green};
 `
@@ -23,12 +23,12 @@ export const CTAContent = styled.div`
 
 // Título principal
 export const CTATitle = styled.h2`
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-size: clamp(2rem, 5vw, 2.5rem);
   margin-bottom: 20px;
   color: ${({ theme }) => theme.colors.green};
-  font-family: "Baskervville", serif;
-  text-transform: uppercase;
-  font-weight: 100;
+  font-family: "Stardom", serif;
+  letter-spacing: 3px;
+  font-weight: bold;
 `
 
 // Contêiner da imagem
