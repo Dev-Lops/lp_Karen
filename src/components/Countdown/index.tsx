@@ -50,11 +50,7 @@ export const CountdownTimer = () => {
         <CountdownTitle data-aos='fade-up' data-aos-duration='3000'>
           Aproveite nossas ofertas antes que acabem
         </CountdownTitle>
-        <Description
-          data-aos='fade-left'
-          data-aos-offset='500'
-          data-aos-duration='500'
-        >
+        <Description data-aos='fade-left'>
           Todos os nossos produtos com descontos incríveis nessa Black Friday.
         </Description>
         <Timer>
