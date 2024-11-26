@@ -130,7 +130,7 @@ export const AboutContent = styled.main`
 
   .text {
     & h1 {
-      font-size: 5rem;
+      font-size: 4rem;
       color: ${({ theme }) => theme.colors.white};
 
       font-family: "AlexanderLettering", sans-serif;
@@ -138,7 +138,6 @@ export const AboutContent = styled.main`
       align-items: center;
       font-weight: 400;
       text-align: center;
-      height: 70px;
       letter-spacing: 5px;
 
       -webkit-animation: text-focus-in 2s cubic-bezier(0.55, 0.085, 0.68, 0.53)
@@ -208,7 +207,7 @@ export const AboutContent = styled.main`
         align-items: center;
         font-weight: 400;
         text-align: center;
-        height: 70px;
+
         letter-spacing: 15px;
 
         -webkit-animation: text-focus-in 2s

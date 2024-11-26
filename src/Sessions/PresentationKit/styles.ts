@@ -9,6 +9,7 @@ export const ContainerKit = styled(Container)`
   color: ${({ theme }) => theme.colors.green};
   width: 100vw;
   height: 100vh;
+  padding: 0 10px;
 
   & > img {
     width: 250px;
@@ -52,7 +53,7 @@ export const ContentKit = styled.article`
   width: 100%;
 
   & h1 {
-    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     color: ${({ theme }) => theme.colors.green};
     font-family: "Melodrama", serif;
     letter-spacing: 3px;
