@@ -40,7 +40,7 @@ export function PresentationKit() {
 
           {/* Avaliação */}
           <LazyImage
-            src='src/assets/5stars.svg'
+            src='https://dtsel6fm8qr8n.cloudfront.net/5stars.svg'
             alt='Classificação de 5 estrelas'
             data-aos='fade-up'
             loading='lazy'

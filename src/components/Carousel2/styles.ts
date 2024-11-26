@@ -68,9 +68,8 @@ export const EmblaSlideImg = styled.img`
   width: 100%;
   object-fit: cover;
   user-select: none;
-  border-radius: 8px;
 
-  padding: 10px;
+  padding: 5px;
   border-radius: 50px;
 
   @media (min-width: 80rem) {

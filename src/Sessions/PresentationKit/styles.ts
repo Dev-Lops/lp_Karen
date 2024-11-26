@@ -52,9 +52,7 @@ export const ContentKit = styled.article`
   width: 100%;
 
   & h1 {
-    font-size: 2rem;
     font-size: clamp(2rem, 5vw, 2.5rem);
-    margin-bottom: 20px;
     color: ${({ theme }) => theme.colors.green};
     font-family: "Melodrama", serif;
     letter-spacing: 3px;

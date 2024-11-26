@@ -7,6 +7,7 @@ import {
   TimeLabel,
   Description,
 } from "./styles"
+import { Button } from "../Button"
 
 // Função para calcular a contagem de tempo até a Black Friday
 const calculateTimeLeft = () => {
@@ -44,51 +45,60 @@ export const CountdownTimer = () => {
   }, [])
 
   return (
-    <CountdownSection>
-      <CountdownTitle data-aos='fade-up' data-aos-duration='3000'>
-        Aproveite nossas ofertas antes que acabem
-      </CountdownTitle>
-      <Description
-        data-aos='fade-left'
-        data-aos-offset='500'
-        data-aos-duration='500'
-      >
-        Todos os nossos produtos com descontos incríveis nessa Black Friday.
-      </Description>
-      <Timer>
-        <TimeUnit
-          data-aos='flip-left'
-          data-aos-easing='ease-out-cubic'
-          data-aos-duration='2000'
+    <>
+      <CountdownSection>
+        <CountdownTitle data-aos='fade-up' data-aos-duration='3000'>
+          Aproveite nossas ofertas antes que acabem
+        </CountdownTitle>
+        <Description
+          data-aos='fade-left'
+          data-aos-offset='500'
+          data-aos-duration='500'
         >
-          <span>{timeLeft.days}</span>
-          <TimeLabel>DIAS</TimeLabel>
-        </TimeUnit>
-        <TimeUnit
-          data-aos='flip-left'
-          data-aos-easing='ease-out-cubic'
-          data-aos-duration='2000'
+          Todos os nossos produtos com descontos incríveis nessa Black Friday.
+        </Description>
+        <Timer>
+          <TimeUnit
+            data-aos='flip-left'
+            data-aos-easing='ease-out-cubic'
+            data-aos-duration='2000'
+          >
+            <span>{timeLeft.days}</span>
+            <TimeLabel>DIAS</TimeLabel>
+          </TimeUnit>
+          <TimeUnit
+            data-aos='flip-left'
+            data-aos-easing='ease-out-cubic'
+            data-aos-duration='2000'
+          >
+            <span>{timeLeft.hours}</span>
+            <TimeLabel>HORAS</TimeLabel>
+          </TimeUnit>
+          <TimeUnit
+            data-aos='flip-left'
+            data-aos-easing='ease-out-cubic'
+            data-aos-duration='2000'
+          >
+            <span>{timeLeft.minutes}</span>
+            <TimeLabel>MINUTOS</TimeLabel>
+          </TimeUnit>
+          <TimeUnit
+            data-aos='flip-left'
+            data-aos-easing='ease-out-cubic'
+            data-aos-duration='2000'
+          >
+            <span>{timeLeft.seconds}</span>
+            <TimeLabel>SEGUNDOS</TimeLabel>
+          </TimeUnit>
+        </Timer>
+        <Button
+          backgroundColor=''
+          href='https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20mais%20informações!%20'
+          target='_blank'
         >
-          <span>{timeLeft.hours}</span>
-          <TimeLabel>HORAS</TimeLabel>
-        </TimeUnit>
-        <TimeUnit
-          data-aos='flip-left'
-          data-aos-easing='ease-out-cubic'
-          data-aos-duration='2000'
-        >
-          <span>{timeLeft.minutes}</span>
-          <TimeLabel>MINUTOS</TimeLabel>
-        </TimeUnit>
-        <TimeUnit
-          data-aos='flip-left'
-          data-aos-easing='ease-out-cubic'
-          data-aos-duration='2000'
-        >
-          <span>{timeLeft.seconds}</span>
-          <TimeLabel>SEGUNDOS</TimeLabel>
-        </TimeUnit>
-      </Timer>
-    </CountdownSection>
+          Entre em contato
+        </Button>
+      </CountdownSection>
+    </>
   )
 }

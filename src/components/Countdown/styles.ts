@@ -3,11 +3,13 @@ import styled from "styled-components"
 // Estilos para a contagem regressiva
 export const CountdownSection = styled.section`
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.green};
   color: #fff;
   padding: 3rem 1.875rem; /* Usando unidades relativas */
-  width: 100%;
+  width: 100vw;
   text-align: center;
   box-sizing: border-box;
 `
@@ -51,6 +53,7 @@ export const Timer = styled.div`
   display: flex;
   justify-content: center;
   gap: 1.25rem;
+  padding-bottom: 20px;
 
   @media (min-width: 48rem) {
     font-size: 1.5rem;

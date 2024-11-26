@@ -38,12 +38,14 @@ const StyledButton = styled.a<{
   text-decoration: none;
   border: 1px solid ${({ theme }) => theme.colors.gold};
   border-radius: 0.5rem;
-  font-family: "Jura", serif;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 1px;
+  font-family: "Melodrama", serif;
+  width: 310px;
+
+  font-weight: 100;
+  letter-spacing: 3px;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-align: center;
 
   padding: ${({ $size }) => sizes[$size || "medium"].padding};
   font-size: ${({ $size }) => sizes[$size || "medium"].fontSize};

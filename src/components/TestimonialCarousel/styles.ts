@@ -1,6 +1,5 @@
 import styled from "styled-components"
 
-
 // Card de Testemunho
 export const TestimonialCard = styled.div`
   background: white;
@@ -24,20 +23,13 @@ export const TestimonialCard = styled.div`
 
 export const ClientImage = styled.img`
   width: 100%;
+  height: 300px;
 
-  height: auto;
   margin-bottom: 20px;
 
   /* Responsividade */
   @media (min-width: 1280px) {
     width: 60%;
+    height: auto;
   }
 `
-
-
-
-
-
-
-
-

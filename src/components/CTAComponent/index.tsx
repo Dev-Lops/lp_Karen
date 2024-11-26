@@ -85,6 +85,7 @@ export function CTASection() {
 
         <CTAButtons>
           <Button
+
             backgroundColor=''
             href={`https://wa.me/5592993787566?text=${encodeURIComponent(
               "Olá, gostaria de saber mais sobre o horário de agendamento."

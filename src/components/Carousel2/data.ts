@@ -40,7 +40,8 @@ export const products: Product[] = [
     image: "https://dtsel6fm8qr8n.cloudfront.net/img6.avif",
 
     title: "Kit alisamento natural",
-    description: "Conheça o Poder do Alisamento natural!",
+    description:
+      "Descubra o poder de uma fórmula inovadora que combina o melhor da ciência e da natureza para proporcionar resultados incríveis nos cabelos. Ideal para profissionais, o Kit Alisamento Natural oferece soluções completas para limpeza profunda e alinhamento dos fios de forma saudável e natural.",
     inStock: true,
   },
   {
