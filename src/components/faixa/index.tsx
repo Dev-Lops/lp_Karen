@@ -1,5 +1,12 @@
 import React, { useRef } from "react"
-import { useScroll, useSpring, useTransform, useMotionValue, useVelocity, useAnimationFrame } from "framer-motion"
+import {
+  useScroll,
+  useSpring,
+  useTransform,
+  useMotionValue,
+  useVelocity,
+  useAnimationFrame,
+} from "framer-motion"
 import { wrap } from "@motionone/utils"
 import { ParallaxContainer, Scroller, SectionWrapper } from "./style"
 
@@ -8,7 +15,10 @@ interface ParallaxTextProps {
   baseVelocity?: number
 }
 
-const ParallaxText: React.FC<ParallaxTextProps> = ({ children, baseVelocity = 100 }) => {
+const ParallaxText: React.FC<ParallaxTextProps> = ({
+  children,
+  baseVelocity = 100,
+}) => {
   const baseX = useMotionValue(0)
   const { scrollY } = useScroll()
   const scrollVelocity = useVelocity(scrollY)
@@ -16,7 +26,9 @@ const ParallaxText: React.FC<ParallaxTextProps> = ({ children, baseVelocity = 10
     damping: 50,
     stiffness: 600,
   })
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], { clamp: false })
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+    clamp: false,
+  })
 
   const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`)
 
@@ -37,7 +49,7 @@ const ParallaxText: React.FC<ParallaxTextProps> = ({ children, baseVelocity = 10
   return (
     <ParallaxContainer>
       <Scroller style={{ x }}>
-        {Array.from({ length: 30 }).map((_, idx) => (
+        {Array.from({ length: 100 }).map((_, idx) => (
           <span key={idx}>{children}</span>
         ))}
       </Scroller>
@@ -50,7 +62,10 @@ interface ParallaxSectionProps {
   baseVelocity?: number
 }
 
-export const ParallaxSection: React.FC<ParallaxSectionProps> = ({ children, baseVelocity = 100 }) => {
+export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
+  children,
+  baseVelocity = 100,
+}) => {
   return (
     <SectionWrapper>
       <ParallaxText baseVelocity={baseVelocity}>{children}</ParallaxText>

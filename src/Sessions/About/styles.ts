@@ -13,7 +13,8 @@ export const AboutContainer = styled(Container)`
   background-color: ${({ theme }) => theme.colors.brunswickGreen};
 
   & img {
-    width: 4.375rem;
+    width: 4rem;
+    height: 4rem;
 
     -webkit-animation: puff-in-center 2s cubic-bezier(0.47, 0, 0.745, 0.715);
     animation: puff-in-center 2s cubic-bezier(0.47, 0, 0.745, 0.715);
@@ -21,6 +22,7 @@ export const AboutContainer = styled(Container)`
 
     @media (min-width: 80rem) {
       width: 6.25rem;
+      height: 6.25rem;
     }
   }
 

@@ -6,8 +6,9 @@ import {
   CardWrapper,
   CardContent,
   CheckoutButton,
+  Title,
 } from "./styles"
-import { X, ShoppingCart } from "lucide-react"
+import { ShoppingCart } from "lucide-react"
 import { products } from "./data"
 
 export interface Product {
@@ -35,22 +36,33 @@ export function ProductsGrid() {
   }
 
   const redirectToWhatsApp = () => {
-    const message = cart
-      .map(
-        (item) =>
-          `*${item.title}* - Preço: R$ ${item.currentPrice
-            .toFixed(2)
-            .replace(".", ",")}`
-      )
+    // Contabilizar a quantidade de cada produto
+    const productQuantities = cart.reduce(
+      (acc: { [key: string]: number }, item) => {
+        acc[item.title] = (acc[item.title] || 0) + 1
+        return acc
+      },
+      {}
+    )
+
+    // Criar a mensagem com a lista de produtos e seus preços
+    const message = Object.entries(productQuantities)
+      .map(([title, quantity]) => {
+        const product = products.find((prod) => prod.title === title)
+        return `${quantity}x ${title}: de R$ ${product?.currentPrice
+          .toFixed(2)
+          .replace(".", ",")}`
+      })
       .join("%0A")
 
+    // Calcular o total
     const total = calculateTotal()
-    const totalMessage = `%0A%0A*Valor Total:* R$ ${total
+    const totalMessage = `%0A%0A*Total:* R$ ${total
       .toFixed(2)
       .replace(".", ",")}`
 
     const phoneNumber = "5592993787566"
-    const url = `https://wa.me/${phoneNumber}?text=${message}${totalMessage}`
+    const url = `https://wa.me/${phoneNumber}?text=Olá%20gostaria%20de%20comprar%20os%20seguintes%20produtos:%0A${message}${totalMessage}`
     window.open(url, "_blank")
   }
 
@@ -75,48 +87,48 @@ export function ProductsGrid() {
                   loading='lazy'
                   className='lazy-image'
                 />
+                <p>{product.discount}</p>
                 <div className='loading-placeholder'>Carregando...</div>
                 {!product.inStock && (
                   <div className='outOfStockText'>Produto Esgotado</div>
                 )}
               </div>
               <div className={`icon ${!product.inStock ? "outOfStock" : ""}`}>
-                {!product.inStock ? (
-                  <span className='material-symbols-outlined'>
-                    <X />
-                  </span>
-                ) : (
+                {product.inStock && (
                   <button
                     onClick={() => addToCart(product)}
-                    className='iconBox'
-                    aria-label='carrinho'
+                    className={`iconBox ${!product.inStock ? "disabled" : ""}`}
+                    aria-label='comprar'
                   >
-                    Adicionar ao carrinho
+                    Comprar
                     <ShoppingCart />
                   </button>
                 )}
               </div>
             </div>
-            <CardContent>
-              <h3>{product.title}</h3>
-              <p>
-                De:{" "}
-                <span style={{ textDecoration: "line-through" }}>
-                  R$ {product.oldPrice.toFixed(2).replace(".", ",")}
-                </span>
-              </p>
-              <p>
-                Por:{" "}
-                <span style={{ color: "green", fontWeight: "bold" }}>
-                  R$ {product.currentPrice.toFixed(2).replace(".", ",")}
-                </span>
-              </p>
-              <p>
-                {product.discount > 0
-                  ? `Desconto: ${product.discount}%`
-                  : "Sem desconto"}
-              </p>
-            </CardContent>
+            <Title>{product.title}</Title>
+            {product.inStock && (
+              <CardContent className='end'>
+                <p>
+                  De:{" "}
+                  <span
+                    style={{
+                      textDecoration: "line-through",
+                      color: "white",
+                      fontWeight: "100",
+                    }}
+                  >
+                    R$ {product.oldPrice.toFixed(2).replace(".", ",")}
+                  </span>
+                </p>
+                <p>
+                  Por:{" "}
+                  <span style={{ color: "white", fontWeight: "bold" }}>
+                    R$ {product.currentPrice.toFixed(2).replace(".", ",")}
+                  </span>
+                </p>
+              </CardContent>
+            )}
           </CardWrapper>
         ))}
       </Container>
@@ -124,11 +136,9 @@ export function ProductsGrid() {
       {cart.length > 0 && (
         <>
           <CheckoutButton onClick={redirectToWhatsApp}>
-            Finalizar Compra no WhatsApp
+            Finalizar Compra
             <span className='cart-count'>{cart.length}</span>
           </CheckoutButton>
-
-          {/* Novo botão para limpar o carrinho */}
         </>
       )}
     </Section>

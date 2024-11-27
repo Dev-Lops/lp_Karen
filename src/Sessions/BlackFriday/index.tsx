@@ -6,7 +6,7 @@ import { BlackfridaySection } from "./styles"
 export function BlackFriday() {
   return (
     <BlackfridaySection>
-      <ParallaxSection baseVelocity={-5}>
+      <ParallaxSection baseVelocity={-10}>
         <div className='icon'>
           <BadgePercent size={36} />
         </div>

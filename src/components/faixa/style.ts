@@ -9,8 +9,8 @@ export const ParallaxContainer = styled.div`
   justify-content: center;
   width: 100vw;
   background-color: transparent;
-  font-family: "NewTitle", serif;
-  font-weight: 100;
+  font-family: "LeagueGothic", sans-serif;
+  font-weight: bold;
 
   padding: 10px 0 0; // Garantir algum padding para a seção
 `

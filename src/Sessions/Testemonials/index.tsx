@@ -37,9 +37,9 @@ export const TestimonialSectionComponent = () => {
   return (
     <TestimonialSection>
       <SectionTitle data-aos='fade-up' data-aos-duration='3000'>
-        O que nossos clientes dizem
+        Nossos Feedbacks
       </SectionTitle>
-      <CarouselContainer >
+      <CarouselContainer>
         {loading ? (
           <p>Carregando...</p>
         ) : (

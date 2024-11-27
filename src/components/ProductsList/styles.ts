@@ -57,11 +57,21 @@ export const Container = styled.div`
 `
 
 export const CardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+
+  .end {
+    flex: 1;
+    align-items: flex-end;
+  }
   .box {
     position: relative;
     width: 100%;
     height: 18.75rem;
-    border-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+    border-top-left-radius: 1.25rem;
 
     overflow-x: hidden;
 
@@ -72,7 +82,6 @@ export const CardWrapper = styled.div`
     &.disabled {
       pointer-events: none;
       background-color: ${({ theme }) => theme.colors.black};
-      border-radius: 1.25rem;
     }
 
     .imgBox {
@@ -87,6 +96,10 @@ export const CardWrapper = styled.div`
           position: absolute;
           inset: 0;
           z-index: 1;
+        }
+
+        > p {
+          position: absolute;
         }
 
         img {
@@ -117,21 +130,27 @@ export const CardWrapper = styled.div`
 
     .icon {
       position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 100%;
-      height: 2rem;
+      justify-content: center;
+      align-items: center;
+      bottom: 10px;
+      right: 50px;
+      width: 200px;
+      height: 3rem;
+      border-radius: 10px;
       background: ${({ theme }) => theme.colors.green};
+
+      &.outOfStock {
+        background: none;
+      }
 
       display: flex;
       justify-content: center;
       align-items: center;
       color: #fff;
-      font-size: 1.5rem;
       transition: background-color 0.3s;
 
       &.disabled {
-        background-color: red;
+        background: none;
       }
 
       &:hover .iconBox {
@@ -150,6 +169,10 @@ export const CardWrapper = styled.div`
         transition: 0.3s;
         background: none;
         border: none;
+        font-size: clamp(0.875rem, 5vw, 1rem);
+        color: ${({ theme }) => theme.colors.white};
+        font-family: "Melodrama", sans-serif;
+        letter-spacing: 2px;
 
         span {
           color: #000;
@@ -160,23 +183,41 @@ export const CardWrapper = styled.div`
   }
 `
 
-export const CardContent = styled.div`
-  padding: 0.875rem 0.625rem;
+export const Title = styled.h3`
+  font-size: clamp(1rem, 5vw, 1.5rem);
+  color: ${({ theme }) => theme.colors.green};
+  font-family: "Melodrama", serif;
+  letter-spacing: 1px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid ${({ theme }) => theme.colors.green};
+`
 
-  h3 {
-    font-size: clamp(1rem, 5vw, 1.6rem);
-    color: ${({ theme }) => theme.colors.green};
-    font-family: "Melodrama", serif;
-    letter-spacing: 3px;
-    font-weight: 600;
-  }
+export const CardContent = styled.div`
+  padding: 0.625rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.green};
+  border-bottom-right-radius: 1.25rem;
+  border-bottom-left-radius: 1.25rem;
 
   p {
-    font-size: clamp(0.8rem, 5vw, 1.4rem);
-    margin: 0.625rem 0 1.25rem;
-    color: #000;
+    text-align: center;
+    width: 170px;
+    font-size: clamp(0.875rem, 5vw, 1.125rem);
+    color: #fff;
   }
 
+  span {
+    font-size: 1.25rem;
+    margin-right: 10px;
+  }
+  .discount {
+    color: #fff;
+    width: 150px;
+    background-color: ${({ theme }) => theme.colors.green};
+  }
   ul {
     margin: 0;
     padding: 0;
@@ -197,14 +238,14 @@ export const CheckoutButton = styled.button`
   transform: translateX(-50%);
   background-color: ${({ theme }) => theme.colors.green};
   color: white;
-  font-weight: regular;
+  font-weight: bold;
   padding: 0.5rem 2rem;
   font-size: 1rem;
   border-radius: 3.125rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 12.5rem;
+  width: 9.375rem;
   max-width: 80%; /* Garante que não ultrapasse a tela */
   overflow: hidden; /* Evita transbordo interno */
   z-index: 99;
@@ -235,5 +276,3 @@ export const CheckoutButton = styled.button`
     left: 50%; /* Alinha centralmente */
   }
 `
-
-
