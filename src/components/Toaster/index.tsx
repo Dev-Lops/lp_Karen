@@ -13,7 +13,7 @@ const ToasterContainer = styled.div<{ show: boolean }>`
   width: 380px;
   font-size: 1.125rem;
   top: 20px;
-  right: 20px;
+  right: 5px;
   padding: 20px 25px;
   background-color: ${({ theme }) => theme.colors.green};
   color: white;

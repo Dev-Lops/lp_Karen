@@ -5,15 +5,6 @@ export interface FAQItem {
 
 export const faqData: FAQItem[] = [
   {
-    question: "Como posso comprar o produto?",
-    answer: "Você pode comprar o produto diretamente em nosso whatsapp.",
-  },
-  {
-    question: "Qual é o prazo de entrega?",
-    answer:
-      "O prazo de entrega varia de acordo com a sua localização, mas normalmente leva de  1 a 2 dias úteis após a aprovação bancária e dependendo da sua localidade.",
-  },
-  {
     question: "Qualquer pessoa pode adquirir o kit de Alisamento Natural?",
     answer:
       "Não! Por se tratar de ativos com alta tecnologia só conseguimos liberar a venda para Profissionais da área.",
