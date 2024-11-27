@@ -1,73 +1,113 @@
-interface Product {
+export interface Products {
   id: number
+  oldPrice: number
+  currentPrice: number
   image: string
-  name: string
-  link: string
-  isOutOfStock?: boolean
-}
+  title: string
+  description: string
+  inStock: boolean
 
-export const products: Product[] = [
+  discount: number
+}
+export const products: Products[] = [
   {
     id: 1,
+    oldPrice: 64.0,
+    discount: 10,
+    currentPrice: 57.6,
     image: "https://dtsel6fm8qr8n.cloudfront.net/img1.avif",
-    name: "Ampola de reestruturação do córtex",
-    link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20comprar%20o%20produto%20Ampola%20de%20Reestruturação%20do%20Cortex",
-    isOutOfStock: false,
+    title: "Ampola de reestruturação do córtex",
+    description:
+      "Ampola de alta performance, age reestruturando fibras instáveis, elásticas, quebradiças e opacas. Em apenas 5 minutos no conforto da sua casa.",
+    inStock: true,
   },
   {
     id: 2,
+    oldPrice: 65.9,
+    discount: 20,
+    currentPrice: 52.7,
     image: "https://dtsel6fm8qr8n.cloudfront.net/img3.avif",
-    name: "Sérum fabulous",
-    link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20comprar%20o%20produto%20Serum%20Fabulous",
-    isOutOfStock: false,
+    title: "Sérum fabulos premium",
+    description:
+      "O sérun fabulos premium é o aliado ideal na reestruturação do CMC capilar, são 12 óleos essenciais que simultaneamente reparam danos na fibra e reestabelecem  18MEA um composto de ácidos graxos indispensáveis para a saúde e integridade da fibra.",
+    inStock: true,
   },
   {
     id: 3,
+    oldPrice: 389.0,
+    discount: 40,
+    currentPrice: 233.4,
     image: "https://dtsel6fm8qr8n.cloudfront.net/img6.avif",
-    name: "Kit alisamento natural",
-    link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20comprar%20o%20Kit%20Alisamento%20Natural",
-    isOutOfStock: false,
+
+    title: "Kit alisamento natural",
+    description:
+      "Descubra o poder de uma fórmula inovadora que combina o melhor da ciência e da natureza para proporcionar resultados incríveis nos cabelos. Ideal para profissionais, o Kit Alisamento Natural oferece soluções completas para limpeza profunda e alinhamento dos fios de forma saudável e natural.",
+    inStock: true,
   },
   {
     id: 4,
+    oldPrice: 78.5,
+    discount: 10,
+    currentPrice: 70.65,
     image: "https://dtsel6fm8qr8n.cloudfront.net/img8.avif",
-    name: "Mascara THERAPY(Efeito teia)",
-    link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20comprar%20o%20produto%20Mascara%20Equilíbrio%20THERAPY",
-    isOutOfStock: false,
+    title: "Mascara THERAPY (Efeito teia)",
+    description:
+      "Efeito teia (resultado de salão), reposição hídrica, mineral, proteica e massa. Devolve aos fios força, maciez, promove resistência e vitalidade.",
+    inStock: true,
   },
   {
     id: 5,
+    oldPrice: 30,
+    discount: 30,
+    currentPrice: 21,
     image: "https://dtsel6fm8qr8n.cloudfront.net/img5.avif",
-    name: "Escova fabulos hair",
-    link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20comprar%20o%20produto%20Escova%20de%20Terapeutica",
-    isOutOfStock: false,
+    title: "Escova fabulos hair",
+    description:
+      "A escova Fabulos Hair ativa a circulação sanguínea do couro cabeludo promovendo o crescimento saudável dos seus fios, desembaraça sem rompimentos, auxilia no crescimento saudável, previne triconodose, pontas duplas, ralas e afinadas.",
+    inStock: true,
   },
   {
     id: 6,
+    oldPrice: 46.9,
+    discount: 30,
+    currentPrice: 32.8,
     image: "https://dtsel6fm8qr8n.cloudfront.net/img4.avif",
-    name: "Perfume antifrizz",
-    link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20comprar%20o%20produto%20Perfume%20Antifrizz",
-    isOutOfStock: false,
+    title: "Perfume antifrizz",
+    description:
+      "O Perfume Antifrizz foi desenvolvido para remover a evidência dos fios frizzados, arrepiados e eletrizados.",
+    inStock: true,
   },
   {
     id: 7,
+    oldPrice: 0,
+    discount: 0,
+    currentPrice: 0,
     image: "https://dtsel6fm8qr8n.cloudfront.net/reestruturador_bifasico.avif",
-    name: "Reestruturador bifásico THERAPY",
-    link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20comprar%20o%20produto%20Reestruturador%20bifásico%20%20THERAPY",
-    isOutOfStock: true,
+    title: "Reestruturador bifásico THERAPY",
+    description:
+      "Protege a fibra contra agressões externas, equilibra o PH e mantém a estrutura do córtex com vitalidade.",
+    inStock: false,
   },
   {
     id: 8,
+    oldPrice: 114.0,
+    discount: 10,
+    currentPrice: 102.6,
     image: "https://dtsel6fm8qr8n.cloudfront.net/img2.avif",
-    name: "Shampoo e booster CMC",
-    link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20comprar%20o%20Kit%20Shampoo%20e%20Booster%20CMC%20",
-    isOutOfStock: false,
+    title: "Shampoo e booster CMC",
+    description:
+      "O kit 18 Rosé atua restaurando o CMC capilar, devolvendo 18Metil eicosanoico à fibra.",
+    inStock: true,
   },
   {
     id: 9,
+    oldPrice: 49.0,
+    discount: 10,
+    currentPrice: 44.1,
     image: "https://dtsel6fm8qr8n.cloudfront.net/img7.avif",
-    name: "Shampoo THERAPY",
-    link: "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20comprar%20o%20produto%20Shampoo%20THERAPY",
-    isOutOfStock: false,
+    title: "Shampoo THERAPY",
+    description:
+      "Age no couro cabeludo com ação antimicrobiana, antifúngica, antisséptica e cicatrizante. Combate radicais livres, fungos, oleosidade, caspa, promovendo oxigenação e crescimento.",
+    inStock: true,
   },
 ]

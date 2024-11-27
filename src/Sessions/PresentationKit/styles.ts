@@ -14,7 +14,7 @@ export const ContainerKit = styled(Container)`
   & > img {
     width: 250px;
     height: 350px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-radius: 10px;
     background-color: transparent;
   }
@@ -46,7 +46,7 @@ export const ContentKit = styled.article`
   align-items: center;
 
   img {
-    width: 120px;
+    width: 100px;
     margin: 10px 0 20px;
   }
 

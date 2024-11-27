@@ -39,8 +39,17 @@ export const Container = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
   gap: 2rem;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1280px) {
     grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  @media (max-width: 400px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
   }
 `
 
@@ -49,14 +58,13 @@ export const CardWrapper = styled.div`
     position: relative;
     width: 100%;
     height: 18.75rem;
-
     border-radius: 1.25rem;
     border-bottom-right-radius: 0;
     overflow: hidden;
 
     &.disabled {
       pointer-events: none;
-      background-color: ${({ theme }) => theme.colors.gray};
+      background-color: ${({ theme }) => theme.colors.black};
       border-radius: 1.25rem;
       border-bottom-right-radius: 0;
     }
@@ -66,7 +74,6 @@ export const CardWrapper = styled.div`
       inset: 0;
       overflow: hidden;
 
-      /* Aplica o esmaecimento quando o produto estiver esgotado */
       &.outOfStock {
         ::after {
           content: "";
@@ -76,7 +83,7 @@ export const CardWrapper = styled.div`
         }
 
         img {
-          opacity: 0.2; /* Opacidade da imagem reduzida */
+          opacity: 0.2;
         }
 
         .outOfStockText {
@@ -87,10 +94,9 @@ export const CardWrapper = styled.div`
           left: 50%;
           transform: translate(-50%, -50%);
           color: red;
-
           font-weight: bold;
           font-size: 1.5rem;
-          z-index: 2; /* Garante que o texto fique sobre a imagem */
+          z-index: 2;
         }
       }
 
@@ -135,30 +141,14 @@ export const CardWrapper = styled.div`
         justify-content: center;
         align-items: center;
         transition: 0.3s;
+        background: none;
+        border: none;
 
         span {
-          color: #fff;
+          color: #000;
           font-size: 2rem;
         }
       }
-    }
-
-    /* Botão de "Indisponível" */
-    .outOfStockButton {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: red;
-      font-weight: bold;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      text-align: center;
-      font-size: 1rem;
-      z-index: 3; /* Fica sobre a imagem */
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
   }
 `
@@ -175,8 +165,9 @@ export const CardContent = styled.div`
   }
 
   p {
+    font-size: clamp(0.8rem, 5vw, 1.4rem);
     margin: 0.625rem 0 1.25rem;
-    color: #565656;
+    color: #000;
   }
 
   ul {
@@ -185,16 +176,85 @@ export const CardContent = styled.div`
     list-style-type: none;
     display: flex;
     align-items: center;
-    flex-wrap: nowrap;
-    gap: 0.625rem;
 
     li {
-      background: var(--clr-tag, #ccc);
-      color: ${({ theme }) => theme.colors.green};
-      font-weight: 700;
-      font-size: 0.8rem;
-      padding: 0.375rem 0.625rem;
-      border-radius: 0.188rem;
+      margin-right: 0.5rem;
     }
+  }
+`
+
+export const CheckoutButton = styled.button`
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: ${({ theme }) => theme.colors.green};
+  color: white;
+  font-weight: regular;
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  border-radius: 3.125rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 17rem;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+  z-index: 99;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.greenLight};
+  }
+
+  .cart-count {
+    background-color: red;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 30px;
+    color: white;
+    text-align: center;
+    line-height: 2rem;
+    font-weight: bold;
+    margin-left: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    width: 80%;
+  }
+
+  @media (max-width: 400px) {
+    width: 60%;
+  }
+`
+
+export const ClearCartButton = styled.button`
+  position: fixed;
+  text-align: center;
+  justify-content: center;
+  bottom: 2rem;
+  left: 63%;
+  transform: translateX(-50%);
+  background-color: red;
+  color: white;
+  font-weight: regular;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 3.125rem;
+  display: flex;
+  align-items: center;
+  width: 1rem;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+  z-index: 99;
+
+  &:hover {
+    background-color: darkred;
+  }
+
+  @media (max-width: 600px) {
+    left: 85%;
+    transform: translateX(-50%);
+  }
+  @media (min-width: 87.5rem) {
+    left: 59%;
+    transform: translateX(-50%);
   }
 `

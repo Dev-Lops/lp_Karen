@@ -46,6 +46,7 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
                 <S.ProductTitle>{product.title}</S.ProductTitle>
                 {product.inStock ? (
                   <>
+                    <p>{product.description}</p>
                     <S.ProductDescription>
                       <strong className='old-price'>{`De ${formatPrice(
                         product.oldPrice
@@ -55,8 +56,7 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
                         product.currentPrice
                       )}`}</span>
                     </S.ProductDescription>
-                    <p>{product.description}</p>
-                    <S.inStock>Em estoque</S.inStock>
+                    <S.inStock>Produto Disponível</S.inStock>
                   </>
                 ) : (
                   <S.inStock>Produto Indisponível</S.inStock>

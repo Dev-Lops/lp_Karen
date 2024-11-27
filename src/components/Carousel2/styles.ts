@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 export const Embla = styled.div`
   max-width: 100vw;
+  font-family: "Montserat", sans-serif;
 
   --slide-height: 80vh;
   /* --slide-spacing: 1rem; */
@@ -81,13 +82,13 @@ export const EmblaSlideImg = styled.img`
 
 export const DiscountTag = styled.div`
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 0px;
+  right: 0px;
   background: red; /* Cor de destaque para a tarja */
   color: white;
   font-weight: bold;
-  padding: 1rem 2rem;
-  border-radius: 20px;
+  padding: 1rem;
+  border-radius: 100%;
   z-index: 1;
   font-size: 0.9rem;
   font-size: 1.5rem; /* Ajuste para telas maiores */
@@ -98,22 +99,20 @@ export const DiscountTag = styled.div`
 `
 
 export const EmblaSlideInfo = styled.div`
-  font-family: "Montserrat", serif;
   font-weight: 400;
-  padding: 1rem;
-  border-radius: 8px;
   flex: 1; /* O conteúdo ocupa o restante do espaço */
-  width: 100%;
   color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
-  gap: 5px;
+  gap: 20px;
+  padding: 20px;
 
   p {
-    width: 90%;
+    width: 100%;
+    text-align: start;
 
     @media (min-width: 80rem) {
       font-size: 1.25rem;
@@ -122,31 +121,35 @@ export const EmblaSlideInfo = styled.div`
       font-size: 1.5rem;
     }
   }
-  span {
+  > span {
     font-weight: 600;
     margin-bottom: 0.5rem;
+    background-color: #133525;
+    max-width: 200px;
+    text-align: center;
+    border-radius: 20px;
+    padding: 15px 20px;
   }
 
   @media (min-width: 80rem) {
-    width: 90%;
-    /* height: 70%; */
+    width: 80%;
+    align-items: start;
+    margin-left: 30px;
+    text-align: start;
 
-    padding: 2rem; /* Maior espaçamento */
+    padding: 2rem;
   }
   @media (min-width: 87.5rem) {
-    /* height: 70%; */
-
-    padding: 2rem; /* Maior espaçamento */
+    padding: 2rem;
   }
 
   .old-price {
     text-decoration: line-through;
     margin-right: 0.5rem;
     color: pink;
-    font-weight: 400;
+    font-weight: 100;
     font-size: clamp(1.2rem, 5vw, 1.5rem);
 
-    font-family: "Stardom", serif;
     letter-spacing: 3px;
     font-weight: bold;
   }
@@ -154,7 +157,6 @@ export const EmblaSlideInfo = styled.div`
   .current-price {
     font-size: clamp(1.75rem, 5vw, 2.5rem);
     margin-bottom: 20px;
-    font-family: "Stardom", serif;
     letter-spacing: 3px;
     font-weight: bold;
     color: #fff;
@@ -167,13 +169,12 @@ export const EmblaSlideInfo = styled.div`
 `
 
 export const ProductTitle = styled.h3`
-  font-size: 2.5rem;
   font-size: clamp(1.5rem, 5vw, 2rem);
+  width: 100%;
 
   letter-spacing: 3px;
 
   font-weight: 500;
-  font-family: "Melodrama", serif;
 
   @media (min-width: 87.5rem) {
     font-size: 3rem;

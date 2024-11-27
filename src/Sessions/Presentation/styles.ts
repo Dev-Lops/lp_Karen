@@ -7,7 +7,7 @@ export const PresentationContainer = styled.section`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 50vh;
+  height: 60vh;
   padding: 20px;
 
   background-color: ${({ theme }) => theme.colors.green};
