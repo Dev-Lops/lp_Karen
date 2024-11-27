@@ -7,7 +7,7 @@ export const CTAContainer = styled.section`
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 50px;
+  margin-bottom: 30px;
 
   color: ${({ theme }) => theme.colors.green};
 `

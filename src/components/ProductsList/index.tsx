@@ -6,7 +6,6 @@ import {
   CardWrapper,
   CardContent,
   CheckoutButton,
-  ClearCartButton, // Novo botão
 } from "./styles"
 import { X, ShoppingCart } from "lucide-react"
 import { products } from "./data"
@@ -55,11 +54,6 @@ export function ProductsGrid() {
     window.open(url, "_blank")
   }
 
-  // Função para limpar o carrinho
-  const clearCart = () => {
-    setCart([]) // Limpa todos os itens do carrinho
-  }
-
   return (
     <Section>
       <h2 data-aos='fade-up' data-aos-duration='3000'>
@@ -97,6 +91,7 @@ export function ProductsGrid() {
                     className='iconBox'
                     aria-label='carrinho'
                   >
+                    Adicionar ao carrinho
                     <ShoppingCart />
                   </button>
                 )}
@@ -128,7 +123,6 @@ export function ProductsGrid() {
 
       {cart.length > 0 && (
         <>
-          <ClearCartButton onClick={clearCart}>x</ClearCartButton>
           <CheckoutButton onClick={redirectToWhatsApp}>
             Finalizar Compra no WhatsApp
             <span className='cart-count'>{cart.length}</span>

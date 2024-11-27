@@ -9,7 +9,6 @@ export const ContainerKit = styled(Container)`
   color: ${({ theme }) => theme.colors.green};
   width: 100vw;
   height: 100vh;
-  padding: 0 10px;
 
   & > img {
     width: 250px;

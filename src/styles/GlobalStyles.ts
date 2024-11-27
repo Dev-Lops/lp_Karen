@@ -79,6 +79,9 @@ export const GlobalStyles = createGlobalStyle`
 
     scroll-behavior: smooth;
   }
+  body,html{
+    overflow-x: hidden;
+  };
 
   body {
   overflow-x: hidden;
@@ -96,6 +99,16 @@ export const GlobalStyles = createGlobalStyle`
   h1,h2,h3{
    font-family: "Montserrat", sans-serif;
   }
+  img {
+  max-width: 100%;
+  height: 70%; /* Garante que imagens sejam redimensionadas */
+  display: block; /* Remove espaço extra em imagens inline */
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  margin: 0; /* Controle de margens externas */
+  line-height: 1.5; /* Ajuste a altura das linhas para textos */
+}
 }
 `
 

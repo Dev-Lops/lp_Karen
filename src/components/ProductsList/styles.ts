@@ -2,7 +2,9 @@ import styled from "styled-components"
 
 export const Section = styled.section`
   padding-block: min(20vh, 2rem);
-  width: calc(min(76.5rem, 90%));
+  width: calc(
+    min(76.5rem, 80%)
+  ); /* Garantindo que a largura respeite o limite da tela */
   margin-inline: auto;
 
   h2 {
@@ -44,11 +46,12 @@ export const Container = styled.div`
     gap: 3rem;
   }
 
-  @media (max-width: 400px) {
-    grid-template-columns: repeat(2, 1fr);
+  @media (min-width: 87.5rem) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 300px) {
     grid-template-columns: 1fr;
   }
 `
@@ -59,19 +62,23 @@ export const CardWrapper = styled.div`
     width: 100%;
     height: 18.75rem;
     border-radius: 1.25rem;
-    border-bottom-right-radius: 0;
-    overflow: hidden;
+
+    overflow-x: hidden;
+
+    @media (min-width: 375px) {
+      height: 30rem;
+    }
 
     &.disabled {
       pointer-events: none;
       background-color: ${({ theme }) => theme.colors.black};
       border-radius: 1.25rem;
-      border-bottom-right-radius: 0;
     }
 
     .imgBox {
       position: absolute;
       inset: 0;
+
       overflow: hidden;
 
       &.outOfStock {
@@ -110,12 +117,12 @@ export const CardWrapper = styled.div`
 
     .icon {
       position: absolute;
-      bottom: -0.375rem;
-      right: -0.375rem;
-      width: 5rem;
-      height: 5rem;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 2rem;
       background: ${({ theme }) => theme.colors.green};
-      border-top-left-radius: 50%;
+
       display: flex;
       justify-content: center;
       align-items: center;
@@ -197,9 +204,11 @@ export const CheckoutButton = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 17rem;
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+  width: 12.5rem;
+  max-width: 80%; /* Garante que não ultrapasse a tela */
+  overflow: hidden; /* Evita transbordo interno */
   z-index: 99;
+  border: 0;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.greenLight};
@@ -217,44 +226,14 @@ export const CheckoutButton = styled.button`
     margin-left: 1rem;
   }
 
-  @media (max-width: 600px) {
-    width: 80%;
+  @media (max-width: 1280px) {
+    width: 70%;
   }
 
-  @media (max-width: 400px) {
-    width: 60%;
+  @media (min-width: 375px) {
+    width: 15.625rem;
+    left: 50%; /* Alinha centralmente */
   }
 `
 
-export const ClearCartButton = styled.button`
-  position: fixed;
-  text-align: center;
-  justify-content: center;
-  bottom: 2rem;
-  left: 63%;
-  transform: translateX(-50%);
-  background-color: red;
-  color: white;
-  font-weight: regular;
-  padding: 1rem;
-  font-size: 1rem;
-  border-radius: 3.125rem;
-  display: flex;
-  align-items: center;
-  width: 1rem;
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
-  z-index: 99;
 
-  &:hover {
-    background-color: darkred;
-  }
-
-  @media (max-width: 600px) {
-    left: 85%;
-    transform: translateX(-50%);
-  }
-  @media (min-width: 87.5rem) {
-    left: 59%;
-    transform: translateX(-50%);
-  }
-`

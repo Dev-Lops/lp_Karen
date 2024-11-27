@@ -4,14 +4,13 @@ export const Embla = styled.div`
   max-width: 100vw;
   font-family: "Montserat", sans-serif;
 
-  --slide-height: 80vh;
+  --slide-height: 100vh;
   /* --slide-spacing: 1rem; */
   --slide-size: 100%;
   user-select: none;
-  padding: 20px 0;
 
   @media (max-width: 80rem) {
-    --slide-height: 80vh;
+    --slide-height: 100vh;
     --slide-size: 100%;
   }
 
@@ -65,33 +64,32 @@ export const EmblaSlideImg = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: var(--slide-height);
+  height: 450px;
   width: 100%;
   object-fit: cover;
   user-select: none;
 
   padding: 5px;
-  border-radius: 50px;
+  border-radius: 10px;
 
   @media (min-width: 80rem) {
+    height: 100%;
   }
 
   @media (min-width: 87.5rem) {
+    height: 1000px;
   }
 `
 
 export const DiscountTag = styled.div`
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 5px;
+  right: 5px;
   background: red; /* Cor de destaque para a tarja */
   color: white;
   font-weight: bold;
-  padding: 1rem;
-  border-radius: 100%;
-  z-index: 1;
-  font-size: 0.9rem;
-  font-size: 1.5rem; /* Ajuste para telas maiores */
+  padding: 1rem 1rem;
+  border-radius: 10px;
 
   @media (min-width: 768px) {
     font-size: 2rem; /* Ajuste para telas maiores */

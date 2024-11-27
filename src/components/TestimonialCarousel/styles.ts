@@ -2,15 +2,13 @@ import styled from "styled-components"
 
 // Card de Testemunho
 export const TestimonialCard = styled.div`
-  background: white;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
-  padding: 20px;
+
   border-radius: 10px;
 
   /* Responsividade */
@@ -23,13 +21,10 @@ export const TestimonialCard = styled.div`
 
 export const ClientImage = styled.img`
   width: 100%;
-  height: 300px;
-
-  margin-bottom: 20px;
 
   /* Responsividade */
   @media (min-width: 1280px) {
-    width: 60%;
-    height: auto;
+    width: 500px;
+    height: 500px;
   }
 `
