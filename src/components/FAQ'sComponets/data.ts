@@ -40,7 +40,7 @@ Clique no item que deseja, incluindo todos no carrinho, logo em seguida clique e
   },
   {
     question: "Tem taxa de entrega ?",
-    answer: `Sim! Conforme a sua localização. Entregamos para todo Brasil.✈️rodoviárias 🚍, balsas ⛴️, portos, correios 📦.`,
+    answer: `Sim! Conforme a sua localidade. Entregamos para todo Brasil.✈️rodoviárias 🚍, balsas ⛴️, portos, correios 📦.`,
   },
   {
     question: "Como posso entrar em contato com o suporte?",
