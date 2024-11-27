@@ -5,6 +5,7 @@ interface StyledButtonProps {
   color?: string
   backgroundColor?: string
   size?: "small" | "medium" | "large"
+  width?: "big" | "md"
   href?: string
   onClick?: () => void
   children?: React.ReactNode
@@ -12,9 +13,18 @@ interface StyledButtonProps {
   target?: string // Adicionado para controlar o target
 }
 
+const widths = {
+  big: {
+    width: "330px",
+  },
+  md: {
+    width: "200px",
+  },
+}
+
 const sizes = {
   small: {
-    padding: "12px 24px",
+    padding: "8px 16px",
     fontSize: "1rem",
   },
   medium: {
@@ -30,6 +40,7 @@ const sizes = {
 const StyledButton = styled.a<{
   $backgroundColor?: string
   $size?: "small" | "medium" | "large"
+  $width?: "big" | "md"
 }>`
   display: inline-block;
   background-color: ${({ $backgroundColor, theme }) =>
@@ -39,9 +50,9 @@ const StyledButton = styled.a<{
   border: 1px solid ${({ theme }) => theme.colors.gold};
   border-radius: 0.5rem;
   font-family: "Melodrama", serif;
-  width: 310px;
+  width: ${({ $width }) => widths[$width || "big"].width};
+  padding: 0;
 
-  font-weight: 100;
   letter-spacing: 3px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -83,12 +94,12 @@ const StyledButton = styled.a<{
   }
 
   @media (min-width: 80rem) {
-    padding: 15px 30px;
+    /* padding: 15px 30px; */
     font-size: 1.5rem;
   }
 
   @media (min-width: 87.5rem) {
-    padding: 15px 30px;
+    /* padding: 15px 30px; */
     font-size: 1.5rem;
   }
 `
@@ -98,6 +109,7 @@ export const Button: React.FC<StyledButtonProps> = ({
   backgroundColor = "#01ab9e", // Valor padrão
   size = "medium", // Valor padrão
   href,
+  width,
   onClick,
   children,
   className,
@@ -108,6 +120,7 @@ export const Button: React.FC<StyledButtonProps> = ({
     $size={size} // Transient prop
     color={color}
     href={href}
+    $width={width}
     onClick={onClick}
     className={className}
     target={target}

@@ -156,6 +156,10 @@ export const CardWrapper = styled.div`
       border-radius: 10px;
       background: ${({ theme }) => theme.colors.green};
 
+      @media (min-width: 80rem) {
+        right: 100px;
+      }
+
       &.outOfStock {
         background: none;
       }

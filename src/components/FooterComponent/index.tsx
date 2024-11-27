@@ -12,7 +12,7 @@ export const FooterComponent = () => {
   return (
     <FooterContainer>
       <FooterLinks>
-        <FooterLink href='#about' aria-label='Sobre'>
+        <FooterLink href='#cta' aria-label='Sobre'>
           Sobre
         </FooterLink>
         <FooterLink

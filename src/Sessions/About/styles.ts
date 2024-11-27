@@ -134,7 +134,7 @@ export const AboutContent = styled.main`
     & h1 {
       font-size: 4rem;
       color: ${({ theme }) => theme.colors.white};
-
+      height: 100px;
       font-family: "AlexanderLettering", sans-serif;
       display: flex;
       align-items: center;

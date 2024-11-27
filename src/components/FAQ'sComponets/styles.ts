@@ -20,7 +20,7 @@ export const FAQTitle = styled.h2`
 
 // Estilos para o acordeão
 export const Accordion = styled.div`
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
 `
 
@@ -32,8 +32,9 @@ export const AccordionHeader = styled.div`
   background-color: transparent;
   color: ${({ theme }) => theme.colors.green};
   padding: 15px;
-  font-size: 1rem;
+  font-size: 1.125rem;
   cursor: pointer;
+  font-weight: semi-bold;
   transition: background-color 0.3s ease;
   border-top: 1px solid ${({ theme }) => theme.colors.green};
 
