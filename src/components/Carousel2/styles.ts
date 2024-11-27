@@ -109,7 +109,7 @@ export const EmblaSlideInfo = styled.div`
   padding: 20px;
 
   p {
-    width: 100%;
+    width: 80%;
     text-align: start;
 
     @media (min-width: 80rem) {
@@ -130,7 +130,6 @@ export const EmblaSlideInfo = styled.div`
   }
 
   @media (min-width: 80rem) {
-    width: 80%;
     align-items: start;
     margin-left: 30px;
     text-align: start;
@@ -138,7 +137,6 @@ export const EmblaSlideInfo = styled.div`
     padding: 2rem;
   }
   @media (min-width: 87.5rem) {
-    padding: 2rem;
   }
 
   .old-price {
@@ -162,7 +160,7 @@ export const EmblaSlideInfo = styled.div`
 
   @media (min-width: 80rem) {
     font-size: 1.5rem;
-    padding: 0.6rem;
+    margin: 1rem;
   }
 `
 
