@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Toaster } from "../Toaster" // Importe o Toaster
 import LazyImage from "../LazyImg"
 import {
   Section,
@@ -9,26 +10,23 @@ import {
   Title,
 } from "./styles"
 import { ShoppingCart } from "lucide-react"
-import { products } from "./data"
-
-export interface Product {
-  id: number
-  oldPrice: number
-  currentPrice: number
-  image: string
-  title: string
-  description: string
-  inStock: boolean
-  discount: number
-}
+import { products, Products } from "./data"
 
 export function ProductsGrid() {
-  const [cart, setCart] = useState<Product[]>([])
+  const [cart, setCart] = useState<Products[]>([])
+  const [showToaster, setShowToaster] = useState(false)
+  const [toasterMessage, setToasterMessage] = useState("")
 
-  const addToCart = (product: Product) => {
+  const addToCart = (product: Products) => {
     if (product.inStock) {
       setCart((prevCart) => [...prevCart, product])
+      setToasterMessage(`"${product.title}" foi adicionado ao carrinho!`)
+      setShowToaster(true)
     }
+  }
+
+  const handleToasterClose = () => {
+    setShowToaster(false)
   }
 
   const calculateTotal = () => {
@@ -36,9 +34,8 @@ export function ProductsGrid() {
   }
 
   const redirectToWhatsApp = () => {
-    // Agrupa os produtos por ID e calcula a quantidade de cada um
     const groupedProducts = cart.reduce<
-      Record<number, { product: Product; quantity: number }>
+      Record<number, { product: Products; quantity: number }>
     >((acc, item) => {
       if (acc[item.id]) {
         acc[item.id].quantity += 1
@@ -48,7 +45,6 @@ export function ProductsGrid() {
       return acc
     }, {})
 
-    // Cria a mensagem do WhatsApp com destaque para a quantidade de cada produto
     const message = Object.values(groupedProducts)
       .map(
         ({ product, quantity }) =>
@@ -64,14 +60,13 @@ export function ProductsGrid() {
       )
       .join("%0A")
 
-    // Calcula o total final do carrinho
     const total = calculateTotal()
     const totalMessage = `%0A%0A *Valor Total:* R$ ${total
       .toFixed(2)
       .replace(".", ",")}`
 
     const phoneNumber = "5592993787566"
-    const url = `https://wa.me/${phoneNumber}?text=Olá!%0A%0AEu gostaria de finalizar a compra desses itens:%0A${message}${totalMessage}%0A%0AObrigado!`
+    const url = `https://wa.me/${phoneNumber}?text=Olá Fabulosa!%0A%0AEu gostaria de finalizar a compra desses itens:%0A${message}${totalMessage}%0A%0A`
     window.open(url, "_blank")
   }
 
@@ -90,7 +85,6 @@ export function ProductsGrid() {
           >
             <div className={`box ${!product.inStock ? "disabled" : ""}`}>
               <div className={`imgBox ${!product.inStock ? "outOfStock" : ""}`}>
-                {/* Tag de desconto sobre a imagem */}
                 {product.discount > 0 && product.inStock && (
                   <span className='discount-tag'>{product.discount}% OFF</span>
                 )}
@@ -117,7 +111,6 @@ export function ProductsGrid() {
             </div>
             <Title>{product.title}</Title>
             <CardContent className='end'>
-              {/* Exibe preço apenas se o produto estiver em estoque */}
               {product.inStock ? (
                 <>
                   <p>
@@ -152,6 +145,12 @@ export function ProductsGrid() {
           <span className='cart-count'>{cart.length}</span>
         </CheckoutButton>
       )}
+
+      <Toaster
+        message={toasterMessage}
+        show={showToaster}
+        onClose={handleToasterClose}
+      />
     </Section>
   )
 }

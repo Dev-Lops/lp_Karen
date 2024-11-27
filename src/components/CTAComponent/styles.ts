@@ -78,4 +78,5 @@ export const CTAButtons = styled.div`
   flex-wrap: wrap;
   gap: 15px;
   width: 100%;
+  font-weight: bold;
 `

@@ -150,14 +150,13 @@ export const CardWrapper = styled.div`
       justify-content: center;
       align-items: center;
       bottom: 10px;
-      right: 70px;
-      width: 200px;
+
+      width: 100%;
       height: 3rem;
       border-radius: 10px;
       background: ${({ theme }) => theme.colors.green};
 
       @media (min-width: 80rem) {
-        right: 100px;
       }
 
       &.outOfStock {
@@ -287,9 +286,10 @@ export const CheckoutButton = styled.button`
   overflow: hidden; /* Evita transbordo interno */
   z-index: 99;
   border: 0;
+  cursor: pointer;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.greenLight};
+    background-color: ${({ theme }) => theme.colors.brunswickGreen};
   }
 
   .cart-count {
