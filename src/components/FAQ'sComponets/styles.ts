@@ -10,7 +10,7 @@ export const FAQSection = styled.section`
 export const FAQTitle = styled.h2`
   text-align: center;
   margin-bottom: 40px;
-  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-size: clamp(1rem, 5vw, 2rem);
   margin-bottom: 1.8rem;
   color: ${({ theme }) => theme.colors.green};
   font-family: "Stardom", serif;
@@ -32,7 +32,7 @@ export const AccordionHeader = styled.div`
   background-color: transparent;
   color: ${({ theme }) => theme.colors.green};
   padding: 15px;
-  font-size: 1.5rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-top: 1px solid ${({ theme }) => theme.colors.green};
@@ -46,10 +46,8 @@ export const AccordionContent = styled.div<{ $isOpen?: boolean }>`
   max-height: ${({ $isOpen }) => ($isOpen ? "200px" : "0")};
   overflow: hidden;
   color: ${({ theme }) => theme.colors.black};
-  font-size: 1.2rem;
-  font-family: "Melodrama", serif;
-  font-weight: bold;
-  letter-spacing: 5px;
+  font-size: 1rem;
+  font-family: "Montserat", sans-serif;
 
   transition: max-height 0.3s ease;
   padding: ${({ $isOpen }) => ($isOpen ? "1.2rem" : "0")};

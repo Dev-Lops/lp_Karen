@@ -38,7 +38,7 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
             <S.EmblaSlide key={product.id}>
               <S.EmblaSlideImgWrapper>
                 {product.inStock && (
-                  <S.DiscountTag>{`-${product.discount}%`}</S.DiscountTag>
+                  <S.DiscountTag>{`${product.discount}% off`}</S.DiscountTag>
                 )}
                 <S.EmblaSlideImg src={product.image} alt={product.title} />
               </S.EmblaSlideImgWrapper>

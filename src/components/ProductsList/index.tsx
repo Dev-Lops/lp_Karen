@@ -36,33 +36,42 @@ export function ProductsGrid() {
   }
 
   const redirectToWhatsApp = () => {
-    // Contabilizar a quantidade de cada produto
-    const productQuantities = cart.reduce(
-      (acc: { [key: string]: number }, item) => {
-        acc[item.title] = (acc[item.title] || 0) + 1
-        return acc
-      },
-      {}
-    )
+    // Agrupa os produtos por ID e calcula a quantidade de cada um
+    const groupedProducts = cart.reduce<
+      Record<number, { product: Product; quantity: number }>
+    >((acc, item) => {
+      if (acc[item.id]) {
+        acc[item.id].quantity += 1
+      } else {
+        acc[item.id] = { product: item, quantity: 1 }
+      }
+      return acc
+    }, {})
 
-    // Criar a mensagem com a lista de produtos e seus preços
-    const message = Object.entries(productQuantities)
-      .map(([title, quantity]) => {
-        const product = products.find((prod) => prod.title === title)
-        return `${quantity}x ${title}: de R$ ${product?.currentPrice
-          .toFixed(2)
-          .replace(".", ",")}`
-      })
+    // Cria a mensagem do WhatsApp com destaque para a quantidade de cada produto
+    const message = Object.values(groupedProducts)
+      .map(
+        ({ product, quantity }) =>
+          ` *${
+            product.title
+          }* - Quantidade: ${quantity} - Preço Unitário: R$ ${product.currentPrice
+            .toFixed(2)
+            .replace(".", ",")} - Subtotal: R$ ${(
+            product.currentPrice * quantity
+          )
+            .toFixed(2)
+            .replace(".", ",")}`
+      )
       .join("%0A")
 
-    // Calcular o total
+    // Calcula o total final do carrinho
     const total = calculateTotal()
-    const totalMessage = `%0A%0A*Total:* R$ ${total
+    const totalMessage = `%0A%0A *Valor Total:* R$ ${total
       .toFixed(2)
       .replace(".", ",")}`
 
     const phoneNumber = "5592993787566"
-    const url = `https://wa.me/${phoneNumber}?text=Olá%20gostaria%20de%20comprar%20os%20seguintes%20produtos:%0A${message}${totalMessage}`
+    const url = `https://wa.me/${phoneNumber}?text=Olá!%0A%0AEu gostaria de finalizar a compra desses itens:%0A${message}${totalMessage}%0A%0AObrigado!`
     window.open(url, "_blank")
   }
 
@@ -81,65 +90,67 @@ export function ProductsGrid() {
           >
             <div className={`box ${!product.inStock ? "disabled" : ""}`}>
               <div className={`imgBox ${!product.inStock ? "outOfStock" : ""}`}>
+                {/* Tag de desconto sobre a imagem */}
+                {product.discount > 0 && product.inStock && (
+                  <span className='discount-tag'>{product.discount}% OFF</span>
+                )}
                 <LazyImage
                   src={product.image}
                   alt={`Imagem do ${product.title}`}
                   loading='lazy'
                   className='lazy-image'
                 />
-                <p>{product.discount}</p>
-                <div className='loading-placeholder'>Carregando...</div>
-                {!product.inStock && (
-                  <div className='outOfStockText'>Produto Esgotado</div>
-                )}
-              </div>
-              <div className={`icon ${!product.inStock ? "outOfStock" : ""}`}>
-                {product.inStock && (
-                  <button
-                    onClick={() => addToCart(product)}
-                    className={`iconBox ${!product.inStock ? "disabled" : ""}`}
-                    aria-label='comprar'
-                  >
-                    Comprar
-                    <ShoppingCart />
-                  </button>
-                )}
+                {!product.inStock && <div className='outOfStockText'></div>}
+                <div className={`icon ${!product.inStock ? "outOfStock" : ""}`}>
+                  {product.inStock && (
+                    <button
+                      onClick={() => addToCart(product)}
+                      className='iconBox'
+                      aria-label='carrinho'
+                    >
+                      Comprar
+                      <ShoppingCart />
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
             <Title>{product.title}</Title>
-            {product.inStock && (
-              <CardContent className='end'>
-                <p>
-                  De:{" "}
-                  <span
-                    style={{
-                      textDecoration: "line-through",
-                      color: "white",
-                      fontWeight: "100",
-                    }}
-                  >
-                    R$ {product.oldPrice.toFixed(2).replace(".", ",")}
-                  </span>
-                </p>
-                <p>
-                  Por:{" "}
-                  <span style={{ color: "white", fontWeight: "bold" }}>
-                    R$ {product.currentPrice.toFixed(2).replace(".", ",")}
-                  </span>
-                </p>
-              </CardContent>
-            )}
+            <CardContent className='end'>
+              {/* Exibe preço apenas se o produto estiver em estoque */}
+              {product.inStock ? (
+                <>
+                  <p>
+                    De:{" "}
+                    <span
+                      style={{
+                        textDecoration: "line-through",
+                        color: "white",
+                      }}
+                    >
+                      R$ {product.oldPrice.toFixed(2).replace(".", ",")}
+                    </span>
+                  </p>
+                  <p>
+                    Por:{" "}
+                    <span style={{ color: "white", fontWeight: "bold" }}>
+                      R$ {product.currentPrice.toFixed(2).replace(".", ",")}
+                    </span>
+                  </p>
+                </>
+              ) : (
+                <p style={{ color: "red" }}>Produto Indisponível</p>
+              )}
+            </CardContent>
           </CardWrapper>
         ))}
       </Container>
 
       {cart.length > 0 && (
-        <>
-          <CheckoutButton onClick={redirectToWhatsApp}>
-            Finalizar Compra
-            <span className='cart-count'>{cart.length}</span>
-          </CheckoutButton>
-        </>
+        <CheckoutButton onClick={redirectToWhatsApp}>
+          Finalizar Compra
+          <span className='cart-count'>{cart.length}</span>
+        </CheckoutButton>
       )}
     </Section>
   )

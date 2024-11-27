@@ -59,24 +59,28 @@ export const Container = styled.div`
 export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-
   position: relative;
 
   .end {
     flex: 1;
     align-items: flex-end;
   }
+
   .box {
     position: relative;
+
     width: 100%;
-    height: 18.75rem;
+    height: 100%;
     border-top-right-radius: 1.25rem;
     border-top-left-radius: 1.25rem;
-
     overflow-x: hidden;
 
+    @media (min-width: 1280px) {
+      height: 500px;
+    }
+
     @media (min-width: 375px) {
-      height: 30rem;
+      /* height: 30rem; */
     }
 
     &.disabled {
@@ -85,10 +89,8 @@ export const CardWrapper = styled.div`
     }
 
     .imgBox {
-      position: absolute;
-      inset: 0;
-
-      overflow: hidden;
+      position: relative;
+      height: 100%;
 
       &.outOfStock {
         ::after {
@@ -126,6 +128,21 @@ export const CardWrapper = styled.div`
         object-fit: cover;
         transition: opacity 0.3s;
       }
+
+      /* Adicionando a tag de desconto sobre a imagem */
+      .discount-tag {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: red;
+        color: white;
+        padding: 0.625rem;
+        font-size: 1.25rem;
+        font-weight: bold;
+        border-radius: 1rem;
+        z-index: 2;
+        transform: translate(-10px, -10px);
+      }
     }
 
     .icon {
@@ -133,7 +150,7 @@ export const CardWrapper = styled.div`
       justify-content: center;
       align-items: center;
       bottom: 10px;
-      right: 50px;
+      right: 70px;
       width: 200px;
       height: 3rem;
       border-radius: 10px;
@@ -191,6 +208,22 @@ export const Title = styled.h3`
   padding: 10px;
   text-align: center;
   border: 1px solid ${({ theme }) => theme.colors.green};
+  /* flex: 1; */
+
+  @media (min-width: 1280px) {
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    color: ${({ theme }) => theme.colors.green};
+    font-family: "Melodrama", serif;
+    letter-spacing: 1px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid ${({ theme }) => theme.colors.green};
+    /* flex: 1; */
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
 `
 
 export const CardContent = styled.div`
