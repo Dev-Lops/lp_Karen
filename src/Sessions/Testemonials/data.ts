@@ -12,7 +12,7 @@ export const testimonialsData = [
     image: "https://dtsel6fm8qr8n.cloudfront.net/14.avif",
   },
   {
-    image: "https://dtsel6fm8qr8n.cloudfront.net/13.avif",
+    image: "https://dtsel6fm8qr8n.cloudfront.net/08.avif",
   },
   {
     image: "https://dtsel6fm8qr8n.cloudfront.net/12.avif",
