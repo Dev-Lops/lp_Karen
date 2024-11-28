@@ -93,7 +93,6 @@ export function ProductsGrid() {
                   alt={`Imagem do ${product.title}`}
                   loading='lazy'
                   className='lazy-image'
-                  aria-placeholder='imagens'
                 />
                 {!product.inStock && <div className='outOfStockText'></div>}
                 <div className={`icon ${!product.inStock ? "outOfStock" : ""}`}>

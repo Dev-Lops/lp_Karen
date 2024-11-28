@@ -12,7 +12,6 @@ export const Testimonial = ({ image }: TestimonialProps) => (
     <ClientImage
       src={image}
       alt=''
-      aria-placeholder='div.slick-slide > div > div.sc-cwJYja > img.sc-kpAHqd'
     />
   </TestimonialCard>
 )
