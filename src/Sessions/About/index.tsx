@@ -1,6 +1,6 @@
 import { Button } from "../../components/Button"
 import { AboutContainer, AboutContent } from "./styles"
-import Logo from "../../assets/image.png"
+import Logo from "../../assets/image.avif"
 import LazyImage from "../../components/LazyImg"
 
 export function About() {
