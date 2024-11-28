@@ -16,7 +16,7 @@ export function About() {
       <AboutContent>
         <div className='text'>
           <h1 className='tracking-in-expand-fwd'>Karen Frazão</h1>
-          <h3 className='tracking-in-expand-fwd'>Fabulous Hair</h3>
+          <h3 className='tracking-in-expand-fwd'>Fabulos Hair</h3>
           <p className='tracking-in-expand-fwd'>Saúde e Beleza</p>
         </div>
         <Button
