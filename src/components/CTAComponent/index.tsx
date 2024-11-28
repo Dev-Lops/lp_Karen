@@ -21,7 +21,7 @@ export function CTASection() {
             src='https://dtsel6fm8qr8n.cloudfront.net/ImageToStl.com_img_8808.avif'
             alt='Espaço acolhedor do Studio Karen Frazão'
             loading='lazy'
-            aria-placeholder='cta'
+            aria-placeholder='Espaço acolhedor do Studio Karen Frazão'
           />
         </ImageContainer>
 

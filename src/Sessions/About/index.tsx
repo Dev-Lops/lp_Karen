@@ -11,7 +11,7 @@ export function About() {
         alt='Logo de Karen Frazão'
         className='puff-in-center'
         loading='lazy'
-        aria-placeholder='kit'
+        aria-placeholder='Logo de Karen Frazão'
       />
       <AboutContent>
         <div className='text'>
