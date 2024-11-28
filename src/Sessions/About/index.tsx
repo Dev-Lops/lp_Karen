@@ -5,12 +5,13 @@ import LazyImage from "../../components/LazyImg"
 
 export function About() {
   return (
-    <AboutContainer >
+    <AboutContainer>
       <LazyImage
         src={Logo}
         alt='Logo de Karen Frazão'
         className='puff-in-center'
         loading='lazy'
+        aria-placeholder='kit'
       />
       <AboutContent>
         <div className='text'>

@@ -21,6 +21,7 @@ export function CTASection() {
             src='https://dtsel6fm8qr8n.cloudfront.net/ImageToStl.com_img_8808.avif'
             alt='Espaço acolhedor do Studio Karen Frazão'
             loading='lazy'
+            aria-placeholder='cta'
           />
         </ImageContainer>
 
@@ -85,7 +86,6 @@ export function CTASection() {
 
         <CTAButtons>
           <Button
-
             backgroundColor=''
             href={`https://wa.me/5592993787566?text=${encodeURIComponent(
               "Olá, gostaria de saber mais sobre o horário de agendamento."

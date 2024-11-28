@@ -16,8 +16,8 @@ export const AboutContainer = styled(Container)`
     width: 4rem;
     height: 4rem;
 
-    -webkit-animation: puff-in-center 2s cubic-bezier(0.47, 0, 0.745, 0.715);
-    animation: puff-in-center 2s cubic-bezier(0.47, 0, 0.745, 0.715);
+    -webkit-animation: puff-in-center 0.7s cubic-bezier(0.47, 0, 0.745, 0.715);
+    animation: puff-in-center 0.7s cubic-bezier(0.47, 0, 0.745, 0.715);
     /* Melhor controle da imagem */
 
     @media (min-width: 80rem) {
@@ -142,9 +142,9 @@ export const AboutContent = styled.main`
       text-align: center;
       letter-spacing: 5px;
 
-      -webkit-animation: text-focus-in 2s cubic-bezier(0.55, 0.085, 0.68, 0.53)
-        both;
-      animation: text-focus-in 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+      -webkit-animation: text-focus-in 0.7s
+        cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+      animation: text-focus-in 0.7s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
     }
 
     & h3 {
@@ -155,7 +155,8 @@ export const AboutContent = styled.main`
       color: ${({ theme }) => theme.colors.gold};
       -webkit-animation: tracking-in-expand 0.7s
         cubic-bezier(0.215, 0.61, 0.355, 1) both;
-      animation: tracking-in-expand 2s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+      animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1)
+        both;
     }
     p {
       margin-top: 60px;
@@ -163,7 +164,8 @@ export const AboutContent = styled.main`
       color: #fff;
       -webkit-animation: tracking-in-expand 0.7s
         cubic-bezier(0.215, 0.61, 0.355, 1) both;
-      animation: tracking-in-expand 2s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+      animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1)
+        both;
       margin-bottom: 30px;
     }
   }
@@ -212,9 +214,9 @@ export const AboutContent = styled.main`
 
         letter-spacing: 15px;
 
-        -webkit-animation: text-focus-in 2s
+        -webkit-animation: text-focus-in 0.8s
           cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
-        animation: text-focus-in 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+        animation: text-focus-in 0.8s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
       }
 
       & h3 {

@@ -44,6 +44,7 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
                   src={product.image}
                   alt={product.title}
                   loading='lazy'
+                  aria-placeholder='imagens'
                 />
               </S.EmblaSlideImgWrapper>
               <S.EmblaSlideInfo>

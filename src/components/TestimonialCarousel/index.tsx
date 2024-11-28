@@ -9,6 +9,6 @@ interface TestimonialProps {
 
 export const Testimonial = ({ image }: TestimonialProps) => (
   <TestimonialCard data-aos='fade-up' data-aos-duration='3000'>
-    <ClientImage src={image} alt='' />
+    <ClientImage src={image} alt='' aria-placeholder='testemonials' />
   </TestimonialCard>
 )
