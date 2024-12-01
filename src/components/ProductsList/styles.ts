@@ -240,14 +240,15 @@ export const CardContent = styled.div`
 
   p {
     text-align: center;
-    width: 170px;
-    font-size: clamp(0.875rem, 5vw, 1.125rem);
+    width: 300px;
+    font-size: clamp(0.875rem, 5vw, 1.5rem);
     color: #fff;
   }
 
   span {
-    font-size: 1.25rem;
+    font-size: clamp(0.875rem, 5vw, 1.5rem);
     margin-right: 10px;
+    flex-wrap: wrap;
   }
   .discount {
     color: #fff;

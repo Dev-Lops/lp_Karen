@@ -1,101 +1,144 @@
 import { useState, useEffect } from "react"
-import {
-  CountdownSection,
-  CountdownTitle,
-  Timer,
-  TimeUnit,
-  TimeLabel,
-  Description,
-} from "./styles"
+import { CountdownSection, CountdownTitle, Description, Input } from "./styles"
 import { Button } from "../Button"
+import axios from "axios"
+import { Formik, Field, Form, ErrorMessage } from "formik"
+import * as Yup from "yup"
+import styled from "styled-components"
 
-// Função para calcular a contagem de tempo até a data específica
-const calculateTimeLeft = () => {
-  const now = new Date()
+// Tooltip Styled
+const TooltipContainer = styled.div<{ isVisible: boolean }>`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
+  transition: opacity 0.5s ease;
+  z-index: 999;
+`
 
-  // Definir a data final como 30 de novembro de 2024 às 17:00 (horário de Manaus, UTC-4)
-  const targetDate = new Date("2024-11-30T17:00:00-04:00")
+const TooltipText = styled.div`
+  font-size: 14px;
+  text-align: center;
+`
 
-  // Calcular a diferença em milissegundos
-  const difference = targetDate.getTime() - now.getTime()
-
-  // Se a data já passou, retornar zeros
-  if (difference <= 0) {
-    return { days: 0, hours: 0, minutes: 0, seconds: 0 }
-  }
-
-  // Calcular dias, horas, minutos e segundos
-  const days = Math.floor(difference / (1000 * 60 * 60 * 24))
-  const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-  const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))
-  const seconds = Math.floor((difference % (1000 * 60)) / 1000)
-
-  return { days, hours, minutes, seconds }
-}
+// Validação do formulário com Yup
+const validationSchema = Yup.object({
+  name: Yup.string().required("O nome é obrigatório"),
+  email: Yup.string()
+    .email("Formato de e-mail inválido")
+    .required("O e-mail é obrigatório"),
+})
 
 export const CountdownTimer = () => {
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft)
+  const [message, setMessage] = useState("")
+  const [success, setSuccess] = useState(false)
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false)
 
-  // Atualizar a contagem a cada segundo
+  const handleSubmit = async (
+    values: { name: string; email: string },
+    { resetForm }: { resetForm: () => void }
+  ) => {
+    try {
+      // Envia os dados ao servidor
+      const response = await axios.post(
+        "https://backend-karen.onrender.com/emails",
+        {
+          name: values.name,
+          email: values.email,
+        }
+      )
+
+      if (response.status === 201) {
+        // Mensagem com o ID gerado (caso o backend retorne o ID)
+        setMessage(`Cadastro realizado com sucesso!`)
+        setSuccess(true)
+        resetForm()
+      }
+    } catch (error: unknown) {
+      console.error("Erro ao enviar os dados:", error)
+
+      // Verifica se o erro é uma instância de erro de Axios
+      if (axios.isAxiosError(error)) {
+        console.log("Erro da API:", error.response)
+        const errorMessage =
+          error.response?.data?.message || "Erro ao cadastrar os dados."
+        setMessage(errorMessage)
+      } else {
+        // Caso o erro não seja de Axios, exibe uma mensagem genérica
+        setMessage("Erro desconhecido ao cadastrar os dados.")
+      }
+      setSuccess(false)
+    }
+  }
+
+  // Controle do Tooltip para aparecer e desaparecer após 1 segundo
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft())
-    }, 1000)
+    if (success) {
+      setIsTooltipVisible(true)
+      const timer = setTimeout(() => {
+        setIsTooltipVisible(false)
+      }, 3000)
 
-    return () => clearInterval(timer) // Limpeza do intervalo
-  }, [])
+      return () => clearTimeout(timer)
+    }
+  }, [success])
 
   return (
-    <>
-      <CountdownSection>
-        <CountdownTitle data-aos="fade-up" data-aos-duration="3000">
-          Ofertas por tempo limitado
-        </CountdownTitle>
-        <Description data-aos="fade-left">
-          Todos os nossos produtos com descontos incríveis nessa Black Friday.
-        </Description>
-        <Timer>
-          <TimeUnit
-            data-aos="flip-left"
-            data-aos-easing="ease-out-cubic"
-            data-aos-duration="2000"
-          >
-            <span>{timeLeft.days}</span>
-            <TimeLabel>DIAS</TimeLabel>
-          </TimeUnit>
-          <TimeUnit
-            data-aos="flip-left"
-            data-aos-easing="ease-out-cubic"
-            data-aos-duration="2000"
-          >
-            <span>{timeLeft.hours}</span>
-            <TimeLabel>HORAS</TimeLabel>
-          </TimeUnit>
-          <TimeUnit
-            data-aos="flip-left"
-            data-aos-easing="ease-out-cubic"
-            data-aos-duration="2000"
-          >
-            <span>{timeLeft.minutes}</span>
-            <TimeLabel>MINUTOS</TimeLabel>
-          </TimeUnit>
-          <TimeUnit
-            data-aos="flip-left"
-            data-aos-easing="ease-out-cubic"
-            data-aos-duration="2000"
-          >
-            <span>{timeLeft.seconds}</span>
-            <TimeLabel>SEGUNDOS</TimeLabel>
-          </TimeUnit>
-        </Timer>
-        <Button
-          backgroundColor=""
-          href="https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20mais%20informações!%20"
-          target="_blank"
-        >
-          Entre em contato
-        </Button>
-      </CountdownSection>
-    </>
+    <CountdownSection>
+      <CountdownTitle data-aos='fade-up' data-aos-duration='3000'>
+        Receba nossas promoções no e-mail
+      </CountdownTitle>
+      <Description data-aos='fade-left'>
+        Seja a primeira a receber nossas promoções, cadastre seu nome e e-mail.
+      </Description>
+
+      <Formik
+        initialValues={{ name: "", email: "" }}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ isSubmitting }) => (
+          <Form>
+            <Field
+              type='text'
+              name='name'
+              placeholder='Digite seu nome'
+              as={Input}
+            />
+            <ErrorMessage name='name'>
+              {(msg) => (
+                <div style={{ color: "red", fontSize: "12px" }}>{msg}</div>
+              )}
+            </ErrorMessage>
+
+            <Field
+              type='email'
+              name='email'
+              placeholder='Digite seu e-mail'
+              as={Input}
+            />
+            <ErrorMessage name='email'>
+              {(msg) => (
+                <div style={{ color: "red", fontSize: "12px" }}>{msg}</div>
+              )}
+            </ErrorMessage>
+
+            <Button backgroundColor='' type='submit' disabled={isSubmitting}>
+              {isSubmitting ? "Enviando..." : "Cadastrar"}
+            </Button>
+          </Form>
+        )}
+      </Formik>
+
+      {isTooltipVisible && (
+        <TooltipContainer isVisible={isTooltipVisible}>
+          <TooltipText>{message}</TooltipText>
+        </TooltipContainer>
+      )}
+    </CountdownSection>
   )
 }

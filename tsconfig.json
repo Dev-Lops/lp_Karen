@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "typeRoots": ["node_modules/@types"],
+    "types": ["vite/client"],
+    "typeRoots": ["node_modules/@types", "node_modules"],
     "baseUrl": "./src/*",
     "moduleResolution": "node",
     "resolveJsonModule": true,

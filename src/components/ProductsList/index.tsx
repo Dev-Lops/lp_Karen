@@ -30,7 +30,7 @@ export function ProductsGrid() {
   }
 
   const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.currentPrice, 0)
+    return cart.reduce((total, item) => total + item.oldPrice, 0)
   }
 
   const redirectToWhatsApp = () => {
@@ -50,11 +50,9 @@ export function ProductsGrid() {
         ({ product, quantity }) =>
           ` *${
             product.title
-          }* - Quantidade: ${quantity} - Preço Unitário: R$ ${product.currentPrice
+          }* - Quantidade: ${quantity} - Preço Unitário: R$ ${product.oldPrice
             .toFixed(2)
-            .replace(".", ",")} - Subtotal: R$ ${(
-            product.currentPrice * quantity
-          )
+            .replace(".", ",")} - Subtotal: R$ ${(product.oldPrice * quantity)
             .toFixed(2)
             .replace(".", ",")}`
       )
@@ -85,9 +83,9 @@ export function ProductsGrid() {
           >
             <div className={`box ${!product.inStock ? "disabled" : ""}`}>
               <div className={`imgBox ${!product.inStock ? "outOfStock" : ""}`}>
-                {product.discount > 0 && product.inStock && (
+                {/* {product.discount > 0 && product.inStock && (
                   <span className='discount-tag'>{product.discount}% OFF</span>
-                )}
+                )} */}
                 <LazyImage
                   src={product.image}
                   alt={`Imagem do ${product.title}`}
@@ -114,22 +112,20 @@ export function ProductsGrid() {
               {product.inStock ? (
                 <>
                   <p>
-                    De:{" "}
                     <span
                       style={{
-                        textDecoration: "line-through",
                         color: "white",
                       }}
                     >
                       R$ {product.oldPrice.toFixed(2).replace(".", ",")}
                     </span>
                   </p>
-                  <p>
+                  {/* <p>
                     Por:{" "}
                     <span style={{ color: "white", fontWeight: "bold" }}>
                       R$ {product.currentPrice.toFixed(2).replace(".", ",")}
                     </span>
-                  </p>
+                  </p> */}
                 </>
               ) : (
                 <p style={{ color: "red" }}>Produto Indisponível</p>

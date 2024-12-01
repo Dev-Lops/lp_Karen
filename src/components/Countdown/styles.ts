@@ -12,14 +12,17 @@ export const CountdownSection = styled.section`
   width: 100vw;
   text-align: center;
   box-sizing: border-box;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 export const CountdownTitle = styled.h2`
-  font-size: 1.25rem;
-  margin-bottom: 1.25rem;
-
   font-size: clamp(1rem, 5vw, 2rem);
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   color: ${({ theme }) => theme.colors.white};
   font-family: "Stardom", serif;
   letter-spacing: 3px;
@@ -36,7 +39,6 @@ export const CountdownTitle = styled.h2`
 
 export const Description = styled.p`
   font-size: 1.2rem;
-
   margin-bottom: 1rem;
 
   @media (min-width: 48rem) {
@@ -48,46 +50,46 @@ export const Description = styled.p`
   }
 `
 
-export const Timer = styled.div`
+export const Input = styled.input`
+  width: 350px;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: 1rem;
-  display: flex;
-  justify-content: center;
-  gap: 1.25rem;
-  padding-bottom: 20px;
+`
 
-  @media (min-width: 48rem) {
-    font-size: 1.5rem;
-  }
+export const Message = styled.p<{ success: boolean }>`
+  margin-top: 1rem;
+  background-color: ${(props) => (props.success ? "green" : "red")};
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+`
 
-  @media (min-width: 64rem) {
-    font-size: 2rem;
+export const TooltipContainer = styled.div`
+  position: relative;
+  display: inline-block;
+
+  &:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
   }
 `
 
-export const TimeUnit = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 2.5rem;
-  font-weight: bold;
-
-  @media (min-width: 48rem) {
-    font-size: 3rem;
-  }
-
-  @media (min-width: 64rem) {
-    font-size: 4rem;
-  }
-`
-
-export const TimeLabel = styled.span`
-  font-size: 1rem;
-
-  @media (min-width: 48rem) {
-    font-size: 1.5rem;
-  }
-
-  @media (min-width: 64rem) {
-    font-size: 2rem;
-  }
+export const TooltipText = styled.div`
+  visibility: hidden;
+  opacity: 0;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+  transition: opacity 0.3s;
 `

@@ -37,9 +37,9 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
           {slides.map((product) => (
             <S.EmblaSlide key={product.id}>
               <S.EmblaSlideImgWrapper>
-                {product.inStock && (
+                {/* {product.inStock && (
                   <S.DiscountTag>{`${product.discount}% OFF`}</S.DiscountTag>
-                )}
+                )} */}
                 <S.EmblaSlideImg
                   src={product.image}
                   alt={product.title}
@@ -53,13 +53,13 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
                   <>
                     <p>{product.description}</p>
                     <S.ProductDescription>
+                      {/* <span className='current-price'>{`${formatPrice(
+                        product.currentPrice
+                      )}`}</span> */}
                       <strong className='old-price'>{`De ${formatPrice(
                         product.oldPrice
                       )}`}</strong>
                       <br />
-                      <span className='current-price'>{` Por ${formatPrice(
-                        product.currentPrice
-                      )}`}</span>
                     </S.ProductDescription>
                     <S.inStock>Produto Disponível</S.inStock>
                   </>

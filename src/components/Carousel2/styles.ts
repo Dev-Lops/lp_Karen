@@ -140,11 +140,9 @@ export const EmblaSlideInfo = styled.div`
   }
 
   .old-price {
-    text-decoration: line-through;
     margin-right: 0.5rem;
-    color: pink;
     font-weight: 100;
-    font-size: clamp(1.2rem, 5vw, 1.5rem);
+    font-size: clamp(1.5rem, 5vw, 2rem);
 
     letter-spacing: 3px;
     font-weight: bold;

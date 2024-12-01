@@ -1,6 +1,4 @@
 // Importando o Slider do react-slick
-import "slick-carousel/slick/slick.css" // Estilos do slick
-import "slick-carousel/slick/slick-theme.css" // Estilos do tema do slick
 import { ClientImage, TestimonialCard } from "./styles"
 
 interface TestimonialProps {
