@@ -62,9 +62,8 @@ export const EmblaSlideImgWrapper = styled.div`
 
 export const EmblaSlideImg = styled.img`
   display: flex;
-  position: absolute;
 
-  height: 550px;
+  height: 100%;
   width: 100%;
   object-fit: cover;
   user-select: none;
@@ -73,6 +72,7 @@ export const EmblaSlideImg = styled.img`
   border-radius: 10px;
 
   @media (min-width: 80rem) {
+    position: absolute;
     height: 100%;
   }
 

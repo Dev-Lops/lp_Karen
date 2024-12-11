@@ -8,7 +8,8 @@ export const ContainerKit = styled(Container)`
   align-items: center;
   color: ${({ theme }) => theme.colors.green};
   width: 100vw;
-  height: 100vh;
+  height: 100%;
+  margin-bottom: 16px;
 
   & > img {
     width: 250px;
