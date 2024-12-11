@@ -3,9 +3,9 @@ import { ContainerKit, ContentKit } from "./styles"
 import LazyImage from "../../components/LazyImg"
 
 const product = {
-  title: "Kit equilíbrio THERAPY",
+  title: "Kit Equilíbrio THERAPY",
   description: `
-    O kit equilíbrio THERAPY foi desenvolvido com ativos naturais para
+    O kit Equilíbrio THERAPY foi desenvolvido com ativos naturais para
     devolver a saúde, força, brilho e resistência, tanto para o couro
     cabeludo, quanto para os fios.
   `,

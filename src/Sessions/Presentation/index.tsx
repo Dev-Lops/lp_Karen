@@ -10,6 +10,7 @@ import {
   VideoContainer,
   ModalOverlay,
   ModalContent,
+  Stars,
 } from "./styles"
 import { Divider } from "../../components/Divider"
 
@@ -26,7 +27,11 @@ export function Presentation() {
       <PresentationContainer>
         <Content data-aos='zoom-in-up'>
           <Title data-aos='fade-up' data-aos-duration='3000'>
-            Uma breve apresentação dos nossos produtos
+            Tudo que seu cabelo precisa, na palma de suas mãos.
+            <Stars
+              src='https://dtsel6fm8qr8n.cloudfront.net/5stars.svg'
+              alt='stars'
+            />
           </Title>
 
           <VideoContainer onClick={toggleModal}>

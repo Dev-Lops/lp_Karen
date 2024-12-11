@@ -16,7 +16,7 @@ export const products: Products[] = [
     discount: 10,
     currentPrice: 57.6,
     image: "https://dtsel6fm8qr8n.cloudfront.net/img1.avif",
-    title: "Ampola de reestruturação do córtex",
+    title: "Ampola de Reestruturação do Córtex",
     description:
       "Ampola de alta performance, age reestruturando fibras instáveis, elásticas, quebradiças e opacas. Em apenas 5 minutos no conforto da sua casa.",
     inStock: true,
@@ -27,7 +27,7 @@ export const products: Products[] = [
     discount: 20,
     currentPrice: 52.7,
     image: "https://dtsel6fm8qr8n.cloudfront.net/img3.avif",
-    title: "Sérum fabulos premium",
+    title: "Sérum Fabulos Premium",
     description:
       "O sérun fabulos premium é o aliado ideal na reestruturação do CMC capilar, são 12 óleos essenciais que simultaneamente reparam danos na fibra e reestabelecem  18MEA um composto de ácidos graxos indispensáveis para a saúde e integridade da fibra.",
     inStock: true,
@@ -39,7 +39,7 @@ export const products: Products[] = [
     currentPrice: 233.4,
     image: "https://dtsel6fm8qr8n.cloudfront.net/img6.avif",
 
-    title: "Kit alisamento natural",
+    title: "Kit Alisamento Natural",
     description:
       "Descubra o poder de uma fórmula inovadora que combina o melhor da ciência e da natureza para proporcionar resultados incríveis nos cabelos. Ideal para profissionais, o Kit Alisamento Natural oferece soluções completas para limpeza profunda e alinhamento dos fios de forma saudável e natural.",
     inStock: true,
@@ -61,7 +61,7 @@ export const products: Products[] = [
     discount: 30,
     currentPrice: 21,
     image: "https://dtsel6fm8qr8n.cloudfront.net/img5.avif",
-    title: "Escova fabulos hair",
+    title: "Escova Fabulos Hair",
     description:
       "A escova Fabulos Hair ativa a circulação sanguínea do couro cabeludo promovendo o crescimento saudável dos seus fios, desembaraça sem rompimentos, auxilia no crescimento saudável, previne triconodose, pontas duplas, ralas e afinadas.",
     inStock: true,
@@ -72,7 +72,7 @@ export const products: Products[] = [
     discount: 30,
     currentPrice: 32.8,
     image: "https://dtsel6fm8qr8n.cloudfront.net/img4.avif",
-    title: "Perfume antifrizz",
+    title: "Perfume Antifrizz",
     description:
       "O Perfume Antifrizz foi desenvolvido para remover a evidência dos fios frizzados, arrepiados e eletrizados.",
     inStock: true,
@@ -83,7 +83,7 @@ export const products: Products[] = [
     discount: 0,
     currentPrice: 0,
     image: "https://dtsel6fm8qr8n.cloudfront.net/reestruturador_bifasico.avif",
-    title: "Reestruturador bifásico THERAPY",
+    title: "Reestruturador Bifásico THERAPY",
     description:
       "Protege a fibra contra agressões externas, equilibra o PH e mantém a estrutura do córtex com vitalidade.",
     inStock: false,
@@ -94,7 +94,7 @@ export const products: Products[] = [
     discount: 10,
     currentPrice: 102.6,
     image: "https://dtsel6fm8qr8n.cloudfront.net/img2.avif",
-    title: "Shampoo e booster CMC",
+    title: "Shampoo e Booster CMC",
     description:
       "O kit 18 Rosé atua restaurando o CMC capilar, devolvendo 18Metil eicosanoico à fibra.",
     inStock: true,

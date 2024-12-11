@@ -62,9 +62,9 @@ export const EmblaSlideImgWrapper = styled.div`
 
 export const EmblaSlideImg = styled.img`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 450px;
+  position: absolute;
+
+  height: 550px;
   width: 100%;
   object-fit: cover;
   user-select: none;
@@ -77,7 +77,7 @@ export const EmblaSlideImg = styled.img`
   }
 
   @media (min-width: 87.5rem) {
-    height: 1000px;
+    height: 100%;
   }
 `
 

@@ -33,11 +33,15 @@ export const Content = styled.div`
 `
 
 export const Title = styled.h2`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-family: "Stardom", serif;
   font-weight: bold;
   letter-spacing: 5px;
   font-size: 1rem;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   color: ${({ theme }) => theme.colors.white};
 
   @media (min-width: 80rem) {
@@ -121,4 +125,8 @@ export const Description = styled.p`
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
+`
+export const Stars = styled.img`
+  height: 6rem;
+  width: 6rem;
 `
