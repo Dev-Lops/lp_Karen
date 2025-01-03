@@ -3,7 +3,7 @@ import type { EmblaOptionsType } from "embla-carousel"
 import EmblaCarousel from "../../components/Carousel2"
 import { ContainerProduct } from "./styles"
 import { products } from "../../components/Carousel2/data"
-import { Divider } from "../../components/Divider"
+
 
 const OPTIONS: EmblaOptionsType = { loop: true, duration: 5 }
 
