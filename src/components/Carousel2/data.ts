@@ -86,7 +86,7 @@ export const products: Product[] = [
     title: "Reestruturador Bifásico THERAPY",
     description:
       "Protege a fibra contra agressões externas, equilibra o PH e mantém a estrutura do córtex com vitalidade.",
-    inStock: false,
+    inStock: true,
   },
   {
     id: 8,
