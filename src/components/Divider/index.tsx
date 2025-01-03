@@ -13,7 +13,7 @@ const FallingLeavesDivider = styled.div<{ width?: number }>`
     top: -50px;
     width: 30px;
     height: 30px;
-    background: url("/ice-svgrepo-com.svg") no-repeat center center;
+    background: url("/leaf-svgrepo-com (1).svg") no-repeat center center;
     background-size: contain;
     opacity: 0.8;
     animation: fall 8s linear infinite, vanish 10s linear infinite;

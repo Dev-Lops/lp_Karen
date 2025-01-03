@@ -4,6 +4,7 @@ import useEmblaCarousel from "embla-carousel-react"
 import Fade from "embla-carousel-fade"
 import * as S from "./styles"
 import { Product } from "./data"
+import { Divider } from "../Divider"
 
 type PropType = {
   slides: Product[]
@@ -71,6 +72,7 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
           ))}
         </S.EmblaContainer>
       </S.EmblaViewport>
+      <Divider />
     </S.Embla>
   )
 }

@@ -13,7 +13,7 @@ export function Product() {
       <ContainerProduct id='products'>
         <EmblaCarousel slides={products} options={OPTIONS} />
       </ContainerProduct>
-      <Divider />
+
     </>
   )
 }

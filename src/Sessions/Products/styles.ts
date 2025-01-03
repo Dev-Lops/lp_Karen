@@ -4,7 +4,7 @@ import { Container } from "../../styles/GlobalStyles"
 export const ContainerProduct = styled(Container)`
   display: flex;
   width: 100vw;
-  height: 100vh;
+  
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.green};
@@ -12,6 +12,5 @@ export const ContainerProduct = styled(Container)`
   border: 0;
 
   @media (max-width: 1280px) {
-    height: 50%;
   }
 `
