@@ -1,35 +1,36 @@
-import React, { useEffect } from "react"
-import { EmblaOptionsType } from "embla-carousel"
-import useEmblaCarousel from "embla-carousel-react"
-import Fade from "embla-carousel-fade"
-import * as S from "./styles"
-import { Product } from "./data"
-import { Divider } from "../Divider"
+import React, { useEffect, useCallback } from "react";
+import { EmblaOptionsType } from "embla-carousel";
+import useEmblaCarousel from "embla-carousel-react";
+import Fade from "embla-carousel-fade";
+import * as S from "./styles";
+import { Product } from "./data";
+import { Divider } from "../Divider";
 
-type PropType = {
-  slides: Product[]
-  options?: EmblaOptionsType
+interface CarouselProps {
+  slides: Product[];
+  options?: EmblaOptionsType;
 }
 
-const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
+const EmblaCarousel: React.FC<CarouselProps> = ({ slides, options }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { ...options, loop: true }, // Loop habilitado para melhor experiência
-    [Fade()] // Adiciona a transição de fade
-  )
+    { ...options, loop: true },
+    [Fade()]
+  );
 
-  // Função para formatar preços em BRL
-  const formatPrice = (price: number) =>
-    price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
+  // Formata preços em BRL
+  const formatPrice = useCallback((price: number) => {
+    return price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  }, []);
 
   useEffect(() => {
-    if (emblaApi) {
-      const interval = setInterval(() => {
-        emblaApi.scrollNext() // Avança para o próximo slide automaticamente
-      }, 5000) // Intervalo de 5 segundos
+    if (!emblaApi) return;
 
-      return () => clearInterval(interval) // Limpa o intervalo ao desmontar o componente
-    }
-  }, [emblaApi])
+    const interval = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [emblaApi]);
 
   return (
     <S.Embla>
@@ -38,14 +39,10 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
           {slides.map((product) => (
             <S.EmblaSlide key={product.id}>
               <S.EmblaSlideImgWrapper>
-                {/* {product.inStock && (
-                  <S.DiscountTag>{`${product.discount}% OFF`}</S.DiscountTag>
-                )} */}
                 <S.EmblaSlideImg
                   src={product.image}
                   alt={product.title}
-                  loading='lazy'
-                  aria-placeholder='imagens'
+                  loading="lazy"
                 />
               </S.EmblaSlideImgWrapper>
               <S.EmblaSlideInfo>
@@ -54,13 +51,9 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
                   <>
                     <p>{product.description}</p>
                     <S.ProductDescription>
-                      {/* <span className='current-price'>{`${formatPrice(
-                        product.currentPrice
-                      )}`}</span> */}
-                      <strong className='old-price'>{`De ${formatPrice(
+                      <strong className="old-price">{`De ${formatPrice(
                         product.oldPrice
                       )}`}</strong>
-                      <br />
                     </S.ProductDescription>
                     <S.inStock>Produto Disponível</S.inStock>
                   </>
@@ -74,7 +67,7 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
       </S.EmblaViewport>
       <Divider />
     </S.Embla>
-  )
-}
+  );
+};
 
-export default EmblaCarousel
+export default EmblaCarousel;

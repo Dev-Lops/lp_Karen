@@ -1,6 +1,8 @@
 import { Button } from "../../components/Button"
-import { ContainerKit, ContentKit } from "./styles"
 import LazyImage from "../../components/LazyImg"
+import { ContainerKit, ContentKit } from "./styles"
+
+
 
 const product = {
   title: "Kit Equilíbrio THERAPY",
@@ -9,13 +11,12 @@ const product = {
     devolver a saúde, força, brilho e resistência, tanto para o couro
     cabeludo, quanto para os fios.
   `,
-  imageUrl: "https://dtsel6fm8qr8n.cloudfront.net/kit.avif",
   purchaseLink:
     "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20comprar%20o%20kit%20Equilíbrio%20THERAPY",
 }
 
 export function PresentationKit() {
-  const { title, description, imageUrl, purchaseLink } = product
+  const { title, description, purchaseLink } = product
 
   return (
     <section aria-labelledby='product-title'>
@@ -24,7 +25,7 @@ export function PresentationKit() {
         <img
           data-aos='fade-right'
           data-aos-anchor-placement='center-bottom'
-          src={imageUrl}
+          src='public\kitequ.jpeg'
           alt={`Imagem do ${title}`}
         />
 
@@ -40,7 +41,7 @@ export function PresentationKit() {
 
           {/* Avaliação */}
           <LazyImage
-            src='https://dtsel6fm8qr8n.cloudfront.net/5stars.svg'
+            src='public\5stars.svg'
             alt='Classificação de 5 estrelas'
             data-aos='fade-up'
             loading='lazy'

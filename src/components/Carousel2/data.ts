@@ -1,13 +1,13 @@
 export interface Product {
-  id: number
-  oldPrice: number
-  currentPrice: number
-  image: string
-  title: string
-  description: string
-  inStock: boolean
+  id: number;
+  oldPrice: number;
+  currentPrice: number;
+  image: string;
+  title: string;
+  description: string;
+  inStock: boolean;
 
-  discount: number
+  discount: number;
 }
 export const products: Product[] = [
   {
@@ -15,7 +15,7 @@ export const products: Product[] = [
     oldPrice: 64.0,
     discount: 10,
     currentPrice: 57.6,
-    image: "https://dtsel6fm8qr8n.cloudfront.net/img1.avif",
+    image: "/img1.avif",
     title: "Ampola de Reestruturação do Córtex",
     description:
       "Ampola de alta performance, age reestruturando fibras instáveis, elásticas, quebradiças e opacas. Em apenas 5 minutos no conforto da sua casa.",
@@ -26,7 +26,7 @@ export const products: Product[] = [
     oldPrice: 65.9,
     discount: 20,
     currentPrice: 52.7,
-    image: "https://dtsel6fm8qr8n.cloudfront.net/img3.avif",
+    image: "/img3.avif",
     title: "Sérum Fabulos Premium",
     description:
       "O sérun fabulos premium é o aliado ideal na reestruturação do CMC capilar, são 12 óleos essenciais que simultaneamente reparam danos na fibra e reestabelecem  18MEA um composto de ácidos graxos indispensáveis para a saúde e integridade da fibra.",
@@ -37,7 +37,7 @@ export const products: Product[] = [
     oldPrice: 389.0,
     discount: 40,
     currentPrice: 233.4,
-    image: "https://dtsel6fm8qr8n.cloudfront.net/img6.avif",
+    image: "/img6.avif",
 
     title: "Kit Alisamento Natural",
     description:
@@ -49,7 +49,7 @@ export const products: Product[] = [
     oldPrice: 78.5,
     discount: 10,
     currentPrice: 70.65,
-    image: "https://dtsel6fm8qr8n.cloudfront.net/img8.avif",
+    image: "/img8.avif",
     title: "Mascara THERAPY (Efeito teia)",
     description:
       "Efeito teia (resultado de salão), reposição hídrica, mineral, proteica e massa. Devolve aos fios força, maciez, promove resistência e vitalidade.",
@@ -60,7 +60,7 @@ export const products: Product[] = [
     oldPrice: 30,
     discount: 30,
     currentPrice: 21,
-    image: "https://dtsel6fm8qr8n.cloudfront.net/img5.avif",
+    image: "/img5.avif",
     title: "Escova Fabulos Hair",
     description:
       "A escova Fabulos Hair ativa a circulação sanguínea do couro cabeludo promovendo o crescimento saudável dos seus fios, desembaraça sem rompimentos, auxilia no crescimento saudável, previne triconodose, pontas duplas, ralas e afinadas.",
@@ -71,7 +71,7 @@ export const products: Product[] = [
     oldPrice: 46.9,
     discount: 30,
     currentPrice: 32.8,
-    image: "https://dtsel6fm8qr8n.cloudfront.net/img4.avif",
+    image: "/img4.avif",
     title: "Perfume Antifrizz",
     description:
       "O Perfume Antifrizz foi desenvolvido para remover a evidência dos fios frizzados, arrepiados e eletrizados.",
@@ -79,10 +79,10 @@ export const products: Product[] = [
   },
   {
     id: 7,
-    oldPrice: 0,
+    oldPrice: 54.5,
     discount: 0,
-    currentPrice: 0,
-    image: "https://dtsel6fm8qr8n.cloudfront.net/reestruturador_bifasico.avif",
+    currentPrice: 54.5,
+    image: "/reest.jpeg",
     title: "Reestruturador Bifásico THERAPY",
     description:
       "Protege a fibra contra agressões externas, equilibra o PH e mantém a estrutura do córtex com vitalidade.",
@@ -93,7 +93,7 @@ export const products: Product[] = [
     oldPrice: 114.0,
     discount: 10,
     currentPrice: 102.6,
-    image: "https://dtsel6fm8qr8n.cloudfront.net/img2.avif",
+    image: "/img2.avif",
     title: "Shampoo e Booster CMC",
     description:
       "O kit 18 Rosé atua restaurando o CMC capilar, devolvendo 18Metil eicosanoico à fibra.",
@@ -104,10 +104,10 @@ export const products: Product[] = [
     oldPrice: 49.0,
     discount: 10,
     currentPrice: 44.1,
-    image: "https://dtsel6fm8qr8n.cloudfront.net/img7.avif",
+    image: "/img7.avif",
     title: "Shampoo THERAPY",
     description:
       "Age no couro cabeludo com ação antimicrobiana, antifúngica, antisséptica e cicatrizante. Combate radicais livres, fungos, oleosidade, caspa, promovendo oxigenação e crescimento.",
     inStock: true,
   },
-]
+];

@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { Container } from "../../styles/GlobalStyles"
+import styled from "styled-components";
+import { Container } from "../../styles/GlobalStyles";
 
 export const ContainerKit = styled(Container)`
   display: flex;
@@ -12,7 +12,7 @@ export const ContainerKit = styled(Container)`
   margin-bottom: 16px;
 
   & > img {
-    width: 250px;
+    width: 350px;
     height: 350px;
     margin-bottom: 10px;
     border-radius: 10px;
@@ -37,7 +37,7 @@ export const ContainerKit = styled(Container)`
       height: 650px;
     }
   }
-`
+`;
 
 export const ContentKit = styled.article`
   display: flex;
@@ -83,4 +83,4 @@ export const ContentKit = styled.article`
       width: 80%;
     }
   }
-`
+`;
