@@ -55,10 +55,10 @@ const EmblaCarousel: React.FC<CarouselProps> = ({ slides, options }) => {
                         product.oldPrice
                       )}`}</strong>
                     </S.ProductDescription>
-                    <S.inStock>Produto Disponível</S.inStock>
+                    <S.InStock>Produto Disponível</S.InStock>
                   </>
                 ) : (
-                  <S.inStock>Produto Indisponível</S.inStock>
+                  <S.InStock>Produto Indisponível</S.InStock>
                 )}
               </S.EmblaSlideInfo>
             </S.EmblaSlide>
