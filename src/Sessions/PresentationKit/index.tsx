@@ -3,7 +3,6 @@ import LazyImage from "../../components/LazyImg"
 import { ContainerKit, ContentKit } from "./styles"
 
 
-
 const product = {
   title: "Kit Equilíbrio THERAPY",
   description: `
@@ -11,12 +10,13 @@ const product = {
     devolver a saúde, força, brilho e resistência, tanto para o couro
     cabeludo, quanto para os fios.
   `,
+  imageUrl: "https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/kitequ.jpeg?alt=media&token=ba255c01-abb0-41e7-b7f6-7bc14bda4393",
   purchaseLink:
     "https://wa.me/5592993787566?text=Olá,%20gostaria%20de%20comprar%20o%20kit%20Equilíbrio%20THERAPY",
 }
 
 export function PresentationKit() {
-  const { title, description, purchaseLink } = product
+  const { title, description, imageUrl, purchaseLink } = product
 
   return (
     <section aria-labelledby='product-title'>
@@ -25,7 +25,7 @@ export function PresentationKit() {
         <img
           data-aos='fade-right'
           data-aos-anchor-placement='center-bottom'
-          src='public\kitequ.jpeg'
+          src={imageUrl}
           alt={`Imagem do ${title}`}
         />
 
@@ -41,7 +41,7 @@ export function PresentationKit() {
 
           {/* Avaliação */}
           <LazyImage
-            src='public\5stars.svg'
+            src='https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/5stars.svg?alt=media&token=ae944a31-0a38-4ae7-8921-30d877c8d2d4'
             alt='Classificação de 5 estrelas'
             data-aos='fade-up'
             loading='lazy'

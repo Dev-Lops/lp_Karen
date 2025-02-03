@@ -27,7 +27,8 @@ export const products: Product[] = [
     oldPrice: 65.9,
     discount: 20,
     currentPrice: 52.7,
-    image: "https://dtsel6fm8qr8n.cloudfront.net/img3.avif",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/img3.avif?alt=media&token=175e621a-25c2-415f-9bd7-7faa4beb79c2",
     title: "Sérum Fabulos Premium",
     description:
       "O sérun fabulos premium é o aliado ideal na reestruturação do CMC capilar, são 12 óleos essenciais que simultaneamente reparam danos na fibra e reestabelecem  18MEA um composto de ácidos graxos indispensáveis para a saúde e integridade da fibra.",
