@@ -39,7 +39,8 @@ export const products: Product[] = [
     oldPrice: 389.0,
     discount: 40,
     currentPrice: 233.4,
-    image: "https://dtsel6fm8qr8n.cloudfront.net/img6.avif",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/img6.avif?alt=media&token=d2e366d9-4408-464c-b6b2-34388535401f",
 
     title: "Kit Alisamento Natural",
     description:
@@ -51,7 +52,8 @@ export const products: Product[] = [
     oldPrice: 78.5,
     discount: 10,
     currentPrice: 70.65,
-    image: "https://dtsel6fm8qr8n.cloudfront.net/img8.avif",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/img8.avif?alt=media&token=5051dc5f-d3e3-40b8-b6f0-9dfc55eadee8",
     title: "Mascara THERAPY (Efeito teia)",
     description:
       "Efeito teia (resultado de salão), reposição hídrica, mineral, proteica e massa. Devolve aos fios força, maciez, promove resistência e vitalidade.",
@@ -62,7 +64,8 @@ export const products: Product[] = [
     oldPrice: 30,
     discount: 30,
     currentPrice: 21,
-    image: "https://dtsel6fm8qr8n.cloudfront.net/img5.avif",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/img5.avif?alt=media&token=e4d1f4c9-15fc-4f37-9dee-fcc40d582ce7",
     title: "Escova Fabulos Hair",
     description:
       "A escova Fabulos Hair ativa a circulação sanguínea do couro cabeludo promovendo o crescimento saudável dos seus fios, desembaraça sem rompimentos, auxilia no crescimento saudável, previne triconodose, pontas duplas, ralas e afinadas.",
@@ -73,7 +76,8 @@ export const products: Product[] = [
     oldPrice: 46.9,
     discount: 30,
     currentPrice: 32.8,
-    image: "https://dtsel6fm8qr8n.cloudfront.net/img4.avif",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/img4.avif?alt=media&token=b508f251-fb8b-44a5-8aff-3e5ecd54de16",
     title: "Perfume Antifrizz",
     description:
       "O Perfume Antifrizz foi desenvolvido para remover a evidência dos fios frizzados, arrepiados e eletrizados.",
@@ -84,7 +88,8 @@ export const products: Product[] = [
     oldPrice: 54.5,
     discount: 0,
     currentPrice: 0,
-    image: "/reest.jpeg",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/reest.jpg?alt=media&token=05ada730-0160-499f-a490-02c7bbf8a41d",
     title: "Reestruturador Bifásico THERAPY",
     description:
       "Protege a fibra contra agressões externas, equilibra o PH e mantém a estrutura do córtex com vitalidade.",
@@ -95,7 +100,8 @@ export const products: Product[] = [
     oldPrice: 114.0,
     discount: 10,
     currentPrice: 102.6,
-    image: "https://dtsel6fm8qr8n.cloudfront.net/img2.avif",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/img2.avif?alt=media&token=8b980e8e-65c9-4212-aaad-7dac787183b9",
     title: "Shampoo e Booster CMC",
     description:
       "O kit 18 Rosé atua restaurando o CMC capilar, devolvendo 18Metil eicosanoico à fibra.",
@@ -106,7 +112,8 @@ export const products: Product[] = [
     oldPrice: 49.0,
     discount: 10,
     currentPrice: 44.1,
-    image: "https://dtsel6fm8qr8n.cloudfront.net/img7.avif",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/img7.avif?alt=media&token=e4503332-963c-4210-a4c7-24e7dd8db394",
     title: "Shampoo THERAPY",
     description:
       "Age no couro cabeludo com ação antimicrobiana, antifúngica, antisséptica e cicatrizante. Combate radicais livres, fungos, oleosidade, caspa, promovendo oxigenação e crescimento.",

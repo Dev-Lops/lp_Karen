@@ -1,10 +1,10 @@
-import React, { useEffect, useCallback } from "react";
 import { EmblaOptionsType } from "embla-carousel";
-import useEmblaCarousel from "embla-carousel-react";
 import Fade from "embla-carousel-fade";
-import * as S from "./styles";
-import { Product } from "./data";
+import useEmblaCarousel from "embla-carousel-react";
+import React, { useCallback, useEffect } from "react";
+import { Product } from "../../utils/data";
 import { Divider } from "../Divider";
+import * as S from "./styles";
 
 interface CarouselProps {
   slides: Product[];

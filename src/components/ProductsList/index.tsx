@@ -1,23 +1,24 @@
-import { useState } from "react"
-import { Toaster } from "../Toaster" // Importe o Toaster
-import LazyImage from "../LazyImg"
+import { ShoppingCart } from "lucide-react";
+import { useState } from "react";
+import { Product, products } from "../../utils/data";
+import LazyImage from "../LazyImg";
+import { Toaster } from "../Toaster"; // Importe o Toaster
 import {
-  Section,
-  Container,
-  CardWrapper,
   CardContent,
+  CardWrapper,
   CheckoutButton,
+  Container,
+  Section,
   Title,
-} from "./styles"
-import { ShoppingCart } from "lucide-react"
-import { products, Products } from "./data"
+} from "./styles";
+
 
 export function ProductsGrid() {
-  const [cart, setCart] = useState<Products[]>([])
+  const [cart, setCart] = useState<Product[]>([])
   const [showToaster, setShowToaster] = useState(false)
   const [toasterMessage, setToasterMessage] = useState("")
 
-  const addToCart = (product: Products) => {
+  const addToCart = (product: Product) => {
     if (product.inStock) {
       setCart((prevCart) => [...prevCart, product])
       setToasterMessage(`"${product.title}" foi adicionado ao carrinho!`)
@@ -35,7 +36,7 @@ export function ProductsGrid() {
 
   const redirectToWhatsApp = () => {
     const groupedProducts = cart.reduce<
-      Record<number, { product: Products; quantity: number }>
+      Record<number, { product: Product; quantity: number }>
     >((acc, item) => {
       if (acc[item.id]) {
         acc[item.id].quantity += 1
@@ -48,13 +49,12 @@ export function ProductsGrid() {
     const message = Object.values(groupedProducts)
       .map(
         ({ product, quantity }) =>
-          ` *${
-            product.title
+          ` *${product.title
           }* - Quantidade: ${quantity} - Preço Unitário: R$ ${product.oldPrice
             .toFixed(2)
             .replace(".", ",")} - Subtotal: R$ ${(product.oldPrice * quantity)
-            .toFixed(2)
-            .replace(".", ",")}`
+              .toFixed(2)
+              .replace(".", ",")}`
       )
       .join("%0A")
 

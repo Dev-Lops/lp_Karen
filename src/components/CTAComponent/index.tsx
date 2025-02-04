@@ -1,13 +1,13 @@
-import {
-  CTAContainer,
-  CTATitle,
-  CTADescription,
-  CTAButtons,
-  ImageContainer,
-  CTAContent,
-} from "./styles.ts"
 import { Button } from "../Button/index.tsx"
 import LazyImage from "../LazyImg/index.tsx"
+import {
+  CTAButtons,
+  CTAContainer,
+  CTAContent,
+  CTADescription,
+  CTATitle,
+  ImageContainer,
+} from "./styles.ts"
 
 export function CTASection() {
   return (
@@ -18,7 +18,7 @@ export function CTASection() {
       <CTAContent>
         <ImageContainer>
           <LazyImage
-            src='https://dtsel6fm8qr8n.cloudfront.net/ImageToStl.com_img_8808.avif'
+            src='https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/IMG_8098.avif?alt=media&token=22132cfa-bc41-4b20-bd04-4113683495ddf'
             alt='Espaço Acolhedor do Studio Karen Frazão'
             loading='lazy'
             aria-placeholder='Espaço acolhedor do Studio Karen Frazão'

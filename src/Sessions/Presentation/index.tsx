@@ -1,18 +1,18 @@
-import { useState, useCallback } from "react"
-import ReactPlayer from "react-player"
+import { useCallback, useState } from "react"
 import { FaPlay } from "react-icons/fa"
+import ReactPlayer from "react-player"
+import { Divider } from "../../components/Divider"
 import {
   Content,
   Description,
+  ModalContent,
+  ModalOverlay,
   PlayButton,
   PresentationContainer,
+  Stars,
   Title,
   VideoContainer,
-  ModalOverlay,
-  ModalContent,
-  Stars,
 } from "./styles"
-import { Divider } from "../../components/Divider"
 
 export function Presentation() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -29,7 +29,7 @@ export function Presentation() {
           <Title data-aos='fade-up' data-aos-duration='3000'>
             Tudo que seu cabelo precisa, na palma de suas mãos.
             <Stars
-              src='https://dtsel6fm8qr8n.cloudfront.net/5stars.svg'
+              src='https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/5stars.svg?alt=media&token=ae944a31-0a38-4ae7-8921-30d877c8d2d4'
               alt='stars'
             />
           </Title>
@@ -49,7 +49,7 @@ export function Presentation() {
             <ModalOverlay onClick={toggleModal}>
               <ModalContent onClick={(e) => e.stopPropagation()}>
                 <ReactPlayer
-                  url='https://dtsel6fm8qr8n.cloudfront.net/karen_frazão (1080p).mp4.MOV'
+                  url='https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/karen_fraz%C3%A3o%20(1080p).mp4.mov?alt=media&token=1c5057f0-70c3-408c-a7aa-db4e9b470696'
                   width='100%'
                   height='100%'
                   controls

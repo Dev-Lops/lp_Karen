@@ -1,23 +1,30 @@
 export const testimonialsData = [
   {
-    image: "https://dtsel6fm8qr8n.cloudfront.net/10.avif",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/10.avif?alt=media&token=2bf49ae8-e795-4a6c-9160-4cf5c8d2b997",
   },
   {
-    image: "https://dtsel6fm8qr8n.cloudfront.net/09.avif",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/09.avif?alt=media&token=71d56c59-139c-4608-84b7-afb24164a987",
   },
   {
-    image: "https://dtsel6fm8qr8n.cloudfront.net/15.avif",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/15.avif?alt=media&token=ad9d9a56-8d05-4c42-ab24-5c222fd3c262",
   },
   {
-    image: "https://dtsel6fm8qr8n.cloudfront.net/14.avif",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/14.avif?alt=media&token=d4f3d3b7-565e-4a3c-8e73-5849f322ff06",
   },
   {
-    image: "https://dtsel6fm8qr8n.cloudfront.net/08.avif",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/08.avif?alt=media&token=4fa255de-a00a-4a84-86ad-b5b4b3633904",
   },
   {
-    image: "https://dtsel6fm8qr8n.cloudfront.net/12.avif",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/12.avif?alt=media&token=9c975f8a-fc25-40cd-a3a8-a95d5c839d8d",
   },
   {
-    image: "https://dtsel6fm8qr8n.cloudfront.net/11.avif",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/11.avif?alt=media&token=c16948c7-502a-4f17-ba53-2091935c76cf",
   },
-]
+];
