@@ -18,7 +18,7 @@ export function CTASection() {
       <CTAContent>
         <ImageContainer>
           <LazyImage
-            src='https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/IMG_8098.avif?alt=media&token=22132cfa-bc41-4b20-bd04-4113683495ddf'
+            src='https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/ImageToStl.com_img_8808.avif?alt=media&token=4c4e00c1-c94a-4778-8462-0ec3c14e44a4'
             alt='Espaço Acolhedor do Studio Karen Frazão'
             loading='lazy'
             aria-placeholder='Espaço acolhedor do Studio Karen Frazão'

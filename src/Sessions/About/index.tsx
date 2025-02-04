@@ -1,13 +1,12 @@
 import { Button } from "../../components/Button"
-import { AboutContainer, AboutContent } from "./styles"
-import Logo from "../../assets/image.avif"
 import LazyImage from "../../components/LazyImg"
+import { AboutContainer, AboutContent } from "./styles"
 
 export function About() {
   return (
     <AboutContainer>
       <LazyImage
-        src={Logo}
+        src='https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/image.avif?alt=media&token=3474c80c-4b5e-4611-837b-615bb2aa1b22'
         alt='Logo de Karen Frazão'
         className='puff-in-center'
         loading='lazy'
