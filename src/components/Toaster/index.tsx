@@ -1,11 +1,11 @@
-import React, { useEffect } from "react"
-import styled from "styled-components"
+import React, { useEffect } from "react";
+import styled from "styled-components";
 
 interface ToasterProps {
-  message: string
-  show: boolean
-  duration?: number // Duração opcional (em milissegundos)
-  onClose: () => void
+  message: string;
+  show: boolean;
+  duration?: number; // Duração opcional (em milissegundos)
+  onClose: () => void;
 }
 
 const ToasterContainer = styled.div<{ show: boolean }>`
@@ -24,7 +24,14 @@ const ToasterContainer = styled.div<{ show: boolean }>`
   transform: ${(props) => (props.show ? "translateY(0)" : "translateY(-20px)")};
   transition: all 0.3s ease-in-out;
   z-index: 1000;
-`
+
+  @media (max-width: 480px) {
+    width: 90%;
+    left: 5%;
+    right: 5%;
+    font-size: 1rem;
+  }
+`;
 
 export const Toaster: React.FC<ToasterProps> = ({
   message,
@@ -35,12 +42,12 @@ export const Toaster: React.FC<ToasterProps> = ({
   useEffect(() => {
     if (show) {
       const timer = setTimeout(() => {
-        onClose()
-      }, duration)
+        onClose();
+      }, duration);
 
-      return () => clearTimeout(timer) // Limpa o timeout se o componente for desmontado
+      return () => clearTimeout(timer); // Limpa o timeout se o componente for desmontado
     }
-  }, [show, duration, onClose])
+  }, [show, duration, onClose]);
 
-  return <ToasterContainer show={show}>{message}</ToasterContainer>
-}
+  return <ToasterContainer show={show}>{message}</ToasterContainer>;
+};

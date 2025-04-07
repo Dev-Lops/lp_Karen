@@ -1,9 +1,8 @@
 import { EmblaOptionsType } from "embla-carousel";
 import Fade from "embla-carousel-fade";
 import useEmblaCarousel from "embla-carousel-react";
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Product } from "../../utils/data";
-import { Divider } from "../Divider";
 import * as S from "./styles";
 
 interface CarouselProps {
@@ -12,23 +11,18 @@ interface CarouselProps {
 }
 
 const EmblaCarousel: React.FC<CarouselProps> = ({ slides, options }) => {
+  // Ativando loop e o plugin de fade
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { ...options, loop: true },
     [Fade()]
   );
 
-  // Formata preços em BRL
-  const formatPrice = useCallback((price: number) => {
-    return price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-  }, []);
-
+  // Rola automaticamente a cada 5s
   useEffect(() => {
     if (!emblaApi) return;
-
     const interval = setInterval(() => {
       emblaApi.scrollNext();
     }, 5000);
-
     return () => clearInterval(interval);
   }, [emblaApi]);
 
@@ -45,16 +39,12 @@ const EmblaCarousel: React.FC<CarouselProps> = ({ slides, options }) => {
                   loading="lazy"
                 />
               </S.EmblaSlideImgWrapper>
+
               <S.EmblaSlideInfo>
                 <S.ProductTitle>{product.title}</S.ProductTitle>
                 {product.inStock ? (
                   <>
                     <p>{product.description}</p>
-                    <S.ProductDescription>
-                      <strong className="old-price">{`De ${formatPrice(
-                        product.oldPrice
-                      )}`}</strong>
-                    </S.ProductDescription>
                     <S.InStock>Produto Disponível</S.InStock>
                   </>
                 ) : (
@@ -65,7 +55,7 @@ const EmblaCarousel: React.FC<CarouselProps> = ({ slides, options }) => {
           ))}
         </S.EmblaContainer>
       </S.EmblaViewport>
-      <Divider />
+
     </S.Embla>
   );
 };

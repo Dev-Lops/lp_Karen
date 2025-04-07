@@ -2,14 +2,15 @@
   "compilerOptions": {
     "types": ["vite/client"],
     "typeRoots": ["node_modules/@types", "node_modules"],
-    "baseUrl": "./src/*",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
     "paths": {
       "*": ["node_modules/*"],
-      "swiper/*": ["node_modules/swiper/*"]
+      "swiper/*": ["node_modules/swiper/*"],
+      "@/*": ["./src/*"]
     }
   },
   "files": [],

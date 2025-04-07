@@ -1,131 +1,138 @@
+import { generateWhatsAppMessage } from '@/utils/whatsapp';
+import { motion } from 'framer-motion';
 import { ShoppingCart } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Product, products } from "../../utils/data";
+import { CartDialog } from "../CartSidebar";
 import LazyImage from "../LazyImg";
-import { Toaster } from "../Toaster"; // Importe o Toaster
+import { Toaster } from "../Toaster";
 import {
+  Box,
   CardContent,
   CardWrapper,
-  CheckoutButton,
   Container,
   Section,
-  Title,
+  Title
 } from "./styles";
 
+// Data final da promoção: 09/04/2025 às 18:00, horário do Amazonas (UTC-4)
+const PROMO_END = new Date('2025-04-09T18:00:00-04:00');
 
 export function ProductsGrid() {
-  const [cart, setCart] = useState<Product[]>([])
-  const [showToaster, setShowToaster] = useState(false)
-  const [toasterMessage, setToasterMessage] = useState("")
+  const [cart, setCart] = useState<Product[]>([]);
+  const [showToaster, setShowToaster] = useState(false);
+  const [toasterMessage, setToasterMessage] = useState("");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isLoadingCheckout, setIsLoadingCheckout] = useState(false);
+
+  // Estado que controla se a promoção está ativa (true enquanto a data/hora atual for menor que PROMO_END)
+  const [isPromoActive, setIsPromoActive] = useState(new Date() < PROMO_END);
+
+  useEffect(() => {
+    const now = new Date();
+    if (now < PROMO_END) {
+      const timeout = PROMO_END.getTime() - now.getTime();
+      const timer = setTimeout(() => {
+        setIsPromoActive(false);
+      }, timeout);
+      return () => clearTimeout(timer);
+    } else {
+      setIsPromoActive(false);
+    }
+  }, []);
 
   const addToCart = (product: Product) => {
     if (product.inStock) {
-      setCart((prevCart) => [...prevCart, product])
-      setToasterMessage(`"${product.title}" foi adicionado ao carrinho!`)
-      setShowToaster(true)
+      setCart((prevCart) => [...prevCart, product]);
+      setToasterMessage(`"${product.title}" foi adicionado ao carrinho!`);
+      setShowToaster(true);
     }
-  }
+  };
 
   const handleToasterClose = () => {
-    setShowToaster(false)
-  }
-
-  const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.oldPrice, 0)
-  }
+    setShowToaster(false);
+  };
 
   const redirectToWhatsApp = () => {
-    const groupedProducts = cart.reduce<
-      Record<number, { product: Product; quantity: number }>
-    >((acc, item) => {
-      if (acc[item.id]) {
-        acc[item.id].quantity += 1
-      } else {
-        acc[item.id] = { product: item, quantity: 1 }
-      }
-      return acc
-    }, {})
+    setIsLoadingCheckout(true);
+    setToasterMessage("Obrigado pela sua compra! Estamos te redirecionando para o WhatsApp...");
+    setShowToaster(true);
 
-    const message = Object.values(groupedProducts)
-      .map(
-        ({ product, quantity }) =>
-          ` *${product.title
-          }* - Quantidade: ${quantity} - Preço Unitário: R$ ${product.oldPrice
-            .toFixed(2)
-            .replace(".", ",")} - Subtotal: R$ ${(product.oldPrice * quantity)
-              .toFixed(2)
-              .replace(".", ",")}`
-      )
-      .join("%0A")
+    setTimeout(() => {
+      const phoneNumber = "5592993787566";
+      const message = generateWhatsAppMessage(cart);
+      const url = `https://wa.me/${phoneNumber}?text=Olá Fabulosa!%0A%0AEu gostaria de finalizar a compra desses itens:%0A${message}%0A%0A`;
 
-    const total = calculateTotal()
-    const totalMessage = `%0A%0A *Valor Total:* R$ ${total
-      .toFixed(2)
-      .replace(".", ",")}`
+      window.open(url, "_blank");
 
-    const phoneNumber = "5592993787566"
-    const url = `https://wa.me/${phoneNumber}?text=Olá Fabulosa!%0A%0AEu gostaria de finalizar a compra desses itens:%0A${message}${totalMessage}%0A%0A`
-    window.open(url, "_blank")
-  }
+      setCart([]);
+      setIsDialogOpen(false);
+      setIsLoadingCheckout(false);
+    }, 3000);
+  };
+
+  useEffect(() => {
+    if (cart.length === 0) {
+      setIsDialogOpen(false);
+    }
+  }, [cart]);
 
   return (
-    <Section>
-      <h2 data-aos='fade-up' data-aos-duration='3000'>
-        Nossos Produtos
-      </h2>
+    <Section id='products'>
+      <h2>Nossos Produtos</h2>
       <Container>
         {products.map((product) => (
-          <CardWrapper
-            key={product.id}
-            data-aos='flip-left'
-            data-aos-easing='ease-out-cubic'
-            data-aos-duration='2000'
-          >
-            <div className={`box ${!product.inStock ? "disabled" : ""}`}>
+          <CardWrapper key={product.id}>
+            <Box className={!product.inStock ? "disabled" : ""}>
               <div className={`imgBox ${!product.inStock ? "outOfStock" : ""}`}>
-                {/* {product.discount > 0 && product.inStock && (
-                  <span className='discount-tag'>{product.discount}% OFF</span>
-                )} */}
+                {product.discount > 0 && product.inStock && (
+                  <span className="discount-tag">{product.discount}% OFF</span>
+                )}
                 <LazyImage
                   src={product.image}
                   alt={`Imagem do ${product.title}`}
-                  loading='lazy'
-                  className='lazy-image'
+                  loading="lazy"
+                  className="lazy-image"
                 />
-                {!product.inStock && <div className='outOfStockText'></div>}
+                {!product.inStock && <div className="outOfStockText" />}
                 <div className={`icon ${!product.inStock ? "outOfStock" : ""}`}>
                   {product.inStock && (
                     <button
                       onClick={() => addToCart(product)}
-                      className='iconBox'
-                      aria-label='carrinho'
+                      className="iconBox"
+                      aria-label="carrinho"
                     >
-                      Comprar
-                      <ShoppingCart />
+                      Comprar <ShoppingCart />
                     </button>
                   )}
                 </div>
               </div>
-            </div>
+            </Box>
             <Title>{product.title}</Title>
-            <CardContent className='end'>
+            <CardContent className="end">
               {product.inStock ? (
                 <>
-                  <p>
-                    <span
-                      style={{
-                        color: "white",
-                      }}
-                    >
+                  {isPromoActive ? (
+                    <>
+                      <p>
+                        De:{" "}
+                        <span style={{ textDecoration: "line-through", color: "#888" }}>
+                          R$ {product.oldPrice.toFixed(2).replace(".", ",")}
+                        </span>
+                      </p>
+                      <p>
+                        Por:{" "}
+                        <span style={{ fontWeight: "bold", color: "" }}>
+                          R$ {product.currentPrice.toFixed(2).replace(".", ",")}
+                        </span>
+                      </p>
+                    </>
+                  ) : (
+                    // Depois de 09/04/2025 18h, mostra somente o preço sem promoção
+                    <p style={{ fontWeight: "bold" }}>
                       R$ {product.oldPrice.toFixed(2).replace(".", ",")}
-                    </span>
-                  </p>
-                  {/* <p>
-                    Por:{" "}
-                    <span style={{ color: "white", fontWeight: "bold" }}>
-                      R$ {product.currentPrice.toFixed(2).replace(".", ",")}
-                    </span>
-                  </p> */}
+                    </p>
+                  )}
                 </>
               ) : (
                 <p style={{ color: "red" }}>Produto Indisponível</p>
@@ -135,12 +142,39 @@ export function ProductsGrid() {
         ))}
       </Container>
 
-      {cart.length > 0 && (
-        <CheckoutButton onClick={redirectToWhatsApp}>
-          Finalizar Compra
-          <span className='cart-count'>{cart.length}</span>
-        </CheckoutButton>
+      {cart.length > 0 && !isDialogOpen && (
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          className="fixed bottom-6 inset-x-0 mx-auto bg-green-500 text-white font-bold py-3 px-8 rounded-full shadow-lg flex items-center justify-center gap-2 z-50 w-fit"
+          onClick={() => setIsDialogOpen(true)}
+        >
+          Ir para o carrinho
+          <span className="cart-count">{cart.length}</span>
+        </motion.button>
       )}
+
+      <CartDialog
+        items={cart}
+        isOpen={isDialogOpen}
+        onOpenChange={setIsDialogOpen}
+        isLoadingCheckout={isLoadingCheckout}
+        onConfirm={redirectToWhatsApp}
+        onRemove={(id) => setCart((prev) => prev.filter((item) => item.id !== id))}
+        onIncrement={(id) => setCart((prev) => [...prev, prev.find(item => item.id === id)!])}
+        onDecrement={(id) => {
+          setCart((prev) => {
+            const index = prev.findIndex((item) => item.id === id);
+            if (index !== -1) {
+              const newCart = [...prev];
+              newCart.splice(index, 1);
+              return newCart;
+            }
+            return prev;
+          });
+        }}
+      />
 
       <Toaster
         message={toasterMessage}
@@ -148,5 +182,5 @@ export function ProductsGrid() {
         onClose={handleToasterClose}
       />
     </Section>
-  )
+  );
 }

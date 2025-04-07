@@ -1,8 +1,17 @@
+import { useEffect } from "react";
 import { Button } from "../../components/Button"
 import LazyImage from "../../components/LazyImg"
 import { AboutContainer, AboutContent } from "./styles"
+import confetti from 'canvas-confetti';
 
 export function About() {
+  useEffect(() => {
+    confetti({
+      particleCount: 600,
+      spread: 800,
+      origin: { y: 0.5 },
+    });
+  }, []);
   return (
     <AboutContainer>
       <LazyImage

@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 const FallingLeavesDivider = styled.div<{ width?: number }>`
   position: relative;
-  width: 100vw; /* Agora ocupa 100% da largura da tela */
+  width: 100%; /* Agora ocupa 100% da largura da tela */
   height: 200px;
   overflow: hidden;
   background-color: #fff;

@@ -1,202 +1,146 @@
-import styled from "styled-components"
+// styles.ts
+import styled from 'styled-components'
 
 export const Section = styled.section`
-  padding-block: min(20vh, 2rem);
-  width: calc(
-    min(76.5rem, 80%)
-  ); /* Garantindo que a largura respeite o limite da tela */
+  /* padding-block: 2rem;  */
+  width: 100%;
+  max-width: 76.5rem;
   margin-inline: auto;
 
   h2 {
     text-transform: uppercase;
     font-size: clamp(2rem, 5vw, 2.5rem);
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
     color: ${({ theme }) => theme.colors.green};
-    font-family: "Stardom", serif;
+    font-family: 'Stardom', serif;
     letter-spacing: 3px;
     font-weight: bold;
     text-align: center;
-  }
-
-  .lazy-image {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
-
-  .lazy-image[loading="lazy"] {
-    opacity: 1;
-  }
-
-  .loading-placeholder {
-    background: #f0f0f0;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 `
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-
-  @media (min-width: 1280px) {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-  }
-
-  @media (min-width: 87.5rem) {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-
-  @media (max-width: 300px) {
-    grid-template-columns: 1fr;
-  }
+  width: 100%;
+  padding: 1rem;
 `
 
 export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  position: relative;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 450px;
+  border-radius: 1.25rem;
+  overflow: hidden;
+`
 
-  .end {
-    flex: 1;
-    align-items: flex-end;
+export const Box = styled.div`
+  width: 100%;
+  height: auto;
+  position: relative;
+  border-top-right-radius: 1.25rem;
+  border-top-left-radius: 1.25rem;
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    height: 350px;
   }
 
-  .box {
-    position: relative;
+  &.disabled {
+    pointer-events: none;
+    background-color: ${({ theme }) => theme.colors.black};
+  }
 
+  .imgBox {
+    position: relative;
     width: 100%;
     height: 100%;
-    border-top-right-radius: 1.25rem;
-    border-top-left-radius: 1.25rem;
-    overflow-x: hidden;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 
-    @media (min-width: 1280px) {
-      height: 500px;
-    }
-
-    @media (min-width: 375px) {
-      /* height: 30rem; */
-    }
-
-    &.disabled {
-      pointer-events: none;
-      background-color: ${({ theme }) => theme.colors.black};
-    }
-
-    .imgBox {
-      position: relative;
+    img {
+      width: 100%;
       height: 100%;
+      object-fit: cover;
+      flex-grow: 1;
+      display: block;
+      transition: opacity 0.3s;
+    }
 
-      &.outOfStock {
-        ::after {
-          content: "";
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-        }
-
-        > p {
-          position: absolute;
-        }
-
-        img {
-          opacity: 0.2;
-        }
-
-        .outOfStockText {
-          position: absolute;
-          width: 100%;
-          text-align: center;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          color: red;
-          font-weight: bold;
-          font-size: 1.5rem;
-          z-index: 2;
-        }
+    &.outOfStock {
+      ::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 1;
       }
 
       img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: opacity 0.3s;
+        opacity: 0.2;
       }
 
-      /* Adicionando a tag de desconto sobre a imagem */
-      .discount-tag {
+      .outOfStockText {
         position: absolute;
-        top: 10px;
-        left: 10px;
-        background-color: red;
-        color: white;
-        padding: 0.625rem;
-        font-size: 1.25rem;
+        width: 100%;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: red;
         font-weight: bold;
-        border-radius: 1rem;
+        font-size: 1.5rem;
         z-index: 2;
-        transform: translate(-10px, -10px);
       }
+    }
+
+    .discount-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: red;
+      color: white;
+      padding: 0.625rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 1rem;
+      z-index: 2;
     }
 
     .icon {
       position: absolute;
-      justify-content: center;
-      align-items: center;
-      bottom: 10px;
-
+      bottom: 0;
+      left: 0;
       width: 100%;
       height: 3rem;
-      border-radius: 10px;
       background: ${({ theme }) => theme.colors.green};
-
-      @media (min-width: 80rem) {
-      }
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       &.outOfStock {
         background: none;
       }
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      transition: background-color 0.3s;
-
-      &.disabled {
-        background: none;
-      }
-
-      &:hover .iconBox {
-        transform: scale(1.1);
-        cursor: pointer;
-      }
-
       .iconBox {
-        position: absolute;
-        inset: 0.625rem;
-        text-decoration: none;
-        color: #fff;
         display: flex;
-        justify-content: center;
         align-items: center;
-        transition: 0.3s;
+        gap: 0.5rem;
+        color: ${({ theme }) => theme.colors.white};
         background: none;
         border: none;
         font-size: clamp(0.875rem, 5vw, 1rem);
-        color: ${({ theme }) => theme.colors.white};
-        font-family: "Melodrama", sans-serif;
+        font-family: 'Melodrama', sans-serif;
         letter-spacing: 2px;
+        white-space: nowrap;
 
-        span {
-          color: #000;
-          font-size: 2rem;
+        &:hover {
+          transform: scale(1.05);
+          cursor: pointer;
         }
       }
     }
@@ -204,67 +148,43 @@ export const CardWrapper = styled.div`
 `
 
 export const Title = styled.h3`
-  font-size: clamp(1rem, 5vw, 1.5rem);
+  font-size: clamp(1rem, 4vw, 1.25rem);
   color: ${({ theme }) => theme.colors.green};
-  font-family: "Melodrama", serif;
+  font-family: 'Melodrama', serif;
+  font-weight: bold;
   letter-spacing: 1px;
   padding: 10px;
   text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 4rem;
   border: 1px solid ${({ theme }) => theme.colors.green};
-  /* flex: 1; */
-
-  @media (min-width: 1280px) {
-    font-size: clamp(1rem, 5vw, 1.5rem);
-    color: ${({ theme }) => theme.colors.green};
-    font-family: "Melodrama", serif;
-    letter-spacing: 1px;
-    padding: 10px;
-    text-align: center;
-    border: 1px solid ${({ theme }) => theme.colors.green};
-    /* flex: 1; */
-    height: 100px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-  }
 `
 
 export const CardContent = styled.div`
   padding: 0.625rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: ${({ theme }) => theme.colors.green};
   border-bottom-right-radius: 1.25rem;
   border-bottom-left-radius: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 5.5rem;
 
   p {
     text-align: center;
-    width: 300px;
     font-size: clamp(0.875rem, 5vw, 1.5rem);
     color: #fff;
+    margin: 0.25rem 0;
   }
 
   span {
     font-size: clamp(0.875rem, 5vw, 1.5rem);
     margin-right: 10px;
     flex-wrap: wrap;
-  }
-  .discount {
-    color: #fff;
-    width: 150px;
-    background-color: ${({ theme }) => theme.colors.green};
-  }
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-
-    li {
-      margin-right: 0.5rem;
-    }
   }
 `
 
@@ -283,8 +203,8 @@ export const CheckoutButton = styled.button`
   justify-content: space-between;
   align-items: center;
   width: 9.375rem;
-  max-width: 80%; /* Garante que não ultrapasse a tela */
-  overflow: hidden; /* Evita transbordo interno */
+  max-width: 80%;
+  overflow: hidden;
   z-index: 99;
   border: 0;
   cursor: pointer;
@@ -295,22 +215,16 @@ export const CheckoutButton = styled.button`
 
   .cart-count {
     background-color: red;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 30px;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    padding: 0 0.4rem;
+    border-radius: 999px;
     color: white;
-    text-align: center;
-    line-height: 2rem;
     font-weight: bold;
-    margin-left: 1rem;
-  }
-
-  @media (max-width: 1280px) {
-    width: 70%;
-  }
-
-  @media (min-width: 375px) {
-    width: 15.625rem;
-    left: 50%; /* Alinha centralmente */
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.75rem;
   }
 `

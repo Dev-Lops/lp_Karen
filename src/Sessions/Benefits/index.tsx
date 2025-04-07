@@ -1,21 +1,21 @@
-import { memo } from "react"
-import { Counter } from "../../components/Counter"
+import { memo } from "react";
+import { Counter } from "../../components/Counter";
 import {
-  BenefitsContainer,
   BenefitCard,
-  CounterContainer,
+  BenefitsContainer,
   CardTitle,
-} from "./styles"
+  CounterContainer,
+} from "./styles";
 
-// Definindo as props do componente BenefitCardComponent
+// Props do componente BenefitCardComponent
 interface BenefitCardProps {
-  countFrom: number
-  countTo: number
-  label: string
-  suffix: string
+  countFrom: number;
+  countTo: number;
+  label: string;
+  suffix: string;
 }
 
-// Componente memoizado para evitar renderizações desnecessárias
+// Componente memoizado pra evitar renderizações desnecessárias
 const BenefitCardComponent = memo(
   ({ countFrom, countTo, label, suffix }: BenefitCardProps) => (
     <BenefitCard>
@@ -26,31 +26,29 @@ const BenefitCardComponent = memo(
       <CardTitle>{label}</CardTitle>
     </BenefitCard>
   )
-)
+);
 
 export function Benefits() {
   return (
-    <>
-      <BenefitsContainer>
-        <BenefitCardComponent
-          countFrom={0}
-          countTo={10000}
-          label='Clientes Satisfeitos'
-          suffix='+'
-        />
-        <BenefitCardComponent
-          countFrom={0}
-          countTo={10000}
-          label='Feedbacks positivos'
-          suffix='+'
-        />
-        <BenefitCardComponent
-          countFrom={0}
-          countTo={100}
-          label='Taxa de satisfação'
-          suffix='%'
-        />
-      </BenefitsContainer>
-    </>
-  )
+    <BenefitsContainer>
+      <BenefitCardComponent
+        countFrom={0}
+        countTo={10000}
+        label="Clientes Satisfeitos"
+        suffix="+"
+      />
+      <BenefitCardComponent
+        countFrom={0}
+        countTo={10000}
+        label="Feedbacks Positivos"
+        suffix="+"
+      />
+      <BenefitCardComponent
+        countFrom={0}
+        countTo={100}
+        label="Taxa de Satisfação"
+        suffix="%"
+      />
+    </BenefitsContainer>
+  );
 }

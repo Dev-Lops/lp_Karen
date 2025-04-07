@@ -1,81 +1,61 @@
-import styled from "styled-components"
-import { Container } from "../../styles/GlobalStyles"
+import styled from 'styled-components'
+import { Container } from '../../styles/GlobalStyles'
 
-// Container principal dos benefícios
+// Container dos benefícios em layout grid responsivo
 export const BenefitsContainer = styled(Container)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme }) => theme.colors.green};
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 24px;
+  padding: 24px;
+  background-color: ${({ theme }) => theme.colors.green};
+  align-items: start;
 
-  @media (min-width: 768px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
   }
 `
 
-// Estilos para cada card de benefício
+// Card de benefício com background, sombra e hover suave
 export const BenefitCard = styled.article`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 380px;
-  color: ${({ theme }) => theme.colors.gold};
-  padding: 16px;
-  gap: 16px;
-  border-radius: 8px;
+  /* background: ${({ theme }) => theme.colors.gold || '#FFD9B7'}; */
+  color: ${({ theme }) => theme.colors.white};
+  padding: 24px;
+  border-radius: 12px;
   text-align: center;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
 
   h1 {
-    font-size: 2rem;
-  }
-
-  @media (min-width: 768px) {
-    width: 48%; // Ajuste para 2 cards por linha em telas médias
-  }
-
-  @media (min-width: 1200px) {
-    width: 31%; // Ajuste para 3 cards por linha em telas grandes
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    margin: 0;
   }
 `
 
-// Container para o contador e o sinal "+"
+// Container para o contador com tipografia responsiva usando clamp
 export const CounterContainer = styled.div`
   display: flex;
   align-items: center;
-  font-size: 1rem;
-  font-family: "LeagueGothic", sans-serif;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'LeagueGothic', sans-serif;
+  font-size: clamp(1rem, 2vw, 2rem);
 
   span {
-    font-size: 2rem;
-  }
-
-  @media (min-width: 768px) {
-    font-size: 3rem;
-  }
-
-  @media (min-width: 1200px) {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
   }
 `
 
-// Estilos do título de cada card
+// Título do card com espaçamento e tamanho ajustável
 export const CardTitle = styled.h2`
   color: ${({ theme }) => theme.colors.white};
   font-weight: 300;
-  letter-spacing: 5px;
-  font-size: 1.5rem;
-
-  @media (min-width: 768px) {
-  }
-
-  @media (min-width: 1200px) {
-    font-size: 2rem;
-  }
+  letter-spacing: 2px;
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  margin: 0;
+  padding-top: 8px;
 `

@@ -1,13 +1,13 @@
-import styled from "styled-components"
-import { Container } from "../../styles/GlobalStyles"
+import styled from 'styled-components'
+import { Container } from '../../styles/GlobalStyles'
 
 export const ContainerProduct = styled(Container)`
   display: flex;
-  width: 100vw;
-  
+  width: 100%;
+
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.green};
+  /* background-color: ${({ theme }) => theme.colors.green}; */
   margin: 0;
   border: 0;
 

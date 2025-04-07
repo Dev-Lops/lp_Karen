@@ -1,137 +1,106 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Embla = styled.div`
-  max-width: 100vw;
-  font-family: "Montserrat", sans-serif;
-  user-select: none;
-  --slide-height: 100vh;
-  --slide-size: 100%;
+  /* Container principal do carousel */
+  width: 100%;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 2rem 1rem; /* Espaço interno para "respirar" */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 
-  @media (max-width: 87.5rem) {
-    --slide-height: 100%;
-    --slide-size: 100%;
-  }
-`;
+  /* Gradiente sutil no background */
+  background: linear-gradient(
+    135deg,
+    ${({ theme }) => theme.colors.gold} 0%,
+    #f8f4ec 100%
+  );
+
+  font-family: 'Montserrat', sans-serif;
+  user-select: none;
+`
 
 export const EmblaViewport = styled.div`
   overflow: hidden;
-`;
+  min-height: 400px; /* Evita "pulo" no layout */
+`
 
 export const EmblaContainer = styled.div`
   display: flex;
-  touch-action: pan-y pinch-zoom;
-  gap: var(--slide-spacing);
+  gap: 2rem;
   transition: opacity 0.8s ease, transform 0.8s ease;
-`;
+`
 
 export const EmblaSlide = styled.div`
-  flex: 0 0 var(--slide-size);
+  flex: 0 0 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 1rem;
+  justify-content: center;
 
+  /* Em telas >= 768px, divide em duas colunas (imagem e texto) */
   @media (min-width: 768px) {
     flex-direction: row;
   }
-`;
+`
 
 export const EmblaSlideImgWrapper = styled.div`
   position: relative;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  max-width: 600px;
   margin: 0 auto;
 
-  @media (min-width: 80rem) {
+  @media (min-width: 768px) {
     width: 50%;
   }
-`;
+`
 
 export const EmblaSlideImg = styled.img`
+  display: block;
   width: 100%;
   height: auto;
   object-fit: cover;
   border-radius: 10px;
-`;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 
-export const DiscountTag = styled.div`
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: red;
-  color: white;
-  font-weight: bold;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-
-  @media (min-width: 768px) {
-    font-size: 1.5rem;
+  /* Animação sutil no hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
   }
-`;
+`
 
 export const EmblaSlideInfo = styled.div`
   flex: 1;
-  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
   gap: 1rem;
+  text-align: center;
   padding: 1rem;
+  color: ${({ theme }) => theme.colors.green}; /* Ajusta a cor do texto */
 
   p {
-    text-align: center;
     font-size: 1rem;
-
+    color: ${({ theme }) => theme.colors.green};
     @media (min-width: 80rem) {
       font-size: 1.25rem;
     }
   }
-
-  .old-price {
-    font-size: clamp(1.5rem, 5vw, 2rem);
-    font-weight: bold;
-  }
-
-  .current-price {
-    font-size: clamp(1.75rem, 5vw, 2.5rem);
-    font-weight: bold;
-    color: #fff;
-  }
-`;
+`
 
 export const ProductTitle = styled.h3`
-  font-size: clamp(1.5rem, 5vw, 2rem);
-  width: 100%;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   font-weight: 500;
-
-  @media (min-width: 87.5rem) {
-    font-size: 3rem;
-  }
-`;
-
-export const ProductDescription = styled.p`
-  font-size: 1rem;
-  text-align: justify;
-  margin: 0.5rem 0;
-
-  @media (min-width: 80rem) {
-    font-size: 1.5rem;
-  }
-`;
+  margin: 0;
+  color: ${({ theme }) => theme.colors.green};
+`
 
 export const InStock = styled.span`
   font-size: 1rem;
-
+  color: ${({ theme }) => theme.colors.green};
   @media (min-width: 80rem) {
     font-size: 1.25rem;
   }
-
-  @media (min-width: 87.5rem) {
-    font-size: 1.5rem;
-  }
-`;
+`
