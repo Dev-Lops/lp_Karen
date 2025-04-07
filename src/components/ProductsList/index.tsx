@@ -58,18 +58,27 @@ export function ProductsGrid() {
     setToasterMessage("Obrigado pela sua compra! Estamos te redirecionando para o WhatsApp...");
     setShowToaster(true);
 
+    // Abre a janela imediatamente para evitar bloqueio
+    const waWindow = window.open("", "_blank");
+
     setTimeout(() => {
       const phoneNumber = "5592993787566";
       const message = generateWhatsAppMessage(cart);
       const url = `https://wa.me/${phoneNumber}?text=Olá Fabulosa!%0A%0AEu gostaria de finalizar a compra desses itens:%0A${message}%0A%0A`;
 
-      window.open(url, "_blank");
+      if (waWindow) {
+        waWindow.location.href = url;
+      } else {
+        // fallback, caso a janela não tenha sido aberta
+        window.open(url, "_blank");
+      }
 
       setCart([]);
       setIsDialogOpen(false);
       setIsLoadingCheckout(false);
     }, 3000);
   };
+
 
   useEffect(() => {
     if (cart.length === 0) {
