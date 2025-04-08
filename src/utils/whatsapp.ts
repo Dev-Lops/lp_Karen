@@ -13,21 +13,25 @@ export function generateWhatsAppMessage(cart: Product[]) {
   }, {})
 
   const message = Object.values(groupedProducts)
-    .map(
-      ({ product, quantity }) =>
-        `*${
-          product.title
-        }* - Quantidade: ${quantity} - Preço Unitário: R$ ${product.currentPrice
+    .map(({ product, quantity }) => {
+      const subtotal = (product.currentPrice * quantity)
+        .toFixed(2)
+        .replace('.', ',')
+
+      return (
+        `*${product.title}*\n` +
+        `Quantidade: ${quantity}\n` +
+        `Preço Unitário: R$ ${product.currentPrice
           .toFixed(2)
-          .replace('.', ',')} - Subtotal: R$ ${(product.currentPrice * quantity)
-          .toFixed(2)
-          .replace('.', ',')}`
-    )
-    .join('')
+          .replace('.', ',')}\n` +
+        `Subtotal: R$ ${subtotal}\n`
+      )
+    })
+    .join('\n')
 
   const total = cart.reduce((acc, item) => acc + item.currentPrice, 0)
 
   const totalMessage = `*Valor Total:* R$ ${total.toFixed(2).replace('.', ',')}`
 
-  return `${message}${totalMessage}`
+  return `${message}\n${totalMessage}`
 }
