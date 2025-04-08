@@ -23,13 +23,11 @@ export function generateWhatsAppMessage(cart: Product[]) {
           .toFixed(2)
           .replace('.', ',')}`
     )
-    .join('%0A')
+    .join('')
 
   const total = cart.reduce((acc, item) => acc + item.currentPrice, 0)
 
-  const totalMessage = `%0A%0A*Valor Total:* R$ ${total
-    .toFixed(2)
-    .replace('.', ',')}`
+  const totalMessage = `*Valor Total:* R$ ${total.toFixed(2).replace('.', ',')}`
 
   return `${message}${totalMessage}`
 }
