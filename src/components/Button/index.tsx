@@ -85,7 +85,7 @@ const StyledButton = styled.button<{
       opacity: 1;
     }
   }
-  font-weight: 400;
+  font-weight: 600;
 
   @media (min-width: 80rem) {
     font-size: 1.5rem;
@@ -99,8 +99,8 @@ const StyledButton = styled.button<{
 // Alterando para renderizar como <a> se houver href
 export const Button: React.FC<StyledButtonProps> = ({
   color = "#fff", // Valor padrão
-  backgroundColor = "#01ab9e", // Valor padrão
-  size = "medium", // Valor padrão
+  backgroundColor = "red", // Valor padrão
+  size = "small", // Valor padrão
   href,
   width,
   onClick,

@@ -32,9 +32,10 @@ export function CTASection() {
             data-aos-offset="100"
             data-aos-easing="ease-in-sine"
           >
-            Com mais de <strong>6 anos de experiência</strong>, nos
-            especializamos em trazer soluções naturais e inovadoras para nossos
-            clientes, sempre com responsabilidade e conhecimento.
+            Há <strong>7 anos entregando Saúde&Beleza,</strong> devolvendo vitalidade, brilho e maciez aos mais diferentes tipos de cabelos, contribuindo para a Auto estima e Auto cuidado.
+            Nossa expertise e produtos são embasados em graduações/pós graduações, e anos de experiência no Studio Karen Frazão.
+            Produtos de alta performance com ativos extraídos da nossa Rica Amazônia que atuam na resolutiva da problemática em diferentes formas capilares, estes são criteriosamente desenvolvidos por nossa marca Fabulos Hair, com testes de eficácia, selo de qualidade e liberação da Anvisa.🇧🇷
+
           </p>
 
           <p>
@@ -87,13 +88,13 @@ export function CTASection() {
 
         <CTAButtons>
           <Button
-            backgroundColor=""
+
             href={`https://wa.me/5592993787566?text=${encodeURIComponent(
               "Olá, gostaria de saber mais sobre o horário de agendamento."
             )}`}
             aria-label="Saiba mais sobre horário de agendamento"
           >
-            Agende um horário
+            Quero agendar um horário
           </Button>
         </CTAButtons>
       </CTAContent>
