@@ -8,7 +8,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Minus, Plus } from "lucide-react";
+import { generateWhatsAppMessage } from "@/utils/whatsapp";
+import { MessageCircleMore, Minus, Plus } from "lucide-react";
 import { Product } from "../../utils/data";
 
 interface Props {
@@ -25,7 +26,6 @@ interface Props {
 
 export function CartDialog({
   items,
-  onConfirm,
   onIncrement,
   onDecrement,
   trigger,
@@ -94,10 +94,17 @@ export function CartDialog({
           <DialogClose asChild>
             <Button variant="ghost">Fechar</Button>
           </DialogClose>
-          <Button
-            className="bg-green-700 flex items-center justify-center gap-2"
-            onClick={onConfirm}
-            disabled={isLoadingCheckout}
+          <a
+            href={`https://wa.me/5592993787566?text=${encodeURIComponent(
+              `Olá Fabulosa!\n\nEu gostaria de finalizar a compra desses itens:\n${generateWhatsAppMessage(items)}\n\n`
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              if (onOpenChange) onOpenChange(false);
+            }}
+            className={`bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded-md text-sm flex items-center justify-center gap-2 transition-all duration-300 ${isLoadingCheckout ? "opacity-50 cursor-not-allowed" : ""
+              }`}
           >
             {isLoadingCheckout && (
               <svg
@@ -121,8 +128,9 @@ export function CartDialog({
                 />
               </svg>
             )}
+            {!isLoadingCheckout && <MessageCircleMore size={18} />}
             {isLoadingCheckout ? "Redirecionando..." : "Finalizar no WhatsApp"}
-          </Button>
+          </a>
 
         </div>
       </DialogContent>
