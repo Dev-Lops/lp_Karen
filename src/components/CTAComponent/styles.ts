@@ -60,7 +60,7 @@ export const CTADescription = styled.div`
   line-height: 1.6;
   margin: 1.5rem;
   max-width: 900px;
-  text-align: center;
+  text-align: justify;
 
   ul {
     margin: 1rem 0;
