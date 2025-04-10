@@ -1,8 +1,6 @@
-import { useEffect } from "react";
-import { Button } from "../../components/Button"
-import LazyImage from "../../components/LazyImg"
-import { AboutContainer, AboutContent } from "./styles"
-import confetti from 'canvas-confetti';
+import { Button } from "../../components/Button";
+import LazyImage from "../../components/LazyImg";
+import { AboutContainer, AboutContent } from "./styles";
 
 export function About() {
   // useEffect(() => {
