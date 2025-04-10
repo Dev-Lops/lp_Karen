@@ -92,9 +92,9 @@ export function ProductsGrid() {
           <CardWrapper key={product.id}>
             <Box className={!product.inStock ? "disabled" : ""}>
               <div className={`imgBox ${!product.inStock ? "outOfStock" : ""}`}>
-                {product.discount > 0 && product.inStock && (
+                {/* {product.discount > 0 && product.inStock && (
                   <span className="discount-tag">{product.discount}% OFF</span>
-                )}
+                )} */}
                 <LazyImage
                   src={product.image}
                   alt={`Imagem do ${product.title}`}
