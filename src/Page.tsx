@@ -1,4 +1,3 @@
-import { BirthdayPromo } from "@/Sessions/BlackFriday"
 import { About } from "./Sessions/About"
 import { Benefits } from "./Sessions/Benefits"
 // import { CountdownBlack } from "./Sessions/CountdownBlack"
@@ -17,7 +16,7 @@ export const LandingPage = () => {
   return (
     <Container>
       <About />
-      <BirthdayPromo />
+      {/* <BirthdayPromo /> */}
       <CTA />
       <Benefits />
       <Presentation />

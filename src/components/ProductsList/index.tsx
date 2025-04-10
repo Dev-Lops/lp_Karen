@@ -136,7 +136,7 @@ export function ProductsGrid() {
                     </>
                   ) : (
                     // Depois de 09/04/2025 18h, mostra somente o preço sem promoção
-                    <p style={{ fontWeight: "bold" }}>
+                    <p style={{ fontWeight: "bold", fontSize: '1.5rem' }}>
                       R$ {product.oldPrice.toFixed(2).replace(".", ",")}
                     </p>
                   )}
