@@ -19,7 +19,7 @@ export function CTASection() {
       <CTAContent>
         <ImageContainer>
           <LazyImage
-            src="https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/ImageToStl.com_img_8808.avif?alt=media&token=4c4e00c1-c94a-4778-8462-0ec3c14e44a4"
+            src="https://iwiehmapixifznuozuoa.supabase.co/storage/v1/object/sign/imgs/ImageToStl.com_img_8808.avif?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2ViZTQ2OTY1LTM4N2QtNDRjNS1hYWZiLWIxNjU4NTUxM2M0MiJ9.eyJ1cmwiOiJpbWdzL0ltYWdlVG9TdGwuY29tX2ltZ184ODA4LmF2aWYiLCJpYXQiOjE3NDQ2NzY3ODAsImV4cCI6NDg2Njc0MDc4MH0.6PEyOvcwotejovnLfCCnR1ufTgWFC2iTRKzAnJP83RM"
             alt="Espaço Acolhedor do Studio Karen Frazão"
             loading="lazy"
             aria-placeholder="Espaço acolhedor do Studio Karen Frazão"

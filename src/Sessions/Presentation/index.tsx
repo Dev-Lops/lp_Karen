@@ -44,7 +44,7 @@ export function Presentation() {
             <ModalOverlay onClick={toggleModal}>
               <ModalContent onClick={(e) => e.stopPropagation()}>
                 <ReactPlayer
-                  url="https://firebasestorage.googleapis.com/v0/b/lp-karenfrazao.firebasestorage.app/o/karen_fraz%C3%A3o%20(1080p).mp4.mov?alt=media&token=1c5057f0-70c3-408c-a7aa-db4e9b470696"
+                  url="https://streamable.com/73j94v"
                   width="100%"
                   height="100%"
                   controls
