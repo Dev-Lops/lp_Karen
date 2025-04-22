@@ -1,47 +1,23 @@
-import { useState } from "react"
 import {
-  FAQSection,
-  FAQTitle,
   Accordion,
-  AccordionItem,
-  AccordionHeader,
   AccordionContent,
-} from "./styles"
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import { faqData } from "./data"
-
-export interface AccordionContentProps {
-  $isOpen?: boolean
-}
+import { FAQSection, FAQTitle } from "./styles"
 
 const FAQSectionComponent = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
-
-  const toggleAccordion = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index) // Fecha o acordeão se já estiver aberto
-  }
-
   return (
     <FAQSection>
-      <FAQTitle data-aos='fade-up' >
-        Perguntas Frequentes
-      </FAQTitle>
-      <Accordion>
+      <FAQTitle data-aos="fade-up">Perguntas Frequentes</FAQTitle>
+      <Accordion type="single" collapsible className="w-full">
         {faqData.map((item, index) => (
-          <AccordionItem key={index}>
-            <AccordionHeader
-              data-aos='fade-up'
-              data-aos-anchor-placement='center-bottom'
-              onClick={() => toggleAccordion(index)}
-              aria-expanded={openIndex === index}
-              aria-controls={`accordion-content-${index}`}
-              role='button'
-            >
+          <AccordionItem key={index} value={`item-${index}`}>
+            <AccordionTrigger data-aos="fade-up" data-aos-anchor-placement="center-bottom">
               {item.question}
-            </AccordionHeader>
-            <AccordionContent
-              id={`accordion-content-${index}`}
-              $isOpen={openIndex === index} // Transient prop
-            >
+            </AccordionTrigger>
+            <AccordionContent>
               {item.answer}
             </AccordionContent>
           </AccordionItem>

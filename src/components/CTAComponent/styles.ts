@@ -91,12 +91,12 @@ export const CTADescription = styled.div`
 `
 
 // Contêiner dos botões
-export const CTAButtons = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  width: 100%;
-  margin-top: 1.5rem;
-  font-weight: bold;
-`
+// export const CTAButtons = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   flex-wrap: wrap;
+//   gap: 1rem;
+//   width: 100%;
+//   margin-top: 1.5rem;
+//   font-weight: bold;
+// `

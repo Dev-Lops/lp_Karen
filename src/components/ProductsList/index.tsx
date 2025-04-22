@@ -1,6 +1,6 @@
+import ButtonWithEffect from '@/components/ButtonStyled/ButtonStyled';
 import { generateWhatsAppMessage } from '@/utils/whatsapp';
 import { motion } from 'framer-motion';
-import { ShoppingCart } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Product, products } from "../../utils/data";
 import { CartDialog } from "../CartSidebar";
@@ -60,16 +60,11 @@ export function ProductsGrid() {
 
     const phoneNumber = "5592993787566";
     const message = generateWhatsAppMessage(cart);
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+    const whatsappURL = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(
       `Olá Fabulosa!\n\nEu gostaria de finalizar a compra desses itens:\n${message}\n\n`
     )}`;
 
-    const opened = window.open(url, "_blank");
-
-    if (!opened) {
-      // fallback se for bloqueado
-      window.location.href = url;
-    }
+    window.location.href = whatsappURL;
 
     setCart([]);
     setIsDialogOpen(false);
@@ -104,13 +99,7 @@ export function ProductsGrid() {
                 {!product.inStock && <div className="outOfStockText" />}
                 <div className={`icon ${!product.inStock ? "outOfStock" : ""}`}>
                   {product.inStock && (
-                    <button
-                      onClick={() => addToCart(product)}
-                      className="iconBox"
-                      aria-label="carrinho"
-                    >
-                      Comprar <ShoppingCart />
-                    </button>
+                    <ButtonWithEffect onClick={() => addToCart(product)} />
                   )}
                 </div>
               </div>

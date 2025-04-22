@@ -13,7 +13,7 @@ export function About() {
   return (
     <AboutContainer>
       <LazyImage
-        src='https://iwiehmapixifznuozuoa.supabase.co/storage/v1/object/sign/imgs/image.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2ViZTQ2OTY1LTM4N2QtNDRjNS1hYWZiLWIxNjU4NTUxM2M0MiJ9.eyJ1cmwiOiJpbWdzL2ltYWdlLnBuZyIsImlhdCI6MTc0NDY3Njk3NSwiZXhwIjo0ODY2NzQwOTc1fQ.__NiTccuTCUsmFtuXqx6n0AJ1yIEbXmtBfM3OZ7QKe4'
+        src='image.png'
         alt='Logo de Karen Frazão'
         className='puff-in-center'
         loading='lazy'

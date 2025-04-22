@@ -1,26 +1,26 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 // Estilos principais da seção de FAQ
 export const FAQSection = styled.section`
-  background-color: #fff;
-  padding: 50px 10px;
-  width: 100%;
+  padding: 50px 5%;
+  width: 1200px;
+  margin: 0 auto;
 `
 
 export const FAQTitle = styled.h2`
   text-align: center;
-  margin-bottom: 40px;
-  font-size: clamp(1rem, 5vw, 2rem);
   margin-bottom: 1.8rem;
+  font-size: clamp(1rem, 5vw, 2rem);
   color: ${({ theme }) => theme.colors.green};
-  font-family: "Stardom", serif;
+  font-family: 'Stardom', serif;
   letter-spacing: 3px;
   font-weight: bold;
 `
 
 // Estilos para o acordeão
 export const Accordion = styled.div`
-  width: 70%;
+  width: 100%;
+  max-width: 800px;
   margin: 0 auto;
 `
 
@@ -41,15 +41,24 @@ export const AccordionHeader = styled.div`
   &:hover {
     background-color: ${({ theme }) => theme.colors.greenLight};
   }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 12px;
+  }
 `
 
 export const AccordionContent = styled.div<{ $isOpen?: boolean }>`
-  max-height: ${({ $isOpen }) => ($isOpen ? "200px" : "0")};
+  max-height: ${({ $isOpen }) => ($isOpen ? '200px' : '0')};
   overflow: hidden;
   color: ${({ theme }) => theme.colors.black};
   font-size: 1rem;
-  font-family: "Montserat", sans-serif;
-
+  font-family: 'Montserrat', sans-serif;
   transition: max-height 0.3s ease;
-  padding: ${({ $isOpen }) => ($isOpen ? "1.2rem" : "0")};
+  padding: ${({ $isOpen }) => ($isOpen ? '1.2rem' : '0')};
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding: ${({ $isOpen }) => ($isOpen ? '1rem' : '0')};
+  }
 `

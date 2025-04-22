@@ -1,13 +1,10 @@
 // CTASection.tsx
 import { Button } from "../Button/index.tsx";
-import LazyImage from "../LazyImg/index.tsx";
 import {
-  CTAButtons,
   CTAContainer,
   CTAContent,
   CTADescription,
-  CTATitle,
-  ImageContainer,
+  CTATitle
 } from "./styles.ts";
 
 export function CTASection() {
@@ -17,15 +14,6 @@ export function CTASection() {
         Sobre nós
       </CTATitle>
       <CTAContent>
-        <ImageContainer>
-          <LazyImage
-            src="https://iwiehmapixifznuozuoa.supabase.co/storage/v1/object/sign/imgs/ImageToStl.com_img_8808.avif?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2ViZTQ2OTY1LTM4N2QtNDRjNS1hYWZiLWIxNjU4NTUxM2M0MiJ9.eyJ1cmwiOiJpbWdzL0ltYWdlVG9TdGwuY29tX2ltZ184ODA4LmF2aWYiLCJpYXQiOjE3NDQ2NzY3ODAsImV4cCI6NDg2Njc0MDc4MH0.6PEyOvcwotejovnLfCCnR1ufTgWFC2iTRKzAnJP83RM"
-            alt="Espaço Acolhedor do Studio Karen Frazão"
-            loading="lazy"
-            aria-placeholder="Espaço acolhedor do Studio Karen Frazão"
-          />
-        </ImageContainer>
-
         <CTADescription>
           <p
             data-aos="fade-right"
@@ -86,18 +74,17 @@ export function CTASection() {
             sua saúde capilar, proporcionando resultados incríveis e duradouros.
           </p>
         </CTADescription>
+        <Button
 
-        <CTAButtons>
-          <Button
+          href={`https://wa.me/5592993787566?text=${encodeURIComponent(
+            "Olá, gostaria de saber mais sobre o horário de agendamento."
+          )}`}
+          className="w-full md:w-auto flex items-center justify-center hover:bg-red-300 cursor-pointer mx-10"
+          aria-label="Saiba mais sobre horário de agendamento"
+        >
+          Quero agendar um horário
+        </Button>
 
-            href={`https://wa.me/5592993787566?text=${encodeURIComponent(
-              "Olá, gostaria de saber mais sobre o horário de agendamento."
-            )}`}
-            aria-label="Saiba mais sobre horário de agendamento"
-          >
-            Quero agendar um horário
-          </Button>
-        </CTAButtons>
       </CTAContent>
     </CTAContainer>
   );
