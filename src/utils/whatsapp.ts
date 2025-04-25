@@ -14,14 +14,14 @@ export function generateWhatsAppMessage(cart: Product[]) {
 
   const message = Object.values(groupedProducts)
     .map(({ product, quantity }) => {
-      const subtotal = (product.currentPrice * quantity)
+      const subtotal = (product.oldPrice * quantity)
         .toFixed(2)
         .replace('.', ',')
 
       return (
         `*${product.title}*\n` +
         `Quantidade: ${quantity}\n` +
-        `Preço Unitário: R$ ${product.currentPrice
+        `Preço Unitário: R$ ${product.oldPrice
           .toFixed(2)
           .replace('.', ',')}\n` +
         `Subtotal: R$ ${subtotal}\n`
@@ -29,7 +29,7 @@ export function generateWhatsAppMessage(cart: Product[]) {
     })
     .join('\n')
 
-  const total = cart.reduce((acc, item) => acc + item.currentPrice, 0)
+  const total = cart.reduce((acc, item) => acc + item.oldPrice, 0)
 
   const totalMessage = `*Valor Total:* R$ ${total.toFixed(2).replace('.', ',')}`
 
