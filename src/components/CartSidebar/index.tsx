@@ -45,7 +45,7 @@ export function CartDialog({
     {}
   );
 
-  const total = items.reduce((total, item) => total + item.currentPrice, 0);
+  const total = items.reduce((total, item) => total + item.oldPrice, 0);
 
   return (
     <Dialog onOpenChange={onOpenChange} open={isOpen}>
@@ -61,7 +61,7 @@ export function CartDialog({
               <div>
                 <p className="font-semibold">{product.title}</p>
                 <p className="text-sm text-muted-foreground">
-                  {quantity}x — {(product.currentPrice).toFixed(2).replace(".", ",")} = R$ {(product.currentPrice * quantity).toFixed(2).replace(".", ",")}
+                  {quantity}x — {(product.oldPrice).toFixed(2).replace(".", ",")} = R$ {(product.oldPrice * quantity).toFixed(2).replace(".", ",")}
                 </p>
               </div>
               <div className="flex items-center gap-2">
