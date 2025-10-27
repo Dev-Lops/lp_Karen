@@ -82,7 +82,7 @@ export const products: Product[] = [
     oldPrice: 54.5,
     discount: 10,
     currentPrice: 49.05,
-    image: 'reest.jpeg',
+    image: 'reest.avif',
     title: 'Reestruturador Bifásico THERAPY',
     description:
       'Protege a fibra contra agressões externas, equilibra o PH e mantém a estrutura do córtex com vitalidade.',
