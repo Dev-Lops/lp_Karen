@@ -251,11 +251,10 @@ export function CheckoutDialog({
                   <button
                     type="button"
                     onClick={() => setPaymentMethod('pix')}
-                    className={`p-4 rounded-lg border-2 transition-all ${
-                      paymentMethod === 'pix'
+                    className={`p-4 rounded-lg border-2 transition-all ${paymentMethod === 'pix'
                         ? 'border-green-500 bg-green-50 shadow-md'
                         : 'border-gray-200 hover:border-green-300'
-                    }`}
+                      }`}
                   >
                     <div className="text-2xl mb-1">💰</div>
                     <div className="text-sm font-semibold">PIX</div>
@@ -263,11 +262,10 @@ export function CheckoutDialog({
                   <button
                     type="button"
                     onClick={() => setPaymentMethod('card')}
-                    className={`p-4 rounded-lg border-2 transition-all ${
-                      paymentMethod === 'card'
+                    className={`p-4 rounded-lg border-2 transition-all ${paymentMethod === 'card'
                         ? 'border-green-500 bg-green-50 shadow-md'
                         : 'border-gray-200 hover:border-green-300'
-                    }`}
+                      }`}
                   >
                     <div className="text-2xl mb-1">💳</div>
                     <div className="text-sm font-semibold">Cartão</div>
@@ -275,11 +273,10 @@ export function CheckoutDialog({
                   <button
                     type="button"
                     onClick={() => setPaymentMethod('money')}
-                    className={`p-4 rounded-lg border-2 transition-all ${
-                      paymentMethod === 'money'
+                    className={`p-4 rounded-lg border-2 transition-all ${paymentMethod === 'money'
                         ? 'border-green-500 bg-green-50 shadow-md'
                         : 'border-gray-200 hover:border-green-300'
-                    }`}
+                      }`}
                   >
                     <div className="text-2xl mb-1">💵</div>
                     <div className="text-sm font-semibold">Dinheiro</div>

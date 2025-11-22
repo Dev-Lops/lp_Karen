@@ -6,10 +6,13 @@ type PaymentMethod = 'pix' | 'card' | 'money'
 const PAYMENT_LABELS: Record<PaymentMethod, string> = {
   pix: '💰 PIX',
   card: '💳 Cartão de Crédito/Débito',
-  money: '💵 Dinheiro'
+  money: '💵 Dinheiro',
 }
 
-export function generateWhatsAppMessage(cart: Product[], paymentMethod: PaymentMethod = 'pix') {
+export function generateWhatsAppMessage(
+  cart: Product[],
+  paymentMethod: PaymentMethod = 'pix'
+) {
   const isBFActive = isBlackFridayActive()
 
   const groupedProducts = cart.reduce<
