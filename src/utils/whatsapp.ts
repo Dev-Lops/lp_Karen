@@ -1,18 +1,8 @@
 import { isBlackFridayActive } from '@/config/blackfriday'
 import { Product } from './data'
 
-type PaymentMethod = 'pix' | 'card' | 'money'
-
-const PAYMENT_LABELS: Record<PaymentMethod, string> = {
-  pix: '💰 PIX',
-  card: '💳 Cartão de Crédito/Débito',
-  money: '💵 Dinheiro',
-}
-
-export function generateWhatsAppMessage(
-  cart: Product[],
-  paymentMethod: PaymentMethod = 'pix'
-) {
+// Removido parcelamento direto; apenas informamos que cartão tem acréscimos
+export function generateWhatsAppMessage(cart: Product[]) {
   const isBFActive = isBlackFridayActive()
 
   const groupedProducts = cart.reduce<
@@ -65,16 +55,17 @@ export function generateWhatsAppMessage(
   message += '\n━━━━━━━━━━━━━━━━━━━━\n'
 
   // Totais
-  const total = cart.reduce((acc, item) => {
+  const baseTotal = cart.reduce((acc, item) => {
     const price = isBFActive ? item.promoPrice : item.currentPrice
     return acc + price
   }, 0)
+
+  const total = baseTotal // sem acréscimo, parcelamento será tratado no atendimento
 
   const totalItems = cart.length
 
   message += `\n📊 *RESUMO DO PEDIDO*\n`
   message += `┣ Total de Itens: ${totalItems}\n`
-  message += `┣ Forma de Pagamento: *${PAYMENT_LABELS[paymentMethod]}*\n`
 
   if (isBFActive) {
     const totalNormal = cart.reduce((acc, item) => acc + item.currentPrice, 0)

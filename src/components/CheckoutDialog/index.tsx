@@ -28,7 +28,7 @@ export function CheckoutDialog({
 }: CheckoutDialogProps) {
   const [step, setStep] = useState<CheckoutStep>('cart');
   const [customerName, setCustomerName] = useState('');
-  const [paymentMethod, setPaymentMethod] = useState<'pix' | 'card' | 'money'>('pix');
+  // Removido parcelamento: apenas informar que cartão possui acréscimos
   const [waFallback, setWaFallback] = useState<string | null>(null);
   const isBFActive = isBlackFridayActive();
 
@@ -44,11 +44,9 @@ export function CheckoutDialog({
     {}
   );
 
-  const total = items.reduce((total, item) => {
-    const price = isBFActive
-      ? item.promoPrice
-      : item.currentPrice;
-    return total + price;
+  const total = items.reduce((acc, item) => {
+    const price = isBFActive ? item.promoPrice : item.currentPrice;
+    return acc + price;
   }, 0);
 
   const totalNormal = items.reduce((sum, item) => sum + item.currentPrice, 0);
@@ -59,7 +57,7 @@ export function CheckoutDialog({
     const greeting = customerName
       ? `Olá Fabulosa !!\n\nme chamo ${customerName}\n\n`
       : 'Olá Fabulosa !!\n\n';
-    const message = `${greeting}Eu gostaria de finalizar a compra desses itens:\n${generateWhatsAppMessage(items, paymentMethod)}\n\nAguardo retorno!`;
+    const message = `${greeting}Eu gostaria de finalizar a compra desses itens:\n${generateWhatsAppMessage(items)}\n\nAguardo retorno!`;
 
     const encoded = encodeURIComponent(message);
     const waUrl = `https://wa.me/${phoneNumber}?text=${encoded}`;
@@ -82,7 +80,7 @@ export function CheckoutDialog({
       onOpenChange(false);
       setStep('cart');
       setCustomerName('');
-      setPaymentMethod('pix');
+      // nada para resetar sobre parcelas
       setWaFallback(null);
     }, 2000);
   };
@@ -91,12 +89,12 @@ export function CheckoutDialog({
     onOpenChange(false);
     setStep('cart');
     setCustomerName('');
-    setPaymentMethod('pix');
+    // parcelas removidas
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="max-w-2xl w-[95vw] sm:w-full max-h-[90vh] sm:max-h-[95vh] overflow-hidden flex flex-col p-0">
+      <DialogContent className="max-w-2xl w-[96vw] sm:w-full max-h-[92vh] sm:max-h-[95vh] overflow-hidden flex flex-col p-0">
         {/* Header */}
         <DialogHeader className="px-3 sm:px-6 pt-4 sm:pt-6 pb-3 sm:pb-4 border-b">
           <div className="flex items-center justify-between">
@@ -250,45 +248,14 @@ export function CheckoutDialog({
                 </p>
               </div>
 
-              <div>
-                <label className="block text-xs sm:text-sm font-semibold mb-2 sm:mb-3">
-                  💳 Forma de Pagamento
-                </label>
-                <div className="grid grid-cols-3 gap-2 sm:gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod('pix')}
-                    className={`p-2 sm:p-4 rounded-lg border-2 transition-all ${paymentMethod === 'pix'
-                      ? 'border-green-500 bg-green-50 shadow-md'
-                      : 'border-gray-200 hover:border-green-300'
-                      }`}
-                  >
-                    <div className="text-xl sm:text-2xl mb-0.5 sm:mb-1">💰</div>
-                    <div className="text-xs sm:text-sm font-semibold">PIX</div>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod('card')}
-                    className={`p-2 sm:p-4 rounded-lg border-2 transition-all ${paymentMethod === 'card'
-                      ? 'border-green-500 bg-green-50 shadow-md'
-                      : 'border-gray-200 hover:border-green-300'
-                      }`}
-                  >
-                    <div className="text-xl sm:text-2xl mb-0.5 sm:mb-1">💳</div>
-                    <div className="text-xs sm:text-sm font-semibold">Cartão</div>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod('money')}
-                    className={`p-2 sm:p-4 rounded-lg border-2 transition-all ${paymentMethod === 'money'
-                      ? 'border-green-500 bg-green-50 shadow-md'
-                      : 'border-gray-200 hover:border-green-300'
-                      }`}
-                  >
-                    <div className="text-xl sm:text-2xl mb-0.5 sm:mb-1">💵</div>
-                    <div className="text-xs sm:text-sm font-semibold">Dinheiro</div>
-                  </button>
-                </div>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 sm:p-4 space-y-2">
+                <p className="text-xs sm:text-sm text-gray-700 font-semibold">Formas de pagamento aceitas:</p>
+                <p className="text-[11px] sm:text-xs text-gray-600">
+                  <span className="font-semibold text-green-600">PIX:</span> sem acréscimos (melhor valor).
+                </p>
+                <p className="text-[11px] sm:text-xs text-gray-600">
+                  <span className="font-semibold text-yellow-600">Cartão de credito:</span> Com acrescimos, verificar na finalização do pedido com o nosso time.
+                </p>
               </div>
 
               <div className="bg-gray-50 rounded-xl p-4">
@@ -331,9 +298,9 @@ export function CheckoutDialog({
 
         {/* Footer */}
         {step !== 'sending' && (
-          <div className="px-3 sm:px-6 py-3 sm:py-4 border-t bg-gray-50">
+          <div className="px-2 sm:px-6 py-2.5 sm:py-4 border-t bg-gray-50">
             {/* Total */}
-            <div className="mb-3 sm:mb-4 space-y-1.5 sm:space-y-2">
+            <div className="mb-2.5 sm:mb-4 space-y-1 sm:space-y-2">
               {isBFActive && economia > 0 && (
                 <div className="flex justify-between items-center text-green-600">
                   <span className="text-xs sm:text-sm font-semibold">🎉 Economizando:</span>
@@ -343,32 +310,34 @@ export function CheckoutDialog({
 
               <div className="flex justify-between items-center">
                 <span className="text-sm sm:text-lg font-bold">Total:</span>
-                <span className="text-2xl sm:text-3xl font-bold text-green-600">
-                  R$ {total.toFixed(2).replace(".", ",")}
-                </span>
+                <div className="flex flex-col items-end">
+                  <span className="text-2xl sm:text-3xl font-bold text-green-600">
+                    R$ {total.toFixed(2).replace('.', ',')}
+                  </span>
+                </div>
               </div>
             </div>
 
             {/* Actions */}
-            <div className="flex gap-2 sm:gap-3">
+            <div className="flex gap-1.5 sm:gap-3">
               {step === 'cart' && (
                 <>
                   <Button
                     variant="outline"
                     onClick={handleClose}
-                    className="flex-1 text-xs sm:text-sm py-2 sm:py-3"
+                    className="flex-1 text-[10px] sm:text-sm py-2 sm:py-3 px-2 sm:px-4"
                   >
-                    <X size={16} className="mr-1 sm:mr-2" />
+                    <X size={14} className="mr-0.5 sm:mr-2" />
+                    <span className="hidden xs:inline sm:hidden">Voltar</span>
                     <span className="hidden sm:inline">Continuar Comprando</span>
-                    <span className="sm:hidden">Voltar</span>
                   </Button>
                   <Button
                     onClick={() => setStep('review')}
-                    className="flex-1 bg-green-600 hover:bg-green-700 text-white text-xs sm:text-sm py-2 sm:py-3"
+                    className="flex-1 bg-green-600 hover:bg-green-700 text-white text-[10px] sm:text-sm py-2 sm:py-3 px-2 sm:px-4"
                   >
+                    <span className="hidden xs:inline sm:hidden">Revisar</span>
                     <span className="hidden sm:inline">Revisar Pedido</span>
-                    <span className="sm:hidden">Revisar</span>
-                    <ArrowRight size={16} className="ml-1 sm:ml-2" />
+                    <ArrowRight size={14} className="ml-0.5 sm:ml-2" />
                   </Button>
                 </>
               )}
@@ -378,17 +347,16 @@ export function CheckoutDialog({
                   <Button
                     variant="outline"
                     onClick={() => setStep('cart')}
-                    className="flex-1 text-xs sm:text-sm py-2 sm:py-3"
+                    className="flex-1 text-[10px] sm:text-sm py-2 sm:py-3 px-2 sm:px-4"
                   >
                     Voltar
                   </Button>
                   <Button
                     onClick={handleFinishOrder}
-                    className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold text-xs sm:text-lg py-3 sm:py-6"
+                    className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold text-[10px] sm:text-base py-2.5 sm:py-6 px-2 sm:px-4"
                   >
-                    <MessageCircle size={16} className="mr-1 sm:mr-2 sm:w-5 sm:h-5" />
-                    <span className="hidden sm:inline">Finalizar pelo WhatsApp</span>
-                    <span className="sm:hidden">Finalizar</span>
+                    <MessageCircle size={14} className="mr-0.5 sm:mr-2 sm:w-5 sm:h-5" />
+                    <span>Finalizar</span>
                   </Button>
                 </>
               )}

@@ -122,10 +122,12 @@ export function ProductsGrid() {
       </Container>
 
       {/* Floating Cart Button */}
-      <CartButton
-        itemCount={cart.length}
-        onClick={() => setIsDialogOpen(true)}
-      />
+      {!isDialogOpen && (
+        <CartButton
+          itemCount={cart.length}
+          onClick={() => setIsDialogOpen(true)}
+        />
+      )}
 
       {/* Enhanced Checkout Dialog */}
       <CheckoutDialog
