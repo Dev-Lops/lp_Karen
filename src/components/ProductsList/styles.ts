@@ -389,11 +389,13 @@ export const Title = styled.h3<BFProps>`
   ${({ $bfActive }) =>
     $bfActive &&
     css`
-      border-top: 1px solid rgba(212, 175, 55, 0.35);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.35);
-      background: linear-gradient(180deg, #fffbf0 0%, #fff9e6 100%);
-      color: ${({ theme }) => theme.colors.gold};
-      text-shadow: 0 1px 2px rgba(212, 175, 55, 0.2);
+      border-top: 1px solid rgba(212, 175, 55, 0.4);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #ffd700;
+      font-weight: 800;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.8);
+      letter-spacing: 0.8px;
 
       &::after {
         background: linear-gradient(
@@ -402,6 +404,17 @@ export const Title = styled.h3<BFProps>`
           ${({ theme }) => theme.colors.gold} 50%,
           transparent 100%
         );
+      }
+
+      ${CardWrapper}:hover & {
+        background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+        color: #ffa500;
+        text-shadow: 0 0 15px rgba(255, 165, 0, 0.6),
+          0 2px 4px rgba(0, 0, 0, 0.8);
+
+        &::after {
+          width: 80%;
+        }
       }
     `}
 

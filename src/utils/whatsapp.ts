@@ -1,7 +1,15 @@
 import { isBlackFridayActive } from '@/config/blackfriday'
 import { Product } from './data'
 
-export function generateWhatsAppMessage(cart: Product[]) {
+type PaymentMethod = 'pix' | 'card' | 'money'
+
+const PAYMENT_LABELS: Record<PaymentMethod, string> = {
+  pix: '💰 PIX',
+  card: '💳 Cartão de Crédito/Débito',
+  money: '💵 Dinheiro'
+}
+
+export function generateWhatsAppMessage(cart: Product[], paymentMethod: PaymentMethod = 'pix') {
   const isBFActive = isBlackFridayActive()
 
   const groupedProducts = cart.reduce<
@@ -63,6 +71,7 @@ export function generateWhatsAppMessage(cart: Product[]) {
 
   message += `\n📊 *RESUMO DO PEDIDO*\n`
   message += `┣ Total de Itens: ${totalItems}\n`
+  message += `┣ Forma de Pagamento: *${PAYMENT_LABELS[paymentMethod]}*\n`
 
   if (isBFActive) {
     const totalNormal = cart.reduce((acc, item) => acc + item.currentPrice, 0)

@@ -28,6 +28,7 @@ export function CheckoutDialog({
 }: CheckoutDialogProps) {
   const [step, setStep] = useState<CheckoutStep>('cart');
   const [customerName, setCustomerName] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState<'pix' | 'card' | 'money'>('pix');
   const [waFallback, setWaFallback] = useState<string | null>(null);
   const isBFActive = isBlackFridayActive();
 
@@ -58,7 +59,7 @@ export function CheckoutDialog({
     const greeting = customerName
       ? `Olá Fabulosa !!\n\nme chamo ${customerName}\n\n`
       : 'Olá Fabulosa !!\n\n';
-    const message = `${greeting}Eu gostaria de finalizar a compra desses itens:\n${generateWhatsAppMessage(items)}\n\nAguardo retorno!`;
+    const message = `${greeting}Eu gostaria de finalizar a compra desses itens:\n${generateWhatsAppMessage(items, paymentMethod)}\n\nAguardo retorno!`;
 
     const encoded = encodeURIComponent(message);
     const waUrl = `https://wa.me/${phoneNumber}?text=${encoded}`;
@@ -81,6 +82,7 @@ export function CheckoutDialog({
       onOpenChange(false);
       setStep('cart');
       setCustomerName('');
+      setPaymentMethod('pix');
       setWaFallback(null);
     }, 2000);
   };
@@ -89,6 +91,7 @@ export function CheckoutDialog({
     onOpenChange(false);
     setStep('cart');
     setCustomerName('');
+    setPaymentMethod('pix');
   };
 
   return (
@@ -238,6 +241,50 @@ export function CheckoutDialog({
                 <p className="text-xs text-gray-500 mt-2">
                   Isso nos ajuda a oferecer um atendimento mais personalizado
                 </p>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold mb-3">
+                  💳 Forma de Pagamento
+                </label>
+                <div className="grid grid-cols-3 gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setPaymentMethod('pix')}
+                    className={`p-4 rounded-lg border-2 transition-all ${
+                      paymentMethod === 'pix'
+                        ? 'border-green-500 bg-green-50 shadow-md'
+                        : 'border-gray-200 hover:border-green-300'
+                    }`}
+                  >
+                    <div className="text-2xl mb-1">💰</div>
+                    <div className="text-sm font-semibold">PIX</div>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPaymentMethod('card')}
+                    className={`p-4 rounded-lg border-2 transition-all ${
+                      paymentMethod === 'card'
+                        ? 'border-green-500 bg-green-50 shadow-md'
+                        : 'border-gray-200 hover:border-green-300'
+                    }`}
+                  >
+                    <div className="text-2xl mb-1">💳</div>
+                    <div className="text-sm font-semibold">Cartão</div>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPaymentMethod('money')}
+                    className={`p-4 rounded-lg border-2 transition-all ${
+                      paymentMethod === 'money'
+                        ? 'border-green-500 bg-green-50 shadow-md'
+                        : 'border-gray-200 hover:border-green-300'
+                    }`}
+                  >
+                    <div className="text-2xl mb-1">💵</div>
+                    <div className="text-sm font-semibold">Dinheiro</div>
+                  </button>
+                </div>
               </div>
 
               <div className="bg-gray-50 rounded-xl p-4">
