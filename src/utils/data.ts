@@ -1,20 +1,20 @@
 export interface Product {
   id: number
-  oldPrice: number
-  currentPrice: number
+  currentPrice: number // Preço oficial/normal da loja
+  promoPrice: number // Preço promocional da Black Friday
   image: string
   title: string
   description: string
   inStock: boolean
-
   discount: number
 }
+
 export const products: Product[] = [
   {
     id: 1,
-    oldPrice: 64.0,
+    currentPrice: 64.0,
+    promoPrice: 57.6,
     discount: 10,
-    currentPrice: 57.6,
     image: 'img1.avif',
     title: 'Ampola de Reestruturação do Córtex',
     description:
@@ -23,9 +23,9 @@ export const products: Product[] = [
   },
   {
     id: 2,
-    oldPrice: 65.9,
-    discount: 20,
-    currentPrice: 52.7,
+    currentPrice: 65.9,
+    promoPrice: 46.79,
+    discount: 29,
     image: 'img3.avif',
     title: 'Sérum Fabulos Premium',
     description:
@@ -34,11 +34,10 @@ export const products: Product[] = [
   },
   {
     id: 3,
-    oldPrice: 389.0,
+    currentPrice: 389.0,
+    promoPrice: 233.4,
     discount: 40,
-    currentPrice: 233.4,
     image: 'img6.avif',
-
     title: 'Kit Alisamento Natural',
     description:
       'Descubra o poder de uma fórmula inovadora que combina o melhor da ciência e da natureza para proporcionar resultados incríveis nos cabelos. Ideal para profissionais, o Kit Alisamento Natural oferece soluções completas para limpeza profunda e alinhamento dos fios de forma saudável e natural.',
@@ -46,9 +45,9 @@ export const products: Product[] = [
   },
   {
     id: 4,
-    oldPrice: 78.5,
+    currentPrice: 78.5,
+    promoPrice: 70.65,
     discount: 10,
-    currentPrice: 70.65,
     image: 'img8.avif',
     title: 'Mascara THERAPY (Efeito teia)',
     description:
@@ -57,9 +56,9 @@ export const products: Product[] = [
   },
   {
     id: 5,
-    oldPrice: 30,
+    currentPrice: 30,
+    promoPrice: 21,
     discount: 30,
-    currentPrice: 21,
     image: 'img5.avif',
     title: 'Escova Fabulos Hair',
     description:
@@ -68,9 +67,9 @@ export const products: Product[] = [
   },
   {
     id: 6,
-    oldPrice: 46.9,
+    currentPrice: 46.9,
+    promoPrice: 32.8,
     discount: 30,
-    currentPrice: 32.8,
     image: '/img4.avif',
     title: 'Perfume Antifrizz',
     description:
@@ -79,9 +78,9 @@ export const products: Product[] = [
   },
   {
     id: 7,
-    oldPrice: 54.5,
-    discount: 10,
-    currentPrice: 49.05,
+    currentPrice: 54.5,
+    promoPrice: 27.25,
+    discount: 50,
     image: 'reest.avif',
     title: 'Reestruturador Bifásico THERAPY',
     description:
@@ -90,24 +89,46 @@ export const products: Product[] = [
   },
   {
     id: 8,
-    oldPrice: 114.0,
+    currentPrice: 57,
+    promoPrice: 51.3,
     discount: 10,
-    currentPrice: 102.6,
-    image: 'img2.avif',
-    title: 'Shampoo e Booster CMC',
+    image: 'img10.avif',
+    title: 'Shampoo CMC',
     description:
-      'O kit 18 Rosé atua restaurando o CMC capilar, devolvendo 18Metil eicosanoico à fibra.',
+      'O Shampoo Rosé atua restaurando o CMC capilar, devolvendo 18Metil eicosanoico à fibra.',
     inStock: true,
   },
   {
     id: 9,
-    oldPrice: 49.0,
+    currentPrice: 57.0,
+    promoPrice: 51.3,
     discount: 10,
-    currentPrice: 44.1,
-    image: 'img7.avif',
-    title: 'Shampoo THERAPY',
+    image: 'img11.avif',
+    title: 'Booster CMC',
     description:
-      'Age no couro cabeludo com ação antimicrobiana, antifúngica, antisséptica e cicatrizante. Combate radicais livres, fungos, oleosidade, caspa, promovendo oxigenação e crescimento.',
+      'O Shampoo Rosé atua restaurando o CMC capilar, devolvendo 18Metil eicosanoico à fibra.',
+    inStock: true,
+  },
+  {
+    id: 10,
+    currentPrice: 49.0,
+    promoPrice: 44.10,
+    discount: 10,
+    image: 'img7.avif',
+    title: 'Shampoo Therapy',
+    description:
+      ' Age no couro cabeludo com ação antimicrobiana, antifúngica, antisséptica e cicatrizante. Combate radicais livres, fungos, oleosidade, caspa, promovendo oxigenação e crescimento.',
+    inStock: true,
+  },
+  {
+    id: 11,
+    currentPrice: 74.0,
+    promoPrice: 59.2,
+    discount: 20,
+    image: 'masc.avif',
+    title: 'Mascara CMC',
+    description:
+      'A Máscara 18Rosé -  foi criada com tecnologia de alta performance para restaurar profundamente o CMC (Cimento da Membrana Celular)',
     inStock: true,
   },
 ]

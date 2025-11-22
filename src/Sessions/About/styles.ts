@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { Container } from "../../styles/GlobalStyles"
+import styled from 'styled-components'
+import { Container } from '../../styles/GlobalStyles'
 
 // Estilos do AboutContainer
 export const AboutContainer = styled(Container)`
@@ -9,7 +9,8 @@ export const AboutContainer = styled(Container)`
   align-items: center;
   text-align: center;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  padding-bottom: 4rem;
   background-color: ${({ theme }) => theme.colors.brunswickGreen};
 
   & img {
@@ -135,7 +136,7 @@ export const AboutContent = styled.main`
       font-size: 4rem;
       color: ${({ theme }) => theme.colors.white};
       height: 100px;
-      font-family: "AlexanderLettering", sans-serif;
+      font-family: 'AlexanderLettering', sans-serif;
       display: flex;
       align-items: center;
       font-weight: 400;
@@ -148,7 +149,7 @@ export const AboutContent = styled.main`
     }
 
     & h3 {
-      font-family: "Baskervville", serif;
+      font-family: 'Baskervville', serif;
       font-size: 1rem;
       letter-spacing: 5px;
 

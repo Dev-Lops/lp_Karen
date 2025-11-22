@@ -4,6 +4,7 @@ import { Container } from '../../styles/GlobalStyles'
 export const ContainerProduct = styled(Container)`
   display: flex;
   width: 100%;
+  padding: 4rem 0;
 
   justify-content: center;
   align-items: center;

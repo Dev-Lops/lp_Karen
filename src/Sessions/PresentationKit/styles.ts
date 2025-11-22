@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Container } from "../../styles/GlobalStyles";
+import styled from 'styled-components'
+import { Container } from '../../styles/GlobalStyles'
 
 export const ContainerKit = styled(Container)`
   display: flex;
@@ -9,7 +9,8 @@ export const ContainerKit = styled(Container)`
   color: ${({ theme }) => theme.colors.green};
   width: 100vw;
   height: 100%;
-  margin-bottom: 16px;
+  padding: 4rem 0;
+  margin-bottom: 0;
 
   & > img {
     width: 350px;
@@ -37,7 +38,7 @@ export const ContainerKit = styled(Container)`
       height: 650px;
     }
   }
-`;
+`
 
 export const ContentKit = styled.article`
   display: flex;
@@ -55,7 +56,7 @@ export const ContentKit = styled.article`
   & h1 {
     font-size: clamp(1.5rem, 5vw, 2.5rem);
     color: ${({ theme }) => theme.colors.green};
-    font-family: "Melodrama", serif;
+    font-family: 'Melodrama', serif;
     letter-spacing: 3px;
     font-weight: bold;
   }
@@ -65,7 +66,7 @@ export const ContentKit = styled.article`
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 15px;
-    font-family: "Montserrat", serif;
+    font-family: 'Montserrat', serif;
     text-align: center;
   }
 
@@ -83,4 +84,4 @@ export const ContentKit = styled.article`
       width: 80%;
     }
   }
-`;
+`

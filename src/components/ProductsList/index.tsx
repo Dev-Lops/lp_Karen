@@ -1,9 +1,9 @@
 import ButtonWithEffect from '@/components/ButtonStyled/ButtonStyled';
-import { generateWhatsAppMessage } from '@/utils/whatsapp';
-import { motion } from 'framer-motion';
+import { CartButton } from '@/components/CartButton';
+import { CheckoutDialog } from '@/components/CheckoutDialog';
+import { BLACK_FRIDAY_CONFIG, isBlackFridayActive } from '@/config/blackfriday';
 import { useEffect, useState } from "react";
 import { Product, products } from "../../utils/data";
-import { CartDialog } from "../CartSidebar";
 import LazyImage from "../LazyImg";
 import { Toaster } from "../Toaster";
 import {
@@ -15,30 +15,22 @@ import {
   Title
 } from "./styles";
 
-// Data final da promoção: 09/04/2025 às 18:00, horário do Amazonas (UTC-4)
-const PROMO_END = new Date('2025-04-09T18:00:00-04:00');
-
 export function ProductsGrid() {
   const [cart, setCart] = useState<Product[]>([]);
   const [showToaster, setShowToaster] = useState(false);
   const [toasterMessage, setToasterMessage] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [isLoadingCheckout, setIsLoadingCheckout] = useState(false);
 
-  // Estado que controla se a promoção está ativa (true enquanto a data/hora atual for menor que PROMO_END)
-  const [isPromoActive, setIsPromoActive] = useState(new Date() < PROMO_END);
+  // Estado que controla se a Black Friday está ativa
+  const [isBFActive, setIsBFActive] = useState(isBlackFridayActive());
 
   useEffect(() => {
-    const now = new Date();
-    if (now < PROMO_END) {
-      const timeout = PROMO_END.getTime() - now.getTime();
-      const timer = setTimeout(() => {
-        setIsPromoActive(false);
-      }, timeout);
-      return () => clearTimeout(timer);
-    } else {
-      setIsPromoActive(false);
-    }
+    // Atualiza o estado a cada minuto para verificar se a BF iniciou/terminou
+    const interval = setInterval(() => {
+      setIsBFActive(isBlackFridayActive());
+    }, 60000); // 1 minuto
+
+    return () => clearInterval(interval);
   }, []);
 
   const addToCart = (product: Product) => {
@@ -51,24 +43,6 @@ export function ProductsGrid() {
 
   const handleToasterClose = () => {
     setShowToaster(false);
-  };
-
-  const redirectToWhatsApp = () => {
-    setIsLoadingCheckout(true);
-    setToasterMessage("Obrigado pela sua compra! Estamos te redirecionando para o WhatsApp...");
-    setShowToaster(true);
-
-    const phoneNumber = "5592993787566";
-    const message = generateWhatsAppMessage(cart);
-    const whatsappURL = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(
-      `Olá Fabulosa!\n\nEu gostaria de finalizar a compra desses itens:\n${message}\n\n`
-    )}`;
-
-    window.location.href = whatsappURL;
-
-    setCart([]);
-    setIsDialogOpen(false);
-    setIsLoadingCheckout(false);
   };
 
 
@@ -84,12 +58,15 @@ export function ProductsGrid() {
       <h2>Nossos Produtos</h2>
       <Container>
         {products.map((product) => (
-          <CardWrapper key={product.id}>
-            <Box className={!product.inStock ? "disabled" : ""}>
+          <CardWrapper key={product.id} $bfActive={isBFActive}>
+            <Box className={!product.inStock ? "disabled" : ""} $bfActive={isBFActive}>
               <div className={`imgBox ${!product.inStock ? "outOfStock" : ""}`}>
-                {/* {product.discount > 0 && product.inStock && (
-                  <span className="discount-tag">{product.discount}% OFF</span>
-                )} */}
+                {/* Badge de desconto Black Friday */}
+                {isBFActive && product.inStock && (
+                  <span className="discount-tag bg-black text-yellow-400 border-2 border-yellow-400 font-black uppercase tracking-wider">
+                    🔥 {BLACK_FRIDAY_CONFIG.productDiscounts[product.id as keyof typeof BLACK_FRIDAY_CONFIG.productDiscounts]}% OFF
+                  </span>
+                )}
                 <LazyImage
                   src={product.image}
                   alt={`Imagem do ${product.title}`}
@@ -104,29 +81,35 @@ export function ProductsGrid() {
                 </div>
               </div>
             </Box>
-            <Title>{product.title}</Title>
-            <CardContent className="end">
+            <Title $bfActive={isBFActive}>{product.title}</Title>
+            <CardContent className="end" $bfActive={isBFActive}>
               {product.inStock ? (
                 <>
-                  {isPromoActive ? (
+                  {isBFActive ? (
+                    // Preços da Black Friday
                     <>
-                      <p>
+                      <div className="flex items-center justify-center gap-2 mb-2">
+                        <span className="bg-gradient-to-r from-black to-gray-900 text-yellow-400 text-sm font-black px-3 py-1.5 rounded-full border-2 border-yellow-400 shadow-lg animate-pulse">
+                          ⚡ BLACK FRIDAY
+                        </span>
+                      </div>
+                      <p className="text-sm mb-1">
                         De:{" "}
-                        <span style={{ textDecoration: "line-through", color: "#888" }}>
-                          R$ {product.oldPrice.toFixed(2).replace(".", ",")}
+                        <span style={{ textDecoration: "line-through", color: "#999", fontSize: '1rem' }}>
+                          R$ {product.currentPrice.toFixed(2).replace(".", ",")}
                         </span>
                       </p>
-                      <p>
+                      <p className="text-lg">
                         Por:{" "}
-                        <span style={{ fontWeight: "bold", color: "" }}>
-                          R$ {product.currentPrice.toFixed(2).replace(".", ",")}
+                        <span style={{ fontWeight: "900", color: "#FFD700", fontSize: '1.75rem', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
+                          R$ {product.promoPrice.toFixed(2).replace(".", ",")}
                         </span>
                       </p>
                     </>
                   ) : (
-                    // Depois de 09/04/2025 18h, mostra somente o preço sem promoção
-                    <p style={{ fontWeight: "bold", fontSize: '1.5rem' }}>
-                      R$ {product.oldPrice.toFixed(2).replace(".", ",")}
+                    // Preço normal quando não está na Black Friday
+                    <p style={{ fontWeight: "bold", fontSize: '1.75rem', color: '#fff', textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>
+                      R$ {product.currentPrice.toFixed(2).replace(".", ",")}
                     </p>
                   )}
                 </>
@@ -138,28 +121,20 @@ export function ProductsGrid() {
         ))}
       </Container>
 
-      {cart.length > 0 && !isDialogOpen && (
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="fixed bottom-6 inset-x-0 mx-auto bg-green-500 text-white font-bold py-3 px-8 rounded-full shadow-lg flex items-center justify-center gap-2 z-50 w-fit"
-          onClick={() => setIsDialogOpen(true)}
-        >
-          Ir para o carrinho
-          <span className="cart-count">{cart.length}</span>
-        </motion.button>
-      )}
+      {/* Floating Cart Button */}
+      <CartButton
+        itemCount={cart.length}
+        onClick={() => setIsDialogOpen(true)}
+      />
 
-      <CartDialog
+      {/* Enhanced Checkout Dialog */}
+      <CheckoutDialog
         items={cart}
         isOpen={isDialogOpen}
         onOpenChange={setIsDialogOpen}
-        isLoadingCheckout={isLoadingCheckout}
-        onConfirm={redirectToWhatsApp}
-        onRemove={(id) => setCart((prev) => prev.filter((item) => item.id !== id))}
-        onIncrement={(id) => setCart((prev) => [...prev, prev.find(item => item.id === id)!])}
-        onDecrement={(id) => {
+        onRemove={(id: number) => setCart((prev) => prev.filter((item) => item.id !== id))}
+        onIncrement={(id: number) => setCart((prev) => [...prev, prev.find(item => item.id === id)!])}
+        onDecrement={(id: number) => {
           setCart((prev) => {
             const index = prev.findIndex((item) => item.id === id);
             if (index !== -1) {

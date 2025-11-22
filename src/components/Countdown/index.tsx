@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react"
-import { CountdownSection, CountdownTitle, Description, Input } from "./styles"
-import { Button } from "../Button"
 import axios from "axios"
-import { Formik, Field, Form, ErrorMessage } from "formik"
-import * as Yup from "yup"
+import { ErrorMessage, Field, Form, Formik } from "formik"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
+import * as Yup from "yup"
+import { Button } from "../Button"
+import { CountdownSection, CountdownTitle, Description, Input } from "./styles"
 
 // Tooltip Styled
 const TooltipContainer = styled.div<{ isVisible: boolean }>`
@@ -59,11 +59,8 @@ export const CountdownTimer = () => {
         resetForm()
       }
     } catch (error: unknown) {
-      console.error("Erro ao enviar os dados:", error)
-
       // Verifica se o erro é uma instância de erro de Axios
       if (axios.isAxiosError(error)) {
-        console.log("Erro da API:", error.response)
         const errorMessage =
           error.response?.data?.message || "Erro ao cadastrar os dados."
         setMessage(errorMessage)

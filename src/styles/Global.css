@@ -11,10 +11,11 @@
     --card-foreground: 224 71.4% 4.1%;
     --popover: 0 0% 100%;
     --popover-foreground: 224 71.4% 4.1%;
-    --primary: 220.9 39.3% 11%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
+    /* Brand-aligned tokens */
+    --primary: 46 65% 52%; /* gold (#d4af37) */
+    --primary-foreground: 0 0% 7%; /* near-black text on gold */
+    --secondary: 137 17% 40%; /* brand green (#557655) */
+    --secondary-foreground: 0 0% 100%;
     --muted: 220 14.3% 95.9%;
     --muted-foreground: 220 8.9% 46.1%;
     --accent: 220 14.3% 95.9%;
@@ -38,10 +39,10 @@
     --card-foreground: 210 20% 98%;
     --popover: 224 71.4% 4.1%;
     --popover-foreground: 210 20% 98%;
-    --primary: 210 20% 98%;
-    --primary-foreground: 220.9 39.3% 11%;
-    --secondary: 215 27.9% 16.9%;
-    --secondary-foreground: 210 20% 98%;
+    --primary: 46 70% 55%; /* brighter gold for dark bg */
+    --primary-foreground: 0 0% 7%;
+    --secondary: 137 20% 26%; /* darker green for dark mode */
+    --secondary-foreground: 0 0% 100%;
     --muted: 215 27.9% 16.9%;
     --muted-foreground: 217.9 10.6% 64.9%;
     --accent: 215 27.9% 16.9%;
@@ -65,34 +66,6 @@
   }
   body {
     @apply bg-background text-foreground;
-  }
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-
-  @keyframes bounce-slow {
-    0%,
-    100% {
-      transform: translateY(0px) scale(1);
-    }
-    50% {
-      transform: translateY(-15px) scale(1.05);
-    }
-  }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-bounce-slow {
-    animation: bounce-slow 4s ease-in-out infinite;
   }
 
   @keyframes float {

@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { Container } from "../../styles/GlobalStyles"
+import styled from 'styled-components'
+import { Container } from '../../styles/GlobalStyles'
 
 export const ContainerProduct = styled(Container)`
   display: flex;
@@ -8,6 +8,7 @@ export const ContainerProduct = styled(Container)`
   align-items: center;
   width: 100vw;
   height: 100%;
+  padding: 4rem 0;
   background-color: ${({ theme }) => theme.colors.white};
 
   @media (width >= 80rem) {

@@ -49,10 +49,7 @@ export function Presentation() {
                   height="100%"
                   controls
                   playing
-                  onReady={() => console.log("Player pronto")}
-                  onStart={() => console.log("Vídeo começou")}
-                  onError={(e) => {
-                    console.error("Erro no player:", e);
+                  onError={() => {
                     alert(
                       "O vídeo não pôde ser carregado. Por favor, tente novamente mais tarde."
                     );

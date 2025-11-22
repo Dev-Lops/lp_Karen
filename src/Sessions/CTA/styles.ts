@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const ContainerCTA = styled.div`
   display: flex;
@@ -6,7 +6,8 @@ export const ContainerCTA = styled.div`
   align-items: center;
   margin: 0;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 4rem 0;
 
   background-color: ${({ theme }) => theme.colors.green};
 `

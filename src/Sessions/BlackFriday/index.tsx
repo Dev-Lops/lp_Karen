@@ -1,15 +1,17 @@
 import confetti from "canvas-confetti";
 import { useEffect, useState } from "react";
-import { BirthdayPromoContainer, BirthdayPromoWrapper } from "./styles";
 
 export function BirthdayPromo() {
   const [now, setNow] = useState(new Date());
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const [confettiFired, setConfettiFired] = useState(false);
 
-  const start = new Date("2025-04-07T09:00:00");
-  const end = new Date("2025-04-09T18:00:00");
-  const isPromoActive = now >= start && now <= end;
+  // 🔧 MODO TESTE: Mude para true para simular a Black Friday ATIVA
+  const TEST_MODE = false;
+
+  const start = new Date("2025-11-27T09:00:00-03:00");
+  const end = new Date("2025-11-29T18:00:00-03:00");
+  const isPromoActive = TEST_MODE || (now >= start && now <= end);
 
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 1000);
@@ -17,22 +19,10 @@ export function BirthdayPromo() {
   }, []);
 
   useEffect(() => {
-    const onScroll = () => {
-      if (window.scrollY > window.innerHeight) {
-        setShow(true);
-      } else {
-        setShow(false);
-      }
-    };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
     if ((isPromoActive || import.meta.env.DEV) && show && !confettiFired) {
       confetti({
-        particleCount: 150,
-        spread: 80,
+        particleCount: 100,
+        spread: 70,
         origin: { y: 0.6 },
       });
       setConfettiFired(true);
@@ -40,6 +30,11 @@ export function BirthdayPromo() {
   }, [isPromoActive, show, confettiFired]);
 
   const getTimeLeft = () => {
+    // Se estiver em TEST_MODE, mostra countdown simulado
+    if (TEST_MODE) {
+      return "2d 15h 30m 45s";
+    }
+
     const diff = end.getTime() - now.getTime();
     if (diff <= 0) return "Promoção encerrada!";
 
@@ -54,27 +49,27 @@ export function BirthdayPromo() {
   if (!(isPromoActive || import.meta.env.DEV) || !show) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 w-full z-50 bg-[#f8f9f4] border-t-[3px] border-amber-300 shadow-md">
-      <BirthdayPromoWrapper>
-        <BirthdayPromoContainer>
-          <div className="relative z-10 text-center px-2 py-1 sm:px-4 sm:py-1 ">
-            <h3 className="text-[#557655] font-bold text-[clamp(1rem,3vw,2rem)] flex items-center justify-center gap-2 leading-tight text-balance">
-              <img src="/icons/golden-gift-3d.png" alt="gift" className="w-4 h-4 sm:w-5 sm:h-5" />
-              O Aniversário é nosso mas o presente é seu!
-              <img src="/icons/golden-gift-3d.png" alt="gift" className="w-4 h-4 sm:w-5 sm:h-5" />
-            </h3>
+    <div className="fixed bottom-20 right-2 sm:bottom-4 sm:right-4 z-[45] bg-black text-white rounded-md sm:rounded-lg shadow-2xl border border-yellow-500 w-[260px] sm:w-[280px] sm:max-w-xs">
+      <button
+        onClick={() => setShow(false)}
+        className="absolute -top-1.5 -right-1.5 bg-yellow-500 hover:bg-yellow-600 text-black rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center transition font-bold text-xs shadow-lg"
+      >
+        ✕
+      </button>
 
-            <p className="text-[clamp(0.75rem,2vw,0.95rem)] text-[#557655] mt-1 leading-snug">
-              Nos dias 07, 08 e 09 de abril<br /><strong> TODOS OS PRODUTOS </strong> de <span className="font-bold">10% a 40%</span> de <strong>DESCONTO</strong>
-            </p>
+      <div className="p-2 sm:p-2.5 text-center">
+        <div className="text-base sm:text-lg font-bold mb-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent">
+          🔥 BLACK FRIDAY
+        </div>
 
-            <p className="text-[clamp(1rem,2vw,1.25rem)] italic text-[#7a9279] mt-1 mb-10">
-              Termina em: {getTimeLeft()}
-            </p>
+        <p className="text-[0.7rem] sm:text-xs mb-1.5 text-yellow-100">
+          <strong className="text-yellow-400">Até 40% OFF</strong> em todos!
+        </p>
 
-          </div>
-        </BirthdayPromoContainer>
-      </BirthdayPromoWrapper>
+        <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-2 py-0.5 sm:py-1 rounded text-[0.65rem] sm:text-xs font-bold">
+          {getTimeLeft()}
+        </div>
+      </div>
     </div>
   );
 }

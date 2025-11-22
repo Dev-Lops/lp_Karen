@@ -1,11 +1,11 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 // Container principal da seção de Testemunhos
 export const TestimonialSection = styled.section`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  padding: 30px;
+  padding: 4rem 1.5rem;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -28,7 +28,7 @@ export const SectionTitle = styled.h2`
   font-size: clamp(2rem, 5vw, 2.5rem);
   margin-bottom: 20px;
   color: ${({ theme }) => theme.colors.green};
-  font-family: "Stardom", serif;
+  font-family: 'Stardom', serif;
   letter-spacing: 3px;
   font-weight: bold;
 
