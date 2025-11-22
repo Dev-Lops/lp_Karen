@@ -3,11 +3,6 @@ import styled, { css, keyframes } from 'styled-components'
 
 type BFProps = { $bfActive?: boolean }
 
-const shimmer = keyframes`
-  0% { transform: translateX(-150%) skewX(-12deg); }
-  100% { transform: translateX(150%) skewX(-12deg); }
-`
-
 const goldPulse = keyframes`
   0%, 100% {
     box-shadow:
@@ -24,22 +19,6 @@ const goldPulse = keyframes`
       inset 0 1px 0 rgba(255, 255, 255, 1),
       0 0 0 2px rgba(212, 175, 55, 0.35) inset,
       0 0 35px 6px rgba(212, 175, 55, 0.25);
-  }
-`
-
-const greenPulse = keyframes`
-  0%, 100% {
-    box-shadow:
-      0 4px 6px rgba(0, 0, 0, 0.07),
-      0 10px 20px rgba(0, 0, 0, 0.05),
-      inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  }
-  50% {
-    box-shadow:
-      0 8px 16px rgba(16, 185, 129, 0.12),
-      0 4px 8px rgba(0, 0, 0, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 1),
-      0 0 20px 3px rgba(16, 185, 129, 0.08);
   }
 `
 
