@@ -1,7 +1,7 @@
 // Configuração da Black Friday 2025
 export const BLACK_FRIDAY_CONFIG = {
   // 🔧 MODO TESTE: Mude para true para simular Black Friday ativa
-  TEST_MODE: false,
+  TEST_MODE: true,
 
   // Data de início: 27 de novembro de 2025 às 09:00 (horário de Brasília UTC-3)
   startDate: new Date('2025-11-27T09:00:00-03:00'),
