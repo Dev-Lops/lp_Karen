@@ -80,7 +80,7 @@ export function BlackFridayCountdown() {
               🔥 BLACK FRIDAY
             </h2>
             <p className="text-xs md:text-sm text-yellow-300 font-bold text-end">
-              FALTAM APENAS
+              INICIA EM BREVE
             </p>
           </div>
 
