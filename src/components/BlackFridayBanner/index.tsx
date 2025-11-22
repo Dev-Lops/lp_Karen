@@ -154,9 +154,9 @@ export function BlackFridayBanner() {
           >
             <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
               <span className="text-gray-400">Destaques:</span>
-              <Chip text="Kit Alisamento 50% OFF" />
-              <Chip text="Sérum Premium 45% OFF" />
-              <Chip text="Produtos THERAPY 35% OFF" />
+              <Chip text="Reestruturador 50% OFF" />
+              <Chip text="Kit Alisamento 40% OFF" />
+              <Chip text="Sérum Premium 29% OFF" />
             </div>
           </motion.div>
         </div>
