@@ -19,7 +19,7 @@ export const BLACK_FRIDAY_CONFIG = {
   // Descontos específicos por produto ID
   productDiscounts: {
     1: 10, // Ampola - 40% OFF
-    2: 29, // Sérum - 45% OFF
+    2: 20, // Sérum - 45% OFF
     3: 40, // Kit Alisamento - 50% OFF (destaque)
     4: 10, // Máscara - 35% OFF
     5: 30, // Escova - 40% OFF
