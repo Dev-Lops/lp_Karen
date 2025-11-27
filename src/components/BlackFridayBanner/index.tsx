@@ -156,7 +156,7 @@ export function BlackFridayBanner() {
               <span className="text-gray-400">Destaques:</span>
               <Chip text="Reestruturador 50% OFF" />
               <Chip text="Kit Alisamento 40% OFF" />
-              <Chip text="Sérum Premium 29% OFF" />
+              <Chip text="Sérum Premium 20% OFF" />
             </div>
           </motion.div>
         </div>
