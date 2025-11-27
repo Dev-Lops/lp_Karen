@@ -24,8 +24,8 @@ export const products: Product[] = [
   {
     id: 2,
     currentPrice: 65.9,
-    promoPrice: 46.79,
-    discount: 29,
+    promoPrice: 52.72,
+    discount: 20,
     image: 'img3.avif',
     title: 'Sérum Fabulos Premium',
     description:
@@ -112,7 +112,7 @@ export const products: Product[] = [
   {
     id: 10,
     currentPrice: 49.0,
-    promoPrice: 44.10,
+    promoPrice: 44.1,
     discount: 10,
     image: 'img7.avif',
     title: 'Shampoo Therapy',
@@ -129,6 +129,17 @@ export const products: Product[] = [
     title: 'Mascara CMC',
     description:
       'A Máscara 18Rosé -  foi criada com tecnologia de alta performance para restaurar profundamente o CMC (Cimento da Membrana Celular)',
+    inStock: true,
+  },
+  {
+    id: 12,
+    currentPrice: 46.9,
+    promoPrice: 35.18,
+    discount: 25,
+    image: 'balm.avif',
+    title: 'Perfume e Balm',
+    description:
+      'Balm Restaurador do CMC Capilar Tratamento inteligente que repara o CMC — a camada responsável pela força, brilho e retenção de água dentro do fio. ',
     inStock: true,
   },
 ]

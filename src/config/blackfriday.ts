@@ -29,6 +29,7 @@ export const BLACK_FRIDAY_CONFIG = {
     9: 10, //  Booster - 10% OFF
     10: 10, // Shampoo THERAPY - 10% OFF
     11: 20, // Máscara CMC - 20% OFF
+    12: 25, // Perfume e Balm - 25% OFF
   },
 
   // Configurações visuais
