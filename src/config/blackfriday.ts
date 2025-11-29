@@ -3,8 +3,8 @@ export const BLACK_FRIDAY_CONFIG = {
   // 🔧 MODO TESTE: Mude para true para simular Black Friday ativa
   TEST_MODE: false,
 
-  // Data de início: 27 de novembro de 2025 às 09:00 (horário de Brasília UTC-3)
-  startDate: new Date('2025-11-27T09:00:00-03:00'),
+  // Data de início: 27 de novembro de 2025 às 10:00 (horário de Brasília UTC-3)
+  startDate: new Date('2025-11-27T10:00:00-03:00'),
 
   // Data de término: 29 de novembro de 2025 às 18:00
   endDate: new Date('2025-11-29T18:00:00-03:00'),
