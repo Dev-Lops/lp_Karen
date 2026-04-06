@@ -7,13 +7,24 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { isBlackFridayActive } from "@/config/blackfriday";
+import { getCampaignStatus } from "@/config/birthday-campaign";
 import { generateWhatsAppMessage } from "@/utils/whatsapp";
-import { MessageCircleMore, Minus, Plus, ShoppingCart, Trash2 } from "lucide-react";
+import {
+  MessageCircleMore,
+  Minus,
+  Plus,
+  ShoppingCart,
+  Trash2
+} from "lucide-react";
 import { Product } from "../../utils/data";
 
+type CartItem = Product & {
+  unitPrice?: number;
+  appliedDiscount?: number;
+};
+
 interface Props {
-  items: Product[];
+  items: CartItem[];
   onRemove: (id: number) => void;
   onConfirm: () => void;
   onIncrement: (id: number) => void;
@@ -21,7 +32,17 @@ interface Props {
   isOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
   trigger?: React.ReactNode;
-  isLoadingCheckout: boolean
+  isLoadingCheckout: boolean;
+}
+
+function getSafeUnitPrice(item: CartItem, isCampaignActive: boolean) {
+  if (isCampaignActive && typeof item.unitPrice === "number") return item.unitPrice;
+  if (isCampaignActive && typeof item.promoPrice === "number") return item.promoPrice;
+  return item.currentPrice;
+}
+
+function formatBRL(value: number) {
+  return value.toFixed(2).replace(".", ",");
 }
 
 export function CartDialog({
@@ -34,9 +55,9 @@ export function CartDialog({
   isLoadingCheckout,
   isOpen,
 }: Props) {
-  const isBFActive = isBlackFridayActive();
+  const isCampaignActive = getCampaignStatus() === "live";
 
-  const grouped = items.reduce<Record<number, { product: Product; quantity: number }>>(
+  const grouped = items.reduce<Record<number, { product: CartItem; quantity: number }>>(
     (acc, item) => {
       if (acc[item.id]) {
         acc[item.id].quantity++;
@@ -48,29 +69,26 @@ export function CartDialog({
     {}
   );
 
-  // Calcula total com preços corretos (Black Friday ou normal)
-  const total = items.reduce((total, item) => {
-    const price = isBFActive
-      ? item.promoPrice
-      : item.currentPrice;
-    return total + price;
+  const total = items.reduce((sum, item) => {
+    return sum + getSafeUnitPrice(item, isCampaignActive);
   }, 0);
 
-  // Calcula economia se Black Friday ativa
-  const totalNormal = items.reduce((total, item) => total + item.currentPrice, 0);
-  const economia = isBFActive ? totalNormal - total : 0;
+  const totalNormal = items.reduce((sum, item) => sum + (item.currentPrice ?? 0), 0);
+  const economia = isCampaignActive ? totalNormal - total : 0;
 
   return (
     <Dialog onOpenChange={onOpenChange} open={isOpen}>
       {trigger && <DialogTrigger asChild>{trigger}</DialogTrigger>}
+
       <DialogContent className="max-w-lg w-full max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-xl">
             <ShoppingCart size={24} />
             Seu Carrinho
-            {isBFActive && (
-              <span className="bg-black text-yellow-400 text-xs font-bold px-2 py-1 rounded ml-2">
-                🔥 BLACK FRIDAY
+
+            {isCampaignActive && (
+              <span className="text-xs font-bold px-2 py-1 rounded ml-2 bg-[#032F31] text-[#D8BE93] border border-[#D8BE93]/40">
+                ✨ campanha ativa
               </span>
             )}
           </DialogTitle>
@@ -78,9 +96,7 @@ export function CartDialog({
 
         <div className="space-y-4 mt-4">
           {Object.values(grouped).map(({ product, quantity }) => {
-            const unitPrice = isBFActive
-              ? product.promoPrice
-              : product.currentPrice;
+            const unitPrice = getSafeUnitPrice(product, isCampaignActive);
             const subtotal = unitPrice * quantity;
 
             return (
@@ -90,26 +106,27 @@ export function CartDialog({
                   alt={product.title}
                   className="w-16 h-16 object-cover rounded"
                 />
+
                 <div className="flex-1">
                   <p className="font-semibold text-sm">{product.title}</p>
 
-                  {isBFActive ? (
+                  {isCampaignActive ? (
                     <div className="text-xs mt-1">
                       <p className="text-gray-400 line-through">
-                        R$ {product.currentPrice.toFixed(2).replace(".", ",")}
+                        R$ {formatBRL(product.currentPrice)}
                       </p>
-                      <p className="text-yellow-600 font-bold">
-                        R$ {unitPrice.toFixed(2).replace(".", ",")} cada
+                      <p className="text-[#9f7d44] font-bold">
+                        R$ {formatBRL(unitPrice)} cada
                       </p>
                     </div>
                   ) : (
                     <p className="text-sm text-muted-foreground mt-1">
-                      R$ {unitPrice.toFixed(2).replace(".", ",")} cada
+                      R$ {formatBRL(unitPrice)} cada
                     </p>
                   )}
 
                   <p className="text-sm font-bold mt-1">
-                    Subtotal: R$ {subtotal.toFixed(2).replace(".", ",")}
+                    Subtotal: R$ {formatBRL(subtotal)}
                   </p>
                 </div>
 
@@ -130,7 +147,11 @@ export function CartDialog({
                     >
                       <Minus size={14} />
                     </button>
-                    <span className="font-medium text-sm min-w-[20px] text-center">{quantity}</span>
+
+                    <span className="font-medium text-sm min-w-[20px] text-center">
+                      {quantity}
+                    </span>
+
                     <button
                       onClick={() => onIncrement(product.id)}
                       className="text-gray-600 hover:text-green-500"
@@ -146,25 +167,28 @@ export function CartDialog({
         </div>
 
         <div className="mt-6 border-t pt-4 space-y-2">
-          {isBFActive && economia > 0 && (
+          {isCampaignActive && economia > 0 && (
             <div className="flex justify-between items-center text-green-600">
-              <p className="font-semibold">🎉 Você está economizando:</p>
-              <p className="font-bold">R$ {economia.toFixed(2).replace(".", ",")}</p>
+              <p className="font-semibold">✨ Você está economizando:</p>
+              <p className="font-bold">R$ {formatBRL(economia)}</p>
             </div>
           )}
 
           <div className="flex justify-between items-center text-lg">
             <p className="font-bold">Total a pagar:</p>
             <p className="font-bold text-2xl text-green-600">
-              R$ {total.toFixed(2).replace(".", ",")}
+              R$ {formatBRL(total)}
             </p>
           </div>
         </div>
 
         <div className="mt-6 flex gap-2">
           <DialogClose asChild>
-            <Button variant="outline" className="flex-1">Continuar Comprando</Button>
+            <Button variant="outline" className="flex-1">
+              Continuar Comprando
+            </Button>
           </DialogClose>
+
           <a
             href={`https://wa.me/5592993787566?text=${encodeURIComponent(
               `Olá Fabulosa !!\n\nEu gostaria de finalizar a compra desses itens:\n${generateWhatsAppMessage(items)}\n\n`
@@ -199,6 +223,7 @@ export function CartDialog({
                 />
               </svg>
             )}
+
             {!isLoadingCheckout && <MessageCircleMore size={20} />}
             {isLoadingCheckout ? "Redirecionando..." : "Finalizar pelo WhatsApp"}
           </a>

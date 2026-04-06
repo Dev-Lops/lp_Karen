@@ -1,135 +1,256 @@
-import { getTimeUntilStart } from '@/config/blackfriday'
+import {
+  BIRTHDAY_CAMPAIGN_CONFIG,
+  getCampaignStatus,
+  getTimeUntilEnd,
+  getTimeUntilStart,
+  isLastCampaignDay,
+  type CampaignStatus,
+  type TimeLeft,
+} from '@/config/birthday-campaign'
 import confetti from 'canvas-confetti'
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-export function BlackFridayCountdown() {
-  const [timeLeft, setTimeLeft] = useState(getTimeUntilStart())
-  const [confettiFired, setConfettiFired] = useState(false)
+export function StudioBirthdayCountdown() {
+  const [status, setStatus] = useState<CampaignStatus>(getCampaignStatus())
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(
+    getCampaignStatus() === 'before' ? getTimeUntilStart() : getTimeUntilEnd()
+  )
+  const [isLastDay, setIsLastDay] = useState<boolean>(isLastCampaignDay())
+
+  const confettiFiredRef = useRef(false)
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      const time = getTimeUntilStart()
-      setTimeLeft(time)
+    const updateCampaign = () => {
+      const currentStatus = getCampaignStatus()
+      setStatus(currentStatus)
+      setIsLastDay(isLastCampaignDay())
 
-      // Quando o countdown chegar a zero, dispara confetes
-      if (time.total === 0 && !confettiFired) {
-        fireConfetti()
-        setConfettiFired(true)
+      if (currentStatus === 'before') {
+        setTimeLeft(getTimeUntilStart())
+      } else if (currentStatus === 'live') {
+        setTimeLeft(getTimeUntilEnd())
+
+        if (!confettiFiredRef.current) {
+          fireConfetti()
+          confettiFiredRef.current = true
+        }
       }
-    }, 1000)
+    }
 
-    return () => clearInterval(timer)
-  }, [confettiFired])
+    updateCampaign()
+    const timer = window.setInterval(updateCampaign, 1000)
 
-  const fireConfetti = () => {
-    const duration = 5 * 1000
+    return () => window.clearInterval(timer)
+  }, [])
+
+  function fireConfetti() {
+    const duration = 2200
     const animationEnd = Date.now() + duration
-    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 }
+
+    const defaults = {
+      startVelocity: 22,
+      spread: 300,
+      ticks: 48,
+      zIndex: 60,
+    }
 
     function randomInRange(min: number, max: number) {
       return Math.random() * (max - min) + min
     }
 
-    const interval: NodeJS.Timeout = setInterval(function () {
-      const timeLeft = animationEnd - Date.now()
+    const interval = window.setInterval(() => {
+      const remaining = animationEnd - Date.now()
 
-      if (timeLeft <= 0) {
-        return clearInterval(interval)
+      if (remaining <= 0) {
+        window.clearInterval(interval)
+        return
       }
 
-      const particleCount = 50 * (timeLeft / duration)
+      const particleCount = 24 * (remaining / duration)
 
       confetti({
         ...defaults,
         particleCount,
-        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-        colors: ['#000000', '#FF6B00', '#FFD700']
+        origin: { x: randomInRange(0.14, 0.28), y: Math.random() - 0.2 },
+        colors: ['#032F31', '#D8BE93', '#F5F1E8', '#FFFFFF'],
       })
+
       confetti({
         ...defaults,
         particleCount,
-        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-        colors: ['#000000', '#FF6B00', '#FFD700']
+        origin: { x: randomInRange(0.72, 0.86), y: Math.random() - 0.2 },
+        colors: ['#032F31', '#D8BE93', '#F5F1E8', '#FFFFFF'],
       })
     }, 250)
   }
 
-  // Se já passou da hora de início, não mostra o countdown
-  if (timeLeft.total === 0) {
+  if (status === 'ended') {
     return null
   }
 
+  const { theme, event, messages } = BIRTHDAY_CAMPAIGN_CONFIG
+
+  const overline =
+    status === 'before'
+      ? messages.pretitle
+      : status === 'live'
+        ? isLastDay
+          ? 'Ultimas horas'
+          : 'Campanha em andamento'
+        : 'Encerramento do evento'
+
+  const supportText =
+    status === 'before'
+      ? `${event.subtitle} com descontos de ${event.discountRangeText}`
+      : status === 'live'
+        ? isLastDay
+          ? `${event.finalDayText} com descontos de ${event.discountRangeText}`
+          : `${event.liveText} com descontos de ${event.discountRangeText}`
+        : event.postEventSupportText
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -50 }}
+    <motion.section
+      initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
-      className="w-full bg-gradient-to-br from-black via-gray-900 to-black py-3 px-4 border-y-2 border-yellow-500 relative overflow-hidden"
+      className="relative w-full overflow-hidden border-b"
+      style={{
+        background: `linear-gradient(180deg, ${theme.primaryColorDark} 0%, ${theme.primaryColor} 100%)`,
+        borderColor: 'rgba(216, 190, 147, 0.18)',
+      }}
     >
-      {/* Efeitos de fundo */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,215,0,0.15),transparent_70%)]" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(circle at 50% 18%, rgba(245, 241, 232, 0.05), transparent 58%)',
+          }}
+        />
       </div>
 
-      <div className="max-w-4xl mx-auto relative z-10">
-        {/* Header + Countdown + CTA em linha horizontal */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6">
-          {/* Texto lateral */}
-          <div className="text-center md:text-left flex-shrink-0">
-            <h2 className="text-xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
-              🔥 BLACK FRIDAY
+      <div className="relative z-10 w-full px-4 py-5 md:px-8 md:py-6 lg:px-12">
+        <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-5 md:flex-row">
+          <div className="text-center md:max-w-[700px] md:text-left">
+            <p
+              className="mb-2 text-[11px] font-semibold uppercase tracking-[0.28em]"
+              style={{ color: 'rgba(216, 190, 147, 0.9)' }}
+            >
+              {overline}
+            </p>
+
+            <h2
+              className="text-2xl font-semibold tracking-[0.02em] md:text-4xl"
+              style={{
+                color: theme.accentColor,
+                fontFamily: '"Melodrama", serif',
+              }}
+            >
+              {status === 'post' ? event.postEventText : event.name}
             </h2>
-            <p className="text-xs md:text-sm text-yellow-300 font-bold text-end">
-              INICIA EM BREVE
+
+            <p
+              className="mt-2 text-sm md:text-base"
+              style={{ color: 'rgba(245, 241, 232, 0.82)' }}
+            >
+              {supportText}
             </p>
           </div>
 
-          {/* Countdown inline */}
-          <div className="flex gap-1.5 md:gap-2">
-            <TimeCard value={timeLeft.days} label="Dias" />
-            <TimeCard value={timeLeft.hours} label="Horas" />
-            <TimeCard value={timeLeft.minutes} label="Min" />
-            <TimeCard value={timeLeft.seconds} label="Seg" />
-          </div>
-
-          {/* CTA compacto */}
-          <motion.div
-            animate={{
-              scale: [1, 1.05, 1],
-            }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="flex-shrink-0"
-          >
-            <div className="bg-gradient-to-r from-yellow-500 to-yellow-400 p-[2px] rounded-xl">
-              <div className="bg-black rounded-xl px-4 py-2 md:px-6 md:py-3 text-center">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-lg">⚡</span>
-                  <p className="text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
-                    ATÉ 50% OFF
-                  </p>
-                </div>
-                <p className="text-[10px] md:text-xs text-yellow-300 font-bold">
-                  Estoque Limitado
+          <div className="flex flex-col items-center gap-3 md:items-end">
+            {status === 'before' && (
+              <>
+                <p
+                  className="text-[11px] uppercase tracking-[0.24em]"
+                  style={{ color: 'rgba(216, 190, 147, 0.88)' }}
+                >
+                  {messages.countdownLabel} para começar
                 </p>
+
+                <div className="flex gap-2 md:gap-3">
+                  <TimeUnit value={timeLeft.days} label="dias" />
+                  <TimeUnit value={timeLeft.hours} label="horas" />
+                  <TimeUnit value={timeLeft.minutes} label="min" />
+                  <TimeUnit value={timeLeft.seconds} label="seg" />
+                </div>
+              </>
+            )}
+
+            {status === 'live' && (
+              <>
+                <p
+                  className="text-[11px] uppercase tracking-[0.24em]"
+                  style={{ color: 'rgba(216, 190, 147, 0.88)' }}
+                >
+                  Faltam para encerrar
+                </p>
+
+                <div className="flex gap-2 md:gap-3">
+                  <TimeUnit value={timeLeft.days} label="dias" />
+                  <TimeUnit value={timeLeft.hours} label="horas" />
+                  <TimeUnit value={timeLeft.minutes} label="min" />
+                  <TimeUnit value={timeLeft.seconds} label="seg" />
+                </div>
+
+                <motion.a
+                  href="#products"
+                  whileHover={{ y: -1 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="mt-1 rounded-full px-5 py-2 text-sm font-medium transition"
+                  style={{
+                    color: theme.accentColor,
+                    border: '1px solid rgba(216, 190, 147, 0.36)',
+                    background: 'rgba(245, 241, 232, 0.04)',
+                  }}
+                >
+                  {messages.cta}
+                </motion.a>
+              </>
+            )}
+
+            {status === 'post' && (
+              <div
+                className="rounded-full px-4 py-2 text-[11px] font-medium uppercase tracking-[0.18em]"
+                style={{
+                  color: theme.accentColor,
+                  border: '1px solid rgba(216, 190, 147, 0.26)',
+                  background: 'rgba(245, 241, 232, 0.04)',
+                }}
+              >
+                Evento encerrado nas ultimas 24 horas
               </div>
-            </div>
-          </motion.div>
+            )}
+          </div>
         </div>
       </div>
-    </motion.div>
+    </motion.section>
   )
 }
 
-function TimeCard({ value, label }: { value: number; label: string }) {
+function TimeUnit({ value, label }: { value: number; label: string }) {
   return (
-    <div className="relative">
-      <div className="bg-gradient-to-br from-gray-900 to-black rounded-lg p-2 md:p-3 border border-yellow-400/50">
-        <div className="text-xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-yellow-500 text-center leading-none">
-          {String(value).padStart(2, '0')}
-        </div>
-        <div className="text-[8px] md:text-[10px] text-yellow-200 text-center font-bold mt-0.5 uppercase">
-          {label}
-        </div>
+    <div
+      className="min-w-[68px] rounded-2xl px-3 py-2.5 text-center md:min-w-[76px]"
+      style={{
+        background: 'rgba(245, 241, 232, 0.05)',
+        border: '1px solid rgba(216, 190, 147, 0.18)',
+        backdropFilter: 'blur(8px)',
+      }}
+    >
+      <div
+        className="text-2xl font-semibold leading-none md:text-[30px]"
+        style={{
+          color: '#F5F1E8',
+          fontFamily: '"Melodrama", serif',
+        }}
+      >
+        {String(value).padStart(2, '0')}
+      </div>
+      <div
+        className="mt-1 text-[10px] uppercase tracking-[0.18em]"
+        style={{ color: 'rgba(216, 190, 147, 0.88)' }}
+      >
+        {label}
       </div>
     </div>
   )

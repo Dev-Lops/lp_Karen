@@ -1,8 +1,7 @@
-import { BlackFridayBanner } from "@/components/BlackFridayBanner"
-import { BlackFridayCountdown } from "@/components/BlackFridayCountdown"
+import { StudioBirthdayCountdown } from "@/components/BlackFridayCountdown"
 import { Divider } from "@/components/Divider"
 import { FooterComponent } from "@/components/FooterComponent"
-import { isBlackFridayActive, shouldShowCountdown } from "@/config/blackfriday"
+import { getCampaignStatus } from "@/config/birthday-campaign"
 import { About } from "./Sessions/About"
 import { CTA } from "./Sessions/CTA"
 import { FAQ } from "./Sessions/FAQ'S"
@@ -13,27 +12,24 @@ import { TestimonialSectionComponent } from "./Sessions/Testemonials"
 import { Container } from "./styles/GlobalStyles"
 
 export const LandingPage = () => {
-  const showCountdown = shouldShowCountdown()
-  const isBFActive = isBlackFridayActive()
+  const campaignStatus = getCampaignStatus()
 
   return (
-    <Container>
-      {/* Banner de Black Friday ATIVA */}
-      {isBFActive && <BlackFridayBanner />}
+    <>
+      {campaignStatus !== 'ended' && <StudioBirthdayCountdown />}
 
-      {/* Countdown ANTES da Black Friday (não exibe quando BF está ativa) */}
-      {showCountdown && !isBFActive && <BlackFridayCountdown />}
-
-      <About />
-      <CTA />
-      <Divider />
-      <ProductList />
-      <Product />
-      <Divider />
-      <PresentationKit />
-      <TestimonialSectionComponent />
-      <FAQ />
-      <FooterComponent />
-    </Container>
+      <Container>
+        <About />
+        <CTA />
+        <Divider />
+        <ProductList />
+        <Product />
+        <Divider />
+        <PresentationKit />
+        <TestimonialSectionComponent />
+        <FAQ />
+        <FooterComponent />
+      </Container>
+    </>
   )
 }

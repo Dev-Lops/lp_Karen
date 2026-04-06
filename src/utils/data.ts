@@ -1,20 +1,18 @@
 export interface Product {
   id: number
-  currentPrice: number // Preço oficial/normal da loja
-  promoPrice: number // Preço promocional da Black Friday
+  currentPrice: number
+  promoPrice?: number
   image: string
   title: string
   description: string
   inStock: boolean
-  discount: number
+  discount?: number
 }
 
 export const products: Product[] = [
   {
     id: 1,
     currentPrice: 64.0,
-    promoPrice: 57.6,
-    discount: 10,
     image: 'img1.avif',
     title: 'Ampola de Reestruturação do Córtex',
     description:
@@ -24,19 +22,15 @@ export const products: Product[] = [
   {
     id: 2,
     currentPrice: 65.9,
-    promoPrice: 52.72,
-    discount: 20,
     image: 'img3.avif',
     title: 'Sérum Fabulos Premium',
     description:
-      'O sérun fabulos premium é o aliado ideal na reestruturação do CMC capilar, são 12 óleos essenciais que simultaneamente reparam danos na fibra e reestabelecem  18MEA um composto de ácidos graxos indispensáveis para a saúde e integridade da fibra.',
+      'O sérun fabulos premium é o aliado ideal na reestruturação do CMC capilar, são 12 óleos essenciais que simultaneamente reparam danos na fibra e reestabelecem 18MEA, um composto de ácidos graxos indispensáveis para a saúde e integridade da fibra.',
     inStock: true,
   },
   {
     id: 3,
     currentPrice: 389.0,
-    promoPrice: 233.4,
-    discount: 40,
     image: 'img6.avif',
     title: 'Kit Alisamento Natural',
     description:
@@ -46,30 +40,24 @@ export const products: Product[] = [
   {
     id: 4,
     currentPrice: 78.5,
-    promoPrice: 70.65,
-    discount: 10,
     image: 'img8.avif',
-    title: 'Mascara THERAPY (Efeito teia)',
+    title: 'Máscara Therapy (Efeito Teia)',
     description:
-      'Efeito teia (resultado de salão), reposição hídrica, mineral, proteica e massa. Devolve aos fios força, maciez, promove resistência e vitalidade.',
+      'Efeito teia com resultado de salão, reposição hídrica, mineral, proteica e de massa. Devolve aos fios força, maciez, promove resistência e vitalidade.',
     inStock: true,
   },
   {
     id: 5,
-    currentPrice: 30,
-    promoPrice: 21,
-    discount: 30,
+    currentPrice: 30.0,
     image: 'img5.avif',
     title: 'Escova Fabulos Hair',
     description:
-      'A escova Fabulos Hair ativa a circulação sanguínea do couro cabeludo promovendo o crescimento saudável dos seus fios, desembaraça sem rompimentos, auxilia no crescimento saudável, previne triconodose, pontas duplas, ralas e afinadas.',
+      'A escova Fabulos Hair ativa a circulação sanguínea do couro cabeludo promovendo o crescimento saudável dos fios, desembaraça sem rompimentos e auxilia na prevenção de pontas duplas e fios afinados.',
     inStock: true,
   },
   {
     id: 6,
     currentPrice: 46.9,
-    promoPrice: 32.8,
-    discount: 30,
     image: '/img4.avif',
     title: 'Perfume Antifrizz',
     description:
@@ -79,67 +67,55 @@ export const products: Product[] = [
   {
     id: 7,
     currentPrice: 54.5,
-    promoPrice: 27.25,
-    discount: 50,
     image: 'reest.avif',
-    title: 'Reestruturador Bifásico THERAPY',
+    title: 'Reestruturador Bifásico Therapy',
     description:
-      'Protege a fibra contra agressões externas, equilibra o PH e mantém a estrutura do córtex com vitalidade.',
+      'Protege a fibra contra agressões externas, equilibra o pH e mantém a estrutura do córtex com vitalidade.',
     inStock: true,
   },
   {
     id: 8,
-    currentPrice: 57,
-    promoPrice: 51.3,
-    discount: 10,
+    currentPrice: 57.0,
     image: 'img10.avif',
     title: 'Shampoo CMC',
     description:
-      'O Shampoo Rosé atua restaurando o CMC capilar, devolvendo 18Metil eicosanoico à fibra.',
+      'O Shampoo Rosé atua restaurando o CMC capilar, devolvendo 18-metil eicosanoico à fibra.',
     inStock: true,
   },
   {
     id: 9,
     currentPrice: 57.0,
-    promoPrice: 51.3,
-    discount: 10,
     image: 'img11.avif',
     title: 'Booster CMC',
     description:
-      'O Shampoo Rosé atua restaurando o CMC capilar, devolvendo 18Metil eicosanoico à fibra.',
+      'Tratamento complementar para restaurar o CMC capilar e fortalecer a fibra.',
     inStock: true,
   },
   {
     id: 10,
     currentPrice: 49.0,
-    promoPrice: 44.1,
-    discount: 10,
     image: 'img7.avif',
     title: 'Shampoo Therapy',
     description:
-      ' Age no couro cabeludo com ação antimicrobiana, antifúngica, antisséptica e cicatrizante. Combate radicais livres, fungos, oleosidade, caspa, promovendo oxigenação e crescimento.',
+      'Age no couro cabeludo com ação antimicrobiana, antifúngica, antisséptica e cicatrizante. Combate radicais livres, oleosidade e caspa, promovendo oxigenação e crescimento.',
     inStock: true,
   },
   {
     id: 11,
     currentPrice: 74.0,
-    promoPrice: 59.2,
-    discount: 20,
     image: 'masc.avif',
-    title: 'Mascara CMC',
+    title: 'Máscara CMC',
     description:
-      'A Máscara 18Rosé -  foi criada com tecnologia de alta performance para restaurar profundamente o CMC (Cimento da Membrana Celular)',
+      'A Máscara 18 Rosé foi criada com tecnologia de alta performance para restaurar profundamente o CMC (Cimento da Membrana Celular).',
     inStock: true,
   },
   {
     id: 12,
     currentPrice: 46.9,
-    promoPrice: 35.18,
-    discount: 25,
     image: 'balm.avif',
     title: 'Perfume e Balm',
     description:
-      'Balm Restaurador do CMC Capilar Tratamento inteligente que repara o CMC — a camada responsável pela força, brilho e retenção de água dentro do fio. ',
+      'Balm Restaurador do CMC Capilar. Tratamento inteligente que repara o CMC, camada responsável pela força, brilho e retenção de água dentro do fio.',
     inStock: true,
   },
 ]

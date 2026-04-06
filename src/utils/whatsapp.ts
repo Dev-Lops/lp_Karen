@@ -1,12 +1,34 @@
-import { isBlackFridayActive } from '@/config/blackfriday'
+import { getCampaignStatus } from '@/config/birthday-campaign'
 import { Product } from './data'
 
-// Removido parcelamento direto; apenas informamos que cartão tem acréscimos
-export function generateWhatsAppMessage(cart: Product[]) {
-  const isBFActive = isBlackFridayActive()
+type CartItem = Product & {
+  unitPrice?: number
+  appliedDiscount?: number
+}
+
+function getSafeUnitPrice(item: CartItem, isCampaignActive: boolean) {
+  if (isCampaignActive && typeof item.unitPrice === 'number')
+    return item.unitPrice
+  if (isCampaignActive && typeof item.promoPrice === 'number')
+    return item.promoPrice
+  return item.currentPrice
+}
+
+function getSafeDiscount(item: CartItem) {
+  if (typeof item.appliedDiscount === 'number') return item.appliedDiscount
+  if (typeof item.discount === 'number') return item.discount
+  return 0
+}
+
+function formatBRL(value: number) {
+  return value.toFixed(2).replace('.', ',')
+}
+
+export function generateWhatsAppMessage(cart: CartItem[]) {
+  const isCampaignActive = getCampaignStatus() === 'live'
 
   const groupedProducts = cart.reduce<
-    Record<number, { product: Product; quantity: number }>
+    Record<number, { product: CartItem; quantity: number }>
   >((acc, item) => {
     if (acc[item.id]) {
       acc[item.id].quantity += 1
@@ -16,73 +38,69 @@ export function generateWhatsAppMessage(cart: Product[]) {
     return acc
   }, {})
 
-  // Cabeçalho atraente
-  let message = isBFActive
-    ? '🔥 *PEDIDO BLACK FRIDAY* 🔥\n━━━━━━━━━━━━━━━━━━━━\n\n'
-    : '✨ *MEU PEDIDO FABULOS HAIR* ✨\n━━━━━━━━━━━━━━━━━━━━\n\n'
+  let message = isCampaignActive
+    ? '*SOLICITAÇÃO DE COMPRA - CAMPANHA DE ANIVERSÁRIO*\n'
+    : '*SOLICITAÇÃO DE COMPRA*\n'
 
-  // Lista de produtos
+  message += 'Studio Karen Frazão\n'
+  message += '--------------------------------\n\n'
+  message += 'Gostaria de finalizar o pedido abaixo:\n\n'
+
   message += Object.values(groupedProducts)
     .map(({ product, quantity }, index) => {
-      const unitPrice = isBFActive ? product.promoPrice : product.currentPrice
-      const subtotal = (unitPrice * quantity).toFixed(2).replace('.', ',')
+      const unitPrice = getSafeUnitPrice(product, isCampaignActive)
+      const subtotal = unitPrice * quantity
+      const safeDiscount = getSafeDiscount(product)
 
-      let productItem = `📦 *ITEM ${index + 1}*\n`
-      productItem += `*${product.title}*\n`
-      productItem += `┣ Quantidade: ${quantity}x\n`
+      let productItem = `*Item ${index + 1}*\n`
+      productItem += `${product.title}\n`
+      productItem += `Quantidade: ${quantity} unidade(s)\n`
 
-      if (isBFActive) {
-        productItem += `┣ Preço Normal: ~R$ ${product.currentPrice
-          .toFixed(2)
-          .replace('.', ',')}~\n`
-        productItem += `┣ Preço Promocional: *R$ ${unitPrice
-          .toFixed(2)
-          .replace('.', ',')}*\n`
-        productItem += `┣ Desconto: *${product.discount}% OFF* 🎉\n`
+      if (isCampaignActive && safeDiscount > 0) {
+        productItem += `Valor original: R$ ${formatBRL(product.currentPrice)}\n`
+        productItem += `Valor especial: R$ ${formatBRL(unitPrice)}\n`
+        productItem += `Desconto aplicado: ${safeDiscount}% OFF\n`
       } else {
-        productItem += `┣ Preço Unitário: R$ ${unitPrice
-          .toFixed(2)
-          .replace('.', ',')}\n`
+        productItem += `Valor unitário: R$ ${formatBRL(unitPrice)}\n`
       }
 
-      productItem += `┗ Subtotal: *R$ ${subtotal}*\n`
+      productItem += `Subtotal: R$ ${formatBRL(subtotal)}\n`
 
       return productItem
     })
     .join('\n')
 
-  // Separador
-  message += '\n━━━━━━━━━━━━━━━━━━━━\n'
+  message += '\n--------------------------------\n\n'
 
-  // Totais
-  const baseTotal = cart.reduce((acc, item) => {
-    const price = isBFActive ? item.promoPrice : item.currentPrice
-    return acc + price
+  const total = cart.reduce((acc, item) => {
+    return acc + getSafeUnitPrice(item, isCampaignActive)
   }, 0)
-
-  const total = baseTotal // sem acréscimo, parcelamento será tratado no atendimento
 
   const totalItems = cart.length
 
-  message += `\n📊 *RESUMO DO PEDIDO*\n`
-  message += `┣ Total de Itens: ${totalItems}\n`
+  message += '*Resumo do pedido*\n'
+  message += `Quantidade total de itens: ${totalItems}\n`
 
-  if (isBFActive) {
-    const totalNormal = cart.reduce((acc, item) => acc + item.currentPrice, 0)
+  if (isCampaignActive) {
+    const totalNormal = cart.reduce(
+      (acc, item) => acc + (item.currentPrice ?? 0),
+      0,
+    )
     const economia = totalNormal - total
-    const percentualEconomia = ((economia / totalNormal) * 100).toFixed(0)
+    const percentualEconomia =
+      totalNormal > 0 ? ((economia / totalNormal) * 100).toFixed(0) : '0'
 
-    message += `┣ Valor Original: R$ ${totalNormal
-      .toFixed(2)
-      .replace('.', ',')}\n`
-    message += `┣ Economia Total: *R$ ${economia
-      .toFixed(2)
-      .replace('.', ',')}* (${percentualEconomia}%) 🎉\n`
-    message += `┗ *VALOR FINAL: R$ ${total.toFixed(2).replace('.', ',')}*\n`
-    message += `\n🔥 *Aproveite! Oferta por tempo limitado!* 🔥`
+    message += `Valor de referência: R$ ${formatBRL(totalNormal)}\n`
+    message += `Economia obtida: R$ ${formatBRL(economia)} (${percentualEconomia}%)\n`
+    message += `*Valor final do pedido: R$ ${formatBRL(total)}*\n\n`
+    message +=
+      'Tenho interesse em concluir a compra com a condição especial vigente.\n'
   } else {
-    message += `┗ *VALOR TOTAL: R$ ${total.toFixed(2).replace('.', ',')}*`
+    message += `*Valor total do pedido: R$ ${formatBRL(total)}*\n\n`
+    message += 'Gostaria de seguir com a finalização deste pedido.\n'
   }
+
+  message += '\nFico no aguardo do atendimento.'
 
   return message
 }

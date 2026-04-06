@@ -23,7 +23,7 @@ export function CTASection() {
             Há <strong>7 anos entregando Saúde&Beleza,</strong> devolvendo vitalidade, brilho e maciez aos mais diferentes tipos de cabelos, contribuindo para a Auto estima e Auto cuidado.<br /> <br />
             Nossa expertise e produtos são embasados em graduações/pós graduações, e anos de experiência no Studio Karen Frazão.
             <br /> <br />
-            Produtos de alta performance com ativos extraídos da nossa Rica Amazônia que atuam na resolutiva da problemática em diferentes formas capilares, estes são criteriosamente desenvolvidos por nossa marca Fabulos Hair, com testes de eficácia, selo de qualidade e liberação da Anvisa.🇧🇷
+            Produtos de alta performance com ativos extraídos da nossa Rica Amazônia que atuam na resolutiva da problemática em diferentes formas capilares, estes são criteriosamente desenvolvidos por nossa marca Fabulos Hair, com testes de eficácia, selo de qualidade e liberação da Anvisa.🇧🇷
 
           </p>
 

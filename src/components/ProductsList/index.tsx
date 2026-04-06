@@ -1,127 +1,178 @@
-import ButtonWithEffect from '@/components/ButtonStyled/ButtonStyled';
-import { CartButton } from '@/components/CartButton';
-import { CheckoutDialog } from '@/components/CheckoutDialog';
-import { BLACK_FRIDAY_CONFIG, isBlackFridayActive } from '@/config/blackfriday';
-import { useEffect, useState } from "react";
-import { Product, products } from "../../utils/data";
-import LazyImage from "../LazyImg";
-import { Toaster } from "../Toaster";
+import ButtonWithEffect from '@/components/ButtonStyled/ButtonStyled'
+import { CartButton } from '@/components/CartButton'
+import { CheckoutDialog } from '@/components/CheckoutDialog'
+import { BIRTHDAY_CAMPAIGN_CONFIG, getCampaignStatus } from '@/config/birthday-campaign'
+import { useEffect, useMemo, useState } from 'react'
+import { Product, products } from '../../utils/data'
+import LazyImage from '../LazyImg'
+import { Toaster } from '../Toaster'
 import {
   Box,
   CardContent,
   CardWrapper,
   Container,
   Section,
-  Title
-} from "./styles";
+  Title,
+} from './styles'
+
+type CartItem = Product & {
+  unitPrice?: number
+  appliedDiscount?: number
+}
+
+function getDiscountByProductId(productId: number) {
+  return (
+    BIRTHDAY_CAMPAIGN_CONFIG.productDiscounts[
+    productId as keyof typeof BIRTHDAY_CAMPAIGN_CONFIG.productDiscounts
+    ] ?? 0
+  )
+}
+
+function getDiscountedPrice(price: number, discount: number) {
+  const discounted = price - price * (discount / 100)
+  return Number(discounted.toFixed(2))
+}
+
+function formatBRL(value: number) {
+  return `R$ ${value.toFixed(2).replace('.', ',')}`
+}
 
 export function ProductsGrid() {
-  const [cart, setCart] = useState<Product[]>([]);
-  const [showToaster, setShowToaster] = useState(false);
-  const [toasterMessage, setToasterMessage] = useState("");
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [cart, setCart] = useState<CartItem[]>([])
+  const [showToaster, setShowToaster] = useState(false)
+  const [toasterMessage, setToasterMessage] = useState('')
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
 
-  // Estado que controla se a Black Friday está ativa
-  const [isBFActive, setIsBFActive] = useState(isBlackFridayActive());
+  const [isCampaignActive, setIsCampaignActive] = useState(
+    getCampaignStatus() === 'live'
+  )
 
   useEffect(() => {
-    // Atualiza o estado a cada minuto para verificar se a BF iniciou/terminou
     const interval = setInterval(() => {
-      setIsBFActive(isBlackFridayActive());
-    }, 60000); // 1 minuto
+      setIsCampaignActive(getCampaignStatus() === 'live')
+    }, 60000)
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearInterval(interval)
+  }, [])
 
-  const addToCart = (product: Product) => {
-    if (product.inStock) {
-      setCart((prevCart) => [...prevCart, product]);
-      setToasterMessage(`"${product.title}" foi adicionado ao carrinho!`);
-      setShowToaster(true);
+  const enhancedProducts = useMemo(() => {
+    return products.map((product) => {
+      const discount = getDiscountByProductId(product.id)
+      const promoPrice = getDiscountedPrice(product.currentPrice, discount)
+
+      return {
+        ...product,
+        discount,
+        calculatedPromoPrice: promoPrice,
+      }
+    })
+  }, [])
+
+  const addToCart = (
+    product: Product & { discount?: number; calculatedPromoPrice?: number }
+  ) => {
+    if (!product.inStock) return
+
+    const appliedDiscount = isCampaignActive ? product.discount ?? 0 : 0
+    const unitPrice =
+      isCampaignActive && product.calculatedPromoPrice
+        ? product.calculatedPromoPrice
+        : product.currentPrice
+
+    const cartItem: CartItem = {
+      ...product,
+      unitPrice,
+      appliedDiscount,
     }
-  };
+
+    setCart((prevCart) => [...prevCart, cartItem])
+    setToasterMessage(`"${product.title}" foi adicionado ao carrinho!`)
+    setShowToaster(true)
+  }
 
   const handleToasterClose = () => {
-    setShowToaster(false);
-  };
-
-
+    setShowToaster(false)
+  }
 
   useEffect(() => {
     if (cart.length === 0) {
-      setIsDialogOpen(false);
+      setIsDialogOpen(false)
     }
-  }, [cart]);
+  }, [cart])
 
   return (
-    <Section id='products'>
+    <Section id="products">
       <h2>Nossos Produtos</h2>
+
       <Container>
-        {products.map((product) => (
-          <CardWrapper key={product.id} $bfActive={isBFActive}>
-            <Box className={!product.inStock ? "disabled" : ""} $bfActive={isBFActive}>
-              <div className={`imgBox ${!product.inStock ? "outOfStock" : ""}`}>
-                {/* Badge de desconto Black Friday */}
-                {isBFActive && product.inStock && (
-                  <span className="discount-tag bg-black text-yellow-400 border-2 border-yellow-400 font-black uppercase tracking-wider">
-                    🔥 {BLACK_FRIDAY_CONFIG.productDiscounts[product.id as keyof typeof BLACK_FRIDAY_CONFIG.productDiscounts]}% OFF
+        {enhancedProducts.map((product) => (
+          <CardWrapper key={product.id} $bfActive={isCampaignActive}>
+            <Box
+              className={!product.inStock ? 'disabled' : ''}
+              $bfActive={isCampaignActive}
+            >
+              <div className={`imgBox ${!product.inStock ? 'outOfStock' : ''}`}>
+                {isCampaignActive && product.inStock && product.discount > 0 && (
+                  <span className="discount-tag">
+                    {product.discount}% off
                   </span>
                 )}
+
                 <LazyImage
                   src={product.image}
                   alt={`Imagem do ${product.title}`}
                   loading="lazy"
                   className="lazy-image"
                 />
+
                 {!product.inStock && <div className="outOfStockText" />}
-                <div className={`icon ${!product.inStock ? "outOfStock" : ""}`}>
+
+                <div className={`icon ${!product.inStock ? 'outOfStock' : ''}`}>
                   {product.inStock && (
                     <ButtonWithEffect onClick={() => addToCart(product)} />
                   )}
                 </div>
               </div>
             </Box>
-            <Title $bfActive={isBFActive}>{product.title}</Title>
-            <CardContent className="end" $bfActive={isBFActive}>
+
+            <Title $bfActive={isCampaignActive}>{product.title}</Title>
+
+            <CardContent className="end" $bfActive={isCampaignActive}>
               {product.inStock ? (
                 <>
-                  {isBFActive ? (
-                    // Preços da Black Friday
+                  {isCampaignActive && product.discount > 0 ? (
                     <>
-                      <div className="flex items-center justify-center gap-2 mb-2">
-                        <span className="bg-gradient-to-r from-black to-gray-900 text-yellow-400 text-sm font-black px-3 py-1.5 rounded-full border-2 border-yellow-400 shadow-lg animate-pulse">
-                          ⚡ BLACK FRIDAY
-                        </span>
+                      <div className="campaign-pill">
+                        edição especial
                       </div>
-                      <p className="text-sm mb-1">
-                        De:{" "}
-                        <span style={{ textDecoration: "line-through", color: "#999", fontSize: '1rem' }}>
-                          R$ {product.currentPrice.toFixed(2).replace(".", ",")}
-                        </span>
+
+                      <p className="price-from">
+                        de <span>{formatBRL(product.currentPrice)}</span>
                       </p>
-                      <p className="text-lg">
-                        Por:{" "}
-                        <span style={{ fontWeight: "900", color: "#FFD700", fontSize: '1.75rem', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
-                          R$ {product.promoPrice.toFixed(2).replace(".", ",")}
-                        </span>
+
+                      <p className="price-now">
+                        {formatBRL(product.calculatedPromoPrice)}
+                      </p>
+
+                      <p className="price-save">
+                        economia de{' '}
+                        {formatBRL(product.currentPrice - product.calculatedPromoPrice)}
                       </p>
                     </>
                   ) : (
-                    // Preço normal quando não está na Black Friday
-                    <p style={{ fontWeight: "bold", fontSize: '1.75rem', color: '#fff', textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>
-                      R$ {product.currentPrice.toFixed(2).replace(".", ",")}
+                    <p className="price-default">
+                      {formatBRL(product.currentPrice)}
                     </p>
                   )}
                 </>
               ) : (
-                <p style={{ color: "red" }}>Produto Indisponível</p>
+                <p className="unavailable">Produto indisponível</p>
               )}
             </CardContent>
           </CardWrapper>
         ))}
       </Container>
 
-      {/* Floating Cart Button */}
       {!isDialogOpen && (
         <CartButton
           itemCount={cart.length}
@@ -129,23 +180,29 @@ export function ProductsGrid() {
         />
       )}
 
-      {/* Enhanced Checkout Dialog */}
       <CheckoutDialog
         items={cart}
         isOpen={isDialogOpen}
         onOpenChange={setIsDialogOpen}
-        onRemove={(id: number) => setCart((prev) => prev.filter((item) => item.id !== id))}
-        onIncrement={(id: number) => setCart((prev) => [...prev, prev.find(item => item.id === id)!])}
+        onRemove={(id: number) =>
+          setCart((prev) => prev.filter((item) => item.id !== id))
+        }
+        onIncrement={(id: number) => {
+          setCart((prev) => {
+            const found = prev.find((item) => item.id === id)
+            return found ? [...prev, found] : prev
+          })
+        }}
         onDecrement={(id: number) => {
           setCart((prev) => {
-            const index = prev.findIndex((item) => item.id === id);
+            const index = prev.findIndex((item) => item.id === id)
             if (index !== -1) {
-              const newCart = [...prev];
-              newCart.splice(index, 1);
-              return newCart;
+              const newCart = [...prev]
+              newCart.splice(index, 1)
+              return newCart
             }
-            return prev;
-          });
+            return prev
+          })
         }}
       />
 
@@ -155,5 +212,5 @@ export function ProductsGrid() {
         onClose={handleToasterClose}
       />
     </Section>
-  );
+  )
 }

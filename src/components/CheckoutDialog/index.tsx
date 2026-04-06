@@ -1,14 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { isBlackFridayActive } from "@/config/blackfriday";
+import { getCampaignStatus } from "@/config/birthday-campaign";
 import { generateWhatsAppMessage } from "@/utils/whatsapp";
 import { motion } from 'framer-motion';
-import { ArrowRight, Check, MessageCircle, Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
-import { useState } from "react";
+import {
+  ArrowRight,
+  Check,
+  MessageCircle,
+  Minus,
+  Plus,
+  ShoppingBag,
+  Trash2,
+  X
+} from "lucide-react";
+import { useMemo, useState } from "react";
 import { Product } from "../../utils/data";
 
+type CartItem = Product & {
+  unitPrice?: number;
+  appliedDiscount?: number;
+};
+
 interface CheckoutDialogProps {
-  items: Product[];
+  items: CartItem[];
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
   onRemove: (id: number) => void;
@@ -17,6 +31,16 @@ interface CheckoutDialogProps {
 }
 
 type CheckoutStep = 'cart' | 'review' | 'sending';
+
+function getSafeUnitPrice(item: CartItem, isCampaignActive: boolean) {
+  if (isCampaignActive && typeof item.unitPrice === 'number') return item.unitPrice;
+  if (isCampaignActive && typeof item.promoPrice === 'number') return item.promoPrice;
+  return item.currentPrice;
+}
+
+function formatBRL(value: number) {
+  return value.toFixed(2).replace(".", ",");
+}
 
 export function CheckoutDialog({
   items,
@@ -28,59 +52,57 @@ export function CheckoutDialog({
 }: CheckoutDialogProps) {
   const [step, setStep] = useState<CheckoutStep>('cart');
   const [customerName, setCustomerName] = useState('');
-  // Removido parcelamento: apenas informar que cartão possui acréscimos
   const [waFallback, setWaFallback] = useState<string | null>(null);
-  const isBFActive = isBlackFridayActive();
 
-  const grouped = items.reduce<Record<number, { product: Product; quantity: number }>>(
-    (acc, item) => {
-      if (acc[item.id]) {
-        acc[item.id].quantity++;
-      } else {
-        acc[item.id] = { product: item, quantity: 1 };
-      }
-      return acc;
-    },
-    {}
+  const isCampaignActive = getCampaignStatus() === 'live';
+
+  const grouped = useMemo(
+    () =>
+      items.reduce<Record<number, { product: CartItem; quantity: number }>>((acc, item) => {
+        if (acc[item.id]) {
+          acc[item.id].quantity++;
+        } else {
+          acc[item.id] = { product: item, quantity: 1 };
+        }
+        return acc;
+      }, {}),
+    [items]
   );
 
-  const total = items.reduce((acc, item) => {
-    const price = isBFActive ? item.promoPrice : item.currentPrice;
-    return acc + price;
-  }, 0);
+  const total = useMemo(() => {
+    return items.reduce((acc, item) => acc + getSafeUnitPrice(item, isCampaignActive), 0);
+  }, [items, isCampaignActive]);
 
-  const totalNormal = items.reduce((sum, item) => sum + item.currentPrice, 0);
-  const economia = isBFActive ? totalNormal - total : 0;
+  const totalNormal = useMemo(() => {
+    return items.reduce((sum, item) => sum + (item.currentPrice ?? 0), 0);
+  }, [items]);
+
+  const economia = isCampaignActive ? totalNormal - total : 0;
 
   const handleFinishOrder = () => {
     const phoneNumber = "5592993787566";
     const greeting = customerName
       ? `Olá Fabulosa !!\n\nme chamo ${customerName}\n\n`
       : 'Olá Fabulosa !!\n\n';
+
     const message = `${greeting}Eu gostaria de finalizar a compra desses itens:\n${generateWhatsAppMessage(items)}\n\nAguardo retorno!`;
 
     const encoded = encodeURIComponent(message);
     const waUrl = `https://wa.me/${phoneNumber}?text=${encoded}`;
 
-    // Mostra etapa de envio
     setStep('sending');
     setWaFallback(waUrl);
 
-    // Abre WhatsApp em nova aba (mais confiável)
     const newWindow = window.open(waUrl, '_blank', 'noopener,noreferrer');
 
-    // Fallback se bloqueado
     if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-      // Popup foi bloqueado, tenta redirect direto
       window.location.href = waUrl;
     }
 
-    // Fecha o dialog após um delay
     setTimeout(() => {
       onOpenChange(false);
       setStep('cart');
       setCustomerName('');
-      // nada para resetar sobre parcelas
       setWaFallback(null);
     }, 2000);
   };
@@ -89,13 +111,12 @@ export function CheckoutDialog({
     onOpenChange(false);
     setStep('cart');
     setCustomerName('');
-    // parcelas removidas
+    setWaFallback(null);
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="max-w-2xl w-[96vw] sm:w-full max-h-[92vh] sm:max-h-[95vh] overflow-hidden flex flex-col p-0">
-        {/* Header */}
         <DialogHeader className="px-3 sm:px-6 pt-4 sm:pt-6 pb-3 sm:pb-4 border-b">
           <div className="flex items-center justify-between">
             <DialogTitle className="text-lg sm:text-2xl font-bold flex items-center gap-2 sm:gap-3">
@@ -111,14 +132,14 @@ export function CheckoutDialog({
                 {step === 'sending' && 'Enviando...'}
               </span>
             </DialogTitle>
-            {isBFActive && (
-              <span className="bg-black text-yellow-400 text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full whitespace-nowrap">
-                🔥 BF
+
+            {isCampaignActive && (
+              <span className="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full whitespace-nowrap bg-[#032F31] text-[#D8BE93] border border-[#D8BE93]/40">
+                ✨ campanha ativa
               </span>
             )}
           </div>
 
-          {/* Progress Steps */}
           <div className="flex items-center gap-1.5 sm:gap-2 mt-3 sm:mt-4">
             <div className={`flex-1 h-1 sm:h-1.5 rounded-full ${step === 'cart' ? 'bg-green-600' : 'bg-gray-200'}`} />
             <div className={`flex-1 h-1 sm:h-1.5 rounded-full ${step === 'review' ? 'bg-green-600' : 'bg-gray-200'}`} />
@@ -126,14 +147,11 @@ export function CheckoutDialog({
           </div>
         </DialogHeader>
 
-        {/* Content */}
         <div className="flex-1 overflow-y-auto px-3 sm:px-6 py-3 sm:py-4">
           {step === 'cart' && (
             <div className="space-y-2 sm:space-y-3">
               {Object.values(grouped).map(({ product, quantity }) => {
-                const unitPrice = isBFActive
-                  ? product.promoPrice
-                  : product.currentPrice;
+                const unitPrice = getSafeUnitPrice(product, isCampaignActive);
                 const subtotal = unitPrice * quantity;
 
                 return (
@@ -149,26 +167,30 @@ export function CheckoutDialog({
                       alt={product.title}
                       className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-lg flex-shrink-0"
                     />
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-bold text-xs sm:text-sm mb-1 line-clamp-2">{product.title}</h3>
 
-                      {isBFActive ? (
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-xs sm:text-sm mb-1 line-clamp-2">
+                        {product.title}
+                      </h3>
+
+                      {isCampaignActive ? (
                         <div className="space-y-0.5">
                           <p className="text-[10px] sm:text-xs text-gray-400 line-through">
-                            R$ {product.currentPrice.toFixed(2).replace(".", ",")}
+                            R$ {formatBRL(product.currentPrice)}
                           </p>
-                          <p className="text-xs sm:text-sm font-bold text-yellow-600">
-                            R$ {unitPrice.toFixed(2).replace(".", ",")} cada
+                          <p className="text-xs sm:text-sm font-bold text-[#9f7d44]">
+                            R$ {formatBRL(unitPrice)} cada
                           </p>
                         </div>
                       ) : (
                         <p className="text-xs sm:text-sm text-gray-600">
-                          R$ {unitPrice.toFixed(2).replace(".", ",")} cada
+                          R$ {formatBRL(unitPrice)} cada
                         </p>
                       )}
 
                       <p className="text-sm sm:text-base font-bold text-green-600 mt-0.5 sm:mt-1">
-                        <span className="hidden sm:inline">Subtotal: </span>R$ {subtotal.toFixed(2).replace(".", ",")}
+                        <span className="hidden sm:inline">Subtotal: </span>
+                        R$ {formatBRL(subtotal)}
                       </p>
                     </div>
 
@@ -189,7 +211,11 @@ export function CheckoutDialog({
                         >
                           <Minus size={14} className="sm:w-4 sm:h-4" />
                         </button>
-                        <span className="font-bold text-sm sm:text-base min-w-[20px] sm:min-w-[24px] text-center">{quantity}</span>
+
+                        <span className="font-bold text-sm sm:text-base min-w-[20px] sm:min-w-[24px] text-center">
+                          {quantity}
+                        </span>
+
                         <button
                           title="aumentar"
                           onClick={() => onIncrement(product.id)}
@@ -219,13 +245,14 @@ export function CheckoutDialog({
 
                 <div className="space-y-1.5 sm:space-y-2">
                   {Object.values(grouped).map(({ product, quantity }) => {
-                    const unitPrice = isBFActive
-                      ? product.promoPrice
-                      : product.currentPrice;
+                    const unitPrice = getSafeUnitPrice(product, isCampaignActive);
+
                     return (
                       <div key={product.id} className="flex justify-between text-xs sm:text-sm gap-2">
                         <span className="truncate">{quantity}x {product.title}</span>
-                        <span className="font-semibold whitespace-nowrap">R$ {(unitPrice * quantity).toFixed(2).replace(".", ",")}</span>
+                        <span className="font-semibold whitespace-nowrap">
+                          R$ {formatBRL(unitPrice * quantity)}
+                        </span>
                       </div>
                     );
                   })}
@@ -249,12 +276,14 @@ export function CheckoutDialog({
               </div>
 
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 sm:p-4 space-y-2">
-                <p className="text-xs sm:text-sm text-gray-700 font-semibold">Formas de pagamento aceitas:</p>
-                <p className="text-[11px] sm:text-xs text-gray-600">
-                  <span className="font-semibold text-green-600">PIX:</span> sem acréscimos (melhor valor).
+                <p className="text-xs sm:text-sm text-gray-700 font-semibold">
+                  Formas de pagamento aceitas:
                 </p>
                 <p className="text-[11px] sm:text-xs text-gray-600">
-                  <span className="font-semibold text-yellow-600">Cartão de credito:</span> Com acrescimos, verificar na finalização do pedido com o nosso time.
+                  <span className="font-semibold text-green-600">PIX:</span> sem acréscimos.
+                </p>
+                <p className="text-[11px] sm:text-xs text-gray-600">
+                  <span className="font-semibold text-yellow-600">Cartão de crédito:</span> com acréscimos, verificar na finalização do pedido com o nosso time.
                 </p>
               </div>
 
@@ -282,6 +311,7 @@ export function CheckoutDialog({
               <p className="text-gray-600 text-center">
                 Aguarde um momento enquanto preparamos seu pedido
               </p>
+
               {waFallback && (
                 <a
                   href={waFallback}
@@ -296,15 +326,15 @@ export function CheckoutDialog({
           )}
         </div>
 
-        {/* Footer */}
         {step !== 'sending' && (
           <div className="px-2 sm:px-6 py-2.5 sm:py-4 border-t bg-gray-50">
-            {/* Total */}
             <div className="mb-2.5 sm:mb-4 space-y-1 sm:space-y-2">
-              {isBFActive && economia > 0 && (
+              {isCampaignActive && economia > 0 && (
                 <div className="flex justify-between items-center text-green-600">
                   <span className="text-xs sm:text-sm font-semibold">🎉 Economizando:</span>
-                  <span className="font-bold text-sm sm:text-lg">R$ {economia.toFixed(2).replace(".", ",")}</span>
+                  <span className="font-bold text-sm sm:text-lg">
+                    R$ {formatBRL(economia)}
+                  </span>
                 </div>
               )}
 
@@ -312,13 +342,12 @@ export function CheckoutDialog({
                 <span className="text-sm sm:text-lg font-bold">Total:</span>
                 <div className="flex flex-col items-end">
                   <span className="text-2xl sm:text-3xl font-bold text-green-600">
-                    R$ {total.toFixed(2).replace('.', ',')}
+                    R$ {formatBRL(total)}
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Actions */}
             <div className="flex gap-1.5 sm:gap-3">
               {step === 'cart' && (
                 <>
@@ -331,6 +360,7 @@ export function CheckoutDialog({
                     <span className="hidden xs:inline sm:hidden">Voltar</span>
                     <span className="hidden sm:inline">Continuar Comprando</span>
                   </Button>
+
                   <Button
                     onClick={() => setStep('review')}
                     className="flex-1 bg-green-600 hover:bg-green-700 text-white text-[10px] sm:text-sm py-2 sm:py-3 px-2 sm:px-4"
@@ -351,6 +381,7 @@ export function CheckoutDialog({
                   >
                     Voltar
                   </Button>
+
                   <Button
                     onClick={handleFinishOrder}
                     className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold text-[10px] sm:text-base py-2.5 sm:py-6 px-2 sm:px-4"

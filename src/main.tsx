@@ -1,18 +1,23 @@
 import '@/styles/Global.css'
-import { StrictMode } from "react"
-import { createRoot } from "react-dom/client"
-import { ThemeProvider } from "styled-components"
-import { App } from "./App.tsx"
-import { theme } from "./styles/theme.ts"
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { ThemeProvider } from 'styled-components'
+import { App } from './App.tsx'
+import { GlobalStyles } from './styles/GlobalStyles.ts'
+import { theme } from './styles/theme.ts'
 
+import { AppErrorBoundary } from '@/components/AppErrorBoundary'
+import { AppGuard } from '@/components/AppGuard'
 
-import { GlobalStyles } from "./styles/GlobalStyles.ts"
-
-createRoot(document.getElementById("root")!).render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <App />
+      <AppErrorBoundary>
+        <AppGuard>
+          <App />
+        </AppGuard>
+      </AppErrorBoundary>
     </ThemeProvider>
   </StrictMode>
 )
