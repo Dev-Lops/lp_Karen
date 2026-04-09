@@ -76,11 +76,11 @@ export const products: Product[] = [
   {
     id: 8,
     currentPrice: 57.0,
-    image: 'img10.avif',
+    image: 'img10.avi',
     title: 'Shampoo CMC',
     description:
       'O Shampoo Rosé atua restaurando o CMC capilar, devolvendo 18-metil eicosanoico à fibra.',
-    inStock: true,
+    inStock: false,
   },
   {
     id: 9,
